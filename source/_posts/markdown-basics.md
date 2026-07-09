@@ -99,7 +99,7 @@ categories:
 
 ### 8. 分隔線：`---`
 
-單獨一行三個減號，就是一條水平分隔線。典型用法是在同一則筆記裡分隔「摘要區」與「全文區」——[實戰｜打造判決知識庫：從裁判書到 WIKI 索引](/2026/07/07/judgment-knowledge-base/) 整理裁判書時正是這樣用。
+單獨一行三個減號，就是一條水平分隔線。典型用法是在同一則筆記裡分隔「摘要區」與「全文區」——[實戰｜打造判決知識庫：從裁判書到 WIKI 索引](/posts/judgment-knowledge-base/) 整理裁判書時正是這樣用。
 
 ### 9. 連結
 
@@ -140,7 +140,7 @@ Obsidian 把引用區塊擴充成彩色提示框：
 > 紅黃色警示，適合放期限與風險。
 ```
 
-色塊讓不同類型的資訊一眼就能區分。本系列後面會大量用到它：[實戰｜打造判決知識庫：從裁判書到 WIKI 索引](/2026/07/07/judgment-knowledge-base/) 會教你讓 AI 在每份裁判書的開頭，自動產生「重點摘要／爭點整理／法院見解」三個色塊（本系列稱之為「三色摘要」）——這裡先把語法記起來即可。
+色塊讓不同類型的資訊一眼就能區分。本系列後面會大量用到它：[實戰｜打造判決知識庫：從裁判書到 WIKI 索引](/posts/judgment-knowledge-base/) 會教你讓 AI 在每份裁判書的開頭，自動產生「重點摘要／爭點整理／法院見解」三個色塊（本系列稱之為「三色摘要」）——這裡先把語法記起來即可。
 
 ### 螢光標記：`==文字==`
 
@@ -245,6 +245,6 @@ tags: [營建工程, 違約金酌減]
 
 ---
 
-⬅️ 上一篇：[Obsidian 入門｜安裝、Vault 與基本操作](/2026/07/07/obsidian-basics/)
-➡️ 下一篇：[Obsidian 進階｜外掛與 Canvas 白板](/2026/07/07/obsidian-plugins-canvas/)
-🏠 回到 [總覽｜AI x Obsidian 律師實戰系列](/2026/07/07/series-overview/)
+⬅️ 上一篇：[Obsidian 入門｜安裝、Vault 與基本操作](/posts/obsidian-basics/)
+➡️ 下一篇：[Obsidian 進階｜外掛與 Canvas 白板](/posts/obsidian-plugins-canvas/)
+🏠 回到 [總覽｜AI x Obsidian 律師實戰系列](/posts/series-overview/)

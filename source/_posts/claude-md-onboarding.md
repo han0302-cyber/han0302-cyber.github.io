@@ -146,7 +146,7 @@ CLAUDE.md 可以放在不同位置，效力範圍不同，**疊加適用**——
 > - **全域通則**：寫一次、處處適用；但依賴 AI 記得去做，非保證。
 > - 建議：固定結構的案件資料夾用 `@` 引入為主，全域通則作為補充保險，兩者並用最穩。
 
-規則中反覆出現的 `00_案件總覽.md`，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 [檔案整理方法論｜案件與研究領域的雙軌知識系統](/2026/07/07/file-organization-methodology/) 介紹它時再細說；這裡先記一句就夠：**半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。**
+規則中反覆出現的 `00_案件總覽.md`，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 [檔案整理方法論｜案件與研究領域的雙軌知識系統](/posts/file-organization-methodology/) 介紹它時再細說；這裡先記一句就夠：**半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。**
 
 ## 四、撰寫與維護心法
 
@@ -180,6 +180,6 @@ CLAUDE.md 可以放在不同位置，效力範圍不同，**疊加適用**——
 
 ---
 
-⬅️ 上一篇：[安裝 Claude Code｜讓 AI 進入你的知識庫](/2026/07/07/install-claude-code/)
-➡️ 下一篇：[檔案整理方法論｜案件與研究領域的雙軌知識系統](/2026/07/07/file-organization-methodology/)
-🏠 回到 [總覽｜AI x Obsidian 律師實戰系列](/2026/07/07/series-overview/)
+⬅️ 上一篇：[安裝 Claude Code｜讓 AI 進入你的知識庫](/posts/install-claude-code/)
+➡️ 下一篇：[檔案整理方法論｜案件與研究領域的雙軌知識系統](/posts/file-organization-methodology/)
+🏠 回到 [總覽｜AI x Obsidian 律師實戰系列](/posts/series-overview/)
