@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Obsidian 是地端的，但 AI Agent 讀取的內容會送到模型公司的伺服器——所以「Vault 裡放什麼、給 AI 讀什麼」必須分級管理。付費不等於安全，方案類型才是關鍵；而引用查證與最終責任，永遠在律師身上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="資安與倫理｜律師使用 AI Agent 的紅線">
+<meta property="og:url" content="https://han0302-cyber.github.io/2026/07/07/security-ethics-red-lines/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Obsidian 是地端的，但 AI Agent 讀取的內容會送到模型公司的伺服器——所以「Vault 裡放什麼、給 AI 讀什麼」必須分級管理。付費不等於安全，方案類型才是關鍵；而引用查證與最終責任，永遠在律師身上。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T02:26:08.844Z">
+<meta property="article:author" content="林廷翰">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="個資法">
+<meta property="article:tag" content="執業倫理">
+<meta property="article:tag" content="資安">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/2026/07/07/security-ethics-red-lines/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/2026/07/07/security-ethics-red-lines/","path":"2026/07/07/security-ethics-red-lines/","title":"資安與倫理｜律師使用 AI Agent 的紅線"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>資安與倫理｜律師使用 AI Agent 的紅線 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E8%AC%9B%E6%B8%85%E6%A5%9A%E8%B3%87%E6%96%99%E6%B5%81%EF%BC%9A%E5%9C%B0%E7%AB%AF%E7%9F%A5%E8%AD%98%E5%BA%AB%E7%9A%84%E9%9B%B2%E7%AB%AF%E7%B8%AB%E9%9A%99"><span class="nav-number">1.</span> <span class="nav-text">一、先講清楚資料流：地端知識庫的雲端縫隙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%98%E8%B2%BB-%E2%89%A0-%E5%AE%89%E5%85%A8%EF%BC%9A%E6%96%B9%E6%A1%88%E9%A1%9E%E5%9E%8B%E6%89%8D%E6%98%AF%E9%97%9C%E9%8D%B5"><span class="nav-number">2.</span> <span class="nav-text">二、付費 ≠ 安全：方案類型才是關鍵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%BE%8B%E5%B8%AB%E7%9A%84%E4%B8%89%E9%87%8D%E5%90%88%E8%A6%8F%E6%A1%86%E6%9E%B6"><span class="nav-number">3.</span> <span class="nav-text">三、律師的三重合規框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%89%E5%B1%A4%E5%88%86%E6%B5%81%EF%BC%9A%E5%8F%AF%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B1%BA%E7%AD%96%E8%A6%8F%E5%89%87"><span class="nav-number">4.</span> <span class="nav-text">四、三層分流：可操作的決策規則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%80%AB%E7%90%86%E9%9D%A2%EF%BC%9AAI-%E6%99%82%E4%BB%A3%E4%B8%8D%E8%AE%8A%E7%9A%84%E4%B8%89%E4%BB%B6%E4%BA%8B"><span class="nav-number">5.</span> <span class="nav-text">五、倫理面：AI 時代不變的三件事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%A1%8C%E5%8B%95%E6%AA%A2%E6%9F%A5%E8%A1%A8"><span class="nav-number">6.</span> <span class="nav-text">六、行動檢查表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AAI-%E7%B5%A6%E4%BD%A0%E7%9A%84%E6%98%AF%E6%99%82%E9%96%93"><span class="nav-number">7.</span> <span class="nav-text">結語：AI 給你的是時間</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">林廷翰</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/2026/07/07/security-ethics-red-lines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="林廷翰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="資安與倫理｜律師使用 AI Agent 的紅線 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          資安與倫理｜律師使用 AI Agent 的紅線
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T00:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 10:26:08" itemprop="dateModified" datetime="2026-07-09T10:26:08+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Obsidian 是地端的，但 AI Agent 讀取的內容會送到模型公司的伺服器——所以「Vault 裡放什麼、給 AI 讀什麼」必須分級管理。付費不等於安全，方案類型才是關鍵；而引用查證與最終責任，永遠在律師身上。</p>
+</blockquote>
+<span id="more"></span>
+<p>這是全系列最重要的一篇。前面各篇談的是「怎麼用」，這一篇談的是「能不能用、用到哪裡」。</p>
+<h2 id="一、先講清楚資料流：地端知識庫的雲端縫隙"><a href="#一、先講清楚資料流：地端知識庫的雲端縫隙" class="headerlink" title="一、先講清楚資料流：地端知識庫的雲端縫隙"></a>一、先講清楚資料流：地端知識庫的雲端縫隙</h2><p>本系列反覆強調 Obsidian 的地端優勢，但必須誠實面對一個關鍵事實：</p>
+<blockquote>
+<p><strong>筆記的「存放」在你的電腦；但當 Claude Code &#x2F; Codex 讀取筆記執行任務時，讀到的內容會作為提示傳送到 Anthropic &#x2F; OpenAI 的伺服器運算。</strong></p>
+</blockquote>
+<p>所以「知識庫是地端的」這句話只對了一半。完整的圖像是：</p>
+<table>
+<thead>
+<tr>
+<th>環節</th>
+<th>資料在哪裡</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Obsidian 筆記存放</td>
+<td>✅ 你的電腦（除非 Vault 放在同步資料夾）</td>
+</tr>
+<tr>
+<td>你自己閱讀、編輯</td>
+<td>✅ 你的電腦</td>
+</tr>
+<tr>
+<td>AI Agent 讀取檔案執行任務</td>
+<td>⚠️ 讀取的內容上傳至模型公司伺服器</td>
+</tr>
+<tr>
+<td>AI 產出寫回筆記</td>
+<td>✅ 你的電腦</td>
+</tr>
+</tbody></table>
+<p>結論：<strong>給 AI 讀什麼，就等於把什麼交給了模型公司。</strong> 這不必然違規——關鍵在你用的是哪種方案、對方是什麼法律地位、內容是什麼等級。往下看。</p>
+<h2 id="二、付費-≠-安全：方案類型才是關鍵"><a href="#二、付費-≠-安全：方案類型才是關鍵" class="headerlink" title="二、付費 ≠ 安全：方案類型才是關鍵"></a>二、付費 ≠ 安全：方案類型才是關鍵</h2><p>常見的理解是「我付月費了，所以應該安全」，但這並不精確——消費者方案再貴，本質仍是消費者方案。律師必須區分的是<strong>你與廠商之間的法律關係</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>途徑</th>
+<th>資料用於訓練？</th>
+<th>法律關係</th>
+<th>客戶資料可否</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>免費版網頁</td>
+<td>預設可能用於訓練</td>
+<td>消費者條款</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>付費個人版（如 Claude Pro／Max、ChatGPT Plus／Pro）</td>
+<td>同上（見下方說明）</td>
+<td>消費者條款</td>
+<td>❌ 原則不可</td>
+</tr>
+<tr>
+<td>商用訂閱方案（Claude Team／Enterprise、ChatGPT Business／Enterprise 等）</td>
+<td>預設不訓練</td>
+<td>有 DPA（資料處理協議）</td>
+<td>⚠️ 依所內政策</td>
+</tr>
+<tr>
+<td>API</td>
+<td>預設不訓練</td>
+<td>商業條款</td>
+<td>⚠️ 依所內政策</td>
+</tr>
+<tr>
+<td>地端模型（本機運行）</td>
+<td>資料不出你的電腦</td>
+<td>—</td>
+<td>✅ 技術上最安全</td>
+</tr>
+</tbody></table>
+<p>方案名稱與適用條款以各家官方頁為準。本系列用到的兩個 Agent，分級邏輯其實一致：</p>
+<ul>
+<li><strong>Claude（Anthropic）</strong>：個人方案為 Pro／Max（消費者條款）；商用訂閱分 <strong>Team</strong>（5 人即可成團，適合中小型事務所）與 <strong>Enterprise</strong> 兩級，適用商業條款、可簽 DPA。Claude Code 以哪個方案登入，就適用哪個方案的條款。</li>
+<li><strong>Codex（OpenAI）</strong>：可透過 ChatGPT 訂閱或 API 金鑰取用，Codex CLI 兩種登入方式都支援。其中 <strong>Plus、Pro 屬個人方案</strong>（消費者條款），<strong>Business、Enterprise 屬商用方案</strong>（適用商業條款、可簽 DPA）。商用方案與 API 預設不將資料用於訓練；個人與免費方案則預設可能用於訓練，雖可在設定中關閉，但本質仍是消費者條款、沒有 DPA。</li>
+</ul>
+<p>兩條原則對兩家都成立：</p>
+<ul>
+<li><strong>用哪個方案的額度登入，就適用哪個方案的條款</strong>——以 Pro／Plus 等個人訂閱登入，適用消費者條款；改接 API 金鑰，適用商業條款。這直接決定你能餵它什麼資料。</li>
+<li><strong>用任何工具前，先查它當下的資料使用政策</strong>——各家的方案名稱與訓練政策都還在變動，別憑印象；查完把結論寫進所內規範。</li>
+</ul>
+<h2 id="三、律師的三重合規框架"><a href="#三、律師的三重合規框架" class="headerlink" title="三、律師的三重合規框架"></a>三、律師的三重合規框架</h2><p>為什麼這是「法律問題」而不只是「商業考量」：</p>
+<p><strong>1. 保密義務</strong>。律師法第 36 條課予律師保密義務；企業法務亦負有僱傭契約與公司內規上的保密義務。把客戶案件資料輸入「預設用於訓練」的消費者版 AI，與保密義務的相容性有重大疑慮。</p>
+<p><strong>2. 個資法的委託處理</strong>。將含個資的資料交由 AI 服務處理，屬於委託處理個人資料，依個人資料保護法施行細則第 8 條，委託機關應對受託者為適當之監督。消費者方案沒有 DPA、沒有稽核機制，難以主張已盡監督義務；商用方案與 API 的商業條款才有對應的架構。</p>
+<p><strong>3. 涉外業務的 GDPR</strong>。服務歐盟客戶時還有控制者／處理者的定性問題：廠商若將你的輸入用於訓練自己的模型，它就不只是處理者——這是合規上的重大風險點。</p>
+<h2 id="四、三層分流：可操作的決策規則"><a href="#四、三層分流：可操作的決策規則" class="headerlink" title="四、三層分流：可操作的決策規則"></a>四、三層分流：可操作的決策規則</h2><p>把以上整理成一個可以貼在牆上的規則——<strong>資料越敏感，工具越要往「自己掌控」那一端靠</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>層級</th>
+<th>資料性質</th>
+<th>可用工具</th>
+<th>Vault 對應</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>第一層</strong></td>
+<td>非敏感：公開判決、法規、文獻、教學、去識別化素材</td>
+<td>個人訂閱即可</td>
+<td><code>20_AREAS</code>、<code>30_RESOURCES</code> 的研究軌內容 ✅ 放心給 AI</td>
+</tr>
+<tr>
+<td><strong>第二層</strong></td>
+<td>一般案件工作：含當事人資訊的卷證、書狀</td>
+<td>事務所的商用方案／API</td>
+<td><code>10_MATTERS</code> 案件軌 ⚠️ 依所內政策，且盡量去識別化</td>
+</tr>
+<tr>
+<td><strong>第三層</strong></td>
+<td>最敏感：偵查中案件、重大交易、高度隱私</td>
+<td>地端模型，或不用 AI</td>
+<td>考慮<strong>根本不放進 Vault</strong>，或放在 AI 禁止讀取的資料夾</td>
+</tr>
+</tbody></table>
+<p>以本系列的案例線為例：你歸檔的公開判決屬第一層；2026-015 案的卷證與書狀底稿屬第二層。</p>
+<p>落實到 Obsidian ＋ Agent 的四個實際手段：</p>
+<ol>
+<li><strong>Vault 分區</strong>：在 CLAUDE.md 白紙黑字寫「禁止讀取 <code>10_MATTERS/_機密/</code> 內任何檔案」；更嚴格的做法是敏感案件用<strong>獨立的 Vault</strong>，只在商用方案／地端模型環境開啟。</li>
+<li><strong>入庫即去識別化</strong>：研究軌筆記從建立時就不含當事人資訊（<a href="/2026/07/07/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 的「知識萃取」正是這個原則的制度化）。</li>
+<li><strong>地端模型選項</strong>：Ollama 等工具可在自己電腦運行開源模型，搭配本機轉檔工具（如 markitdown），可組出「資料完全不出機」的處理管線。能力不如雲端旗艦模型，但對第三層資料，這是「能用 AI」與「不能用 AI」的差別。</li>
+<li><strong>技術性護欄（deny 規則與 hooks）</strong>：CLAUDE.md 的禁令是「所規」，AI 極高機率遵守但非強制。要技術層級的強制，主力是 Claude Code 設定檔（settings.json）的<strong>權限拒絕規則（deny）</strong>：一是把「讀取 <code>_機密/</code> 路徑」寫進 deny 清單，工具層一律擋下、連問都不問；二是把「無論如何都不准執行」的高危指令寫死——例如遞迴永久刪除、強制覆寫版本歷史、變更系統權限——就像事務所的印鑑章有專人保管、任何人都不能單獨用印，最危險的動作本來就不該進入日常授權的範圍。另有 <strong>hooks（掛鉤）</strong> 機制，可在工具執行前後掛上自訂檢查。對 AI 說「請幫我在 settings.json 建立禁讀路徑與高危指令的拒絕清單」，讓它自己把柵欄立好。</li>
+</ol>
+<p>另外三個容易忽略的縫隙：</p>
+<ul>
+<li><strong>同步服務</strong>：Vault 放在 OneDrive &#x2F; iCloud，資料就在雲端，屬於另一條委外關係；</li>
+<li><strong>Obsidian 社群外掛與 MCP 伺服器</strong>：第三方程式碼，可能讀取 Vault 內容，只裝必要且可信的；</li>
+<li><strong>Shadow IT</strong>：所內沒有合規方案，同仁便可能轉而使用個人帳號——管理者的正解是「提供合規替代方案＋教育訓練」，不是一紙禁令。</li>
+</ul>
+<h2 id="五、倫理面：AI-時代不變的三件事"><a href="#五、倫理面：AI-時代不變的三件事" class="headerlink" title="五、倫理面：AI 時代不變的三件事"></a>五、倫理面：AI 時代不變的三件事</h2><p><strong>1. 查證，沒有例外。</strong> 國際上已有多起律師因引用 AI 杜撰判例遭法院制裁的案例——最著名的是 2023 年美國 Mata v. Avianca 案，紐約律師引用 ChatGPT 虛構的判決先例，遭法院處罰；其後各國仍不斷出現同類事件，涉事者不乏具規模的事務所。教訓很簡單：有規範不夠，還要被遵守；查證沒有例外。 本系列的制度化手段：CLAUDE.md 的「引用標註待核對」規則＋ <a href="/2026/07/07/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> 的資料庫初核＋你的最終人工複核，三道防線。</p>
+<p><strong>2. 責任不可移轉。</strong> AI 產出的書狀、意見書、筆記，署名的是你。「這是 AI 寫錯的」在法庭上、在客戶面前、在懲戒程序中，都不成立。這也是為什麼本系列所有工作流的設計都是「人在頭尾」：你定方向，你做定稿。</p>
+<p><strong>3. 大腦要保持參與。</strong> MIT 媒體實驗室 2025 年的腦波研究（樣本不大、屬初步發現，但值得警惕）顯示，長期讓 AI 代思考的受試者出現「認知負債」——即使停用 AI，認知活躍度也難以回復。對策不是拒用，而是順序：<strong>你先想、AI 補充；你先判斷、AI 檢查。</strong> 讓 AI 跟你「一起想」，不要「替你想」。</p>
+<p>本系列從第一篇就反覆劃出的那條界線，在這裡做最後收束：<strong>AI 可以替你整理，但思考與理解，永遠是律師自己的工作。</strong> 摘要、索引、爭點 WIKI，都只是把「值得讀的東西」送到你面前的輸送帶；真正把知識變成專業判斷的，仍然是你逐字讀過、親自想通的那個過程。這套系統的全部承諾是替你省下整理的勞動；如果連閱讀與思考也一併省掉，那不是效率，是<strong>大腦外包</strong>——而外包出去的，恰恰是客戶付費購買、AI 又無法替你承擔責任的那個部分。知識庫再完整，沒有經過你大腦的知識，終究不是你的。</p>
+<p>對年輕律師而言，基本功階段或許值得刻意慢學——自己查法條、自己讀判決，AI 用來檢查成果，而不是取代訓練。</p>
+<p>對資深律師而言，把 know-how 寫成 Skills 與知識庫（見 <a href="/2026/07/07/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的傳承一節），它不會取代你，反而放大你——並讓專業在事務所留下制度性的傳承。</p>
+<h2 id="六、行動檢查表"><a href="#六、行動檢查表" class="headerlink" title="六、行動檢查表"></a>六、行動檢查表</h2><p><strong>今天就做：</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 檢查你的 Claude &#x2F; ChatGPT 帳號的資料訓練設定</li>
+<li><input disabled="" type="checkbox"> 確認你的 Vault 存放位置（本機？同步資料夾？）與內容等級是否相符</li>
+<li><input disabled="" type="checkbox"> 在 CLAUDE.md 寫入禁讀資料夾與引用查證規則</li>
+</ul>
+<p><strong>制度化：</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 依三層分流盤點你的日常資料，寫成自己（或所內）的一頁式規範</li>
+<li><input disabled="" type="checkbox"> 敏感案件另立 Vault 或資料夾隔離</li>
+<li><input disabled="" type="checkbox"> 建立「入庫即去識別化」與「知識萃取」的習慣</li>
+<li><input disabled="" type="checkbox"> 管理者：提供合規方案＋教育訓練，取代單純禁止</li>
+</ul>
+<h2 id="結語：AI-給你的是時間"><a href="#結語：AI-給你的是時間" class="headerlink" title="結語：AI 給你的是時間"></a>結語：AI 給你的是時間</h2><p>這個系列介紹了很多技術，最後只想收在一件事上：AI 接手的是重複的資訊勞動，它給你的是時間。把省下來的時間，投入無法被取代的事。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/news/updates-to-our-consumer-terms">Anthropic 官方公告：消費者條款與隱私政策更新（2025-08）</a></li>
+<li><a target="_blank" rel="noopener" href="https://privacy.anthropic.com/">Anthropic 隱私中心（各方案資料使用政策）</a></li>
+<li><a target="_blank" rel="noopener" href="https://claude.com/pricing">Claude 官方定價頁（各方案比較）</a></li>
+<li><a target="_blank" rel="noopener" href="https://openai.com/enterprise-privacy/">OpenAI 企業隱私（Enterprise privacy，含 DPA 與訓練政策）</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance">OpenAI 說明中心：資料如何用於改善模型（各方案訓練政策）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/codex/pricing">OpenAI Codex 官方定價頁（各方案取用方式）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/settings">Claude Code 官方文件：設定檔與 deny 規則（Settings）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/hooks">Claude Code 官方文件：Hooks</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/2026/07/07/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a><br>🏠 回到 <a href="/2026/07/07/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/%E8%B3%87%E5%AE%89/" rel="tag"># 資安</a>
+              <a href="/tags/%E5%9F%B7%E6%A5%AD%E5%80%AB%E7%90%86/" rel="tag"># 執業倫理</a>
+              <a href="/tags/%E5%80%8B%E8%B3%87%E6%B3%95/" rel="tag"># 個資法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/07/terminal-ai-agent/" rel="prev" title="什麼是終端機 AI Agent｜認識 Claude Code 與 Codex">
+                  <i class="fa fa-angle-left"></i> 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/07/07/obsidian-basics/" rel="next" title="Obsidian 入門｜安裝、Vault 與基本操作">
+                  Obsidian 入門｜安裝、Vault 與基本操作 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

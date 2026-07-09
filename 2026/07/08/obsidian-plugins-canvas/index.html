@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點外掛讓 Obsidian 從筆記軟體長成工作平台，Canvas 白板讓你把案件關係圖、爭點攻防圖直接畫在知識庫裡。但原則是「先用得順，再裝外掛」——外掛是調味料，不是主菜。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Obsidian 進階｜外掛與 Canvas 白板">
+<meta property="og:url" content="https://han0302-cyber.github.io/2026/07/08/obsidian-plugins-canvas/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點外掛讓 Obsidian 從筆記軟體長成工作平台，Canvas 白板讓你把案件關係圖、爭點攻防圖直接畫在知識庫裡。但原則是「先用得順，再裝外掛」——外掛是調味料，不是主菜。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://han0302-cyber.github.io/images/obsidian-plugins-canvas/case-relationship-diagram.png">
+<meta property="og:image" content="https://han0302-cyber.github.io/images/obsidian-plugins-canvas/issue-map-diagram.png">
+<meta property="og:image" content="https://han0302-cyber.github.io/images/obsidian-plugins-canvas/deal-structure-diagram.png">
+<meta property="og:image" content="https://han0302-cyber.github.io/images/obsidian-plugins-canvas/course-design-diagram.png">
+<meta property="article:published_time" content="2026-07-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T02:28:48.618Z">
+<meta property="article:author" content="林廷翰">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="Canvas">
+<meta property="article:tag" content="Obsidian">
+<meta property="article:tag" content="外掛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://han0302-cyber.github.io/images/obsidian-plugins-canvas/case-relationship-diagram.png">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/2026/07/08/obsidian-plugins-canvas/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/2026/07/08/obsidian-plugins-canvas/","path":"2026/07/08/obsidian-plugins-canvas/","title":"Obsidian 進階｜外掛與 Canvas 白板"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Obsidian 進階｜外掛與 Canvas 白板 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%96%E6%8E%9B%E7%B3%BB%E7%B5%B1%EF%BC%9A%E5%85%A9%E5%B1%A4%E6%9E%B6%E6%A7%8B"><span class="nav-number">1.</span> <span class="nav-text">一、外掛系統：兩層架構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E7%A4%BE%E7%BE%A4%E5%A4%96%E6%8E%9B%E7%9A%84%E6%AD%A5%E9%A9%9F"><span class="nav-number">1.1.</span> <span class="nav-text">安裝社群外掛的步驟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BE%8B%E5%B8%AB%E7%9A%84%E7%B2%BE%E9%81%B8%E5%A4%96%E6%8E%9B%E6%B8%85%E5%96%AE"><span class="nav-number">2.</span> <span class="nav-text">二、律師的精選外掛清單</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5%EF%BC%88%E7%AC%AC%E4%B8%80%E5%80%8B%E6%9C%88%EF%BC%89%EF%BC%9A%E5%85%B6%E5%AF%A6%E4%B8%80%E5%80%8B%E9%83%BD%E4%B8%8D%E7%94%A8%E8%A3%9D"><span class="nav-number">2.1.</span> <span class="nav-text">第一階段（第一個月）：其實一個都不用裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%EF%BC%88%E7%94%A8%E9%A0%86%E4%B9%8B%E5%BE%8C%EF%BC%89%EF%BC%9A%E4%B8%89%E5%80%8B%E9%AB%98%E5%83%B9%E5%80%BC%E5%A4%96%E6%8E%9B"><span class="nav-number">2.2.</span> <span class="nav-text">第二階段（用順之後）：三個高價值外掛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%BC%E5%BE%97%E7%9F%A5%E9%81%93%E7%9A%84%E5%85%B6%E4%BB%96%E5%A4%96%E6%8E%9B"><span class="nav-number">2.3.</span> <span class="nav-text">值得知道的其他外掛</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%9C%83%E8%AD%B0%E8%88%87%E9%96%8B%E5%BA%AD%E9%8C%84%E9%9F%B3%EF%BC%9A%E9%8C%84%E9%9F%B3%E6%A9%9F%E8%88%87%E9%80%90%E5%AD%97%E7%A8%BF"><span class="nav-number">3.</span> <span class="nav-text">三、會議與開庭錄音：錄音機與逐字稿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%AF%84%E6%9C%AC%EF%BC%9A%E8%AE%93%E6%AF%8F%E4%B8%80%E5%89%87%E7%AD%86%E8%A8%98%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8%E7%B5%B1%E4%B8%80%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">四、範本：讓每一則筆記自動套用統一格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A0%B8%E5%BF%83%E5%A4%96%E6%8E%9B%E3%80%8C%E7%AF%84%E6%9C%AC%EF%BC%88Templates%EF%BC%89%E3%80%8D%EF%BC%9A%E5%85%A7%E5%BB%BA%E5%B0%B1%E5%A4%A0%E9%96%8B%E5%A7%8B"><span class="nav-number">4.1.</span> <span class="nav-text">4-1 核心外掛「範本（Templates）」：內建就夠開始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%A4%BE%E7%BE%A4%E5%A4%96%E6%8E%9B%E3%80%8CTemplater%E3%80%8D%EF%BC%9A%E7%AF%84%E6%9C%AC%E7%9A%84%E8%87%AA%E5%8B%95%E5%8C%96%E5%8D%87%E7%B4%9A"><span class="nav-number">4.2.</span> <span class="nav-text">4-2 社群外掛「Templater」：範本的自動化升級</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Canvas-%E7%99%BD%E6%9D%BF%EF%BC%9A%E6%8A%8A%E6%A1%88%E4%BB%B6%E3%80%8C%E6%94%A4%E5%9C%A8%E6%A1%8C%E4%B8%8A%E3%80%8D"><span class="nav-number">5.</span> <span class="nav-text">五、Canvas 白板：把案件「攤在桌上」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E4%B8%80%EF%BC%9A%E6%A1%88%E4%BB%B6%E9%97%9C%E4%BF%82%E5%9C%96%EF%BC%88%E8%A8%B4%E8%A8%9F%E8%A6%96%E8%A7%92%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">用法一：案件關係圖（訴訟視角）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E4%BA%8C%EF%BC%9A%E7%88%AD%E9%BB%9E%E6%94%BB%E9%98%B2%E5%9C%96%EF%BC%88%E8%A8%B4%E8%A8%9F%E8%A6%96%E8%A7%92%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">用法二：爭點攻防圖（訴訟視角）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E4%B8%89%EF%BC%9A%E4%BA%A4%E6%98%93%E6%9E%B6%E6%A7%8B%E5%9C%96%EF%BC%88%E9%9D%9E%E8%A8%9F%EF%BC%8F%E4%BC%81%E6%A5%AD%E6%B3%95%E5%8B%99%E8%A6%96%E8%A7%92%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">用法三：交易架構圖（非訟／企業法務視角）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E5%9B%9B%EF%BC%9A%E6%95%99%E8%82%B2%E8%A8%93%E7%B7%B4%E7%9A%84%E8%AA%B2%E7%A8%8B%E8%A8%AD%E8%A8%88%EF%BC%88%E4%BC%81%E6%A5%AD%E6%B3%95%E5%8B%99%E8%A6%96%E8%A7%92%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">用法四：教育訓練的課程設計（企業法務視角）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%A1%8C%E5%8B%95%E8%A3%9D%E7%BD%AE%EF%BC%9A%E5%8F%A3%E8%A2%8B%E8%A3%A1%E7%9A%84%E7%9F%A5%E8%AD%98%E5%BA%AB"><span class="nav-number">6.</span> <span class="nav-text">六、行動裝置：口袋裡的知識庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%9C%AC%E7%AF%87%E5%B0%8F%E7%B5%90%EF%BC%8B%E5%9F%BA%E6%9C%AC%E5%8A%9F%E6%AA%A2%E6%9F%A5%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">七、本篇小結＋基本功檢查表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">林廷翰</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/2026/07/08/obsidian-plugins-canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="林廷翰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Obsidian 進階｜外掛與 Canvas 白板 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Obsidian 進階｜外掛與 Canvas 白板
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-08 00:00:00" itemprop="dateCreated datePublished" datetime="2026-07-08T00:00:00+08:00">2026-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 10:28:48" itemprop="dateModified" datetime="2026-07-09T10:28:48+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>外掛讓 Obsidian 從筆記軟體長成工作平台，Canvas 白板讓你把案件關係圖、爭點攻防圖直接畫在知識庫裡。但原則是「先用得順，再裝外掛」——外掛是調味料，不是主菜。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、外掛系統：兩層架構"><a href="#一、外掛系統：兩層架構" class="headerlink" title="一、外掛系統：兩層架構"></a>一、外掛系統：兩層架構</h2><p>Obsidian 的功能分兩層：</p>
+<ul>
+<li><strong>核心外掛（Core plugins）</strong>：官方內建，在 Settings → Core plugins 開關。日曆、範本、白板（Canvas）、反向連結等都在這裡。</li>
+<li><strong>社群外掛（Community plugins）</strong>：全球使用者開發的擴充功能，數千種，免費安裝。</li>
+</ul>
+<h3 id="安裝社群外掛的步驟"><a href="#安裝社群外掛的步驟" class="headerlink" title="安裝社群外掛的步驟"></a>安裝社群外掛的步驟</h3><ol>
+<li>Settings → <strong>Community plugins</strong>（社群外掛）</li>
+<li>第一次會要求關閉「Restricted mode（受限模式）」——這是安全開關，確認後關閉</li>
+<li>點 <strong>Browse（瀏覽）</strong>，搜尋外掛名稱</li>
+<li><strong>Install（安裝）</strong> → <strong>Enable（啟用）</strong> → 部分外掛需在設定頁調整選項</li>
+</ol>
+<blockquote>
+<p><strong>⚠️ 律師必讀的資安提醒</strong><br>社群外掛是第三方程式碼，理論上可以讀取你的整個 Vault。建議只安裝「下載量大、持續更新、口碑明確」的外掛，並讓總數保持精簡。知識庫放了敏感內容的人，每多裝一個外掛，就多一分供應鏈風險——這跟事務所挑選委外廠商是同一種判斷。</p>
+</blockquote>
+<h2 id="二、律師的精選外掛清單"><a href="#二、律師的精選外掛清單" class="headerlink" title="二、律師的精選外掛清單"></a>二、律師的精選外掛清單</h2><p>不要一次全裝。建議依階段採用：</p>
+<h3 id="第一階段（第一個月）：其實一個都不用裝"><a href="#第一階段（第一個月）：其實一個都不用裝" class="headerlink" title="第一階段（第一個月）：其實一個都不用裝"></a>第一階段（第一個月）：其實一個都不用裝</h3><p>先把核心功能用順：連結、搜尋、標籤、範本（核心外掛就夠用，見本篇第四節）。<strong>過度配置比功能不足，更容易讓知識庫難以維持。</strong></p>
+<h3 id="第二階段（用順之後）：三個高價值外掛"><a href="#第二階段（用順之後）：三個高價值外掛" class="headerlink" title="第二階段（用順之後）：三個高價值外掛"></a>第二階段（用順之後）：三個高價值外掛</h3><table>
+<thead>
+<tr>
+<th>外掛</th>
+<th>功能</th>
+<th>律師用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Dataview</strong></td>
+<td>把筆記的屬性欄變成可查詢的資料庫</td>
+<td>「列出所有 court 為最高法院、tag 含營建工程的判決筆記，按日期排序」——自動生成的動態判決清單</td>
+</tr>
+<tr>
+<td><strong>Templater</strong></td>
+<td>進階範本（自動帶入日期、依資料夾套用不同範本）</td>
+<td>新增筆記到「判決」資料夾自動套判決範本；開庭筆記自動帶入今天日期</td>
+</tr>
+<tr>
+<td><strong>Excalidraw</strong></td>
+<td>手繪風格圖表</td>
+<td>法律關係圖、時間軸、組織架構圖</td>
+</tr>
+</tbody></table>
+<h3 id="值得知道的其他外掛"><a href="#值得知道的其他外掛" class="headerlink" title="值得知道的其他外掛"></a>值得知道的其他外掛</h3><ul>
+<li><strong>Calendar &#x2F; Periodic Notes</strong>：每日筆記月曆視圖，適合用「每日筆記」記工作日誌的人。</li>
+<li><strong>Kanban</strong>：看板式待辦（類似 Trello），案件進度板。</li>
+<li><strong>Obsidian Git</strong>：自動備份 Vault 到 Git 版本庫（需要一點 Git 基礎，有需要再裝）。</li>
+</ul>
+<blockquote>
+<p><strong>ℹ️ 預告：Claudian——把 Claude Code 嵌進 Obsidian 的外掛</strong><br>本系列主線是「Obsidian 開著、旁邊終端機跑 Claude Code」的雙視窗工作法，而社群外掛 <strong>Claudian</strong> 更進一步：把 Claude Code 整個嵌進 Obsidian 的側邊欄，讓你在筆記軟體裡直接指揮 Agent。它的前提是電腦已裝好 Claude Code，所以建議讀完本系列第 06 篇、Claude Code 跑起來之後，再回頭裝它，屆時再談細節。</p>
+</blockquote>
+<blockquote>
+<p><strong>💡 小提示</strong><br>與 AI 協作的好消息：<strong>Dataview 查詢、Templater 範本這些「外掛設定語法」，全部可以叫 Claude Code 幫你寫。</strong> 「請在判決索引筆記裡加一段 Dataview 查詢，列出本月新增的所有判決筆記」——你不用學查詢語法，會描述需求就好。</p>
+</blockquote>
+<h2 id="三、會議與開庭錄音：錄音機與逐字稿"><a href="#三、會議與開庭錄音：錄音機與逐字稿" class="headerlink" title="三、會議與開庭錄音：錄音機與逐字稿"></a>三、會議與開庭錄音：錄音機與逐字稿</h2><p>律師開會最尷尬的兩難：專心聽就來不及記，專心記就漏聽細節。Obsidian 內建的**核心外掛「錄音機（Audio recorder）」**正好解這一題：</p>
+<ol>
+<li><strong>設定 → 核心外掛</strong>，啟用「錄音機」；</li>
+<li>開會時打開會議筆記，點左側功能列的麥克風圖示（或指令面板搜尋「錄音」）開始錄音；</li>
+<li><strong>錄音進行中，筆記照打</strong>——你只要記「決議」「待辦」「關鍵數字」這些重點，聽不清或來不及的地方安心放過；</li>
+<li>按停止後，音檔自動存入 Vault，並以 <code>![[Recording 2026-07-08.webm]]</code> 嵌在游標處——<strong>筆記內直接就能播放</strong>，會後針對沒記到的段落聽回放補齊。</li>
+</ol>
+<p>音檔跟筆記住在同一則、同一個資料夾，不會發生「錄音在手機、筆記在電腦、三個月後兩者都找不到」的窘境。手機版 App 也支援這個核心外掛，外出開會拿手機錄，回辦公室同步進 Vault 即可。</p>
+<p><strong>進階：讓錄音變成會議紀錄。</strong> 社群外掛 <strong>Whisper</strong> 可以把錄音自動轉成逐字稿，走的是 OpenAI 的 API。這裡用 <a href="/2026/07/07/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級來判斷：API 適用<strong>商業條款、預設不將資料用於訓練</strong>，屬於商用等級的途徑——一般案件的會議錄音，依所內政策使用沒有問題；但錄音內容終究會上傳雲端處理，<strong>最敏感的第三層會議</strong>（偵查中案件、重大交易）仍建議走本機路線。轉成逐字稿後，再接一句「請依會議紀錄範本，把逐字稿整理成會議紀錄，我打的重點筆記優先」。錄音、逐字稿、會議紀錄三層都留在 Vault 裡，各司其職。</p>
+<blockquote>
+<p><strong>⚠️ 錄音前先想兩件事</strong><br>一是<strong>告知與同意</strong>：會議涉及他人時，錄音前取得出席者同意，既是信賴關係的基本，也避免爭議；法庭與偵查程序的錄音另有法定限制，不在此列。二是<strong>檔案等級</strong>：含機密內容的錄音檔，適用與筆記相同的分級規則——放在哪個資料夾、能不能給雲端 AI 處理，依資安篇的三層分流判斷。</p>
+</blockquote>
+<h2 id="四、範本：讓每一則筆記自動套用統一格式"><a href="#四、範本：讓每一則筆記自動套用統一格式" class="headerlink" title="四、範本：讓每一則筆記自動套用統一格式"></a>四、範本：讓每一則筆記自動套用統一格式</h2><p>判決筆記、開庭筆記、會議紀錄——律師的筆記大多是「同一種格式反覆使用」。範本功能讓你把格式定型一次，之後每則新筆記自動長成同樣的骨架。這件事的價值不只是省打字：<strong>格式統一的筆記，AI 才能穩定地編纂與檢索</strong>（後續 Inbox 編纂請 AI「套用判決筆記範本」，靠的就是這裡建立的範本檔）。</p>
+<p>範本有兩個層次，核心外掛先用、社群外掛後補：</p>
+<h3 id="4-1-核心外掛「範本（Templates）」：內建就夠開始"><a href="#4-1-核心外掛「範本（Templates）」：內建就夠開始" class="headerlink" title="4-1 核心外掛「範本（Templates）」：內建就夠開始"></a>4-1 核心外掛「範本（Templates）」：內建就夠開始</h3><p><strong>啟用與設定</strong>（設定 → 核心外掛 → 範本，啟用後點旁邊的齒輪進入設定）：</p>
+<table>
+<thead>
+<tr>
+<th>設定項</th>
+<th>建議值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>範本資料夾位置</td>
+<td><code>90_SYSTEM/Templates/</code></td>
+<td>所有範本檔集中放這裡，一個範本一個 <code>.md</code> 檔</td>
+</tr>
+<tr>
+<td>日期格式</td>
+<td><code>YYYY-MM-DD</code></td>
+<td><code>&#123;&#123;date&#125;&#125;</code> 代入的格式；用西元、可排序</td>
+</tr>
+<tr>
+<td>時間格式</td>
+<td><code>HH:mm</code></td>
+<td><code>&#123;&#123;time&#125;&#125;</code> 代入的格式</td>
+</tr>
+</tbody></table>
+<p><strong>語法</strong>只有三個變數，插入範本的瞬間自動代入：</p>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>代入內容</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123;title&#125;&#125;</code></td>
+<td>目前筆記的檔名</td>
+<td>檔名取判決字號，內文大標題就自動跟上</td>
+</tr>
+<tr>
+<td><code>&#123;&#123;date&#125;&#125;</code></td>
+<td>今天日期</td>
+<td><code>2026-07-08</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123;time&#125;&#125;</code></td>
+<td>現在時間</td>
+<td><code>14:30</code></td>
+</tr>
+</tbody></table>
+<p>日期與時間還可以<strong>在範本裡臨時指定格式</strong>，寫法是冒號後接格式代碼：<code>&#123;&#123;date:YYYYMMDD&#125;&#125;</code> → <code>20260708</code>（正好是本 Vault 檔名慣例）、<code>&#123;&#123;date:YYYY年M月D日&#125;&#125;</code> → <code>2026年7月8日</code>（文書日期）。</p>
+<p><strong>建立第一個範本</strong>：在範本資料夾新增「判決筆記範本」：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">court:</span><br><span class="line">case:</span><br><span class="line"><span class="section">tags:</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># &#123;&#123;title&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 事實摘要</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 爭點</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 法院見解</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 我的評析</span></span><br><span class="line">（待評析——這一欄留給自己親手寫）</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong>：在任何新筆記按 <code>Cmd/Ctrl + P</code> → 輸入「插入範本」→ 選「判決筆記範本」，整個骨架連同今天的日期一次到位。天天用的話，到「設定 → 快捷鍵」搜尋「插入範本」綁一組快捷鍵（例如 <code>Cmd/Ctrl + T</code>），一鍵完成。</p>
+<p>開庭筆記範本（案號／期日／法官諭知／兩造陳述／待辦）、會議紀錄範本（出席者／討論／決議／追蹤事項）都用同一套做法。<strong>範本本身就是純文字筆記</strong>，要調整格式直接改那個檔案即可。</p>
+<h3 id="4-2-社群外掛「Templater」：範本的自動化升級"><a href="#4-2-社群外掛「Templater」：範本的自動化升級" class="headerlink" title="4-2 社群外掛「Templater」：範本的自動化升級"></a>4-2 社群外掛「Templater」：範本的自動化升級</h3><p>核心外掛要你「手動插入」，變數也只有檔名與日期時間三個；<strong>Templater</strong> 讓範本自己動起來，還能跟你互動。安裝後三個關鍵設定（Settings → Templater）：</p>
+<table>
+<thead>
+<tr>
+<th>設定項</th>
+<th>建議</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Template folder location</td>
+<td>與核心外掛同一個資料夾即可</td>
+<td>範本集中管理</td>
+</tr>
+<tr>
+<td><strong>Trigger Templater on new file creation</strong></td>
+<td>✅ 開啟</td>
+<td>新檔案建立時自動觸發範本（下一項的前提）</td>
+</tr>
+<tr>
+<td><strong>Folder templates</strong></td>
+<td>逐條新增「資料夾 → 範本」對應</td>
+<td>例如 <code>30_RESOURCES/判決/</code> → 判決筆記範本；之後在判決資料夾新增筆記，<strong>範本自動套上，一個按鍵都不用按</strong></td>
+</tr>
+</tbody></table>
+<p>Templater 的語法寫在 <code>&lt;% %&gt;</code> 之間，最值得認識的五個：</p>
+<table>
+<thead>
+<tr>
+<th>語法</th>
+<th>作用</th>
+<th>律師場景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;% tp.file.title %&gt;</code></td>
+<td>代入檔名</td>
+<td>同 <code>&#123;&#123;title&#125;&#125;</code></td>
+</tr>
+<tr>
+<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</code></td>
+<td>今天日期（格式自訂）</td>
+<td>同 <code>&#123;&#123;date&#125;&#125;</code></td>
+</tr>
+<tr>
+<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;</code></td>
+<td><strong>今天＋14 天</strong></td>
+<td>自動算出兩週後的補呈期限、上訴期限提醒</td>
+</tr>
+<tr>
+<td><code>&lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</code></td>
+<td><strong>彈出輸入框問你</strong></td>
+<td>建立開庭筆記時跳出「案號？」「股別？」，輸入後直接寫進筆記</td>
+</tr>
+<tr>
+<td><code>&lt;% tp.file.cursor() %&gt;</code></td>
+<td>範本插入後游標停在這裡</td>
+<td>套完範本，游標直接停在「今日要旨」欄位，馬上開打</td>
+</tr>
+</tbody></table>
+<p>組合起來的「開庭筆記範本」（存進範本資料夾，並在 Folder templates 綁定開庭筆記資料夾）：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: &lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</span><br><span class="line">case: &lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</span><br><span class="line"><span class="section">court: &lt;% tp.system.prompt(&quot;法院／股別？&quot;) %&gt;</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># &lt;% tp.date.now(&quot;YYYYMMDD&quot;) %&gt; 開庭筆記</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 今日要旨</span></span><br><span class="line">&lt;% tp.file.cursor() %&gt;</span><br><span class="line"></span><br><span class="line"><span class="section">## 法官諭知</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 兩造陳述</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 待辦</span></span><br><span class="line"><span class="bullet">-</span> [ ] （期限預設兩週後：&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;）</span><br></pre></td></tr></table></figure>
+
+<p>新增筆記的瞬間：問你案號與股別 → 自動填好日期與期限 → 游標停在「今日要旨」。這些語法<strong>不用背</strong>——Templater 支援完整的 JavaScript，需求再特殊（自動從檔名解析判決字號、依星期幾套不同內容），描述給 Claude Code 讓它幫你寫就好。</p>
+<p>建議的採用順序與外掛清單一致：<strong>先用核心外掛把「你需要哪幾種範本」養清楚，格式穩定了、覺得手動插入麻煩了，再升級 Templater。</strong> 範本資料夾裡的每一個檔案，日後也都是 AI 的規格書——你為自己定的格式，就是 AI 為你編纂的格式。</p>
+<h2 id="五、Canvas-白板：把案件「攤在桌上」"><a href="#五、Canvas-白板：把案件「攤在桌上」" class="headerlink" title="五、Canvas 白板：把案件「攤在桌上」"></a>五、Canvas 白板：把案件「攤在桌上」</h2><p><strong>Canvas（白板）是核心外掛</strong>（若未啟用：Settings → Core plugins → Canvas），它給你一張無限大的桌面，可以把筆記、卡片、圖片、網頁擺上去，拉線標註關係。</p>
+<p>律師為什麼需要它？因為有些思考天生是空間性的，線性的筆記裝不下：</p>
+<h3 id="用法一：案件關係圖（訴訟視角）"><a href="#用法一：案件關係圖（訴訟視角）" class="headerlink" title="用法一：案件關係圖（訴訟視角）"></a>用法一：案件關係圖（訴訟視角）</h3><p>新增 Canvas（左側面板右鍵 → New canvas），把當事人做成卡片：</p>
+<ul>
+<li>卡片：甲公司（承攬人、原告、我方當事人）、乙公司（定作人、被告），需要時再加丙工程顧問（監造單位）與下包商</li>
+<li>拉線標註：甲—乙之間「工程承攬契約＋遲延違約金條款」、丙—乙「監造委任」、下包商—甲「分包契約」</li>
+<li><strong>把現有筆記直接拖上白板</strong>：<code>[[工期展延的可歸責事由]]</code> 爭點筆記、關鍵判決筆記，都能以卡片形式擺在對應位置</li>
+</ul>
+<p>複雜的多數當事人案件（工程案、繼承案、公司經營權爭議），一張關係圖勝過十頁文字。完成後長這樣：</p>
+<p><img src="/images/obsidian-plugins-canvas/case-relationship-diagram.png" alt="案件關係圖範例"></p>
+<h3 id="用法二：爭點攻防圖（訴訟視角）"><a href="#用法二：爭點攻防圖（訴訟視角）" class="headerlink" title="用法二：爭點攻防圖（訴訟視角）"></a>用法二：爭點攻防圖（訴訟視角）</h3><p>白板分左右兩欄：我方主張 vs 對造抗辯。每個爭點一張卡片，下面掛支持的判決筆記與證據清單，中間拉線標「攻擊→」「←防禦」。開庭前看一眼，全案攻防結構盡在眼前：</p>
+<p><img src="/images/obsidian-plugins-canvas/issue-map-diagram.png" alt="爭點攻防圖範例"></p>
+<h3 id="用法三：交易架構圖（非訟／企業法務視角）"><a href="#用法三：交易架構圖（非訟／企業法務視角）" class="headerlink" title="用法三：交易架構圖（非訟／企業法務視角）"></a>用法三：交易架構圖（非訟／企業法務視角）</h3><p>M&amp;A 或投資案的架構圖：主體卡片（買方、目標公司、SPV）、拉線標註股權流向與金流、每條線掛上對應的契約筆記。盡職調查發現的問題，直接以紅色卡片貼在對應主體旁：</p>
+<p><img src="/images/obsidian-plugins-canvas/deal-structure-diagram.png" alt="交易架構圖範例"></p>
+<h3 id="用法四：教育訓練的課程設計（企業法務視角）"><a href="#用法四：教育訓練的課程設計（企業法務視角）" class="headerlink" title="用法四：教育訓練的課程設計（企業法務視角）"></a>用法四：教育訓練的課程設計（企業法務視角）</h3><p>把課程模組做成卡片自由排列組合，每張卡片連到知識庫裡對應的講義筆記。設計課綱本來就是空間性的工作：</p>
+<p><img src="/images/obsidian-plugins-canvas/course-design-diagram.png" alt="課程設計範例"></p>
+<blockquote>
+<p><strong>💡 小提示</strong><br>Canvas 檔案（<code>.canvas</code>）也是純文字格式（JSON），所以 AI 同樣讀得懂、生得出來。可以試試：「請根據 2026-015 案件總覽筆記，生成一個案件關係圖的 canvas 檔案」——AI 畫初稿、你來調整。<strong>本篇四張範例圖正是這樣請 Claude Code 生成的</strong>，<code>.canvas</code> 原始檔（<code>04_範例_案件關係圖.canvas</code> 等四個檔案）連同輸出圖檔一併收在本篇所附的 <code>04_範例/</code> 資料夾，可以直接打開編輯、當成自己的起手模板。另外，在 Obsidian 裡 <code>.canvas</code> 跟 PDF 一樣可以用 <code>![[ ]]</code> 嵌進筆記顯示互動預覽。</p>
+</blockquote>
+<h2 id="六、行動裝置：口袋裡的知識庫"><a href="#六、行動裝置：口袋裡的知識庫" class="headerlink" title="六、行動裝置：口袋裡的知識庫"></a>六、行動裝置：口袋裡的知識庫</h2><p>Obsidian 有免費的 iOS &#x2F; Android App，體驗完整。兩個律師場景：</p>
+<ul>
+<li><strong>開庭與開會</strong>：iPad 開著案件總覽與爭點 WIKI，隨手記要點，回辦公室丟給 AI 編纂。</li>
+<li><strong>零碎時間輸入</strong>：在高鐵上讀到一則新判決，手機存進 <code>00_INBOX</code>，回家一句「執行 Inbox 編纂」。</li>
+</ul>
+<p>跨裝置同步的選項與資安取捨（iCloud &#x2F; OneDrive &#x2F; Obsidian Sync 端到端加密），依 <a href="/2026/07/07/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級原則決定：<strong>知識庫裡有什麼等級的資料，決定它能不能同步、用什麼同步。</strong></p>
+<h2 id="七、本篇小結＋基本功檢查表"><a href="#七、本篇小結＋基本功檢查表" class="headerlink" title="七、本篇小結＋基本功檢查表"></a>七、本篇小結＋基本功檢查表</h2><p>到這裡，Obsidian 基本功全部完成。檢查一下：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 已建立 Vault，並理解它就是一個資料夾（<a href="/2026/07/07/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a>）</li>
+<li><input disabled="" type="checkbox"> 能新增筆記、建立 <code>[[連結]]</code>、快速切換、全庫搜尋</li>
+<li><input disabled="" type="checkbox"> 看得懂也寫得出基本 Markdown，認識 callout 與 frontmatter（<a href="/2026/07/07/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a>）</li>
+<li><input disabled="" type="checkbox"> 知道外掛怎麼安裝，也知道先不要多裝</li>
+<li><input disabled="" type="checkbox"> 用核心外掛「範本」建立了自己的第一個筆記範本</li>
+<li><input disabled="" type="checkbox"> 開過一張 Canvas，把筆記拖上去排列過</li>
+</ul>
+<p>下一篇開始，讓終端機 AI Agent 進駐這個知識庫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://help.obsidian.md/community-plugins">Obsidian 官方說明：社群外掛（Community plugins）</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.obsidian.md/plugins/templates">Obsidian 官方說明：範本（Templates）</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.obsidian.md/plugins/canvas">Obsidian 官方說明：Canvas 白板</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.obsidian.md/plugins/audio-recorder">Obsidian 官方說明：錄音機（Audio recorder）</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/2026/07/07/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a><br>➡️ 下一篇：<a href="/2026/07/07/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a><br>🏠 回到 <a href="/2026/07/07/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Obsidian/" rel="tag"># Obsidian</a>
+              <a href="/tags/%E5%A4%96%E6%8E%9B/" rel="tag"># 外掛</a>
+              <a href="/tags/Canvas/" rel="tag"># Canvas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/07/claude-md-onboarding/" rel="prev" title="CLAUDE.md｜寫給 AI 助理的到職須知">
+                  <i class="fa fa-angle-left"></i> CLAUDE.md｜寫給 AI 助理的到職須知
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

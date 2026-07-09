@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 @ 語法引入。寫一次，之後每次啟動都自動適用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CLAUDE.md｜寫給 AI 助理的到職須知">
+<meta property="og:url" content="https://han0302-cyber.github.io/2026/07/07/claude-md-onboarding/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 @ 語法引入。寫一次，之後每次啟動都自動適用。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T02:26:08.841Z">
+<meta property="article:author" content="林廷翰">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="CLAUDE-md">
+<meta property="article:tag" content="Claude-Code">
+<meta property="article:tag" content="提示詞">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/2026/07/07/claude-md-onboarding/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/2026/07/07/claude-md-onboarding/","path":"2026/07/07/claude-md-onboarding/","title":"CLAUDE.md｜寫給 AI 助理的到職須知"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CLAUDE.md｜寫給 AI 助理的到職須知 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%95%8F%E9%A1%8C%EF%BC%9A%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E9%87%8D%E6%96%B0%E4%BA%A4%E4%BB%A3%E4%B8%80%E9%81%8D"><span class="nav-number">1.</span> <span class="nav-text">一、問題：每次都要重新交代一遍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A8%99%E6%BA%96%E6%9E%B6%E6%A7%8B%EF%BC%9A%E4%B8%89%E5%B1%A4%E5%88%86%E5%B7%A5"><span class="nav-number">2.</span> <span class="nav-text">二、標準架構：三層分工</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%9F%9F%E5%B1%A4%E5%AF%A6%E4%BE%8B%EF%BC%9A%E4%B8%80%E4%BD%8D%E6%B6%89%E6%97%A5%E5%BE%8B%E5%B8%AB%E7%9A%84-claude-CLAUDE-md"><span class="nav-number">2.1.</span> <span class="nav-text">全域層實例：一位涉日律師的 ~&#x2F;.claude&#x2F;CLAUDE.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AD%98%E5%BA%AB%E5%B1%A4%E5%AF%A6%E4%BE%8B%EF%BC%9AVault-%E6%A0%B9%E7%9B%AE%E9%8C%84%E7%9A%84-CLAUDE-md"><span class="nav-number">2.2.</span> <span class="nav-text">知識庫層實例：Vault 根目錄的 CLAUDE.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BB%B6%E5%B1%A4%E5%AF%A6%E4%BE%8B%EF%BC%9A%E5%80%8B%E5%88%A5%E6%A1%88%E4%BB%B6%E8%B3%87%E6%96%99%E5%A4%BE%E7%9A%84-CLAUDE-md"><span class="nav-number">2.3.</span> <span class="nav-text">案件層實例：個別案件資料夾的 CLAUDE.md</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%80%B2%E9%9A%8E%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%A1%88%E4%BB%B6%E8%83%8C%E6%99%AF%E6%AA%94%EF%BC%88background-md%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、進階模式：案件背景檔（background.md）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%92%B0%E5%AF%AB%E8%88%87%E7%B6%AD%E8%AD%B7%E5%BF%83%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">四、撰寫與維護心法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AF%A6%E9%9A%9B%E6%95%88%E6%9E%9C%E5%B0%8D%E6%AF%94"><span class="nav-number">5.</span> <span class="nav-text">五、實際效果對比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">6.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">林廷翰</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/2026/07/07/claude-md-onboarding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="林廷翰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CLAUDE.md｜寫給 AI 助理的到職須知 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CLAUDE.md｜寫給 AI 助理的到職須知
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 00:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T00:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 10:26:08" itemprop="dateModified" datetime="2026-07-09T10:26:08+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 <code>@</code> 語法引入。寫一次，之後每次啟動都自動適用。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、問題：每次都要重新交代一遍"><a href="#一、問題：每次都要重新交代一遍" class="headerlink" title="一、問題：每次都要重新交代一遍"></a>一、問題：每次都要重新交代一遍</h2><p>用過 ChatGPT 的人都有這個經驗：每開一個新對話，都要重講一次「請用繁體中文」「我是律師」「引用法條要附條號」。因為 AI 沒有記憶，每次對話都像換了一位新助理。</p>
+<p>如果事務所每天來一位新助理，沒有人會每天早上重新交代一次書狀格式、引用慣例、保密規矩；通常的做法是寫一份到職須知，新人來了自己看。</p>
+<p>CLAUDE.md 就是這份到職須知。Claude Code 啟動時會<strong>自動讀取</strong>它並在整個工作過程中遵守，不需要任何設定。（Codex 的對應機制是 <code>AGENTS.md</code>，觀念完全相同；想讓兩套工具共用，可以只維護一份 AGENTS.md，CLAUDE.md 裡寫一行「請遵守 AGENTS.md」。）</p>
+<h2 id="二、標準架構：三層分工"><a href="#二、標準架構：三層分工" class="headerlink" title="二、標準架構：三層分工"></a>二、標準架構：三層分工</h2><p>CLAUDE.md 可以放在不同位置，效力範圍不同，<strong>疊加適用</strong>——跟法規的位階與特別法優先，邏輯相通。載入時機有一個細節：全域與知識庫層在啟動時就讀入；子資料夾層則是<strong>用到才載入</strong>——AI 實際讀取該資料夾內的檔案時，那一層的 CLAUDE.md 才會生效（所以案件層的規則，放進案件資料夾即可，不必擔心拖慢其他工作）：</p>
+<table>
+<thead>
+<tr>
+<th>層級</th>
+<th>位置</th>
+<th>該寫什麼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>全域（你這個人）</strong></td>
+<td><code>~/.claude/CLAUDE.md</code>（家目錄）</td>
+<td>你是誰、語言、文書偏好、通用紅線——<strong>無論在哪個資料夾工作都適用的事</strong></td>
+</tr>
+<tr>
+<td><strong>知識庫（整個 Vault）</strong></td>
+<td>Vault 根目錄的 <code>CLAUDE.md</code></td>
+<td>知識庫結構、筆記格式、編纂規則——<strong>整個知識庫通用的事</strong></td>
+</tr>
+<tr>
+<td><strong>子資料夾（個別案件）</strong></td>
+<td><code>10_MATTERS/某當事人/某案件/CLAUDE.md</code></td>
+<td>該案件的特殊要求</td>
+</tr>
+<tr>
+<td>補充：個人（僅自己生效）</td>
+<td>Vault 根目錄的 <code>CLAUDE.local.md</code></td>
+<td>團隊共用 Vault 時你個人的偏好，同樣自動讀取</td>
+</tr>
+</tbody></table>
+<p>分層的判準一句話：<strong>「換一個 Vault 還成立的，往上放；只跟這個案子有關的，往下放。」</strong></p>
+<h3 id="全域層實例：一位涉日律師的-claude-CLAUDE-md"><a href="#全域層實例：一位涉日律師的-claude-CLAUDE-md" class="headerlink" title="全域層實例：一位涉日律師的 ~/.claude/CLAUDE.md"></a>全域層實例：一位涉日律師的 <code>~/.claude/CLAUDE.md</code></h3><p>以下以筆者實際使用的全域設定為例（節錄），這一層寫的是「無論在哪個資料夾工作都不變」的事：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 關於我</span></span><br><span class="line"><span class="bullet">-</span> 角色：台灣執業律師，主要處理涉日跨境法律業務</span><br><span class="line"><span class="bullet">-</span> 專業領域：再生能源法令、個人資料保護法、AI</span><br><span class="line"></span><br><span class="line"><span class="section"># 語言</span></span><br><span class="line"><span class="bullet">-</span> 預設以繁體中文回覆。</span><br><span class="line"><span class="bullet">-</span> 撰寫日文法律文書時直接使用日文，不需額外翻譯成中文。</span><br><span class="line"></span><br><span class="line"><span class="section"># 回覆風格</span></span><br><span class="line"><span class="bullet">-</span> 簡單問題簡答，不需寒暄或鋪陳。</span><br><span class="line"><span class="bullet">-</span> 法律分析涉及具體法條、判例字號或數據時，</span><br><span class="line">  若無法確認請明說，不要臆測或杜撰。</span><br><span class="line"></span><br><span class="line"><span class="section"># 法律文書偏好</span></span><br><span class="line"><span class="bullet">-</span> 日文文書使用「ですます調」，用語精確、句構清晰。</span><br><span class="line"><span class="bullet">-</span> 引用法條時註明法規全名與條號。</span><br><span class="line"><span class="bullet">-</span> 日文文書一律使用西元紀年；判決字號中的年號（令和、平成、</span><br><span class="line">  民國）也一律換算為西元表示。</span><br><span class="line"></span><br><span class="line"><span class="section"># 工具</span></span><br><span class="line"><span class="bullet">-</span> 處理 docx 追蹤修訂時，檢閱者名稱設為「ST」。</span><br><span class="line"><span class="bullet">-</span> 輸出任何台灣法條條文或判決要旨前，必須先用法規資料庫</span><br><span class="line">  MCP 工具核對；查無資料時明說「未能於資料庫確認」，</span><br><span class="line">  不得憑記憶引用。</span><br></pre></td></tr></table></figure>
+
+<p>留意幾個寫法：每一條都是<strong>可執行的行為規則</strong>，不是抽象期許；「不得臆測、查無資料要明說」這種職業倫理層級的紅線，直接寫成 AI 的行為限制；連「追蹤修訂檢閱者名稱」這種瑣碎但每次都要交代的細節，寫進去就一勞永逸。</p>
+<h3 id="知識庫層實例：Vault-根目錄的-CLAUDE-md"><a href="#知識庫層實例：Vault-根目錄的-CLAUDE-md" class="headerlink" title="知識庫層實例：Vault 根目錄的 CLAUDE.md"></a>知識庫層實例：Vault 根目錄的 <code>CLAUDE.md</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 關於這個知識庫</span></span><br><span class="line">台灣執業律師的法律知識管理 Vault（Obsidian）。</span><br><span class="line"></span><br><span class="line"><span class="section"># 結構（雙軌，詳見各資料夾）</span></span><br><span class="line"><span class="bullet">-</span> 00<span class="emphasis">_INBOX：新材料暫存，等待編纂</span></span><br><span class="line"><span class="emphasis">- 10_</span>MATTERS：進行中案件，第一層以當事人分類（案件軌）</span><br><span class="line"><span class="bullet">-</span> 20<span class="emphasis">_AREAS：法領域爭點筆記＋MOC（研究軌）</span></span><br><span class="line"><span class="emphasis">- 30_</span>RESOURCES：判決、法規筆記、文獻</span><br><span class="line"><span class="bullet">-</span> 40<span class="emphasis">_ARCHIVE：已結案封存</span></span><br><span class="line"><span class="emphasis">- 90_</span>SYSTEM：範本與常用提示詞</span><br><span class="line"></span><br><span class="line"><span class="section"># 筆記規則</span></span><br><span class="line"><span class="bullet">-</span> 新筆記一律套用 90<span class="emphasis">_SYSTEM/Templates 的對應範本。</span></span><br><span class="line"><span class="emphasis">- 判決筆記檔名 = 完整判決字號。</span></span><br><span class="line"><span class="emphasis">- 提到 Vault 中已有筆記的判決、法條、爭點，必須加 [[wikilink]]。</span></span><br><span class="line"><span class="emphasis">- 整理新材料後，更新對應領域的 MOC 與判決索引。</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis"># 紅線</span></span><br><span class="line"><span class="emphasis">- 不改動 40_</span>ARCHIVE 內任何檔案；刪除任何檔案前先徵求同意。</span><br><span class="line"><span class="bullet">-</span> AI 產出的法條與判決引用一律標註「（待核對）」。</span><br><span class="line"><span class="bullet">-</span> 對外文書草稿開頭標明「AI 草稿，未經律師審閱」。</span><br></pre></td></tr></table></figure>
+
+<h3 id="案件層實例：個別案件資料夾的-CLAUDE-md"><a href="#案件層實例：個別案件資料夾的-CLAUDE-md" class="headerlink" title="案件層實例：個別案件資料夾的 CLAUDE.md"></a>案件層實例：個別案件資料夾的 <code>CLAUDE.md</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 本案工作規則</span></span><br><span class="line"><span class="bullet">-</span> 本案所有書狀草稿存入 02<span class="emphasis">_我方書狀/，檔名附版本號。</span></span><br><span class="line"><span class="emphasis">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span></span><br><span class="line"><span class="emphasis">- 案件狀態（庭期、待辦、時間軸）有更新時，寫入 00_</span>案件總覽.md。</span><br></pre></td></tr></table></figure>
+
+<p>寫的都是「只在這個案子成立」的要求：檔名慣例、代稱規則、狀態更新的去處。這種檔案每案大同小異，建議做成<strong>範本</strong>（放 <code>90_SYSTEM/Templates/</code>），開新案建資料夾時帶入再依個案微調，不必每次從零寫起。</p>
+<h2 id="三、進階模式：案件背景檔（background-md）"><a href="#三、進階模式：案件背景檔（background-md）" class="headerlink" title="三、進階模式：案件背景檔（background.md）"></a>三、進階模式：案件背景檔（background.md）</h2><p>案件層 CLAUDE.md 解決了「規則」，但 AI 要在這個案子裡工作，還缺一塊：<strong>理解案件脈絡</strong>——當事人與代理立場、案情梗概、核心爭點。這些內容較長，全部塞進 CLAUDE.md 會讓到職須知變得臃腫。</p>
+<p><strong>建議做法是「引用式」架構</strong>：CLAUDE.md 保持精簡、只寫規則，背景資料獨立成檔，再用 Claude Code 官方支援的 <strong><code>@</code> 引入語法</strong>掛進來——CLAUDE.md 裡寫 <code>@檔名</code>，AI 讀取 CLAUDE.md 時就會把該檔案內容一併載入。（說明：<code>@</code> 引入是官方機制；「background.md」這個檔名則是本系列的自訂慣例，你可以取任何名字，重點是每個案件用同一個。）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10_MATTERS/甲公司/2026-015_工程款_甲v乙/</span><br><span class="line">├── CLAUDE.md          ← 只寫規則，兩三行</span><br><span class="line">├── background.md      ← 案件背景（當事人、案情梗概、爭點框架）</span><br><span class="line">└── ……</span><br></pre></td></tr></table></figure>
+
+<p>於是上一節的案件 CLAUDE.md 變成這樣——開頭新增「案件背景」一節放引入指令（<code>@</code> 引入放在檔案任何位置都有效，另立標題是讓人和 AI 都一眼看出這段載入的是什麼），原本的狀態更新規則也升級成「分流規則」：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 案件背景</span></span><br><span class="line">@background.md</span><br><span class="line"></span><br><span class="line"><span class="section"># 本案工作規則</span></span><br><span class="line"><span class="bullet">-</span> 本案所有書狀草稿存入 02<span class="emphasis">_我方書狀/，檔名附版本號。</span></span><br><span class="line"><span class="emphasis">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span></span><br><span class="line"><span class="emphasis">- 案件狀態（庭期、待辦、時間軸）更新寫入 00_</span>案件總覽.md；</span><br><span class="line">  案情或策略的實質變動才更新 background.md。</span><br></pre></td></tr></table></figure>
+
+<p>這個設計的好處：</p>
+<ol>
+<li><strong>關注點分離</strong>：規則歸 CLAUDE.md、背景歸 background.md，各自精簡；</li>
+<li><strong>背景檔可以請 AI 代管</strong>：案情有實質變動時（追加聲明、和解方向改變），說一句「請更新 background.md」；</li>
+<li><strong>一份背景多處使用</strong>：background.md 同時也是你自己的案件摘要筆記，人和 AI 讀同一份。</li>
+</ol>
+<blockquote>
+<p><strong>💡 小提示</strong><br>另一種寫法：在<strong>全域</strong> CLAUDE.md 裡寫一條通則——「進入任何案件資料夾工作時，若該資料夾內有 background.md，請先讀取它再開始」，就不必在每個案件資料夾重複寫 <code>@background.md</code>。兩者比較：</p>
+<ul>
+<li><strong><code>@</code> 引入</strong>：官方機制，<strong>保證載入</strong>；要在每個案件資料夾寫一行。</li>
+<li><strong>全域通則</strong>：寫一次、處處適用；但依賴 AI 記得去做，非保證。</li>
+<li>建議：固定結構的案件資料夾用 <code>@</code> 引入為主，全域通則作為補充保險，兩者並用最穩。</li>
+</ul>
+</blockquote>
+<p>規則中反覆出現的 <code>00_案件總覽.md</code>，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 <a href="/2026/07/07/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 介紹它時再細說；這裡先記一句就夠：<strong>半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。</strong></p>
+<h2 id="四、撰寫與維護心法"><a href="#四、撰寫與維護心法" class="headerlink" title="四、撰寫與維護心法"></a>四、撰寫與維護心法</h2><p><strong>1. 讓 AI 幫你寫第一版。</strong> Claude Code 內建 <code>/init</code> 指令，會分析資料夾內容自動生成初版 CLAUDE.md；或直接說「請觀察這個 Vault 的結構，起草一份 CLAUDE.md，草稿給我看過再存」。</p>
+<p><strong>2. 用「#」隨手補充。</strong> 在 Claude Code 對話中，以 <code>#</code> 開頭輸入一句話（例如 <code># 以後判決筆記都要加裁判日期屬性</code>），它會問你要存進哪一層的 CLAUDE.md——這是「養」到職須知最順手的方式。也可用 <code>/memory</code> 指令直接開啟編輯。</p>
+<p><strong>3. 從短開始，錯了就補。</strong> 第一版十行就夠。每次 AI 做了你不想要的事，回頭加一條規則。三個月後，這份檔案就是你的 AI 管理經驗結晶。</p>
+<p><strong>4. 定期「屋況檢查」。</strong> 規則多了會互相打架或過時，每季問一次：「請檢查我的 CLAUDE.md 有沒有互相矛盾、過時或太模糊的規則，提出精簡建議。」</p>
+<h2 id="五、實際效果對比"><a href="#五、實際效果對比" class="headerlink" title="五、實際效果對比"></a>五、實際效果對比</h2><p><strong>沒有 CLAUDE.md</strong>：「幫我整理這則判決」→ 簡體用語混入、自創格式、沒有連結、引用錯了也不標註。</p>
+<p><strong>有三層 CLAUDE.md</strong>：同一句話 → 套用判決範本、台灣法律用語、自動連結相關爭點、更新 MOC 與索引、引用標「待核對」、還記得你的檢閱者名稱要設「ST」。</p>
+<p><strong>差別不在 AI 變聰明了，而在你把要求講清楚了——而且只需要講一次。</strong></p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>三層架構：全域寫「你是誰」、知識庫寫「這裡的規矩」、案件寫「本案特殊要求」。</li>
+<li>背景資料獨立成 background.md，用 <code>@background.md</code> 引入；全域通則可當補充保險。</li>
+<li>四個維護工具：<code>/init</code> 起草、<code>#</code> 隨手補充、<code>/memory</code> 編輯、定期屋況檢查。</li>
+<li>紅線（查證、保密、草稿標示）務必入文——這是職業紀律的程式化。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">Claude Code 官方文件：Memory（CLAUDE.md 與 <code>@</code> 引入語法）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/codex/guides/agents-md">OpenAI Codex 官方文件：AGENTS.md</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/2026/07/07/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>➡️ 下一篇：<a href="/2026/07/07/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a><br>🏠 回到 <a href="/2026/07/07/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Claude-Code/" rel="tag"># Claude-Code</a>
+              <a href="/tags/CLAUDE-md/" rel="tag"># CLAUDE-md</a>
+              <a href="/tags/%E6%8F%90%E7%A4%BA%E8%A9%9E/" rel="tag"># 提示詞</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/07/from-retrieval-to-compilation/" rel="prev" title="從檢索到編纂｜讓知識庫自己長大">
+                  <i class="fa fa-angle-left"></i> 從檢索到編纂｜讓知識庫自己長大
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/07/08/obsidian-plugins-canvas/" rel="next" title="Obsidian 進階｜外掛與 Canvas 白板">
+                  Obsidian 進階｜外掛與 Canvas 白板 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
