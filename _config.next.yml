@@ -1,0 +1,9 @@
+footer:
+  copyright: Tinghan Lin
+
+busuanzi_count:
+  enable: true
+  total_visitors: true
+  total_visitors_icon: fa fa-user
+  total_views: true
+  total_views_icon: fa fa-eye
