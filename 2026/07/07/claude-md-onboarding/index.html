@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 @ 語法引入。寫一次，之後每次啟動都自動適用。">
 <meta property="og:type" content="article">
@@ -27,8 +27,8 @@
 <meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 @ 語法引入。寫一次，之後每次啟動都自動適用。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-07T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T03:06:25.528Z">
-<meta property="article:author" content="Tinghan Lin">
+<meta property="article:modified_time" content="2026-07-09T05:45:57.739Z">
+<meta property="article:author" content="Ting-Han Lin">
 <meta property="article:tag" content="AI課程">
 <meta property="article:tag" content="CLAUDE-md">
 <meta property="article:tag" content="Claude-Code">
@@ -56,7 +56,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
 
 
 
@@ -101,6 +103,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -108,12 +111,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -139,9 +168,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Tinghan Lin"
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
       src="/images/profile/avatar.png">
-  <p class="site-author-name" itemprop="name">Tinghan Lin</p>
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
   <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
 </div>
 <div class="site-state-wrap animated">
@@ -166,16 +195,13 @@
 </div>
   <div class="links-of-author animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
         <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:tinghan.lin@stellexlaw.com" title="Email → mailto:tinghan.lin@stellexlaw.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>Email</a>
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
@@ -207,7 +233,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile/avatar.png">
-      <meta itemprop="name" content="Tinghan Lin">
+      <meta itemprop="name" content="Ting-Han Lin">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -239,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2026-07-09 11:06:25" itemprop="dateModified" datetime="2026-07-09T11:06:25+08:00">2026-07-09</time>
+      <time title="修改時間：2026-07-09 13:45:57" itemprop="dateModified" datetime="2026-07-09T13:45:57+08:00">2026-07-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,12 +333,12 @@
 </tbody></table>
 <p>分層的判準一句話：<strong>「換一個 Vault 還成立的，往上放；只跟這個案子有關的，往下放。」</strong></p>
 <h3 id="全域層實例：一位涉日律師的-claude-CLAUDE-md"><a href="#全域層實例：一位涉日律師的-claude-CLAUDE-md" class="headerlink" title="全域層實例：一位涉日律師的 ~/.claude/CLAUDE.md"></a>全域層實例：一位涉日律師的 <code>~/.claude/CLAUDE.md</code></h3><p>以下以筆者實際使用的全域設定為例（節錄），這一層寫的是「無論在哪個資料夾工作都不變」的事：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 關於我</span></span><br><span class="line"><span class="bullet">-</span> 角色：台灣執業律師，主要處理涉日跨境法律業務</span><br><span class="line"><span class="bullet">-</span> 專業領域：再生能源法令、個人資料保護法、AI</span><br><span class="line"></span><br><span class="line"><span class="section"># 語言</span></span><br><span class="line"><span class="bullet">-</span> 預設以繁體中文回覆。</span><br><span class="line"><span class="bullet">-</span> 撰寫日文法律文書時直接使用日文，不需額外翻譯成中文。</span><br><span class="line"></span><br><span class="line"><span class="section"># 回覆風格</span></span><br><span class="line"><span class="bullet">-</span> 簡單問題簡答，不需寒暄或鋪陳。</span><br><span class="line"><span class="bullet">-</span> 法律分析涉及具體法條、判例字號或數據時，</span><br><span class="line">  若無法確認請明說，不要臆測或杜撰。</span><br><span class="line"></span><br><span class="line"><span class="section"># 法律文書偏好</span></span><br><span class="line"><span class="bullet">-</span> 日文文書使用「ですます調」，用語精確、句構清晰。</span><br><span class="line"><span class="bullet">-</span> 引用法條時註明法規全名與條號。</span><br><span class="line"><span class="bullet">-</span> 日文文書一律使用西元紀年；判決字號中的年號（令和、平成、</span><br><span class="line">  民國）也一律換算為西元表示。</span><br><span class="line"></span><br><span class="line"><span class="section"># 工具</span></span><br><span class="line"><span class="bullet">-</span> 處理 docx 追蹤修訂時，檢閱者名稱設為「ST」。</span><br><span class="line"><span class="bullet">-</span> 輸出任何台灣法條條文或判決要旨前，必須先用法規資料庫</span><br><span class="line">  MCP 工具核對；查無資料時明說「未能於資料庫確認」，</span><br><span class="line">  不得憑記憶引用。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 關於我</span><br><span class="line">- 角色：台灣執業律師，主要處理涉日跨境法律業務</span><br><span class="line">- 專業領域：再生能源法令、個人資料保護法、AI</span><br><span class="line"></span><br><span class="line"># 語言</span><br><span class="line">- 預設以繁體中文回覆。</span><br><span class="line">- 撰寫日文法律文書時直接使用日文，不需額外翻譯成中文。</span><br><span class="line"></span><br><span class="line"># 回覆風格</span><br><span class="line">- 簡單問題簡答，不需寒暄或鋪陳。</span><br><span class="line">- 法律分析涉及具體法條、判例字號或數據時，</span><br><span class="line">  若無法確認請明說，不要臆測或杜撰。</span><br><span class="line"></span><br><span class="line"># 法律文書偏好</span><br><span class="line">- 日文文書使用「ですます調」，用語精確、句構清晰。</span><br><span class="line">- 引用法條時註明法規全名與條號。</span><br><span class="line">- 日文文書一律使用西元紀年；判決字號中的年號（令和、平成、</span><br><span class="line">  民國）也一律換算為西元表示。</span><br><span class="line"></span><br><span class="line"># 工具</span><br><span class="line">- 處理 docx 追蹤修訂時，檢閱者名稱設為「ST」。</span><br><span class="line">- 輸出任何台灣法條條文或判決要旨前，必須先用法規資料庫</span><br><span class="line">  MCP 工具核對；查無資料時明說「未能於資料庫確認」，</span><br><span class="line">  不得憑記憶引用。</span><br></pre></td></tr></table></figure>
 
 <p>留意幾個寫法：每一條都是<strong>可執行的行為規則</strong>，不是抽象期許；「不得臆測、查無資料要明說」這種職業倫理層級的紅線，直接寫成 AI 的行為限制；連「追蹤修訂檢閱者名稱」這種瑣碎但每次都要交代的細節，寫進去就一勞永逸。</p>
-<h3 id="知識庫層實例：Vault-根目錄的-CLAUDE-md"><a href="#知識庫層實例：Vault-根目錄的-CLAUDE-md" class="headerlink" title="知識庫層實例：Vault 根目錄的 CLAUDE.md"></a>知識庫層實例：Vault 根目錄的 <code>CLAUDE.md</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 關於這個知識庫</span></span><br><span class="line">台灣執業律師的法律知識管理 Vault（Obsidian）。</span><br><span class="line"></span><br><span class="line"><span class="section"># 結構（雙軌，詳見各資料夾）</span></span><br><span class="line"><span class="bullet">-</span> 00<span class="emphasis">_INBOX：新材料暫存，等待編纂</span></span><br><span class="line"><span class="emphasis">- 10_</span>MATTERS：進行中案件，第一層以當事人分類（案件軌）</span><br><span class="line"><span class="bullet">-</span> 20<span class="emphasis">_AREAS：法領域爭點筆記＋MOC（研究軌）</span></span><br><span class="line"><span class="emphasis">- 30_</span>RESOURCES：判決、法規筆記、文獻</span><br><span class="line"><span class="bullet">-</span> 40<span class="emphasis">_ARCHIVE：已結案封存</span></span><br><span class="line"><span class="emphasis">- 90_</span>SYSTEM：範本與常用提示詞</span><br><span class="line"></span><br><span class="line"><span class="section"># 筆記規則</span></span><br><span class="line"><span class="bullet">-</span> 新筆記一律套用 90<span class="emphasis">_SYSTEM/Templates 的對應範本。</span></span><br><span class="line"><span class="emphasis">- 判決筆記檔名 = 完整判決字號。</span></span><br><span class="line"><span class="emphasis">- 提到 Vault 中已有筆記的判決、法條、爭點，必須加 [[wikilink]]。</span></span><br><span class="line"><span class="emphasis">- 整理新材料後，更新對應領域的 MOC 與判決索引。</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis"># 紅線</span></span><br><span class="line"><span class="emphasis">- 不改動 40_</span>ARCHIVE 內任何檔案；刪除任何檔案前先徵求同意。</span><br><span class="line"><span class="bullet">-</span> AI 產出的法條與判決引用一律標註「（待核對）」。</span><br><span class="line"><span class="bullet">-</span> 對外文書草稿開頭標明「AI 草稿，未經律師審閱」。</span><br></pre></td></tr></table></figure>
+<h3 id="知識庫層實例：Vault-根目錄的-CLAUDE-md"><a href="#知識庫層實例：Vault-根目錄的-CLAUDE-md" class="headerlink" title="知識庫層實例：Vault 根目錄的 CLAUDE.md"></a>知識庫層實例：Vault 根目錄的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 關於這個知識庫</span><br><span class="line">台灣執業律師的法律知識管理 Vault（Obsidian）。</span><br><span class="line"></span><br><span class="line"># 結構（雙軌，詳見各資料夾）</span><br><span class="line">- 00_INBOX：新材料暫存，等待編纂</span><br><span class="line">- 10_MATTERS：進行中案件，第一層以當事人分類（案件軌）</span><br><span class="line">- 20_AREAS：法領域爭點筆記＋MOC（研究軌）</span><br><span class="line">- 30_RESOURCES：判決、法規筆記、文獻</span><br><span class="line">- 40_ARCHIVE：已結案封存</span><br><span class="line">- 90_SYSTEM：範本與常用提示詞</span><br><span class="line"></span><br><span class="line"># 筆記規則</span><br><span class="line">- 新筆記一律套用 90_SYSTEM/Templates 的對應範本。</span><br><span class="line">- 判決筆記檔名 = 完整判決字號。</span><br><span class="line">- 提到 Vault 中已有筆記的判決、法條、爭點，必須加 [[wikilink]]。</span><br><span class="line">- 整理新材料後，更新對應領域的 MOC 與判決索引。</span><br><span class="line"></span><br><span class="line"># 紅線</span><br><span class="line">- 不改動 40_ARCHIVE 內任何檔案；刪除任何檔案前先徵求同意。</span><br><span class="line">- AI 產出的法條與判決引用一律標註「（待核對）」。</span><br><span class="line">- 對外文書草稿開頭標明「AI 草稿，未經律師審閱」。</span><br></pre></td></tr></table></figure>
 
-<h3 id="案件層實例：個別案件資料夾的-CLAUDE-md"><a href="#案件層實例：個別案件資料夾的-CLAUDE-md" class="headerlink" title="案件層實例：個別案件資料夾的 CLAUDE.md"></a>案件層實例：個別案件資料夾的 <code>CLAUDE.md</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 本案工作規則</span></span><br><span class="line"><span class="bullet">-</span> 本案所有書狀草稿存入 02<span class="emphasis">_我方書狀/，檔名附版本號。</span></span><br><span class="line"><span class="emphasis">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span></span><br><span class="line"><span class="emphasis">- 案件狀態（庭期、待辦、時間軸）有更新時，寫入 00_</span>案件總覽.md。</span><br></pre></td></tr></table></figure>
+<h3 id="案件層實例：個別案件資料夾的-CLAUDE-md"><a href="#案件層實例：個別案件資料夾的-CLAUDE-md" class="headerlink" title="案件層實例：個別案件資料夾的 CLAUDE.md"></a>案件層實例：個別案件資料夾的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）有更新時，寫入 00_案件總覽.md。</span><br></pre></td></tr></table></figure>
 
 <p>寫的都是「只在這個案子成立」的要求：檔名慣例、代稱規則、狀態更新的去處。這種檔案每案大同小異，建議做成<strong>範本</strong>（放 <code>90_SYSTEM/Templates/</code>），開新案建資料夾時帶入再依個案微調，不必每次從零寫起。</p>
 <h2 id="三、進階模式：案件背景檔（background-md）"><a href="#三、進階模式：案件背景檔（background-md）" class="headerlink" title="三、進階模式：案件背景檔（background.md）"></a>三、進階模式：案件背景檔（background.md）</h2><p>案件層 CLAUDE.md 解決了「規則」，但 AI 要在這個案子裡工作，還缺一塊：<strong>理解案件脈絡</strong>——當事人與代理立場、案情梗概、核心爭點。這些內容較長，全部塞進 CLAUDE.md 會讓到職須知變得臃腫。</p>
@@ -320,7 +346,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10_MATTERS/甲公司/2026-015_工程款_甲v乙/</span><br><span class="line">├── CLAUDE.md          ← 只寫規則，兩三行</span><br><span class="line">├── background.md      ← 案件背景（當事人、案情梗概、爭點框架）</span><br><span class="line">└── ……</span><br></pre></td></tr></table></figure>
 
 <p>於是上一節的案件 CLAUDE.md 變成這樣——開頭新增「案件背景」一節放引入指令（<code>@</code> 引入放在檔案任何位置都有效，另立標題是讓人和 AI 都一眼看出這段載入的是什麼），原本的狀態更新規則也升級成「分流規則」：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 案件背景</span></span><br><span class="line">@background.md</span><br><span class="line"></span><br><span class="line"><span class="section"># 本案工作規則</span></span><br><span class="line"><span class="bullet">-</span> 本案所有書狀草稿存入 02<span class="emphasis">_我方書狀/，檔名附版本號。</span></span><br><span class="line"><span class="emphasis">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span></span><br><span class="line"><span class="emphasis">- 案件狀態（庭期、待辦、時間軸）更新寫入 00_</span>案件總覽.md；</span><br><span class="line">  案情或策略的實質變動才更新 background.md。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 案件背景</span><br><span class="line">@background.md</span><br><span class="line"></span><br><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）更新寫入 00_案件總覽.md；</span><br><span class="line">  案情或策略的實質變動才更新 background.md。</span><br></pre></td></tr></table></figure>
 
 <p>這個設計的好處：</p>
 <ol>
@@ -406,7 +432,7 @@
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
-    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
   </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
@@ -447,6 +473,28 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
+<script>
+(function () {
+  var emojiClass = {
+    'ℹ️': 'callout-info',
+    '💡': 'callout-tip',
+    '📝': 'callout-note',
+    '⚠️': 'callout-warning',
+    '❓': 'callout-question'
+  };
+  document.querySelectorAll('.post-body blockquote').forEach(function (bq) {
+    var strong = bq.querySelector('p:first-child > strong:first-child, strong:first-child');
+    if (!strong) return;
+    var text = strong.textContent || '';
+    for (var emoji in emojiClass) {
+      if (text.indexOf(emoji) === 0) {
+        bq.classList.add(emojiClass[emoji]);
+        break;
+      }
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

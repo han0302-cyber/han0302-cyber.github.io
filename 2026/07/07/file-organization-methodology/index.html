@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點律師的專業資訊分兩大塊——「手頭上的案件」與「專精的研究領域」。案件用律師版 PARA（P 改寫成 Matter）管生滅，研究用 Zettelkasten＋MOC 管累積；兩軌在「知識萃取」交會。">
 <meta property="og:type" content="article">
@@ -27,8 +27,8 @@
 <meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點律師的專業資訊分兩大塊——「手頭上的案件」與「專精的研究領域」。案件用律師版 PARA（P 改寫成 Matter）管生滅，研究用 Zettelkasten＋MOC 管累積；兩軌在「知識萃取」交會。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-06T23:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T03:08:57.366Z">
-<meta property="article:author" content="Tinghan Lin">
+<meta property="article:modified_time" content="2026-07-09T05:45:57.739Z">
+<meta property="article:author" content="Ting-Han Lin">
 <meta property="article:tag" content="AI課程">
 <meta property="article:tag" content="Obsidian">
 <meta property="article:tag" content="PARA">
@@ -58,7 +58,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
 
 
 
@@ -103,6 +105,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -110,12 +113,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -141,9 +170,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Tinghan Lin"
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
       src="/images/profile/avatar.png">
-  <p class="site-author-name" itemprop="name">Tinghan Lin</p>
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
   <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
 </div>
 <div class="site-state-wrap animated">
@@ -168,16 +197,13 @@
 </div>
   <div class="links-of-author animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
         <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:tinghan.lin@stellexlaw.com" title="Email → mailto:tinghan.lin@stellexlaw.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>Email</a>
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
@@ -209,7 +235,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile/avatar.png">
-      <meta itemprop="name" content="Tinghan Lin">
+      <meta itemprop="name" content="Ting-Han Lin">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -241,7 +267,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2026-07-09 11:08:57" itemprop="dateModified" datetime="2026-07-09T11:08:57+08:00">2026-07-09</time>
+      <time title="修改時間：2026-07-09 13:45:57" itemprop="dateModified" datetime="2026-07-09T13:45:57+08:00">2026-07-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -372,7 +398,7 @@
 <li><strong>把各資料夾的語意寫進知識庫層的 CLAUDE.md</strong>（「對造書狀進 03、開完庭的報告寫進 08」——全所案件結構相同，所以寫在 Vault 根目錄那份即可），AI 讀過一次，之後歸檔、檢索、生成開庭準備包都會走對地方。</li>
 </ul>
 <p><strong><code>00_案件總覽.md</code> 是每個案件的儀表板</strong>，也是 AI 協作時最有價值的一份檔案：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 案件總覽：2026-015 工程款案</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 基本資料</span></span><br><span class="line">案號｜法院｜當事人｜委任日期｜受命法官／檢察官</span><br><span class="line"></span><br><span class="line"><span class="section">## 目前狀態</span></span><br><span class="line">下次開庭：2026-08-12（言詞辯論）</span><br><span class="line">待辦：證人詰問問題清單（8/1 前）</span><br><span class="line"></span><br><span class="line"><span class="section">## 時間軸</span></span><br><span class="line"><span class="bullet">-</span> 2026-05-02 收受起訴狀</span><br><span class="line"><span class="bullet">-</span> 2026-06-10 第一次庭期，爭點整理</span><br><span class="line"></span><br><span class="line"><span class="section">## 爭點清單</span></span><br><span class="line"><span class="bullet">1.</span> 工期應否展延、甲公司有無遲延完工（變更設計、追加工項）→ [[09<span class="emphasis">_法律研究/工期展延可歸責事由研究]]</span></span><br><span class="line"><span class="emphasis">2. 遲延違約金是否過高、應否酌減 → [[09_</span>法律研究/違約金酌減基準研究]]</span><br><span class="line"></span><br><span class="line"><span class="section">## 卷證索引</span></span><br><span class="line"><span class="bullet">-</span> 原證1：工程承攬契約 → 02<span class="emphasis">_我方書狀/原證01_</span>工程承攬契約.pdf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 案件總覽：2026-015 工程款案</span><br><span class="line"></span><br><span class="line">## 基本資料</span><br><span class="line">案號｜法院｜當事人｜委任日期｜受命法官／檢察官</span><br><span class="line"></span><br><span class="line">## 目前狀態</span><br><span class="line">下次開庭：2026-08-12（言詞辯論）</span><br><span class="line">待辦：證人詰問問題清單（8/1 前）</span><br><span class="line"></span><br><span class="line">## 時間軸</span><br><span class="line">- 2026-05-02 收受起訴狀</span><br><span class="line">- 2026-06-10 第一次庭期，爭點整理</span><br><span class="line"></span><br><span class="line">## 爭點清單</span><br><span class="line">1. 工期應否展延、甲公司有無遲延完工（變更設計、追加工項）→ [[09_法律研究/工期展延可歸責事由研究]]</span><br><span class="line">2. 遲延違約金是否過高、應否酌減 → [[09_法律研究/違約金酌減基準研究]]</span><br><span class="line"></span><br><span class="line">## 卷證索引</span><br><span class="line">- 原證1：工程承攬契約 → 02_我方書狀/原證01_工程承攬契約.pdf</span><br></pre></td></tr></table></figure>
 
 <p>有了這份總覽，你對 AI 說「幫我為下次開庭準備爭點整理狀草稿」時，它先讀總覽就掌握全案脈絡。開完庭丟一份筆記進 <code>08_開庭報告</code>，再說一句「請更新案件總覽的時間軸與待辦」，儀表板隨時保持在最新狀態。</p>
 <p>前篇介紹過的 <code>background.md</code>（見 <a href="/2026/07/07/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> 第三節）乍看也在「描述這個案件」，兩者用途其實不同，界線要劃清楚：</p>
@@ -423,7 +449,7 @@
 <p><strong>2. 連結重於分類：卡片的價值在於它連到誰。</strong><br>法律知識天生是網狀的：一個爭點連到數則判決，一則判決涉及數個法條，一次修法牽動一串實務見解。樹狀資料夾裝不下這種結構，wikilink 才裝得下。實務作法：<strong>判決筆記以字號為檔名</strong>（引用時自然形成 <code>[[最高法院110年度台上字第XXXX號]]</code>，與律師引註習慣完全一致），爭點筆記內連結所有相關判決、法條與其他爭點。</p>
 <p><strong>3. 用自己的話寫。</strong><br>複製貼上判決全文，只完成了「保存」；筆記真正的價值，在於你寫下的那兩行評析：「本判決與◯◯號採相反見解，關鍵在於……」——這才是十年後仍有用的東西。（全文可以照存，但要求自己在開頭寫摘要與評析。摘要可由 AI 起草；評析是判斷——「本判決與◯◯號採相反見解」這種話必須自己寫，AI 至多把兩則判決的異同點並列出來供你參考。）</p>
 <p><strong>MOC（Map of Content，主題地圖）則是研究軌的樓層導覽。</strong> 筆記多了之後，每個領域建一頁「目錄筆記」，按爭點體系把重要筆記用 wikilink 串起來。以下以營建工程示範——這正是主案例 2026-015 的領域；實作時代入自己的主力領域即可：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 營建工程 MOC</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 工期與遲延</span></span><br><span class="line"><span class="bullet">-</span> [[工期展延的可歸責事由]]</span><br><span class="line"><span class="bullet">-</span> [[工程遲延違約金的酌減基準]]</span><br><span class="line"></span><br><span class="line"><span class="section">## 契約價金</span></span><br><span class="line"><span class="bullet">-</span> [[追加工項之報酬請求]]</span><br><span class="line"><span class="bullet">-</span> [[物價指數調整條款之適用]]</span><br><span class="line"></span><br><span class="line"><span class="section">## 瑕疵與保固</span></span><br><span class="line"><span class="bullet">-</span> [[工作物瑕疵之修補請求]]</span><br><span class="line"><span class="bullet">-</span> [[保固期間與瑕疵擔保期間之區分]]</span><br><span class="line"></span><br><span class="line"><span class="section">## 待研究</span></span><br><span class="line"><span class="bullet">-</span> 情事變更原則在工程款請求之適用</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 營建工程 MOC</span><br><span class="line"></span><br><span class="line">## 工期與遲延</span><br><span class="line">- [[工期展延的可歸責事由]]</span><br><span class="line">- [[工程遲延違約金的酌減基準]]</span><br><span class="line"></span><br><span class="line">## 契約價金</span><br><span class="line">- [[追加工項之報酬請求]]</span><br><span class="line">- [[物價指數調整條款之適用]]</span><br><span class="line"></span><br><span class="line">## 瑕疵與保固</span><br><span class="line">- [[工作物瑕疵之修補請求]]</span><br><span class="line">- [[保固期間與瑕疵擔保期間之區分]]</span><br><span class="line"></span><br><span class="line">## 待研究</span><br><span class="line">- 情事變更原則在工程款請求之適用</span><br></pre></td></tr></table></figure>
 
 <p>MOC 就是你這個領域的「個人教科書目錄」，而且會隨筆記成長。<strong>維護 MOC 正是最適合交給 AI 的工作</strong>——每次新增筆記後說一句「請更新營建工程 MOC」即可，詳見 <a href="/2026/07/07/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a>。</p>
 <h2 id="五、兩軌的交會：知識萃取——複利的關鍵"><a href="#五、兩軌的交會：知識萃取——複利的關鍵" class="headerlink" title="五、兩軌的交會：知識萃取——複利的關鍵"></a>五、兩軌的交會：知識萃取——複利的關鍵</h2><p>案件裡的法律研究（<code>09_法律研究/</code>）是你花了幾十個小時產出的高價值知識，但它綁在個案脈絡裡、夾雜當事人資訊。如果隨案封存，這些知識就死了；下次遇到同類爭點，一切重來。</p>
@@ -575,7 +601,7 @@
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
-    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
   </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
@@ -616,6 +642,28 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
+<script>
+(function () {
+  var emojiClass = {
+    'ℹ️': 'callout-info',
+    '💡': 'callout-tip',
+    '📝': 'callout-note',
+    '⚠️': 'callout-warning',
+    '❓': 'callout-question'
+  };
+  document.querySelectorAll('.post-body blockquote').forEach(function (bq) {
+    var strong = bq.querySelector('p:first-child > strong:first-child, strong:first-child');
+    if (!strong) return;
+    var text = strong.textContent || '';
+    for (var emoji in emojiClass) {
+      if (text.indexOf(emoji) === 0) {
+        bq.classList.add(emojiClass[emoji]);
+        break;
+      }
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

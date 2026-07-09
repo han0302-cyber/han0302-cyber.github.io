@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Markdown 是「用符號表達格式」的純文字寫法——# 是標題、- 是條列、** 是粗體。律師夠用的語法只有十個，十分鐘學完，而且它正是 AI 的母語。">
 <meta property="og:type" content="article">
@@ -27,8 +27,8 @@
 <meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Markdown 是「用符號表達格式」的純文字寫法——# 是標題、- 是條列、** 是粗體。律師夠用的語法只有十個，十分鐘學完，而且它正是 AI 的母語。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-07T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T03:08:57.367Z">
-<meta property="article:author" content="Tinghan Lin">
+<meta property="article:modified_time" content="2026-07-09T05:45:57.739Z">
+<meta property="article:author" content="Ting-Han Lin">
 <meta property="article:tag" content="AI課程">
 <meta property="article:tag" content="Markdown">
 <meta property="article:tag" content="入門教學">
@@ -55,7 +55,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
 <script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
 
 
 
@@ -100,6 +102,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -107,12 +110,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -138,9 +167,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Tinghan Lin"
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
       src="/images/profile/avatar.png">
-  <p class="site-author-name" itemprop="name">Tinghan Lin</p>
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
   <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
 </div>
 <div class="site-state-wrap animated">
@@ -165,16 +194,13 @@
 </div>
   <div class="links-of-author animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
         <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:tinghan.lin@stellexlaw.com" title="Email → mailto:tinghan.lin@stellexlaw.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>Email</a>
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
@@ -206,7 +232,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile/avatar.png">
-      <meta itemprop="name" content="Tinghan Lin">
+      <meta itemprop="name" content="Ting-Han Lin">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -238,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2026-07-09 11:08:57" itemprop="dateModified" datetime="2026-07-09T11:08:57+08:00">2026-07-09</time>
+      <time title="修改時間：2026-07-09 13:45:57" itemprop="dateModified" datetime="2026-07-09T13:45:57+08:00">2026-07-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -277,53 +303,53 @@
 <p><strong>2. 格式與內容分離，專注寫作。</strong> Word 提供大量格式選項，寫作時容易分心去調字型、行距；Markdown 沒有這些選項，格式就是那幾個符號，寫作時只剩內容本身。而需要交件時，AI 可以一句話把 Markdown 轉成排版好的 Word（「請把這份筆記轉成 docx，套用事務所書狀格式」）。</p>
 <p><strong>3. 純文字永不過時。</strong> <code>.md</code> 檔本質是 <code>.txt</code>，三十年後任何電腦都打得開。對職涯長達數十年的律師，這是格式壽命的保證。</p>
 <h2 id="二、十個夠用的語法"><a href="#二、十個夠用的語法" class="headerlink" title="二、十個夠用的語法"></a>二、十個夠用的語法</h2><p>以下就是全部了。左邊是你打的字，右邊是 Obsidian 顯示的效果。</p>
-<h3 id="1-標題："><a href="#1-標題：" class="headerlink" title="1. 標題：#"></a>1. 標題：<code>#</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 判決字號（大標題）</span></span><br><span class="line"><span class="section">## 壹、事實摘要（第二層）</span></span><br><span class="line"><span class="section">### 一、原告主張（第三層）</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-標題："><a href="#1-標題：" class="headerlink" title="1. 標題：#"></a>1. 標題：<code>#</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 判決字號（大標題）</span><br><span class="line">## 壹、事實摘要（第二層）</span><br><span class="line">### 一、原告主張（第三層）</span><br></pre></td></tr></table></figure>
 
 <p><code>#</code> 越多層級越低，最多六層。<strong>標題是 Markdown 最重要的語法</strong>：它讓 AI 與 Obsidian 的大綱面板都能理解文件結構——書狀習慣的「壹、一、（一）」層次，直接對應 <code>##</code>、<code>###</code>、<code>####</code>。</p>
-<h3 id="2-粗體與強調："><a href="#2-粗體與強調：" class="headerlink" title="2. 粗體與強調：**"></a>2. 粗體與強調：<code>**</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">乙公司<span class="strong">**自始未曾**</span>就追加工項另行給付報酬。</span><br></pre></td></tr></table></figure>
+<h3 id="2-粗體與強調："><a href="#2-粗體與強調：" class="headerlink" title="2. 粗體與強調：**"></a>2. 粗體與強調：<code>**</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">乙公司**自始未曾**就追加工項另行給付報酬。</span><br></pre></td></tr></table></figure>
 
 <p>顯示為：乙公司<strong>自始未曾</strong>就追加工項另行給付報酬。（斜體 <code>*字*</code> 在中文排版效果不佳，可以不用。）</p>
-<h3 id="3-條列："><a href="#3-條列：" class="headerlink" title="3. 條列：-"></a>3. 條列：<code>-</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 原證一：工程承攬契約</span><br><span class="line"><span class="bullet">-</span> 原證二：變更設計會議紀錄</span><br><span class="line"><span class="bullet">    -</span> 縮排兩格（或按 Tab）就是子項目</span><br></pre></td></tr></table></figure>
+<h3 id="3-條列："><a href="#3-條列：" class="headerlink" title="3. 條列：-"></a>3. 條列：<code>-</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 原證一：工程承攬契約</span><br><span class="line">- 原證二：變更設計會議紀錄</span><br><span class="line">    - 縮排兩格（或按 Tab）就是子項目</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-編號清單：1"><a href="#4-編號清單：1" class="headerlink" title="4. 編號清單：1."></a>4. 編號清單：<code>1.</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 收受起訴狀</span><br><span class="line"><span class="bullet">2.</span> 提出答辯狀</span><br><span class="line"><span class="bullet">3.</span> 言詞辯論</span><br></pre></td></tr></table></figure>
+<h3 id="4-編號清單：1"><a href="#4-編號清單：1" class="headerlink" title="4. 編號清單：1."></a>4. 編號清單：<code>1.</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 收受起訴狀</span><br><span class="line">2. 提出答辯狀</span><br><span class="line">3. 言詞辯論</span><br></pre></td></tr></table></figure>
 
 <p>只要開頭是 <code>1.</code>，後面的編號會自動接續，插入新項目也不用手動改號——寫過長書狀的人都懂這有多珍貴。</p>
-<h3 id="5-待辦核取方塊："><a href="#5-待辦核取方塊：" class="headerlink" title="5. 待辦核取方塊：- [ ]"></a>5. 待辦核取方塊：<code>- [ ]</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> [ ] 8/1 前提出證人詰問問題清單</span><br><span class="line"><span class="bullet">-</span> [x] 已閱卷（完成的項目打 x）</span><br></pre></td></tr></table></figure>
+<h3 id="5-待辦核取方塊："><a href="#5-待辦核取方塊：" class="headerlink" title="5. 待辦核取方塊：- [ ]"></a>5. 待辦核取方塊：<code>- [ ]</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 8/1 前提出證人詰問問題清單</span><br><span class="line">- [x] 已閱卷（完成的項目打 x）</span><br></pre></td></tr></table></figure>
 
 <p>在 Obsidian 中顯示為可勾選的方塊，案件待辦清單直接可用。</p>
-<h3 id="6-引用區塊："><a href="#6-引用區塊：" class="headerlink" title="6. 引用區塊：&gt;"></a>6. 引用區塊：<code>&gt;</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 最高法院110年度台上字第XXXX號：「……審酌一切情狀，</span></span><br><span class="line"><span class="quote">&gt; 認系爭違約金約定過高，依民法第 252 條減至相當數額……」（待核對）</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-引用區塊："><a href="#6-引用區塊：" class="headerlink" title="6. 引用區塊：&gt;"></a>6. 引用區塊：<code>&gt;</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 最高法院110年度台上字第XXXX號：「……審酌一切情狀，</span><br><span class="line">&gt; 認系爭違約金約定過高，依民法第 252 條減至相當數額……」（待核對）</span><br></pre></td></tr></table></figure>
 
 <p>引用判決原文、法條條文的標準寫法，視覺上自動縮排加線，跟自己的分析明確區隔。</p>
-<h3 id="7-表格："><a href="#7-表格：" class="headerlink" title="7. 表格：|"></a>7. 表格：<code>|</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 期日 | 程序 | 待辦 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">| 8/12 | 言詞辯論 | 詰問清單 |</span><br><span class="line">| 9/30 | 宣判 | — |</span><br></pre></td></tr></table></figure>
+<h3 id="7-表格："><a href="#7-表格：" class="headerlink" title="7. 表格：|"></a>7. 表格：<code>|</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 期日 | 程序 | 待辦 |</span><br><span class="line">| --- | --- | --- |</span><br><span class="line">| 8/12 | 言詞辯論 | 詰問清單 |</span><br><span class="line">| 9/30 | 宣判 | — |</span><br></pre></td></tr></table></figure>
 
 <p>第二行的 <code>| --- |</code> 是表頭分隔線，必須有。手打表格稍麻煩，實務上通常是叫 AI 產表格，你只要看得懂、能小改就行。</p>
 <h3 id="8-分隔線："><a href="#8-分隔線：" class="headerlink" title="8. 分隔線：---"></a>8. 分隔線：<code>---</code></h3><p>單獨一行三個減號，就是一條水平分隔線。典型用法是在同一則筆記裡分隔「摘要區」與「全文區」——<a href="/2026/07/07/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 整理裁判書時正是這樣用。</p>
-<h3 id="9-連結"><a href="#9-連結" class="headerlink" title="9. 連結"></a>9. 連結</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[最高法院110年度台上字第XXXX號]]        ← 內部連結（wikilink）</span><br><span class="line">[<span class="string">司法院裁判書系統</span>](<span class="link">https://judgment.judicial.gov.tw/</span>)  ← 外部網址</span><br></pre></td></tr></table></figure>
+<h3 id="9-連結"><a href="#9-連結" class="headerlink" title="9. 連結"></a>9. 連結</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[最高法院110年度台上字第XXXX號]]        ← 內部連結（wikilink）</span><br><span class="line">[司法院裁判書系統](https://judgment.judicial.gov.tw/)  ← 外部網址</span><br></pre></td></tr></table></figure>
 
 <p>wikilink 連筆記，<code>[文字](網址)</code> 連外部網頁。</p>
-<h3 id="10-程式碼區塊：三個反引號"><a href="#10-程式碼區塊：三個反引號" class="headerlink" title="10. 程式碼區塊：三個反引號 ```"></a>10. 程式碼區塊：三個反引號 <code>```</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```</span></span><br><span class="line"><span class="code">這裡面的文字會原樣顯示，不做任何排版</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-程式碼區塊：三個反引號"><a href="#10-程式碼區塊：三個反引號" class="headerlink" title="10. 程式碼區塊：三個反引號 ```"></a>10. 程式碼區塊：三個反引號 <code>```</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">這裡面的文字會原樣顯示，不做任何排版</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
 
 <p>律師用它來放「要原樣保存的文字」：提示詞範本、法條原文、要貼給 AI 的指令。本系列文章裡所有灰底區塊都是它。</p>
 <h2 id="三、Obsidian-特有的四個擴充語法"><a href="#三、Obsidian-特有的四個擴充語法" class="headerlink" title="三、Obsidian 特有的四個擴充語法"></a>三、Obsidian 特有的四個擴充語法</h2><h3 id="Callout-色塊：-tip"><a href="#Callout-色塊：-tip" class="headerlink" title="Callout 色塊：&gt; [!tip]"></a>Callout 色塊：<code>&gt; [!tip]</code></h3><p>Obsidian 把引用區塊擴充成彩色提示框：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; [!tip] 重點摘要</span></span><br><span class="line"><span class="quote">&gt; 綠色區塊，適合放結論與摘要。</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!question] 爭點整理</span></span><br><span class="line"><span class="quote">&gt; 黃色區塊，適合放問題與爭點。</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!note] 法院見解</span></span><br><span class="line"><span class="quote">&gt; 藍色區塊，適合放見解與說明。</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!warning] 注意</span></span><br><span class="line"><span class="quote">&gt; 紅黃色警示，適合放期限與風險。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; [!tip] 重點摘要</span><br><span class="line">&gt; 綠色區塊，適合放結論與摘要。</span><br><span class="line"></span><br><span class="line">&gt; [!question] 爭點整理</span><br><span class="line">&gt; 黃色區塊，適合放問題與爭點。</span><br><span class="line"></span><br><span class="line">&gt; [!note] 法院見解</span><br><span class="line">&gt; 藍色區塊，適合放見解與說明。</span><br><span class="line"></span><br><span class="line">&gt; [!warning] 注意</span><br><span class="line">&gt; 紅黃色警示，適合放期限與風險。</span><br></pre></td></tr></table></figure>
 
 <p>色塊讓不同類型的資訊一眼就能區分。本系列後面會大量用到它：<a href="/2026/07/07/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 會教你讓 AI 在每份裁判書的開頭，自動產生「重點摘要／爭點整理／法院見解」三個色塊（本系列稱之為「三色摘要」）——這裡先把語法記起來即可。</p>
-<h3 id="螢光標記：-文字"><a href="#螢光標記：-文字" class="headerlink" title="螢光標記：==文字=="></a>螢光標記：<code>==文字==</code></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本件關鍵在於==乙公司於 2024 年 3 月變更設計==之事實。</span><br></pre></td></tr></table></figure>
+<h3 id="螢光標記：-文字"><a href="#螢光標記：-文字" class="headerlink" title="螢光標記：==文字=="></a>螢光標記：<code>==文字==</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本件關鍵在於==乙公司於 2024 年 3 月變更設計==之事實。</span><br></pre></td></tr></table></figure>
 
 <p>用兩組等號夾住的文字會以螢光底色顯示，適合標記判決摘要中的關鍵事實。需要自訂顏色時，可改用 HTML 的 <code>&lt;mark&gt;</code> 標籤。</p>
 <h3 id="嵌入預覽：-（PDF-可指定頁碼）"><a href="#嵌入預覽：-（PDF-可指定頁碼）" class="headerlink" title="嵌入預覽：![[ ]]（PDF 可指定頁碼）"></a>嵌入預覽：<code>![[ ]]</code>（PDF 可指定頁碼）</h3><p>在 wikilink 前面加一個驚嘆號，連結就升級成「嵌入」——檔案內容直接顯示在筆記裡。對律師最有感的用法是<strong>把電子卷證、判決或對造書狀的 PDF 直接嵌進筆記</strong>：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![[原證三<span class="emphasis">_工程承攬契約.pdf]]              ← 嵌入 PDF，筆記內直接翻閱</span></span><br><span class="line"><span class="emphasis">![[對造答辯二狀.pdf#page=7]]              ← 預覽直接停在第 7 頁</span></span><br><span class="line"><span class="emphasis">![[監造月報_</span>0512.pdf#page=12&amp;height=450]] ← 加 height 限制預覽視窗高度</span><br><span class="line">![[證物照片.png]]                          ← 圖片同理</span><br><span class="line">![[最高法院110年度台上字第XXXX號]]          ← 另一則筆記也能整則嵌入</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![[原證三_工程承攬契約.pdf]]              ← 嵌入 PDF，筆記內直接翻閱</span><br><span class="line">![[對造答辯二狀.pdf#page=7]]              ← 預覽直接停在第 7 頁</span><br><span class="line">![[監造月報_0512.pdf#page=12&amp;height=450]] ← 加 height 限制預覽視窗高度</span><br><span class="line">![[證物照片.png]]                          ← 圖片同理</span><br><span class="line">![[最高法院110年度台上字第XXXX號]]          ← 另一則筆記也能整則嵌入</span><br></pre></td></tr></table></figure>
 
 <p><code>#page=</code> 是實戰精華：分析筆記寫到「對造就變更設計次數之主張前後矛盾」時，直接嵌入對造書狀 PDF 並停在關鍵頁——開庭前複習、與同事討論時，證據原文就在論點旁邊，不必重新翻卷。電子卷證動輒數百頁，一則爭點筆記嵌入三、五個「停在關鍵頁」的預覽，就是一份自帶卷證的攻防分析。</p>
 <p>（提醒：PDF 檔案本身必須放在 Vault 資料夾內才能嵌入；嵌入只是「顯示」，原檔完全不會被修改。）</p>
-<h3 id="屬性區（frontmatter）：檔案開頭的-夾層"><a href="#屬性區（frontmatter）：檔案開頭的-夾層" class="headerlink" title="屬性區（frontmatter）：檔案開頭的 --- 夾層"></a>屬性區（frontmatter）：檔案開頭的 <code>---</code> 夾層</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2026-07-07</span><br><span class="line">court: 最高法院</span><br><span class="line">case<span class="emphasis">_type: 民事</span></span><br><span class="line"><span class="emphasis">tags:</span></span><br><span class="line"><span class="emphasis">  - 營建工程</span></span><br><span class="line"><span class="emphasis">  - 工期展延</span></span><br><span class="line"><span class="emphasis">---</span></span><br></pre></td></tr></table></figure>
+<h3 id="屬性區（frontmatter）：檔案開頭的-夾層"><a href="#屬性區（frontmatter）：檔案開頭的-夾層" class="headerlink" title="屬性區（frontmatter）：檔案開頭的 --- 夾層"></a>屬性區（frontmatter）：檔案開頭的 <code>---</code> 夾層</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2026-07-07</span><br><span class="line">court: 最高法院</span><br><span class="line">case_type: 民事</span><br><span class="line">tags:</span><br><span class="line">  - 營建工程</span><br><span class="line">  - 工期展延</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>放在<strong>檔案最開頭</strong>、用兩行 <code>---</code> 夾起來的區域，是這則筆記的結構化資料（戶籍欄）。Obsidian 會把它顯示成表單樣式，AI 編纂時也靠它做分類與檢索。</p>
 <blockquote>
 <p><strong>⚠️ 標籤有格式限制，違規會被畫刪除線</strong><br>Obsidian 的標籤只允許文字、數字、連字號（<code>-</code>）、底線（<code>_</code>）與斜線（<code>/</code>），<strong>不能包含空格與句點</strong>。如果你在屬性面板看到某個標籤被畫上刪除線，不是內容壞了，而是 Obsidian 在告訴你「這個標籤格式無效、無法點擊與聚合」。常見的無效寫法與修正：<code>Claude Code</code> → <code>Claude-Code</code>、<code>AI Agent</code> → <code>AI-Agent</code>、<code>個資法施行細則第8條</code> ✅ 沒問題（數字可以）、<code>民法§184</code> ❌（特殊符號不行）。改成合法格式後，刪除線就會消失，標籤恢復可點擊、可搜尋。</p>
 </blockquote>
 <h2 id="四、律師的完整範例：一則判決筆記"><a href="#四、律師的完整範例：一則判決筆記" class="headerlink" title="四、律師的完整範例：一則判決筆記"></a>四、律師的完整範例：一則判決筆記</h2><p>把以上語法組合起來，一則實戰筆記長這樣：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2026-07-07</span><br><span class="line">court: 最高法院</span><br><span class="line">case: 110年度台上字第XXXX號</span><br><span class="line"><span class="section">tags: [營建工程, 違約金酌減]</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 最高法院110年度台上字第XXXX號民事判決</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [!tip] 重點摘要</span></span><br><span class="line"><span class="quote">&gt; 工程遲延違約金酌減案。法院審酌一切情狀，認系爭違約金約定<span class="strong">**過高**</span>，</span></span><br><span class="line"><span class="quote">&gt; 依民法第 252 條減至相當之數額（待核對）。</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 爭點</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 工期遲延是否可歸責於承攬人</span><br><span class="line"><span class="bullet">2.</span> 遲延違約金應否依民法第 252 條酌減</span><br><span class="line"></span><br><span class="line"><span class="section">## 我的評析</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 與 [[臺灣高等法院110年度建上字第XX號]] 酌減幅度不同，本則審酌因素較完整</span><br><span class="line"><span class="bullet">-</span> 可用於 [[2026-015<span class="emphasis">_工程款案]] 的備位主張</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">## 待辦</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">- [ ] 核對判決字號與引用段落</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2026-07-07</span><br><span class="line">court: 最高法院</span><br><span class="line">case: 110年度台上字第XXXX號</span><br><span class="line">tags: [營建工程, 違約金酌減]</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 最高法院110年度台上字第XXXX號民事判決</span><br><span class="line"></span><br><span class="line">&gt; [!tip] 重點摘要</span><br><span class="line">&gt; 工程遲延違約金酌減案。法院審酌一切情狀，認系爭違約金約定**過高**，</span><br><span class="line">&gt; 依民法第 252 條減至相當之數額（待核對）。</span><br><span class="line"></span><br><span class="line">## 爭點</span><br><span class="line"></span><br><span class="line">1. 工期遲延是否可歸責於承攬人</span><br><span class="line">2. 遲延違約金應否依民法第 252 條酌減</span><br><span class="line"></span><br><span class="line">## 我的評析</span><br><span class="line"></span><br><span class="line">- 與 [[臺灣高等法院110年度建上字第XX號]] 酌減幅度不同，本則審酌因素較完整</span><br><span class="line">- 可用於 [[2026-015_工程款案]] 的備位主張</span><br><span class="line"></span><br><span class="line">## 待辦</span><br><span class="line"></span><br><span class="line">- [ ] 核對判決字號與引用段落</span><br></pre></td></tr></table></figure>
 
 <h2 id="五、練習方式：讓-AI-當你的-Markdown-家教"><a href="#五、練習方式：讓-AI-當你的-Markdown-家教" class="headerlink" title="五、練習方式：讓 AI 當你的 Markdown 家教"></a>五、練習方式：讓 AI 當你的 Markdown 家教</h2><p>不用背語法。打開 Claude（網頁版即可）說：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我在學 Markdown。請把以下這段文字轉成結構良好的 Markdown 筆記，</span><br><span class="line">並在每個語法旁用註解告訴我你用了什麼、為什麼：</span><br><span class="line">（貼上任何一段你的工作筆記）</span><br></pre></td></tr></table></figure>
@@ -353,8 +379,8 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
-              <a href="/tags/Markdown/" rel="tag"># Markdown</a>
               <a href="/tags/%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/" rel="tag"># 入門教學</a>
+              <a href="/tags/Markdown/" rel="tag"># Markdown</a>
           </div>
 
         
@@ -392,7 +418,7 @@
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
-    <span class="author" itemprop="copyrightHolder">Tinghan Lin</span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
   </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
@@ -433,6 +459,28 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
+<script>
+(function () {
+  var emojiClass = {
+    'ℹ️': 'callout-info',
+    '💡': 'callout-tip',
+    '📝': 'callout-note',
+    '⚠️': 'callout-warning',
+    '❓': 'callout-question'
+  };
+  document.querySelectorAll('.post-body blockquote').forEach(function (bq) {
+    var strong = bq.querySelector('p:first-child > strong:first-child, strong:first-child');
+    if (!strong) return;
+    var text = strong.textContent || '';
+    for (var emoji in emojiClass) {
+      if (text.indexOf(emoji) === 0) {
+        bq.classList.add(emojiClass[emoji]);
+        break;
+      }
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
