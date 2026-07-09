@@ -1,6 +1,6 @@
 ---
-title: 總覽｜AI x Obsidian 律師實戰系列
-date: 2026-07-07
+title: 00 總覽｜AI x Obsidian 律師實戰系列
+date: 2026-07-07 15:00:00
 tags:
   - AI課程
   - 總覽
@@ -85,7 +85,7 @@ AI Agent 的成熟，讓這個死結出現了解法：**整理的勞動可以全
 1. [為什麼是 Obsidian｜律師的第二大腦](/2026/07/07/why-obsidian/) — 全系列的問題意識與解法總綱：知識蒸發的困境、Obsidian 的四個關鍵特性、「從檢索到編纂」的典範轉移。
 2. [Obsidian 入門｜安裝、Vault 與基本操作](/2026/07/07/obsidian-basics/) — 安裝、建 Vault、五個必學操作、第一天練習清單。
 3. [Markdown 入門｜律師夠用的排版語法](/2026/07/07/markdown-basics/) — 十個夠用的語法＋callout 色塊、PDF 嵌入預覽與 frontmatter；Markdown 是 AI 的母語。
-4. [Obsidian 進階｜外掛與 Canvas 白板](/2026/07/08/obsidian-plugins-canvas/) — 外掛精選（Dataview、Templater、錄音機、**Claudian**）、筆記範本的設定與語法、Canvas 畫案件關係圖與交易架構圖。
+4. [Obsidian 進階｜外掛與 Canvas 白板](/2026/07/07/obsidian-plugins-canvas/) — 外掛精選（Dataview、Templater、錄音機、**Claudian**）、筆記範本的設定與語法、Canvas 畫案件關係圖與交易架構圖。
 
 ### 第二部：AI Agent 登場
 

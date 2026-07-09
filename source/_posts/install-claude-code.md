@@ -1,6 +1,6 @@
 ---
-title: 安裝 Claude Code｜讓 AI 進入你的知識庫
-date: 2026-07-07
+title: 06 安裝 Claude Code｜讓 AI 進入你的知識庫
+date: 2026-07-07 09:00:00
 tags:
   - AI課程
   - 安裝教學

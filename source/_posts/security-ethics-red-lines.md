@@ -1,6 +1,6 @@
 ---
-title: 資安與倫理｜律師使用 AI Agent 的紅線
-date: 2026-07-07
+title: 15 資安與倫理｜律師使用 AI Agent 的紅線
+date: 2026-07-07 00:00:00
 tags:
   - AI課程
   - 資安

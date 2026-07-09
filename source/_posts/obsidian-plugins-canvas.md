@@ -1,6 +1,6 @@
 ---
-title: Obsidian 進階｜外掛與 Canvas 白板
-date: 2026-07-08
+title: 04 Obsidian 進階｜外掛與 Canvas 白板
+date: 2026-07-07 11:00:00
 tags:
   - AI課程
   - Obsidian

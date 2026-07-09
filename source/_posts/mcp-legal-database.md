@@ -1,6 +1,6 @@
 ---
-title: MCP｜把 AI 接上法規資料庫
-date: 2026-07-07
+title: 14 MCP｜把 AI 接上法規資料庫
+date: 2026-07-07 01:00:00
 tags:
   - AI課程
   - MCP

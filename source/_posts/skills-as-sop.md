@@ -1,6 +1,6 @@
 ---
-title: Skills｜把你的 SOP 變成 AI 的技能
-date: 2026-07-07
+title: 13 Skills｜把你的 SOP 變成 AI 的技能
+date: 2026-07-07 02:00:00
 tags:
   - AI課程
   - Claude-Code

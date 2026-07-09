@@ -1,6 +1,6 @@
 ---
-title: Obsidian 入門｜安裝、Vault 與基本操作
-date: 2026-07-07
+title: 02 Obsidian 入門｜安裝、Vault 與基本操作
+date: 2026-07-07 13:00:00
 tags:
   - AI課程
   - Obsidian

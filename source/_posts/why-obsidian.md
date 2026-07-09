@@ -1,6 +1,6 @@
 ---
-title: 為什麼是 Obsidian｜律師的第二大腦
-date: 2026-07-07
+title: 01 為什麼是 Obsidian｜律師的第二大腦
+date: 2026-07-07 14:00:00
 tags:
   - AI課程
   - Obsidian

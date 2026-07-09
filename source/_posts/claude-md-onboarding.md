@@ -1,6 +1,6 @@
 ---
-title: CLAUDE.md｜寫給 AI 助理的到職須知
-date: 2026-07-07
+title: 07 CLAUDE.md｜寫給 AI 助理的到職須知
+date: 2026-07-07 08:00:00
 tags:
   - AI課程
   - Claude-Code

@@ -1,6 +1,6 @@
 ---
-title: Markdown 入門｜律師夠用的排版語法
-date: 2026-07-07
+title: 03 Markdown 入門｜律師夠用的排版語法
+date: 2026-07-07 12:00:00
 tags:
   - AI課程
   - Markdown
@@ -246,5 +246,5 @@ tags: [營建工程, 違約金酌減]
 ---
 
 ⬅️ 上一篇：[Obsidian 入門｜安裝、Vault 與基本操作](/2026/07/07/obsidian-basics/)
-➡️ 下一篇：[Obsidian 進階｜外掛與 Canvas 白板](/2026/07/08/obsidian-plugins-canvas/)
+➡️ 下一篇：[Obsidian 進階｜外掛與 Canvas 白板](/2026/07/07/obsidian-plugins-canvas/)
 🏠 回到 [總覽｜AI x Obsidian 律師實戰系列](/2026/07/07/series-overview/)
