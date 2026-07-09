@@ -1,5 +1,22 @@
 scheme: Pisces
 
+avatar:
+  url: /images/profile/avatar.jpg
+  rounded: true
+  rotated: false
+
+social:
+  GitHub: https://github.com/han0302-cyber || fab fa-github
+  有澤法律事務所: https://stellexlaw.com/ || fa fa-building
+  Email: mailto:tinghan.lin@stellexlaw.com || fa fa-envelope
+  Threads: https://www.threads.com/@han0302 || fa fa-at
+  司法院裁判書閱讀助手: https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn || fab fa-chrome
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+
 menu:
   home: / || fa fa-home
   tags: /tags/ || fa fa-tags
