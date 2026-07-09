@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: AI x Obsidian
-subtitle: '律師的 Vibe Coding 筆記'
+title: 律師的AI筆記
+subtitle: '法律 x AI x 自動化的實踐筆記'
 description: ''
 keywords:
 author: 林廷翰
@@ -98,6 +98,9 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+
+sitemap:
+  path: sitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
