@@ -103,4 +103,4 @@ theme: landscape
 deploy:
   type: git
   repo: https://github.com/han0302-cyber/han0302-cyber.github.io.git
-  branch: main
+  branch: gh-pages
