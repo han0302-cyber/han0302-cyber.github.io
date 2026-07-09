@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點安裝一行指令、啟動打一個字 claude。核心觀念只有一個——在哪個資料夾啟動，AI 的主場就是哪個資料夾。所以要在 Obsidian Vault 裡啟動它。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06 安裝 Claude Code｜讓 AI 進入你的知識庫">
+<meta property="og:url" content="https://han0302-cyber.github.io/posts/install-claude-code/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點安裝一行指令、啟動打一個字 claude。核心觀念只有一個——在哪個資料夾啟動，AI 的主場就是哪個資料夾。所以要在 Obsidian Vault 裡啟動它。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-07T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T10:01:06.131Z">
+<meta property="article:author" content="Ting-Han Lin">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="Claude-Code">
+<meta property="article:tag" content="安裝教學">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/posts/install-claude-code/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/posts/install-claude-code/","path":"posts/install-claude-code/","title":"06 安裝 Claude Code｜讓 AI 進入你的知識庫"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>06 安裝 Claude Code｜讓 AI 進入你的知識庫 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99%EF%BC%9A%E5%B8%B3%E8%99%9F"><span class="nav-number">1.</span> <span class="nav-text">事前準備：帳號</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%88%87%E9%A1%8D%E5%BA%A6%EF%BC%9A%E5%B0%8E%E5%85%A5%E5%89%8D%E8%A9%B2%E6%87%82%E7%9A%84%E5%85%A9%E4%BB%B6%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">模型與額度：導入前該懂的兩件事</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F%E4%B8%80%EF%BC%9A%E6%89%93%E9%96%8B%E7%B5%82%E7%AB%AF%E6%A9%9F%EF%BC%882-%E5%88%86%E9%90%98%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">步驟一：打開終端機（2 分鐘）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F%E4%BA%8C%EF%BC%9A%E5%AE%89%E8%A3%9D%E8%88%87%E7%99%BB%E5%85%A5%EF%BC%8810-%E5%88%86%E9%90%98%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">步驟二：安裝與登入（10 分鐘）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%9D"><span class="nav-number">3.1.</span> <span class="nav-text">2-1 安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%95%9F%E5%8B%95%E8%88%87%E7%99%BB%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">2-2 啟動與登入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F%E4%B8%89%EF%BC%9A%E9%80%B2%E5%85%A5%E4%BD%A0%E7%9A%84-Vault%EF%BC%885-%E5%88%86%E9%90%98%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">步驟三：進入你的 Vault（5 分鐘）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%87%E6%8F%9B%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">4.1.</span> <span class="nav-text">3-1 切換資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%95%9F%E5%8B%95%E4%B8%A6%E4%B8%8B%E9%81%94%E7%AC%AC%E4%B8%80%E5%80%8B%E4%BB%BB%E5%8B%99"><span class="nav-number">4.2.</span> <span class="nav-text">3-2 啟動並下達第一個任務</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%AA%8D%E8%AD%98%E6%AC%8A%E9%99%90%E7%A2%BA%E8%AA%8D"><span class="nav-number">4.3.</span> <span class="nav-text">3-3 認識權限確認</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F%E5%9B%9B%EF%BC%9A%E7%AC%AC%E4%B8%80%E6%89%B9%E7%B7%B4%E7%BF%92%E4%BB%BB%E5%8B%99%EF%BC%88%E7%95%B6%E5%A4%A9%E5%B0%B1%E8%83%BD%E8%A9%A6%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">步驟四：第一批練習任務（當天就能試）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%B2%E9%9A%8E%E8%A8%AD%E5%AE%9A%EF%BC%9A%E6%8A%8A%E5%95%9F%E5%8B%95%E6%B5%81%E7%A8%8B%E7%B8%AE%E6%88%90%E4%B8%80%E5%80%8B%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">進階設定：把啟動流程縮成一個指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac%EF%BC%9A%E7%B5%82%E7%AB%AF%E6%A9%9F%E5%9F%B7%E8%A1%8C%E4%B8%80%E6%AC%A1"><span class="nav-number">6.1.</span> <span class="nav-text">Mac：終端機執行一次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%EF%BC%9APowerShell-%E5%9F%B7%E8%A1%8C%E4%B8%80%E6%AC%A1"><span class="nav-number">6.2.</span> <span class="nav-text">Windows：PowerShell 執行一次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%8A%E5%8C%96%E6%AC%BE%EF%BC%9A%E4%B8%8D%E7%B6%81%E8%B7%AF%E5%BE%91%E7%9A%84%E5%B0%B1%E5%9C%B0%E5%95%9F%E5%8B%95"><span class="nav-number">6.3.</span> <span class="nav-text">變化款：不綁路徑的就地啟動</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E5%95%8F%E9%A1%8C%E6%8E%92%E9%99%A4"><span class="nav-number">7.</span> <span class="nav-text">常見問題排除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">8.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">9.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
+      src="/images/profile/avatar.png">
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
+  <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/posts/install-claude-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile/avatar.png">
+      <meta itemprop="name" content="Ting-Han Lin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="06 安裝 Claude Code｜讓 AI 進入你的知識庫 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          06 安裝 Claude Code｜讓 AI 進入你的知識庫
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 09:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T09:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>安裝一行指令、啟動打一個字 <code>claude</code>。核心觀念只有一個——<strong>在哪個資料夾啟動，AI 的主場就是哪個資料夾</strong>。所以要在 Obsidian Vault 裡啟動它。</p>
+</blockquote>
+<span id="more"></span>
+<p>本篇是純操作指南，前提是你已依 <a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a> 建好 Vault。全程約二十分鐘。</p>
+<h2 id="事前準備：帳號"><a href="#事前準備：帳號" class="headerlink" title="事前準備：帳號"></a>事前準備：帳號</h2><p>Claude Code 需要 <strong>Claude 付費方案</strong>（Pro、Max、Team 或 Enterprise）或 API 帳號，<strong>免費帳號無法使用</strong>。個人入門選 Pro 即可；資安考量與方案選擇的關係（消費者方案 vs 商用方案的資料條款差異），詳見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>，建議在放入真實資料前先讀過。</p>
+<p>另外先說明版本：Claude Code 有<strong>終端機版（CLI）<strong>與</strong>桌面版</strong>（Mac／Windows 應用程式）兩種介面，引擎與帳號相同（見 <a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a> 的介面比較）。本篇安裝的是終端機版——功能最完整，也是本系列所有示範的基準；偏好圖形介面者可從官網下載桌面版，之後各篇的提示詞照用，僅操作介面不同。</p>
+<blockquote>
+<p><strong>💡 小提示</strong><br>Codex 使用者：需要 ChatGPT 付費方案或 OpenAI API，安裝指令與細節以 OpenAI 官方文件為準；本篇之後的觀念完全通用。</p>
+</blockquote>
+<h3 id="模型與額度：導入前該懂的兩件事"><a href="#模型與額度：導入前該懂的兩件事" class="headerlink" title="模型與額度：導入前該懂的兩件事"></a>模型與額度：導入前該懂的兩件事</h3><ul>
+<li><strong>模型分級</strong>：Claude Code 可用 <code>/model</code> 指令切換模型——旗艦模型推理最強、消耗額度也最快；中階模型處理日常整理任務通常已足夠。心法：<strong>批次整理用中階、關鍵法律分析用旗艦</strong>。</li>
+<li><strong>額度上限</strong>：訂閱方案有用量上限（按時段輪替計算），大量編纂判決時可能撞到，稍等即恢復。重度使用者可升級較高方案，或改用 API 依用量計費。建議：先用基本付費方案試跑一個月，依實際用量再決定要不要升級——這跟採購任何事務所軟體的評估邏輯相同。</li>
+</ul>
+<blockquote>
+<p><strong>💡 用狀態列顯示額度與容量</strong><br>Claude Code 支援自訂「狀態列」——畫面底部常駐一行資訊，可顯示目前使用的模型、<strong>對話容量水位</strong>與<strong>額度剩餘</strong>，就像開車時的油表與時速表。輸入 <code>/statusline</code> 請 AI 幫忙生成一個即可，不必自己寫。看得到水位，後面幾篇談的「容量管理」才有依據。</p>
+</blockquote>
+<h2 id="步驟一：打開終端機（2-分鐘）"><a href="#步驟一：打開終端機（2-分鐘）" class="headerlink" title="步驟一：打開終端機（2 分鐘）"></a>步驟一：打開終端機（2 分鐘）</h2><ul>
+<li><strong>Mac</strong>：<code>Cmd + 空白鍵</code> 打開 Spotlight，輸入「Terminal」（終端機），Enter。</li>
+<li><strong>Windows</strong>：開始選單搜尋「PowerShell」，開啟。</li>
+</ul>
+<p>黑（或白）底的文字視窗出現了。接下來你只需要打幾行東西，而且以後跟 AI 的互動都是中文。</p>
+<h2 id="步驟二：安裝與登入（10-分鐘）"><a href="#步驟二：安裝與登入（10-分鐘）" class="headerlink" title="步驟二：安裝與登入（10 分鐘）"></a>步驟二：安裝與登入（10 分鐘）</h2><h3 id="2-1-安裝"><a href="#2-1-安裝" class="headerlink" title="2-1 安裝"></a>2-1 安裝</h3><p>依官方文件（<a target="_blank" rel="noopener" href="https://code.claude.com/docs">code.claude.com&#x2F;docs</a>）目前推薦的安裝方式：</p>
+<p><strong>Mac &#x2F; Linux（擇一）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://claude.ai/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>或使用 Homebrew：<code>brew install --cask claude-code</code></p>
+<p><strong>Windows（PowerShell，擇一）：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">irm</span> https://claude.ai/install.ps1 | <span class="built_in">iex</span></span><br></pre></td></tr></table></figure>
+<p>或使用 WinGet：<code>winget install Anthropic.ClaudeCode</code></p>
+<p>安裝方式可能隨版本更新（例如早期常見的 npm 安裝法已不再是官方首推），若指令失效，以官方文件為準——或直接問任何一個 AI「Claude Code 現在怎麼安裝」。</p>
+<h3 id="2-2-啟動與登入"><a href="#2-2-啟動與登入" class="headerlink" title="2-2 啟動與登入"></a>2-2 啟動與登入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+
+<p>第一次啟動會開啟瀏覽器引導登入，用你的 Claude 帳號授權即可。看到對話提示符出現，安裝就完成了。輸入 <code>/exit</code> 或按 <code>Ctrl+C</code> 可隨時離開。</p>
+<h2 id="步驟三：進入你的-Vault（5-分鐘）"><a href="#步驟三：進入你的-Vault（5-分鐘）" class="headerlink" title="步驟三：進入你的 Vault（5 分鐘）"></a>步驟三：進入你的 Vault（5 分鐘）</h2><p>關鍵觀念：<strong>Claude Code 的工作範圍，以「你啟動它時所在的資料夾」為主場。</strong> 所以要先切換到 Vault 再啟動。</p>
+<h3 id="3-1-切換資料夾"><a href="#3-1-切換資料夾" class="headerlink" title="3-1 切換資料夾"></a>3-1 切換資料夾</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Documents/LawVault</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>💡 小提示</strong><br>省力技巧：打 <code>cd </code>（後面留一個空格），把 Vault 資料夾從 Finder／檔案總管<strong>直接拖進終端機視窗</strong>，路徑自動貼上，Enter。</p>
+</blockquote>
+<p>「cd 進 Vault、再打 claude」這兩步，日後可以合併成一個自訂指令——見本篇文末的「進階設定：把啟動流程縮成一個指令」，建議先把本篇主流程走完再回頭設定。</p>
+<p>補充兩點，之後會用到：</p>
+<ul>
+<li>主場之外的檔案並非碰不到——你在對話中<strong>給它其他資料夾的路徑</strong>（同樣可以用拖曳的），經你按下同意後，它就能讀取。例如在 Vault 裡工作時，臨時要它讀「下載」資料夾裡剛拿到的檔案，貼路徑即可。</li>
+<li>常用的額外資料夾，可以用 <code>/add-dir</code> 指令正式加入本次工作範圍。</li>
+</ul>
+<h3 id="3-2-啟動並下達第一個任務"><a href="#3-2-啟動並下達第一個任務" class="headerlink" title="3-2 啟動並下達第一個任務"></a>3-2 啟動並下達第一個任務</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+
+<p>然後用中文打下第一個任務：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你好，這是我的 Obsidian 知識庫。請看一下目前的資料夾結構，</span><br><span class="line">然後幫我建立一則名為「歡迎使用」的筆記，</span><br><span class="line">內容說明這個知識庫未來的用途：法律知識管理。</span><br></pre></td></tr></table></figure>
+
+<p>它會先請求你的同意（按 Enter 允許），然後動手建立檔案。切回 Obsidian——筆記已經出現了。</p>
+<p>後面所有進階應用，本質上都是這個動作的放大。</p>
+<h3 id="3-3-認識權限確認"><a href="#3-3-認識權限確認" class="headerlink" title="3-3 認識權限確認"></a>3-3 認識權限確認</h3><p>Claude Code 預設在<strong>寫入檔案、執行指令</strong>前都會逐次徵求同意（單純讀取檔案不會問）——這是安全設計，不是故障。日常使用的授權模式有三種，按 <code>Shift+Tab</code> 循環切換，可以用「帶助理的三個階段」來理解：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>相當於</th>
+<th>適合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>手動（Manual，預設）</strong></td>
+<td>新進助理：每個動作都送核</td>
+<td>初學階段，順便看懂 AI 都在做什麼</td>
+</tr>
+<tr>
+<td><strong>自動修改（Accept Edits）</strong></td>
+<td>信任的助理：工作資料夾內的檔案修改放手做，其餘指令仍送核</td>
+<td>上手之後的日常，效率與安全兼顧</td>
+</tr>
+<tr>
+<td><strong>計畫（Plan）</strong></td>
+<td>先交辦案計畫，核可後才動卷</td>
+<td>大工程（詳見 <a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a>）</td>
+</tr>
+</tbody></table>
+<p>另外還有一種「<strong>全放行（Bypass Permissions）</strong>」——什麼都不問、全部照做。它刻意<strong>不在</strong> <code>Shift+Tab</code> 的循環裡，必須用特殊參數啟動才會出現，官方文件也把它定位為隔離環境（容器、虛擬機）專用。⚠️ 律師在放著真實資料的電腦上，別碰這個模式。（模式的名稱與種類隨版本更新略有調整，例如官方也在實驗更聰明的自動授權模式，以你畫面上實際顯示的為準。）</p>
+<p>建議路徑：第一週用手動模式，把每次確認當成「看懂 AI 想做什麼」的練習；熟練後切到自動修改模式；細部放行規則可用 <code>/permissions</code> 調整（例如把某些安全的唯讀指令設為免詢問）。原則不變：<strong>寧可多按幾次 Enter，也不要一開始就全部放行。</strong></p>
+<h2 id="步驟四：第一批練習任務（當天就能試）"><a href="#步驟四：第一批練習任務（當天就能試）" class="headerlink" title="步驟四：第一批練習任務（當天就能試）"></a>步驟四：第一批練習任務（當天就能試）</h2><p>從司法院裁判書系統複製 2–3 則與工程承攬工期遲延、違約金酌減相關的<strong>公開判決</strong>——這也是在為主案例 2026-015 的研究鋪底——在 Obsidian 各存成一則筆記，然後：</p>
+<blockquote>
+<p><strong>💡 省下複製貼上：司法院裁判書閱讀助手</strong><br>筆者自行開發的免費 Chrome 擴充功能「<strong>司法院裁判書閱讀助手</strong>」（<a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn">Chrome 線上應用程式商店</a>｜<a target="_blank" rel="noopener" href="https://github.com/han0302-cyber/judicial-outline-extension/">GitHub 原始碼</a>），可以在司法院法學資料檢索系統<strong>一鍵複製判決全文，或直接把整份裁判書下載成 <code>.md</code> 檔</strong>，存進 Vault 就是 Obsidian 能用的格式。這個練習用手動複製即可完成；之後要批次建判決知識庫（見 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a>），它會省下大量時間。順帶一提：這個擴充功能本身就是用 Claude Code 開發的。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">請閱讀 Vault 裡的判決筆記，為每一份在開頭加上「## 摘要」段落，</span><br><span class="line">包含：判決字號、法院、案由、主要爭點、法院見解，各一到兩句話。</span><br></pre></td></tr></table></figure>
+
+<p>再試一個進階的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">請根據這幾則判決的共同主題建立一則主題筆記，</span><br><span class="line">整理它們在主要爭點上的異同，並以 [[wikilink]] 連結到各判決筆記。</span><br></pre></td></tr></table></figure>
+
+<p>切回 Obsidian 打開知識圖譜——筆記已連成一張小網。</p>
+<h2 id="進階設定：把啟動流程縮成一個指令"><a href="#進階設定：把啟動流程縮成一個指令" class="headerlink" title="進階設定：把啟動流程縮成一個指令"></a>進階設定：把啟動流程縮成一個指令</h2><p>每天啟動的固定動作是兩步：「cd 進 Vault、再打 claude」。這兩步可以合併成一個自訂的短指令，術語叫<strong>別名（alias）</strong>。設定一次之後，輸入 <code>law</code> 三個字母，即完成切換資料夾並啟動 Claude Code。</p>
+<p>以下指令中的 <code>＜Vault路徑＞</code> 要換成<strong>你自己的</strong> Vault 完整路徑——取得方式就用步驟三的拖曳技巧：把 Vault 資料夾拖進終端機，路徑就出現了，複製起來備用。</p>
+<h3 id="Mac：終端機執行一次"><a href="#Mac：終端機執行一次" class="headerlink" title="Mac：終端機執行一次"></a>Mac：終端機執行一次</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias law=&#x27;cd ＜Vault路徑＞ &amp;&amp; claude&#x27;&quot;</span> &gt;&gt; ~/.zshrc &amp;&amp; <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>這行指令的層次：定義 <code>law</code> ＝「切換到 Vault、成功後啟動 <code>claude</code>」，把這條定義追加寫入終端機每次開啟都會自動讀取的個人設定檔（<code>~/.zshrc</code>），再立刻重讀設定檔讓它馬上生效。</p>
+<h3 id="Windows：PowerShell-執行一次"><a href="#Windows：PowerShell-執行一次" class="headerlink" title="Windows：PowerShell 執行一次"></a>Windows：PowerShell 執行一次</h3><p>PowerShell 的別名不能帶動作，等效做法是在設定檔裡加一個小函式：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$PROFILE</span>)) &#123; <span class="built_in">New-Item</span> <span class="literal">-Type</span> File <span class="literal">-Path</span> <span class="variable">$PROFILE</span> <span class="literal">-Force</span> &#125;</span><br><span class="line"><span class="built_in">Add-Content</span> <span class="variable">$PROFILE</span> <span class="string">&#x27;function law &#123; Set-Location &quot;＜Vault路徑＞&quot;; claude &#125;&#x27;</span></span><br><span class="line">. <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>邏輯與 Mac 相同：把 <code>law</code> 函式寫進 PowerShell 的個人設定檔（<code>$PROFILE</code>，地位等同 <code>.zshrc</code>），再重讀生效；設定檔不存在時，第一行會先建立它。</p>
+<p>若日後開新視窗出現「無法載入設定檔」的紅字，是 Windows 預設的指令碼執行原則擋住了，執行一次 <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> 即可解除。</p>
+<h3 id="變化款：不綁路徑的就地啟動"><a href="#變化款：不綁路徑的就地啟動" class="headerlink" title="變化款：不綁路徑的就地啟動"></a>變化款：不綁路徑的就地啟動</h3><p><code>law</code> 固定切換到 Vault 再啟動；但有時你已經在別的資料夾（例如先 <code>cd</code> 進了某個案件資料夾），希望直接在該處啟動。<code>claude</code> 這個指令本身就是「在目前所在的資料夾啟動」，不綁任何路徑。所以這個變化款只是把六個字母縮短成純縮寫（以 <code>cc</code> 為例，縮寫可自訂）：</p>
+<p><strong>Mac</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias cc=&#x27;claude&#x27;&quot;</span> &gt;&gt; ~/.zshrc &amp;&amp; <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>Windows</strong>（PowerShell；這種「單純改名」的縮寫用 <code>Set-Alias</code> 就夠，不需要函式）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Add-Content</span> <span class="variable">$PROFILE</span> <span class="string">&#x27;Set-Alias cc claude&#x27;</span></span><br><span class="line">. <span class="variable">$PROFILE</span></span><br></pre></td></tr></table></figure>
+
+<p>兩個縮寫可以並存，分工明確：<strong><code>law</code> 不論目前位置，一律切換到 Vault 後啟動；<code>cc</code> 則在目前所在的資料夾就地啟動</strong>——處理知識庫用前者，已在某個案件資料夾工作時用後者。</p>
+<p>看懂結構之後，其實不必手打：對 AI 說「我的 Vault 在＜路徑＞，我用 Mac／Windows，請給我設定 law 與 cc 兩個啟動別名的完整指令」，讓它代入路徑生成，貼上執行即可。</p>
+<h2 id="常見問題排除"><a href="#常見問題排除" class="headerlink" title="常見問題排除"></a>常見問題排除</h2><table>
+<thead>
+<tr>
+<th>狀況</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>終端機說找不到 <code>claude</code> 指令</td>
+<td>關掉終端機重開；仍不行則重跑安裝指令</td>
+</tr>
+<tr>
+<td>頻繁詢問是否允許，覺得繁瑣</td>
+<td>正常的安全設計，初期建議保留；熟練後用 <code>/permissions</code> 調整</td>
+</tr>
+<tr>
+<td>想知道 AI 剛剛做了什麼</td>
+<td>直接問它「請列出你剛剛做的所有變更」</td>
+</tr>
+<tr>
+<td>回應到一半想打斷</td>
+<td>按 <code>Esc</code></td>
+</tr>
+<tr>
+<td>想開新話題</td>
+<td>輸入 <code>/clear</code> 清空對話（檔案不受影響）</td>
+</tr>
+<tr>
+<td>對話很長，想回找 AI 剛剛說過的內容</td>
+<td>按 <code>Ctrl+O</code> 叫出對話工具，可搜尋、匯出整段對話</td>
+</tr>
+</tbody></table>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>需求：付費方案帳號；安裝一行指令；啟動打 <code>claude</code>。</li>
+<li>鐵則：先 <code>cd</code> 進 Vault 再啟動；主場外的資料給路徑（或 <code>/add-dir</code>）即可參照。</li>
+<li>權限確認是護欄：初期逐次同意，理解它在做什麼。</li>
+<li>進階：設定 <code>law</code>（切換至 Vault 後啟動）與 <code>cc</code>（就地啟動）兩個別名，啟動只需一個指令。</li>
+<li>下一篇：寫一份讓 AI「一次到位」的到職須知——CLAUDE.md。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/quickstart">Claude Code 官方文件：Quickstart</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/setup">Claude Code 官方文件：安裝與設定（Setup）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/permissions">Claude Code 官方文件：權限（Permissions）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/permission-modes">Claude Code 官方文件：授權模式（Permission modes）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/statusline">Claude Code 官方文件：狀態列（Status line）</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a><br>➡️ 下一篇：<a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Claude-Code/" rel="tag"># Claude-Code</a>
+              <a href="/tags/%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8/" rel="tag"># 安裝教學</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/claude-md-onboarding/" rel="prev" title="07 CLAUDE.md｜寫給 AI 助理的到職須知">
+                  <i class="fa fa-angle-left"></i> 07 CLAUDE.md｜寫給 AI 助理的到職須知
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/terminal-ai-agent/" rel="next" title="05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex">
+                  05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div><div class="cc-license">
+  <a class="cc-opacity" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow" title="Creative Commons BY-NC-SA 4.0">
+    <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-nc"></i><i class="fab fa-creative-commons-sa"></i>
+  </a>
+  本網站所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow">BY-NC-SA 許可協議</a>。轉載請註明出處
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+</body>
+</html>

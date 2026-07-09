@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Obsidian 上手只需要五個操作——新增筆記（Cmd&#x2F;Ctrl+N）、打 [[ 建連結、快速切換（Cmd&#x2F;Ctrl+O）、全庫搜尋（Cmd&#x2F;Ctrl+Shift+F）、指令面板（Cmd&#x2F;Ctrl+P）。其他功能都可以之後再學。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02 Obsidian 入門｜安裝、Vault 與基本操作">
+<meta property="og:url" content="https://han0302-cyber.github.io/posts/obsidian-basics/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Obsidian 上手只需要五個操作——新增筆記（Cmd&#x2F;Ctrl+N）、打 [[ 建連結、快速切換（Cmd&#x2F;Ctrl+O）、全庫搜尋（Cmd&#x2F;Ctrl+Shift+F）、指令面板（Cmd&#x2F;Ctrl+P）。其他功能都可以之後再學。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-07T05:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T10:01:06.133Z">
+<meta property="article:author" content="Ting-Han Lin">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="Obsidian">
+<meta property="article:tag" content="入門教學">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/posts/obsidian-basics/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/posts/obsidian-basics/","path":"posts/obsidian-basics/","title":"02 Obsidian 入門｜安裝、Vault 與基本操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>02 Obsidian 入門｜安裝、Vault 與基本操作 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%9D%E8%88%87%E5%BB%BA%E7%AB%8B-Vault"><span class="nav-number">1.</span> <span class="nav-text">一、安裝與建立 Vault</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%B8%8B%E8%BC%89%E5%AE%89%E8%A3%9D"><span class="nav-number">1.1.</span> <span class="nav-text">1-1 下載安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%BB%BA%E7%AB%8B%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E5%80%8B-Vault"><span class="nav-number">1.2.</span> <span class="nav-text">1-2 建立你的第一個 Vault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%BB%BA%E8%AD%B0%E7%9A%84%E5%88%9D%E5%A7%8B%E8%A8%AD%E5%AE%9A%EF%BC%9A%E9%80%A3%E7%B5%90%E5%9B%9B%E9%A0%85"><span class="nav-number">1.3.</span> <span class="nav-text">1-3 建議的初始設定：連結四項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%8B%E9%9D%A2%E5%B0%8E%E8%A6%BD%EF%BC%9A%E5%8F%AA%E9%9C%80%E8%A6%81%E8%AA%8D%E8%AD%98%E4%BA%94%E5%80%8B%E5%8D%80%E5%9F%9F"><span class="nav-number">2.</span> <span class="nav-text">二、介面導覽：只需要認識五個區域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BA%94%E5%80%8B%E5%BF%85%E5%AD%B8%E6%93%8D%E4%BD%9C%EF%BC%88%E9%99%84%E5%BF%AB%E6%8D%B7%E9%8D%B5%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、五個必學操作（附快捷鍵）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B0%E5%A2%9E%E7%AD%86%E8%A8%98%EF%BC%9ACmd-Ctrl-N"><span class="nav-number">3.1.</span> <span class="nav-text">3-1 新增筆記：Cmd&#x2F;Ctrl + N</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%BB%BA%E7%AB%8B%E9%80%A3%E7%B5%90%EF%BC%9A%E8%BC%B8%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">3-2 建立連結：輸入 [[</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8F%9B%EF%BC%9ACmd-Ctrl-O"><span class="nav-number">3.3.</span> <span class="nav-text">3-3 快速切換：Cmd&#x2F;Ctrl + O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%85%A8%E5%BA%AB%E6%90%9C%E5%B0%8B%EF%BC%9ACmd-Ctrl-Shift-F"><span class="nav-number">3.4.</span> <span class="nav-text">3-4 全庫搜尋：Cmd&#x2F;Ctrl + Shift + F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%8C%87%E4%BB%A4%E9%9D%A2%E6%9D%BF%EF%BC%9ACmd-Ctrl-P"><span class="nav-number">3.5.</span> <span class="nav-text">3-5 指令面板：Cmd&#x2F;Ctrl + P</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9B%9B%E5%80%8B%E9%87%8D%E8%A6%81%E8%A7%80%E5%BF%B5"><span class="nav-number">4.</span> <span class="nav-text">四、四個重要觀念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E7%B7%A8%E8%BC%AF%E8%88%87%E9%96%B1%E8%AE%80%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">4-1 編輯與閱讀模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A8%99%E7%B1%A4%EF%BC%88Tag%EF%BC%89%E8%88%87%E5%B1%AC%E6%80%A7%EF%BC%88Properties%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">4-2 標籤（Tag）與屬性（Properties）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%8D%E5%90%91%E9%80%A3%E7%B5%90%E8%88%87%E3%80%8C%E6%9C%AA%E9%80%A3%E7%B5%90%E7%9A%84%E6%8F%90%E5%8F%8A%E3%80%8D"><span class="nav-number">4.3.</span> <span class="nav-text">4-3 反向連結與「未連結的提及」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E7%9F%A5%E8%AD%98%E5%9C%96%E8%AD%9C%EF%BC%88Graph-View%EF%BC%89"><span class="nav-number">4.4.</span> <span class="nav-text">4-4 知識圖譜（Graph View）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%B5%A6%E5%BE%8B%E5%B8%AB%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%B7%B4%E7%BF%92%E6%B8%85%E5%96%AE"><span class="nav-number">5.</span> <span class="nav-text">五、給律師的第一天練習清單</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">6.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
+      src="/images/profile/avatar.png">
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
+  <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/posts/obsidian-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile/avatar.png">
+      <meta itemprop="name" content="Ting-Han Lin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="02 Obsidian 入門｜安裝、Vault 與基本操作 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          02 Obsidian 入門｜安裝、Vault 與基本操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 13:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T13:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Obsidian 上手只需要五個操作——新增筆記（<code>Cmd/Ctrl+N</code>）、打 <code>[[</code> 建連結、快速切換（<code>Cmd/Ctrl+O</code>）、全庫搜尋（<code>Cmd/Ctrl+Shift+F</code>）、指令面板（<code>Cmd/Ctrl+P</code>）。其他功能都可以之後再學。</p>
+</blockquote>
+<span id="more"></span>
+<p>本篇是純操作教學，目標是讓完全沒用過 Obsidian 的律師，在三十分鐘內建好知識庫並學會日常操作。</p>
+<h2 id="一、安裝與建立-Vault"><a href="#一、安裝與建立-Vault" class="headerlink" title="一、安裝與建立 Vault"></a>一、安裝與建立 Vault</h2><h3 id="1-1-下載安裝"><a href="#1-1-下載安裝" class="headerlink" title="1-1 下載安裝"></a>1-1 下載安裝</h3><p>前往官網 <strong><a target="_blank" rel="noopener" href="https://obsidian.md/">obsidian.md</a></strong>，下載對應版本（Windows &#x2F; macOS &#x2F; Linux，另有 iOS &#x2F; Android App）。Obsidian 個人與<strong>商業使用均為免費</strong>（2025 年 2 月起商業使用也不再需要付費授權），僅選購性的同步（Sync）與發布（Publish）服務收費，核心功能完全免費。</p>
+<h3 id="1-2-建立你的第一個-Vault"><a href="#1-2-建立你的第一個-Vault" class="headerlink" title="1-2 建立你的第一個 Vault"></a>1-2 建立你的第一個 Vault</h3><p>第一次開啟會看到 Vault 管理畫面：</p>
+<ol>
+<li>點選「<strong>Create new vault</strong>（建立新儲存庫）」。</li>
+<li><strong>Vault 名稱</strong>：建議用簡單英文，例如 <code>LawVault</code>（部分終端機工具對中文路徑的支援偶有問題，最外層資料夾用英文最保險；<strong>裡面的筆記檔名用中文完全沒問題</strong>）。</li>
+<li><strong>存放位置</strong>：這是第一個需要專業判斷的地方——</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>存放位置</th>
+<th>效果</th>
+<th>適合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>純本機資料夾（如「文件」）</td>
+<td>資料完全不出這台電腦</td>
+<td>初學者、機密性優先 ✅ 建議從這裡開始</td>
+</tr>
+<tr>
+<td>OneDrive &#x2F; iCloud &#x2F; Dropbox 同步資料夾</td>
+<td>跨裝置同步，但筆記會上雲</td>
+<td>已理解資安分級之後（見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>）</td>
+</tr>
+<tr>
+<td>Obsidian Sync（官方付費，端到端加密）</td>
+<td>跨裝置同步且加密</td>
+<td>需要手機平板同步、又在意機密性</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>建好之後，進入 <strong>Settings（設定，左下角齒輪）→ General → Language</strong> 可切換為「繁體中文」，重啟後生效。</li>
+</ol>
+<p>有一個核心事實貫穿全系列：<strong>Vault 就是你電腦裡的一個普通資料夾，筆記就是裡面的純文字檔。</strong> Obsidian 只是這個資料夾的「閱覽室」。這意味著：隨時可以整包備份、換電腦直接複製、AI Agent 可以直接進來讀寫。</p>
+<h3 id="1-3-建議的初始設定：連結四項"><a href="#1-3-建議的初始設定：連結四項" class="headerlink" title="1-3 建議的初始設定：連結四項"></a>1-3 建議的初始設定：連結四項</h3><p>切好語言後，順手到 <strong>設定 → 檔案與連結</strong> 的「連結」區塊，把四個選項調成如下（部分是預設值，但建議逐一確認）。這一分鐘的投資，之後幾乎不用再動：</p>
+<table>
+<thead>
+<tr>
+<th>設定</th>
+<th>建議</th>
+<th>為什麼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用 「Wikilinks」</td>
+<td>✅ 開啟</td>
+<td>wikilink 是整套系統的靈魂：<code>[[ ]]</code> 連筆記、<code>![[ ]]</code> 嵌入檔案，本系列所有筆記與 AI 編纂都以它為準</td>
+</tr>
+<tr>
+<td>始終更新內部連結</td>
+<td>✅ 開啟</td>
+<td>筆記改名、檔案搬移資料夾時，所有引用它的連結<strong>自動跟著更新</strong>——日後重整案件資料夾、修正判決筆記檔名，都不會斷鏈</td>
+</tr>
+<tr>
+<td>內部連結格式</td>
+<td>以儘可能簡短的形式插入</td>
+<td>連結只寫檔名、不帶路徑，檔案移動後連結照樣有效，筆記原始碼也最乾淨，AI 讀寫時不易出錯</td>
+</tr>
+<tr>
+<td>偵測所有的副檔名</td>
+<td>✅ 開啟</td>
+<td>PDF 與圖片 Obsidian 本來就支援；開啟後，Word、Excel 等其他格式的檔案<strong>也會顯示在檔案列表、可以被連結</strong>（點擊以系統預設程式開啟）。電子卷證、書狀放進 Vault 之後要能從筆記連過去，靠的就是這一項</td>
+</tr>
+</tbody></table>
+<p>前兩項與「偵測所有的副檔名」尤其重要：律師的 Vault 裡除了筆記，一定會有判決 PDF、卷證掃描檔與書狀 Word 檔，這組設定讓它們成為知識網的正式成員，而不是找不到的附件。下一篇會教你把 PDF 直接嵌入筆記、停在指定頁碼。</p>
+<h2 id="二、介面導覽：只需要認識五個區域"><a href="#二、介面導覽：只需要認識五個區域" class="headerlink" title="二、介面導覽：只需要認識五個區域"></a>二、介面導覽：只需要認識五個區域</h2><p>打開 Obsidian，畫面由左到右：</p>
+<ol>
+<li><strong>左側功能列（Ribbon）</strong>：直行的小圖示，常用的是「知識圖譜」與「快速切換」。</li>
+<li><strong>左側面板</strong>：檔案總管（資料夾與筆記列表）、搜尋、書籤三個分頁。</li>
+<li><strong>中央編輯區</strong>：寫筆記的地方。可以同時開多個分頁（跟瀏覽器一樣，<code>Cmd/Ctrl+點擊</code> 連結會開新分頁）。</li>
+<li><strong>右側面板</strong>：反向連結（哪些筆記連到本頁）、大綱（本頁標題結構）等。初期可以收合不管。</li>
+<li><strong>左下角齒輪</strong>：所有設定都在這裡。</li>
+</ol>
+<p>介面元素很多，但初期真正會用到的就是「左側檔案列表＋中央編輯區」。<strong>不要試圖先搞懂所有按鈕</strong>——跟第一次用 Word 一樣，用到再學。</p>
+<h2 id="三、五個必學操作（附快捷鍵）"><a href="#三、五個必學操作（附快捷鍵）" class="headerlink" title="三、五個必學操作（附快捷鍵）"></a>三、五個必學操作（附快捷鍵）</h2><p>以下操作構成日常使用的 95%，建議每項各實際演練三次：</p>
+<h3 id="3-1-新增筆記：Cmd-Ctrl-N"><a href="#3-1-新增筆記：Cmd-Ctrl-N" class="headerlink" title="3-1 新增筆記：Cmd/Ctrl + N"></a>3-1 新增筆記：<code>Cmd/Ctrl + N</code></h3><p>按下後直接輸入標題（標題即檔名）。練習：建立一則「測試筆記」。</p>
+<h3 id="3-2-建立連結：輸入"><a href="#3-2-建立連結：輸入" class="headerlink" title="3-2 建立連結：輸入 [["></a>3-2 建立連結：輸入 <code>[[</code></h3><p>在筆記內文輸入 <code>[[</code>，會跳出既有筆記的選單，繼續打字可以過濾，Enter 完成連結。<strong>如果目標筆記不存在，連結會顯示為較淡的顏色（未建立連結），點下去就會自動建立那則筆記</strong>——這是 Obsidian 最重要的設計：先連結、後補內容，完全符合法律研究「先標記爭點、之後再深入」的節奏。</p>
+<p>練習：在測試筆記裡輸入 <code>[[民法第184條]]</code>，然後點擊它。</p>
+<h3 id="3-3-快速切換：Cmd-Ctrl-O"><a href="#3-3-快速切換：Cmd-Ctrl-O" class="headerlink" title="3-3 快速切換：Cmd/Ctrl + O"></a>3-3 快速切換：<code>Cmd/Ctrl + O</code></h3><p>Obsidian 版的「傳喚筆記」。按下後輸入筆記名稱的任何片段（例如判決字號的一部分），Enter 直達。筆記累積到幾百則之後，會越來越少靠資料夾找檔案，多半靠這一招。</p>
+<h3 id="3-4-全庫搜尋：Cmd-Ctrl-Shift-F"><a href="#3-4-全庫搜尋：Cmd-Ctrl-Shift-F" class="headerlink" title="3-4 全庫搜尋：Cmd/Ctrl + Shift + F"></a>3-4 全庫搜尋：<code>Cmd/Ctrl + Shift + F</code></h3><p>搜尋所有筆記的全文。支援進階語法：<code>&quot;完整詞組&quot;</code>（精確比對）、<code>path:判決</code>（限定資料夾）、<code>tag:#營建工程</code>（限定標籤）。</p>
+<h3 id="3-5-指令面板：Cmd-Ctrl-P"><a href="#3-5-指令面板：Cmd-Ctrl-P" class="headerlink" title="3-5 指令面板：Cmd/Ctrl + P"></a>3-5 指令面板：<code>Cmd/Ctrl + P</code></h3><p>忘記任何功能怎麼按的時候，按這個，輸入功能名稱的關鍵字（中英皆可），所有功能都找得到。這是「不用背快捷鍵」的萬用鑰匙。</p>
+<h2 id="四、四個重要觀念"><a href="#四、四個重要觀念" class="headerlink" title="四、四個重要觀念"></a>四、四個重要觀念</h2><h3 id="4-1-編輯與閱讀模式"><a href="#4-1-編輯與閱讀模式" class="headerlink" title="4-1 編輯與閱讀模式"></a>4-1 編輯與閱讀模式</h3><p>Obsidian 預設「即時預覽」（Live Preview）：邊打邊渲染，游標移開後 <code>**粗體**</code> 就顯示成<strong>粗體</strong>。右上角的書本／鉛筆圖示（或 <code>Cmd/Ctrl + E</code>）可切換純閱讀模式——開會時把筆記切成閱讀模式投影，就是一份乾淨的文件。</p>
+<h3 id="4-2-標籤（Tag）與屬性（Properties）"><a href="#4-2-標籤（Tag）與屬性（Properties）" class="headerlink" title="4-2 標籤（Tag）與屬性（Properties）"></a>4-2 標籤（Tag）與屬性（Properties）</h3><ul>
+<li><strong>標籤</strong>：內文任何地方輸入 <code>#勞動法</code>、<code>#待辦</code> 即成標籤，點擊可列出所有同標籤筆記。適合標「狀態」與「橫向分類」。（注意：標籤不能包含空格與句點，違規的標籤會被 Obsidian 畫上刪除線——遇到時改用連字號即可，例如 <code>Claude-Code</code>，詳見下一篇。）</li>
+<li><strong>屬性（Properties／frontmatter）</strong>：筆記最上方的結構化欄位（日期、法院、案由……），按 <code>Cmd/Ctrl + ;</code> 新增。它是筆記的「戶籍資料」，AI 整理筆記時也會讀寫這個區域。</li>
+</ul>
+<p>標籤、屬性、資料夾、連結四者的分工，在 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 有完整討論；初期只要記得：<strong>連結最重要，其他都是輔助。</strong></p>
+<h3 id="4-3-反向連結與「未連結的提及」"><a href="#4-3-反向連結與「未連結的提及」" class="headerlink" title="4-3 反向連結與「未連結的提及」"></a>4-3 反向連結與「未連結的提及」</h3><p>右側面板的「反向連結」除了列出「哪些筆記連到本頁」，還藏著一個很實用的區塊——<strong>未連結的提及（Unlinked mentions）</strong>：內文提到了這則筆記的名稱、卻還沒加上 <code>[[ ]]</code> 的地方，全部會被列在這裡，按一下旁邊的「連結」按鈕就升級為正式連結。律師的典型場景：先前的分析筆記提過某個判決字號，後來才為那則判決建立筆記——打開判決筆記看一眼「未連結的提及」，散落各處的舊提及一鍵補鏈。知識網就是這樣慢慢織密的。</p>
+<h3 id="4-4-知識圖譜（Graph-View）"><a href="#4-4-知識圖譜（Graph-View）" class="headerlink" title="4-4 知識圖譜（Graph View）"></a>4-4 知識圖譜（Graph View）</h3><p>左側功能列的星狀圖示。它把所有筆記畫成點、連結畫成線。初期筆記少，圖很空，這正常——它的價值在三個月後：你會親眼看到自己的專業領域長成一張網，哪些主題厚、哪些主題孤立，一目瞭然。筆記多了之後，可以用圖譜的搜尋過濾聚焦——例如 <code>path:判決</code> 只看判決資料夾、<code>-path:範本</code> 把範本資料夾排除在圖外，一張圖只呈現你此刻關心的那張網。</p>
+<h2 id="五、給律師的第一天練習清單"><a href="#五、給律師的第一天練習清單" class="headerlink" title="五、給律師的第一天練習清單"></a>五、給律師的第一天練習清單</h2><p>按順序做完，今天就算入門：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 建立 Vault（純本機路徑）</li>
+<li><input disabled="" type="checkbox"> 到「設定 → 檔案與連結」完成連結四項初始設定（見 1-3）</li>
+<li><input disabled="" type="checkbox"> 建立三則筆記：「營建工程」「工期展延」「最高法院判決測試」（或換成你的領域）——這幾則正是全系列主案例 2026-015 案的研究起點</li>
+<li><input disabled="" type="checkbox"> 在「營建工程」筆記裡用 <code>[[</code> 連結另外兩則</li>
+<li><input disabled="" type="checkbox"> 給三則筆記都加上一個 <code>#測試</code> 標籤</li>
+<li><input disabled="" type="checkbox"> 用 <code>Cmd/Ctrl + O</code> 在三則筆記間跳轉</li>
+<li><input disabled="" type="checkbox"> 用 <code>Cmd/Ctrl + Shift + F</code> 搜尋「工期」</li>
+<li><input disabled="" type="checkbox"> 打開知識圖譜，看到三個點連成一線</li>
+<li><input disabled="" type="checkbox"> 從司法院裁判書系統複製一則公開判決，貼成第四則筆記，檔名用判決字號</li>
+</ul>
+<p>做完第 8 步你會發現：貼上的判決是一整片沒有格式的文字。這就是下一篇的主題——用 Markdown 十分鐘學會讓文件有結構。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>核心事實只有一個：Vault 就是普通資料夾。</li>
+<li>五個必學操作：新增（<code>Cmd/Ctrl+N</code>）、連結（<code>[[</code>）、切換（<code>Cmd/Ctrl+O</code>）、搜尋（<code>Cmd/Ctrl+Shift+F</code>）、指令面板（<code>Cmd/Ctrl+P</code>）。</li>
+<li>存放位置是資安決定：從純本機開始，讀完資安篇再考慮同步。</li>
+<li>連結是核心機制：先連結、後補內容。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://obsidian.md/">Obsidian 官方網站（下載）</a></li>
+<li><a target="_blank" rel="noopener" href="https://obsidian.md/blog/free-for-work/">Obsidian 官方部落格：Obsidian is now free for work（商用免費公告，2025-02）</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.obsidian.md/links">Obsidian 官方說明：內部連結（Links）</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/why-obsidian/">為什麼是 Obsidian｜律師的第二大腦</a><br>➡️ 下一篇：<a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Obsidian/" rel="tag"># Obsidian</a>
+              <a href="/tags/%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/" rel="tag"># 入門教學</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/markdown-basics/" rel="prev" title="03 Markdown 入門｜律師夠用的排版語法">
+                  <i class="fa fa-angle-left"></i> 03 Markdown 入門｜律師夠用的排版語法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/why-obsidian/" rel="next" title="01 為什麼是 Obsidian｜律師的第二大腦">
+                  01 為什麼是 Obsidian｜律師的第二大腦 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div><div class="cc-license">
+  <a class="cc-opacity" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow" title="Creative Commons BY-NC-SA 4.0">
+    <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-nc"></i><i class="fab fa-creative-commons-sa"></i>
+  </a>
+  本網站所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow">BY-NC-SA 許可協議</a>。轉載請註明出處
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+</body>
+</html>

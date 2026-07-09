@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex">
+<meta property="og:url" content="https://han0302-cyber.github.io/posts/terminal-ai-agent/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-07T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T10:01:06.135Z">
+<meta property="article:author" content="Ting-Han Lin">
+<meta property="article:tag" content="AI-Agent">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="Claude-Code">
+<meta property="article:tag" content="Codex">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/posts/terminal-ai-agent/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/posts/terminal-ai-agent/","path":"posts/terminal-ai-agent/","title":"05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%9E%E3%80%8C%E6%9C%83%E8%81%8A%E5%A4%A9%E3%80%8D%E5%88%B0%E3%80%8C%E6%9C%83%E5%81%9A%E4%BA%8B%E3%80%8D"><span class="nav-number">1.</span> <span class="nav-text">一、從「會聊天」到「會做事」</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%82%BA%E4%BB%80%E9%BA%BC%E6%98%AF%E3%80%8C%E7%B5%82%E7%AB%AF%E6%A9%9F%E3%80%8D%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、為什麼是「終端機」？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%A9%E5%A4%A7%E5%B7%A5%E5%85%B7%E9%80%9F%E8%A6%BD"><span class="nav-number">3.</span> <span class="nav-text">三、兩大工具速覽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Claude-Code%EF%BC%88Anthropic%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">Claude Code（Anthropic）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codex%EF%BC%88OpenAI%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">Codex（OpenAI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%89%88%E8%88%87%E6%A1%8C%E9%9D%A2%E7%89%88%EF%BC%9A%E5%90%8C%E4%B8%80%E9%A1%86%E5%BC%95%E6%93%8E%E3%80%81%E5%85%A9%E7%A8%AE%E4%BB%8B%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">終端機版與桌面版：同一顆引擎、兩種介面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E5%A0%B4%E5%8A%A0%E6%98%A0%EF%BC%9AClaude-Cowork%E2%80%94%E2%80%94%E4%B8%8D%E6%83%B3%E7%A2%B0%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9A%84%E9%81%B8%E9%A0%85"><span class="nav-number">3.4.</span> <span class="nav-text">同場加映：Claude Cowork——不想碰終端機的選項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%95%B6-Agent-%E9%81%87%E4%B8%8A-Obsidian%EF%BC%9A%E4%B8%80%E5%8A%A0%E4%B8%80%E5%A4%A7%E6%96%BC%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">四、當 Agent 遇上 Obsidian：一加一大於二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8D%E9%9C%80%E8%A6%81%E6%9C%83%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9A%E4%BE%86%E8%87%AA%E5%AF%A6%E9%9A%9B%E6%95%B8%E6%93%9A%E7%9A%84%E8%A7%80%E5%AF%9F"><span class="nav-number">5.</span> <span class="nav-text">五、不需要會寫程式：來自實際數據的觀察</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%94%BE%E7%9C%BC%E7%94%9F%E6%85%8B%E7%B3%BB%EF%BC%9AOpenClaw%E3%80%81Hermes-%E8%88%87%E6%9C%AC%E7%B3%BB%E5%88%97%E8%B7%AF%E7%B7%9A%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="nav-number">6.</span> <span class="nav-text">六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B0%8F%E7%B5%90"><span class="nav-number">7.</span> <span class="nav-text">七、小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
+      src="/images/profile/avatar.png">
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
+  <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/posts/terminal-ai-agent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile/avatar.png">
+      <meta itemprop="name" content="Ting-Han Lin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 10:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T10:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、從「會聊天」到「會做事」"><a href="#一、從「會聊天」到「會做事」" class="headerlink" title="一、從「會聊天」到「會做事」"></a>一、從「會聊天」到「會做事」</h2><p>假設你要把二十份判決做成一張爭點比較表。在 ChatGPT 這類聊天框裡，這件事意味著：複製貼上二十次、每貼一份等它讀完，最後再把結果一段一段搬回 Word。因為這種模式有幾個天生的限制——它看不到你電腦裡的檔案；它一次只能處理你貼給它的東西；它給你答案之後，存檔、整理、歸檔還是你自己來。</p>
+<p>一個貼切的比喻：<strong>Chatbot 像一位學識淵博、但手腳被綁住的顧問</strong>。什麼都懂，但什麼都不能幫你動手做。</p>
+<p>近年 AI 已進入 <strong>Agent（代理）時代</strong>。Agent 與 Chatbot 的差別，不在「更聰明」，而在「能行動」：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Chatbot（聊天機器人）</th>
+<th>AI Agent（智慧代理）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>互動方式</td>
+<td>你問一句、它答一句</td>
+<td>你交辦一個「任務」</td>
+</tr>
+<tr>
+<td>讀取檔案</td>
+<td>要你複製貼上</td>
+<td>自己打開資料夾、逐份讀取</td>
+</tr>
+<tr>
+<td>產出</td>
+<td>一段文字，要自己複製出來</td>
+<td>直接建立、修改檔案</td>
+</tr>
+<tr>
+<td>多步驟工作</td>
+<td>每一步都要你推</td>
+<td>自己規劃步驟、執行、檢查、交付</td>
+</tr>
+<tr>
+<td>例子</td>
+<td>「這份判決在講什麼？」</td>
+<td>「把資料夾裡 20 份判決做成爭點比較表，存成新筆記」</td>
+</tr>
+</tbody></table>
+<h2 id="二、為什麼是「終端機」？"><a href="#二、為什麼是「終端機」？" class="headerlink" title="二、為什麼是「終端機」？"></a>二、為什麼是「終端機」？</h2><p>Claude Code（Anthropic）與 Codex（OpenAI）這類工具，最初都以 <strong>CLI（Command Line Interface，指令列介面）</strong> 的形式問世，在<strong>終端機（Terminal）</strong> 裡運作——就是那個黑底白字、要打指令的畫面（兩者如今也都推出桌面版，見第三節的介面比較）。黑底白字的畫面確實容易讓人卻步，先說清楚三件事：</p>
+<p><strong>第一，你不需要會指令。</strong> 打開之後，你跟它的互動就是「用中文打字交辦工作」，跟用 ChatGPT 沒有兩樣。差別只是它在你的電腦裡，看得到你的檔案。</p>
+<p><strong>第二，終端機反而是 Agent 最自然的家。</strong> Agent 要做事，就需要讀寫檔案、執行工具；終端機正是作業系統開放檔案讀寫與工具執行能力的介面。</p>
+<p><strong>第三，它每一步都會先問你。</strong> Claude Code 預設在修改檔案、執行指令前徵求你的同意，你隨時看得到它想做什麼、也隨時可以喊停。主導權在你手上。</p>
+<h2 id="三、兩大工具速覽"><a href="#三、兩大工具速覽" class="headerlink" title="三、兩大工具速覽"></a>三、兩大工具速覽</h2><h3 id="Claude-Code（Anthropic）"><a href="#Claude-Code（Anthropic）" class="headerlink" title="Claude Code（Anthropic）"></a>Claude Code（Anthropic）</h3><ul>
+<li>在終端機輸入 <code>claude</code> 啟動，用自然語言（中文完全沒問題）交辦任務。</li>
+<li>特別會「讀懂一整個資料夾」：把它打開在你的 Obsidian Vault 上，它就能通盤理解你的知識庫結構。</li>
+<li>支援 <strong>CLAUDE.md</strong>（寫給 AI 的到職須知，見 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a>）、<strong>Skills</strong>（可重複使用的 SOP，見 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a>）與 <strong>MCP</strong>（連接外部資料庫，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）。</li>
+<li>需要 Claude 付費方案或 API 金鑰。</li>
+</ul>
+<h3 id="Codex（OpenAI）"><a href="#Codex（OpenAI）" class="headerlink" title="Codex（OpenAI）"></a>Codex（OpenAI）</h3><ul>
+<li>OpenAI 推出的對應工具，在終端機輸入 <code>codex</code> 啟動。</li>
+<li>概念幾乎相同：讀寫檔案、執行任務、自然語言交辦。</li>
+<li>對應 CLAUDE.md 的機制叫 <strong>AGENTS.md</strong>，作用一樣：放一份說明檔在資料夾裡，AI 會自動遵守。</li>
+<li>需要 ChatGPT 付費方案或 API 金鑰。</li>
+</ul>
+<h3 id="終端機版與桌面版：同一顆引擎、兩種介面"><a href="#終端機版與桌面版：同一顆引擎、兩種介面" class="headerlink" title="終端機版與桌面版：同一顆引擎、兩種介面"></a>終端機版與桌面版：同一顆引擎、兩種介面</h3><p>Claude Code 與 Codex 都不只有終端機一種型態，目前各自提供兩種主要介面：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>終端機版（CLI）</th>
+<th>桌面版（Desktop app）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude Code</strong></td>
+<td>在終端機輸入 <code>claude</code> 啟動</td>
+<td>Mac／Windows 應用程式；任務進度與檔案變更用視窗呈現、授權用點選，並可同時管理多個工作階段</td>
+</tr>
+<tr>
+<td><strong>Codex</strong></td>
+<td>在終端機輸入 <code>codex</code> 啟動</td>
+<td>桌面應用程式，同樣改以視窗操作</td>
+</tr>
+</tbody></table>
+<p>兩種版本用的是<strong>同一顆 Agent 引擎、同一個訂閱帳號、同一套規則檔</strong>（CLAUDE.md／AGENTS.md），差別只在操作介面：終端機版功能最完整；桌面版把「看進度、按同意、切換任務」變成視窗點選，適合不想開終端機的人。Claude Code 另有網頁版（claude.ai&#x2F;code）與 IDE 擴充功能，屬於開發者場景，本系列不展開說明。<strong>本系列的操作示範一律以終端機版為基準</strong>；改用桌面版時，提示詞與觀念完全相同。</p>
+<p>一個容易混淆的點：<strong>Claude Code 桌面版與下一段的 Cowork 是兩個不同的產品</strong>。桌面版是完整的 Claude Code，只是操作介面不同，規則檔、Skills、MCP 全部照用；Cowork 則是 Claude 桌面應用程式內建、面向一般工作者的代理功能，設計成「選資料夾、交辦、取件」的簡化流程。</p>
+<h3 id="同場加映：Claude-Cowork——不想碰終端機的選項"><a href="#同場加映：Claude-Cowork——不想碰終端機的選項" class="headerlink" title="同場加映：Claude Cowork——不想碰終端機的選項"></a>同場加映：Claude Cowork——不想碰終端機的選項</h3><p>如果你偏好圖形介面的操作方式，Anthropic 也準備了一個容易上手的選項：2026 年 1 月推出的 <strong>Claude Cowork</strong>，官方定位非常傳神——「<strong>Claude Code without the code</strong>」。同一顆 Agent 引擎（讀寫檔案、多步驟任務、自主規劃執行），包進 Claude 桌面應用程式（macOS &#x2F; Windows）熟悉的聊天視窗，2026 年 7 月起並陸續擴展到網頁版與行動版。用法只有一句話：<strong>選一個資料夾，然後用中文說話</strong>。沒有指令、沒有黑畫面，它就能讀取、整理、產出檔案——請它把「請款」資料夾裡的發票整理成 Excel、把二十份判決做成比較表、把英文契約翻成中日對照版，都是它的守備範圍。訂閱與 Claude Code 共用同一個付費方案（免費帳號不可用）。</p>
+<p>同一顆引擎、兩種包裝，怎麼選？關鍵在工作型態：<strong>Cowork 適合「一次性交付」的檔案任務；Obsidian ＋ Claude Code 適合「持續共筆」的知識工作。</strong> Cowork 的互動本質是「交辦→交付」：每個工作階段指定一個資料夾、存取範圍以該資料夾為限，檔案做好後你要到 Finder／檔案總管找出來、再用其他軟體打開來改。而本系列的主場景——知識庫的日常維護——是「人改一段、AI 改一段」的來回節奏：左邊 Obsidian 開著筆記、右邊終端機下指令，AI 改完，變動立刻呈現眼前，你隨時接手編輯再丟回去加工；中途要用其他資料夾的資料，貼個路徑就能延伸。這是本系列以 Claude Code 為主線的原因。</p>
+<p>給律師的建議路線：</p>
+<ul>
+<li><strong>想從圖形介面開始</strong>：從 Cowork 起步——它是體驗「AI 會做事」最容易上手的入口；要向所內同仁推廣 Agent，它也是合適的起點。</li>
+<li><strong>要走本系列完整路線（CLAUDE.md、Skills、MCP）</strong>：主力用 Claude Code，這些進階機制在終端機環境最完整。</li>
+<li><strong>兩者並用完全沒問題</strong>：同一個訂閱帳號，日常文件雜務丟 Cowork，知識庫編纂與開發工作用 Claude Code。</li>
+<li>另一條「圖形介面用 Agent」的路，是 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 介紹過的社群外掛 <strong>Claudian</strong>：把 Claude Code 直接嵌進 Obsidian 介面，與 Cowork 異曲同工。</li>
+</ul>
+<blockquote>
+<p><strong>⚠️ Cowork 的資安預告</strong><br>Cowork 的權限設計比 Claude Code 流暢（較少逐步確認），這是雙面刃：好用，但也代表你<strong>指定資料夾前要先想清楚裡面有什麼</strong>——給它讀的資料夾，內容視同交給雲端模型處理；客戶機密資料必須先確認方案等級（商用方案與個人 Pro 的條款不同）。第一次使用，拿公開資料或去識別化資料練習。詳見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>。</p>
+</blockquote>
+<p><strong>本系列以 Claude Code 為主要示範工具</strong>（生態較完整，且 MCP、Skills 等機制對法律工作流的支援較成熟），但所有觀念——Vault 設計、到職須知、編纂心法——在 Codex 上同樣適用，只要把 <code>CLAUDE.md</code> 換成 <code>AGENTS.md</code> 即可。學觀念，不要綁工具。</p>
+<p>更根本的保障是：把規則（CLAUDE.md）、技能（Skills）、知識（Vault 筆記）通通存成自己資料夾裡的純文字檔——<strong>真正累積下來的資產，是這些檔案，而不是任何一套特定工具</strong>；哪天要更換 Agent，整包資料夾搬走即可。</p>
+<h2 id="四、當-Agent-遇上-Obsidian：一加一大於二"><a href="#四、當-Agent-遇上-Obsidian：一加一大於二" class="headerlink" title="四、當 Agent 遇上 Obsidian：一加一大於二"></a>四、當 Agent 遇上 Obsidian：一加一大於二</h2><p>單獨看，Obsidian 是一個「需要人工整理」的筆記軟體；單獨看，Claude Code 是一個「給工程師寫程式」的工具。但把兩者放在一起：</p>
+<blockquote>
+<p><strong>Obsidian Vault 就是一個資料夾，Claude Code 最擅長的就是讀寫資料夾。</strong></p>
+</blockquote>
+<p>於是你得到一個這樣的組合：</p>
+<ol>
+<li><strong>你負責丟材料</strong>：判決、法規、論文筆記、研究心得，丟進 Vault。</li>
+<li><strong>AI 負責編纂</strong>：讀取新材料、寫成結構化筆記、補上 wikilink、更新主題頁（MOC）、標出見解衝突。</li>
+<li><strong>Obsidian 負責呈現</strong>：漂亮的閱讀介面、雙向連結、知識圖譜，隨時檢索。</li>
+</ol>
+<p>實際的畫面是這樣的——以主案例 2026-015 的研究主題「工期展延」為例，你在終端機打一句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">請讀取「inbox」資料夾裡我今天丟進去的三份判決筆記，</span><br><span class="line">每一份整理出：判決字號、案由、爭點、法院見解，</span><br><span class="line">然後在「工期展延」主題頁底下更新實務見解清單，</span><br><span class="line">相關筆記之間用 [[wikilink]] 連結。</span><br></pre></td></tr></table></figure>
+
+<p>然後你就看著它自己打開資料夾、一份一份讀、動手寫筆記、補連結。你從頭到尾只打了這一段中文。</p>
+<blockquote>
+<p><strong>💡 提示詞的四要素</strong><br>跟任何 AI 溝通（不只 Agent），把四樣東西講清楚，產出品質立刻不同——<strong>角色</strong>（「你是一位專精營建工程爭議的資深律師」）、<strong>任務</strong>（動詞明確：分析、比較、翻譯）、<strong>脈絡</strong>（案件背景、你在意什麼——律師最常省略、卻最關鍵的一塊）、<strong>格式</strong>（要表格、條列，還是限制字數）。上面那段交辦任務的中文，正是四要素的實作。本系列之後所有的提示詞範本，都可以用這四個要素來檢視與修改。</p>
+<p>在 Agent 環境裡，「角色」這一項往往可以省下來：<a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> 會教你把身分、專業領域與行文要求一次寫進 CLAUDE.md，AI 每次啟動都自動帶入，不必每則提示詞重講。之後真正需要逐次交代的，主要是任務、脈絡與格式；只有臨時要換視角（例如「改從對造律師的立場檢視這份契約」）時，才需要在提示詞裡另外指定角色。</p>
+</blockquote>
+<h2 id="五、不需要會寫程式：來自實際數據的觀察"><a href="#五、不需要會寫程式：來自實際數據的觀察" class="headerlink" title="五、不需要會寫程式：來自實際數據的觀察"></a>五、不需要會寫程式：來自實際數據的觀察</h2><p>Anthropic 曾分析約四十萬次 Claude Code 的實際使用，幾個發現對律師特別有參考價值：</p>
+<ol>
+<li><strong>成功率隨「領域專業度」提升</strong>，而不是隨「程式能力」提升。你對法律問題理解得越深，AI 產出的品質越高。</li>
+<li>分工非常固定：<strong>人決定「做什麼」，AI 決定「怎麼做」。</strong> 這與資深律師和助理的分工相同。</li>
+<li>非軟體背景的使用者成長迅速，法律工作者也在其中。</li>
+</ol>
+<p>換句話說：<strong>你的法律專業，才是把這套工具用好的關鍵。</strong> 判斷「哪個爭點重要」「哪則判決有代表性」「這段分析對不對」——這些判斷 AI 做不到。</p>
+<p>這個轉變有個名字，Anthropic 主管稱之為 <strong>Vibe Working</strong>：工作者不再逐字逐句親手操作，而是<strong>描述想要的結果，AI 完成大部分執行細節，人負責品質把關</strong>。</p>
+<p>對律師的意義：大量重複性的文字勞動，未來由 AI 分擔的比重會越來越高；律師的價值將更集中於四件 AI 做不到的事——<strong>判斷力、經驗、客戶關係、策略思維</strong>。角色從「執行者」變成「品質守門人」，這個轉變貫穿本系列每一個工作流的設計（人在頭尾、AI 在中間），到 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 會做最後的收束。</p>
+<h2 id="六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異"><a href="#六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異" class="headerlink" title="六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異"></a>六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</h2><p>2026 年的個人 AI Agent 已經是一個熱鬧的生態系。除了 Claude Code &#x2F; Codex，你大概也聽過兩個廣受矚目的開源專案：<strong>OpenClaw</strong>（Peter Steinberger 開發）與 <strong>Hermes Agent</strong>（Nous Research 開發）——兩者概念相近，都是自架的「常駐通訊助理」：把 AI 模型接上 WhatsApp、Telegram 等通訊軟體，24 小時待命，能在你的電腦或伺服器上執行指令、讀寫檔案、收發郵件。跟「Obsidian × Claude Code」路線相比，差異在三個層面：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>OpenClaw &#x2F; Hermes</strong></th>
+<th><strong>Obsidian × Claude Code（本系列）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>型態</td>
+<td><strong>常駐通訊助理</strong>：架在伺服器上 24 小時待命，用傳訊息的方式差遣</td>
+<td><strong>檔案知識庫協作</strong>：要用時打開，在你的筆記與卷宗上工作</td>
+</tr>
+<tr>
+<td>工作的中心</td>
+<td>「對話與任務」——幫你跑腿、查資料、發訊息</td>
+<td>「檔案與知識」——編纂筆記、整理判決、起草文書，成果沉澱為知識庫</td>
+</tr>
+<tr>
+<td>門檻與風險</td>
+<td>需要自架與維運；<strong>把終端機、瀏覽器、信箱的權限交給一個常駐機器人</strong>，權限範圍大、出事影響也大</td>
+<td>本機執行、逐步授權、每個動作可審查；工作範圍限縮在你指定的資料夾</td>
+</tr>
+</tbody></table>
+<p>有趣的是，OpenClaw 與 Hermes 的「記憶」與「技能」也都用純文字 Markdown 檔儲存——這印證了本系列的核心押注：<strong>純文字檔案是 AI 時代知識的通用貨幣。</strong></p>
+<p>本系列不選它們作主線，主要是<strong>工作型態不合</strong>：這類常駐助理以聊天訊息為互動中心，擅長「交辦一件事、回報一個結果」的零散任務，但產出散落在對話串裡，不容易沉澱成有結構的知識庫。而本系列要建立的是「材料進 Vault → AI 編纂 → 成果回流」的循環——判決筆記、爭點 WIKI、書狀底稿，工作與成果都以檔案為中心，Obsidian × Claude Code 直接在這些檔案上工作，每一次產出都留在知識庫裡繼續累積。此外，自架與維運本身是一門功課，常駐機器人接上通訊軟體與信箱後的權限管理，也是需要另行評估的課題。行有餘力，再嘗試這些新興工具也不遲。（以上是就律師工作型態所做的適用性評估，並非對這兩個專案本身的評價。）</p>
+<h2 id="七、小結"><a href="#七、小結" class="headerlink" title="七、小結"></a>七、小結</h2><ul>
+<li>Agent 與 Chatbot 的本質差異：能不能「動手做事」。</li>
+<li>終端機不可怕：你用中文交辦，它徵求同意後執行，主導權在你。</li>
+<li>兩套工具都有終端機版（CLI）與桌面版，引擎與帳號相同；本系列示範以終端機版為基準。</li>
+<li>Claude Code &#x2F; Codex + Obsidian &#x3D; AI 管理員 + 地端知識庫。</li>
+<li>偏好圖形介面？Claude Cowork 是「選資料夾＋說中文」的入門起點；但「持續共筆」的知識庫工作，主線仍是 Claude Code。</li>
+<li>下一篇就實際動手，把 Claude Code 裝進知識庫。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/overview">Claude Code 官方文件：Overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://claude.com/cowork">Claude Cowork 官方頁面</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/research/claude-code-expertise">Anthropic 官方研究：How experts use Claude Code（約四十萬次使用分析）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/codex/cli">OpenAI Codex CLI 官方文件</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a><br>➡️ 下一篇：<a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Claude-Code/" rel="tag"># Claude-Code</a>
+              <a href="/tags/Codex/" rel="tag"># Codex</a>
+              <a href="/tags/AI-Agent/" rel="tag"># AI-Agent</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/install-claude-code/" rel="prev" title="06 安裝 Claude Code｜讓 AI 進入你的知識庫">
+                  <i class="fa fa-angle-left"></i> 06 安裝 Claude Code｜讓 AI 進入你的知識庫
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/obsidian-plugins-canvas/" rel="next" title="04 Obsidian 進階｜外掛與 Canvas 白板">
+                  04 Obsidian 進階｜外掛與 Canvas 白板 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div><div class="cc-license">
+  <a class="cc-opacity" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow" title="Creative Commons BY-NC-SA 4.0">
+    <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-nc"></i><i class="fab fa-creative-commons-sa"></i>
+  </a>
+  本網站所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow">BY-NC-SA 許可協議</a>。轉載請註明出處
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+</body>
+</html>

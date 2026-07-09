@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"han0302-cyber.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點律師的專業資訊分兩大塊——「手頭上的案件」與「專精的研究領域」。案件用律師版 PARA（P 改寫成 Matter）管生滅，研究用 Zettelkasten＋MOC 管累積；兩軌在「知識萃取」交會。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="08 檔案整理方法論｜案件與研究領域的雙軌知識系統">
+<meta property="og:url" content="https://han0302-cyber.github.io/posts/file-organization-methodology/index.html">
+<meta property="og:site_name" content="律師的AI筆記">
+<meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點律師的專業資訊分兩大塊——「手頭上的案件」與「專精的研究領域」。案件用律師版 PARA（P 改寫成 Matter）管生滅，研究用 Zettelkasten＋MOC 管累積；兩軌在「知識萃取」交會。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-06T23:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T10:01:06.130Z">
+<meta property="article:author" content="Ting-Han Lin">
+<meta property="article:tag" content="AI課程">
+<meta property="article:tag" content="Obsidian">
+<meta property="article:tag" content="PARA">
+<meta property="article:tag" content="Zettelkasten">
+<meta property="article:tag" content="案件管理">
+<meta property="article:tag" content="知識管理">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://han0302-cyber.github.io/posts/file-organization-methodology/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://han0302-cyber.github.io/posts/file-organization-methodology/","path":"posts/file-organization-methodology/","title":"08 檔案整理方法論｜案件與研究領域的雙軌知識系統"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>08 檔案整理方法論｜案件與研究領域的雙軌知識系統 | 律師的AI筆記</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">律師的AI筆記</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">法律 x AI x 自動化的實踐筆記</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-文章"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%83%B3%E6%B8%85%E6%A5%9A%EF%BC%9A%E5%BE%8B%E5%B8%AB%E5%88%B0%E5%BA%95%E5%9C%A8%E7%AE%A1%E7%90%86%E4%BB%80%E9%BA%BC"><span class="nav-number">1.</span> <span class="nav-text">一、先想清楚：律師到底在管理什麼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81PARA%EF%BC%9A%E6%95%B4%E5%80%8B-Vault-%E7%9A%84%E9%A0%82%E5%B1%A4%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">二、PARA：整個 Vault 的頂層框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BB%B6%E8%BB%8C%EF%BC%9A%E5%8D%B7%E5%AE%97%E5%BC%8F%E8%B3%87%E6%96%99%E5%A4%BE%EF%BC%8B%E6%A8%99%E6%BA%96%E5%85%A7%E9%83%A8%E7%B5%90%E6%A7%8B"><span class="nav-number">3.</span> <span class="nav-text">三、案件軌：卷宗式資料夾＋標準內部結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%A0%94%E7%A9%B6%E8%BB%8C%EF%BC%9AZettelkasten-%E7%9A%84%E3%80%8C%E4%B8%80%E7%88%AD%E9%BB%9E%E4%B8%80%E7%AD%86%E8%A8%98%E3%80%8D%EF%BC%8BMOC-%E4%B8%BB%E9%A1%8C%E5%9C%B0%E5%9C%96"><span class="nav-number">4.</span> <span class="nav-text">四、研究軌：Zettelkasten 的「一爭點一筆記」＋MOC 主題地圖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%85%A9%E8%BB%8C%E7%9A%84%E4%BA%A4%E6%9C%83%EF%BC%9A%E7%9F%A5%E8%AD%98%E8%90%83%E5%8F%96%E2%80%94%E2%80%94%E8%A4%87%E5%88%A9%E7%9A%84%E9%97%9C%E9%8D%B5"><span class="nav-number">5.</span> <span class="nav-text">五、兩軌的交會：知識萃取——複利的關鍵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC%E4%B8%89%E5%A1%8A%EF%BC%9A%E4%BA%8B%E5%8B%99%E6%89%80%E7%B6%93%E7%87%9F%E8%88%87%E8%A1%8C%E6%94%BF%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">六、第三塊：事務所經營與行政管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%AE%A2%E6%88%B6%E6%BA%9D%E9%80%9A%E7%9A%84%E6%94%B6%E7%B4%8D%EF%BC%9A%E6%9C%83%E8%AD%B0%E3%80%81%E9%80%9A%E8%A9%B1%E8%88%87-LINE-%E8%A8%8A%E6%81%AF"><span class="nav-number">7.</span> <span class="nav-text">七、客戶溝通的收納：會議、通話與 LINE 訊息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%95%B4%E9%AB%94%E6%9E%B6%E6%A7%8B%E9%95%B7%E9%80%99%E6%A8%A3"><span class="nav-number">8.</span> <span class="nav-text">八、整體架構長這樣</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%94%A8-AI-%E4%B8%80%E6%AC%A1%E6%90%AD%E5%A5%BD%E9%AA%A8%E6%9E%B6"><span class="nav-number">9.</span> <span class="nav-text">九、用 AI 一次搭好骨架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%B8%89%E5%80%8B%E9%95%B7%E6%9C%9F%E5%BF%83%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">十、三個長期心法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">11.</span> <span class="nav-text">小結</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ting-Han Lin"
+      src="/images/profile/avatar.png">
+  <p class="site-author-name" itemprop="name">Ting-Han Lin</p>
+  <div class="site-description" itemprop="description">有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://stellexlaw.com/" title="有澤法律事務所 → https:&#x2F;&#x2F;stellexlaw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-building fa-fw"></i>有澤法律事務所</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.threads.com/@han0302" title="Threads → https:&#x2F;&#x2F;www.threads.com&#x2F;@han0302" rel="noopener me" target="_blank"><i class="fa fa-at fa-fw"></i>Threads</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/han0302-cyber" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;han0302-cyber" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn" title="司法院裁判書閱讀助手 → https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;nigjaldhpljkcgedolepmhmifaplpadn" rel="noopener me" target="_blank"><i class="fab fa-chrome fa-fw"></i>司法院裁判書閱讀助手</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://han0302-cyber.github.io/posts/file-organization-methodology/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile/avatar.png">
+      <meta itemprop="name" content="Ting-Han Lin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="律師的AI筆記">
+      <meta itemprop="description" content="有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="08 檔案整理方法論｜案件與研究領域的雙軌知識系統 | 律師的AI筆記">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          08 檔案整理方法論｜案件與研究領域的雙軌知識系統
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2026-07-07 07:00:00" itemprop="dateCreated datePublished" datetime="2026-07-07T07:00:00+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-x-Obsidian-%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">AI x Obsidian 系列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>律師的專業資訊分兩大塊——「手頭上的案件」與「專精的研究領域」。案件用律師版 PARA（P 改寫成 <strong>M</strong>atter）管生滅，研究用 Zettelkasten＋MOC 管累積；兩軌在「知識萃取」交會。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、先想清楚：律師到底在管理什麼"><a href="#一、先想清楚：律師到底在管理什麼" class="headerlink" title="一、先想清楚：律師到底在管理什麼"></a>一、先想清楚：律師到底在管理什麼</h2><p>在挑選任何整理方法之前，先把對象看清楚。律師電腦裡的東西，本質上只有兩大類，而且性質完全相反：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>第一塊：手頭上的案件</strong></th>
+<th><strong>第二塊：專精的研究領域</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>例子</td>
+<td>承辦中的訴訟、非訟、顧問案；法務手上的專案與合約</td>
+<td>勞動法、個資法、公司法……你長期深耕的領域</td>
+</tr>
+<tr>
+<td>生命週期</td>
+<td><strong>有始有終</strong>：委任（分案）→ 進行 → 結案</td>
+<td><strong>沒有終點</strong>：執業多久，經營多久</td>
+</tr>
+<tr>
+<td>組織核心</td>
+<td>以「卷宗」為中心，按案件聚合</td>
+<td>以「主題／爭點」為中心，按知識聚合</td>
+</tr>
+<tr>
+<td>目標</td>
+<td>把這件事<strong>辦完、辦好</strong></td>
+<td>讓理解<strong>越疊越深</strong></td>
+</tr>
+<tr>
+<td>常見困境</td>
+<td>檔案散落、版本混亂、找不到那份筆錄</td>
+<td>研究過就忘、每次遇到同類爭點都重新查</td>
+</tr>
+</tbody></table>
+<p><strong>整理之所以難以持續，一個關鍵原因是拿同一套邏輯管這兩塊。</strong> 只用案件資料夾，研究成果就被埋在個案裡，結案即蒸發；只按主題整理，進行中的案件材料又會散得到處都是。</p>
+<p>（嚴格說還有第三塊——執業這門生意本身：請款帳務、行銷、所內制度等。其性質與研究領域相同，走同一軌即可，詳見第六節。）主結構是<strong>雙軌</strong>：案件一軌、研究一軌，各用適合的方法論，再設計兩軌之間的橋。以下依序介紹三套方法論，以及它們各自負責哪一軌。</p>
+<h2 id="二、PARA：整個-Vault-的頂層框架"><a href="#二、PARA：整個-Vault-的頂層框架" class="headerlink" title="二、PARA：整個 Vault 的頂層框架"></a>二、PARA：整個 Vault 的頂層框架</h2><p>PARA 是生產力專家 Tiago Forte 在《打造第二大腦》提出的分類法，四個字母代表四種「與行動的距離」。它的關鍵設計是：<strong>不按主題分類，按行動性分類。</strong> 轉譯成律師的語言：</p>
+<table>
+<thead>
+<tr>
+<th>資料夾</th>
+<th>原意</th>
+<th>律師的轉譯</th>
+<th>對應哪一軌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>M</strong>atters（案件）※原為 <strong>P</strong>rojects（專案）</td>
+<td>有明確完成日的工作</td>
+<td><strong>承辦中的案件</strong>、要交的文章、下個月的演講</td>
+<td>案件軌</td>
+</tr>
+<tr>
+<td><strong>A</strong>reas（領域）</td>
+<td>無終點的長期責任</td>
+<td><strong>執業／研究領域</strong>、事務所行政、進修學分</td>
+<td>研究軌</td>
+</tr>
+<tr>
+<td><strong>R</strong>esources（資源）</td>
+<td>未來可能有用的材料</td>
+<td>判決、法規筆記、文獻、講座資料</td>
+<td>研究軌的原料</td>
+</tr>
+<tr>
+<td><strong>A</strong>rchives（封存）</td>
+<td>不再活躍的東西</td>
+<td><strong>已結案件</strong>、辦完的演講</td>
+<td>案件軌的終點</td>
+</tr>
+</tbody></table>
+<p>第一個字母動了手腳：原版 PARA 的 P 是 Projects（專案），本系列把它改寫成 <strong>Matters</strong>——<strong>matter 正是英文法律實務對「一件委任案件」的標準用語</strong>，事務所的計費、卷宗編號、利益衝突檢核，都以 matter 為單位。對律師來說，「專案」是別人領域的管理術語，「案件」才是每天掛在嘴邊的工作單位；資料夾名稱與工作語言一致，你和 AI 都少一層翻譯。</p>
+<p>分類判準只有一個問題：「<strong>這個東西與當前行動的距離多近？</strong>」正在辦→Matters；長期經營→Areas；以後可能用→Resources；結束了→Archives。</p>
+<p>PARA 給法律工作帶來兩個立即的好處：</p>
+<ol>
+<li><strong>「結案」有了明確的家。</strong> 案件辦完，整個資料夾從 <code>10_MATTERS</code> 拖進 <code>40_ARCHIVE</code>，工作區永遠只剩「現在進行式」。這跟事務所紙本卷宗歸檔的習慣完全同構，零學習成本。</li>
+<li><strong>案件與知識分流。</strong> 個案卷證留在案件資料夾（機密、會封存）；研究成果進入 Areas &#x2F; Resources（去識別化、永久累積）。這正是雙軌的地基。</li>
+</ol>
+<h2 id="三、案件軌：卷宗式資料夾＋標準內部結構"><a href="#三、案件軌：卷宗式資料夾＋標準內部結構" class="headerlink" title="三、案件軌：卷宗式資料夾＋標準內部結構"></a>三、案件軌：卷宗式資料夾＋標準內部結構</h2><p>案件管理不需要花俏的方法論，需要的是<strong>每個案件長得一樣</strong>。建議 <code>10_MATTERS</code> 底下固定兩層——先當事人、再案件——每個案件資料夾採用固定的內部結構：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">10_MATTERS/</span><br><span class="line">└── 甲公司/                         ← 第一層：當事人</span><br><span class="line">    ├── 00_共通/                    ← 跨案件共用：登記資料、組織架構、聯絡窗口</span><br><span class="line">    └── 2026-015_工程款_甲v乙/       ← 第二層：案件（年度-流水號_案由）</span><br><span class="line">        ├── CLAUDE.md              ← 本案工作規則（見前篇）</span><br><span class="line">        ├── background.md          ← 穩定的案件背景，隨 CLAUDE.md 每次自動載入（見前篇）</span><br><span class="line">        ├── 00_案件總覽.md          ← 本案的儀表板：動態狀態，需要時查閱（見下）</span><br><span class="line">        ├── 01_請款資料/            ← 委任契約、報價函、待審閱工時、工時定稿版</span><br><span class="line">        ├── 02_我方書狀/            ← 我方書狀歷次版本（草稿與定稿）</span><br><span class="line">        ├── 03_對造書狀/            ← 對造書狀及其證物</span><br><span class="line">        ├── 04_法院文書/            ← 開庭通知、裁定、判決</span><br><span class="line">        ├── 05_電子筆錄/</span><br><span class="line">        ├── 06_當事人提供資料/       ← 客戶交付的契約、往來文件、事證</span><br><span class="line">        ├── 07_會議紀錄/            ← 會議、電話、LINE 溝通紀錄（見第七節）</span><br><span class="line">        ├── 08_開庭報告/            ← 開庭筆記與庭後報告</span><br><span class="line">        └── 09_法律研究/            ← 為本案做的法律研究（知識萃取的原料，見第五節）</span><br></pre></td></tr></table></figure>
+
+<p>幾個設計重點：</p>
+<p><strong>第一層先分當事人，再分案件。</strong> 一個當事人往往不只一件委任——訴訟進行中、常年顧問跑著、新案還在報價。若把案件直接攤在 <code>10_MATTERS</code> 底下，同一當事人的資料會散成好幾處；以當事人聚合，回顧委任歷史、檢索過往成果、進行利益衝突檢核，都在同一個地方。三條原則：</p>
+<ul>
+<li><strong>每個當事人只有一個資料夾</strong>，名稱用固定基準，不要一下全名、一下簡稱。</li>
+<li><strong>當事人資料夾底下只放案件</strong>，不散放檔案；唯一例外是跨案件共用的資料（公司登記、組織架構、聯絡窗口），收進 <code>00_共通/</code>。</li>
+<li>演講、投稿這類「有完成日但沒有當事人」的工作，用一個 <code>_內部</code> 資料夾當虛擬當事人收攏。</li>
+</ul>
+<p><strong>檔名編號採 Johnny.Decimal 精神。</strong> Johnny.Decimal 是另一套知名整理方法論，核心主張是「用固定的兩位數編號給資料夾排序，位置永遠可預期」。不必全套採用，只取其精髓：固定的兩位數編號讓每個案件資料夾<strong>順序永遠相同</strong>，你（和 AI）進到任何一個案件都不用重新適應。<strong>對 AI 尤其重要——結構可預期，AI 才能寫出可重複使用的工作流。</strong></p>
+<p><strong>這套結構的來歷與調整空間。</strong> <code>01</code>–<code>08</code> 的檔案層整合自實際運作中的事務所卷宗習慣——按文件的<strong>來源與類型</strong>分（我方／對造／法院／當事人；筆錄、會議、開庭報告），與紙本卷宗的分類直覺一致；<code>CLAUDE.md</code>、<code>background.md</code>、<code>00_案件總覽.md</code> 與 <code>09_法律研究/</code> 則是為 AI 協作與知識萃取補上的<strong>知識層</strong>——傳統卷宗沒有這幾件，但它們正是這套系統長期累積價值的地方。</p>
+<p><strong>這套結構建在哪裡？</strong> 分兩種情況：事務所有共用的案件文件庫（SharePoint、共用雲端硬碟）的，檔案層 <code>01</code>–<code>08</code> 建議建在<strong>案件文件庫</strong>——文件庫是全所共用的定稿區，結構統一的效益在那裡最大；個人這側的案件資料夾放知識層與自己的工作底稿，再掛一個文件庫捷徑把兩區並排（設定方式見下一篇）。沒有共用環境的，整套建在自己的案件資料夾即可——上圖畫的就是這種形態。</p>
+<p>顆粒度可依所內習慣與案件規模增減（小案可以合併幾個資料夾、大案可以在 01 底下再分工時與委任），鐵則只有兩條：</p>
+<ul>
+<li><strong>全所每個案件長得一樣</strong>——這比結構本身細不細重要得多。「一樣」指的是基本骨架與編號邏輯；依案件性質與個案複雜度，仍可以在這個基礎上增加或縮減資料夾（非訟案未必需要書狀與筆錄夾、大型工程案可能要為鑑定資料另立一資料夾），但編號與語意不變，你和 AI 到任何案件都找得到路。</li>
+<li><strong>把各資料夾的語意寫進知識庫層的 CLAUDE.md</strong>（「對造書狀進 03、開完庭的報告寫進 08」——全所案件結構相同，所以寫在 Vault 根目錄那份即可），AI 讀過一次，之後歸檔、檢索、生成開庭準備包都會走對地方。</li>
+</ul>
+<p><strong><code>00_案件總覽.md</code> 是每個案件的儀表板</strong>，也是 AI 協作時最有價值的一份檔案：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 案件總覽：2026-015 工程款案</span><br><span class="line"></span><br><span class="line">## 基本資料</span><br><span class="line">案號｜法院｜當事人｜委任日期｜受命法官／檢察官</span><br><span class="line"></span><br><span class="line">## 目前狀態</span><br><span class="line">下次開庭：2026-08-12（言詞辯論）</span><br><span class="line">待辦：證人詰問問題清單（8/1 前）</span><br><span class="line"></span><br><span class="line">## 時間軸</span><br><span class="line">- 2026-05-02 收受起訴狀</span><br><span class="line">- 2026-06-10 第一次庭期，爭點整理</span><br><span class="line"></span><br><span class="line">## 爭點清單</span><br><span class="line">1. 工期應否展延、甲公司有無遲延完工（變更設計、追加工項）→ [[09_法律研究/工期展延可歸責事由研究]]</span><br><span class="line">2. 遲延違約金是否過高、應否酌減 → [[09_法律研究/違約金酌減基準研究]]</span><br><span class="line"></span><br><span class="line">## 卷證索引</span><br><span class="line">- 原證1：工程承攬契約 → 02_我方書狀/原證01_工程承攬契約.pdf</span><br></pre></td></tr></table></figure>
+
+<p>有了這份總覽，你對 AI 說「幫我為下次開庭準備爭點整理狀草稿」時，它先讀總覽就掌握全案脈絡。開完庭丟一份筆記進 <code>08_開庭報告</code>，再說一句「請更新案件總覽的時間軸與待辦」，儀表板隨時保持在最新狀態。</p>
+<p>前篇介紹過的 <code>background.md</code>（見 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> 第三節）乍看也在「描述這個案件」，兩者用途其實不同，界線要劃清楚：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>background.md</code></th>
+<th><code>00_案件總覽.md</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>給 AI 的<strong>開場背景</strong>（設定檔）</td>
+<td>案件<strong>儀表板</strong>（狀態檔）</td>
+</tr>
+<tr>
+<td>內容</td>
+<td>穩定的部分：當事人與代理立場、案情梗概、核心爭點框架、本案用語慣例</td>
+<td>變動的部分：下次庭期、待辦、時間軸、卷證索引、爭點研究連結</td>
+</tr>
+<tr>
+<td>讀取方式</td>
+<td>隨 CLAUDE.md <strong>每次啟動自動載入</strong></td>
+<td>需要時才讀——你打開案件先看它，AI 做開庭準備包時第一步讀它</td>
+</tr>
+<tr>
+<td>更新頻率</td>
+<td>低：案件有實質變動才改（追加聲明、和解方向改變）</td>
+<td>高：每次開庭、每個新事件</td>
+</tr>
+</tbody></table>
+<p>判準一句話：<strong>半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。</strong> 之所以要分開，是因為自動載入的內容必須小而穩定——把天天長大的儀表板塞進每次啟動的背景，既佔用對話容量，AI 也分不清哪些是「本案是什麼」、哪些是「現在進行到哪」。</p>
+<p><strong>會不會變成同一份資料要寫兩次、維護兩份？</strong> 不會，有兩道保險：</p>
+<ol>
+<li><strong>一件事實只有一個家</strong>：照上表分工，兩檔內容本來就不重疊；真正重疊的只剩案號、當事人名稱這類一兩行的表頭識別資訊，開案時寫一次，之後不會變。</li>
+<li><strong>維護交給 AI 分流</strong>：把分流規則寫進案件 CLAUDE.md（前篇的案件 CLAUDE.md 範例第三條就是這一條）。之後你只負責口述發生了什麼——「今天開庭，法官要求兩週內補呈；對造提出新的和解方案」——寫進哪一份、要不要兩份都更新，由 AI 依規則判斷。你維護的從來不是兩份檔案，而是一句話。</li>
+</ol>
+<blockquote>
+<p><strong>💡 案件「檔案」的收納是另一個主題</strong><br>本篇聚焦「知識」（筆記）的組織；每天湧進的 Word、PDF、卷證等「檔案」怎麼收納、底稿與定稿如何分離（含 SharePoint／Google Workspace 協作環境的文件庫捷徑設定），是下一篇 <a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a> 的主題。</p>
+</blockquote>
+<blockquote>
+<p><strong>⚠️ 注意</strong><br>案件軌涉及真實卷證與個資，<strong>放進 Vault 的範圍、以及允許 AI 讀取的範圍，必須先讀過 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 再決定</strong>。原則：練習期只放去識別化材料；正式使用時依事務所的資安政策分級。</p>
+</blockquote>
+<h2 id="四、研究軌：Zettelkasten-的「一爭點一筆記」＋MOC-主題地圖"><a href="#四、研究軌：Zettelkasten-的「一爭點一筆記」＋MOC-主題地圖" class="headerlink" title="四、研究軌：Zettelkasten 的「一爭點一筆記」＋MOC 主題地圖"></a>四、研究軌：Zettelkasten 的「一爭點一筆記」＋MOC 主題地圖</h2><p>研究領域這一軌，PARA 只給了「放哪裡」（Areas &#x2F; Resources），沒回答「知識怎麼組織」。這裡要借用第二套方法論：<strong>Zettelkasten（卡片盒筆記法）</strong>。</p>
+<p>Zettelkasten 是德國社會學家 Niklas Luhmann 的工作法，他靠一個索引卡片盒寫出七十多本書。核心原則有三，每一條都對應法律研究的實際需求：</p>
+<p><strong>1. 原子化（Atomicity）：一張卡片只寫一個概念。</strong><br>轉譯成法律版：<strong>一個爭點＝一則筆記</strong>。與其把整個領域寫成一則「營建工程研究.md」，不如拆成「工期展延的可歸責事由.md」「工程遲延違約金的酌減基準.md」。原子化的筆記才能被精準連結、在不同案件間重複使用。</p>
+<p><strong>2. 連結重於分類：卡片的價值在於它連到誰。</strong><br>法律知識天生是網狀的：一個爭點連到數則判決，一則判決涉及數個法條，一次修法牽動一串實務見解。樹狀資料夾裝不下這種結構，wikilink 才裝得下。實務作法：<strong>判決筆記以字號為檔名</strong>（引用時自然形成 <code>[[最高法院110年度台上字第XXXX號]]</code>，與律師引註習慣完全一致），爭點筆記內連結所有相關判決、法條與其他爭點。</p>
+<p><strong>3. 用自己的話寫。</strong><br>複製貼上判決全文，只完成了「保存」；筆記真正的價值，在於你寫下的那兩行評析：「本判決與◯◯號採相反見解，關鍵在於……」——這才是十年後仍有用的東西。（全文可以照存，但要求自己在開頭寫摘要與評析。摘要可由 AI 起草；評析是判斷——「本判決與◯◯號採相反見解」這種話必須自己寫，AI 至多把兩則判決的異同點並列出來供你參考。）</p>
+<p><strong>MOC（Map of Content，主題地圖）則是研究軌的樓層導覽。</strong> 筆記多了之後，每個領域建一頁「目錄筆記」，按爭點體系把重要筆記用 wikilink 串起來。以下以營建工程示範——這正是主案例 2026-015 的領域；實作時代入自己的主力領域即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 營建工程 MOC</span><br><span class="line"></span><br><span class="line">## 工期與遲延</span><br><span class="line">- [[工期展延的可歸責事由]]</span><br><span class="line">- [[工程遲延違約金的酌減基準]]</span><br><span class="line"></span><br><span class="line">## 契約價金</span><br><span class="line">- [[追加工項之報酬請求]]</span><br><span class="line">- [[物價指數調整條款之適用]]</span><br><span class="line"></span><br><span class="line">## 瑕疵與保固</span><br><span class="line">- [[工作物瑕疵之修補請求]]</span><br><span class="line">- [[保固期間與瑕疵擔保期間之區分]]</span><br><span class="line"></span><br><span class="line">## 待研究</span><br><span class="line">- 情事變更原則在工程款請求之適用</span><br></pre></td></tr></table></figure>
+
+<p>MOC 就是你這個領域的「個人教科書目錄」，而且會隨筆記成長。<strong>維護 MOC 正是最適合交給 AI 的工作</strong>——每次新增筆記後說一句「請更新營建工程 MOC」即可，詳見 <a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a>。</p>
+<h2 id="五、兩軌的交會：知識萃取——複利的關鍵"><a href="#五、兩軌的交會：知識萃取——複利的關鍵" class="headerlink" title="五、兩軌的交會：知識萃取——複利的關鍵"></a>五、兩軌的交會：知識萃取——複利的關鍵</h2><p>案件裡的法律研究（<code>09_法律研究/</code>）是你花了幾十個小時產出的高價值知識，但它綁在個案脈絡裡、夾雜當事人資訊。如果隨案封存，這些知識就死了；下次遇到同類爭點，一切重來。</p>
+<p>解法是<strong>萃取</strong>：把個案研究改寫成去識別化的通用知識，存入研究軌。這件事過去做不到，因為太花時間；現在它是一句話的工作，而且有兩個時點：</p>
+<p><strong>隨案萃取——寫完就萃。</strong> 很多研究其實在辦案過程中就完成了：為一份書狀蒐集判決、分析爭點，書狀交出去的當下，這一輪研究的知識已經成形。趁脈絡還熱的時候順手萃取，品質最好：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">準備書狀三已定稿。請把這次就「工期展延的可歸責事由」所做的研究</span><br><span class="line">（09_法律研究 內相關筆記與引用判決），改寫成去識別化的爭點筆記</span><br><span class="line">存入 20_AREAS/營建工程/，並更新營建工程 MOC。</span><br></pre></td></tr></table></figure>
+
+<p><strong>結案總萃取——最後一道保險。</strong> 隨案萃取難免有漏，所以結案時再把 <code>09_法律研究/</code> 整個掃過一遍，確認沒有漏網的知識，然後才封存：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">「2026-015 工程款案」已結案。請執行結案萃取：</span><br><span class="line">1. 讀取該案件資料夾中 09_法律研究 的所有筆記；</span><br><span class="line">2. 將具有通用價值的法律分析，改寫成「去識別化」的爭點筆記</span><br><span class="line">   （移除所有當事人名稱、可識別事實，只保留法律論證與判決引用），</span><br><span class="line">   存入 20_AREAS/營建工程/ 對應位置，套用爭點筆記範本；</span><br><span class="line">3. 更新營建工程 MOC；</span><br><span class="line">4. 完成後列出清單給我審查，確認無殘留可識別資訊；</span><br><span class="line">5. 我確認後，將整個案件資料夾移至 40_ARCHIVE。</span><br></pre></td></tr></table></figure>
+
+<p>這個動作重複兩年，效果是複利式的：你辦過的每一個案件，都在讓你的知識庫變厚；知識庫越厚，下一個案件就辦得越快。這就是雙軌系統真正的報酬。</p>
+<p>在多人事務所，這個儀式的價值還會放大：萃取出的爭點筆記若進入<strong>全所共用的知識庫</strong>，資深律師辦過的每一個案件，就成為所有同仁的教材——年輕律師研究新案時，前輩在同類爭點上的分析已經在那裡等著。傳承不再只能依賴口耳相傳與帶案機會（作法詳見 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的傳承一節）。</p>
+<h2 id="六、第三塊：事務所經營與行政管理"><a href="#六、第三塊：事務所經營與行政管理" class="headerlink" title="六、第三塊：事務所經營與行政管理"></a>六、第三塊：事務所經營與行政管理</h2><p>律師不只辦案與研究，還要經營一間事務所——獨立執業者尤其如此：請款與帳務追蹤、報價紀錄、行銷文章與演講邀約、所內制度與 SOP、進修學分。這一塊在 PARA 裡的答案很乾脆：<strong>它們全是「無終點的長期責任」，與研究領域同住 <code>20_AREAS</code></strong>——研究領域是 Areas 的專業面，經營行政是 Areas 的營運面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">20_AREAS/</span><br><span class="line">├── 營建工程/、個資法/……        ← 研究領域（第四節）</span><br><span class="line">├── 所務經營/</span><br><span class="line">│   ├── 客戶與行銷/             ← 文章構想與產線、演講邀約紀錄、潛在委任追蹤</span><br><span class="line">│   ├── 財務請款/               ← 報價紀錄、請款追蹤筆記（各案 01_請款資料 的彙總視角）</span><br><span class="line">│   └── 制度與SOP/              ← 所內流程、範本政策、教育訓練規劃</span><br><span class="line">└── 進修/                       ← 學分紀錄、課程筆記</span><br></pre></td></tr></table></figure>
+
+<p>判準與案件軌相同：<strong>有完成日的經營工作</strong>（某場演講、某篇投稿、所內某個導入專案）依第三節放進 <code>10_MATTERS/_內部/</code>，辦完移入 Archives；<strong>沒有終點的經營責任</strong>住在 Areas。兩個實用的 AI 用例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">請讀取 20_AREAS/所務經營/財務請款/ 的請款追蹤筆記與各案件 01_請款資料 的報價紀錄，</span><br><span class="line">列出：尚未請款的已完成工作、逾期未付款項目，更新請款追蹤筆記。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">下個月要交一篇「AI 與個資法」的專欄文章。</span><br><span class="line">請從 20_AREAS/個資法/ 與所務經營/客戶與行銷/文章構想 調出相關素材，</span><br><span class="line">產出文章大綱，標明哪些論點已有筆記支撐、哪些還缺材料。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>⚠️ 注意</strong><br>財務數字與人事資料的機密等級高、且多半已有專門系統（會計軟體、所內 DMS）管理。Vault 裡放的是「筆記層」（追蹤、構想、制度文件），帳務明細與薪資這類敏感原始資料未必要進 Vault——依 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級判斷。</p>
+</blockquote>
+<h2 id="七、客戶溝通的收納：會議、通話與-LINE-訊息"><a href="#七、客戶溝通的收納：會議、通話與-LINE-訊息" class="headerlink" title="七、客戶溝通的收納：會議、通話與 LINE 訊息"></a>七、客戶溝通的收納：會議、通話與 LINE 訊息</h2><p>案件的真實脈絡，往往不在書狀裡，而在會議、電話與 LINE 對話裡——客戶為什麼改變立場、什麼時候同意了什麼、對造律師在電話裡透露了什麼。這些零散溝通若不落地，兩個月後就誰也說不清。收納規則一句話：</p>
+<blockquote>
+<p><strong>與特定案件有關的溝通紀錄，一律進該案件的 <code>07_會議紀錄/</code>；當下判斷不了歸屬，先丟 <code>00_INBOX</code>，讓 AI 編纂時歸位。</strong></p>
+</blockquote>
+<p>三種來源各有最省力的落地方式：</p>
+<p><strong>會議</strong>：開會時直接在該案件的 <code>07_會議紀錄/</code> 開會議筆記，需要時搭配錄音機外掛邊錄邊記（見 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 的錄音機一節）；會後一句「請依會議紀錄範本整理，並更新案件總覽的待辦與時間軸」。</p>
+<p><strong>通話</strong>：掛掉電話的三十秒內，用手機對 Obsidian 的 Inbox 口述要點（語音輸入即可）：「甲公司張總來電，2026-015 案，對造把和解金額提高到三百萬，張總要求下週三前給評估意見」。AI 編纂時自動寫成電話紀錄筆記、歸入案件、更新總覽。</p>
+<p><strong>LINE 訊息</strong>：關鍵對話用 LINE 的「匯出聊天紀錄」存成文字檔（或截圖），丟進 Inbox 並註明案件，交給 AI：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Inbox 裡的「LINE對話_甲公司_0708.txt」是與甲公司窗口的對話，屬 2026-015 案。</span><br><span class="line">請整理成溝通紀錄筆記存入該案 07_會議紀錄/：</span><br><span class="line">1. 摘要雙方立場與提到的新事實；</span><br><span class="line">2. 原文擷取所有含「指示、承諾、期限」的訊息，逐則註明日期時間；</span><br><span class="line">3. 更新 00_案件總覽 的時間軸與待辦。</span><br></pre></td></tr></table></figure>
+
+<p>這一塊做起來之後，回報最明顯的地方是<strong>開庭與談判的準備</strong>：準備包（見 <a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a> 工作流一）讀取的不只是書狀，還有完整的溝通軌跡——「客戶已於 6&#x2F;12 的 LINE 對話中同意調解方案」這種關鍵細節，靠的就是平時的三十秒。附帶的執業保護：委任過程文件化，日後對報酬、授權範圍有爭執時，紀錄就是你的證據。</p>
+<blockquote>
+<p><strong>⚠️ 注意</strong><br>LINE 對話含大量個資與隱私（且常夾雜無關第三人的內容），匯出後先刪除與案件無關的部分再入庫；能否交給雲端 AI 處理，依方案分級（<a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>）判斷。</p>
+</blockquote>
+<h2 id="八、整體架構長這樣"><a href="#八、整體架構長這樣" class="headerlink" title="八、整體架構長這樣"></a>八、整體架構長這樣</h2><p>一個貫穿後續各篇的設定：本系列的正式形態，是<strong>把 Vault 直接開在個人雲端硬碟（OneDrive 或同性質服務）的根目錄</strong>——整個個人雲端就是你的 Vault，筆記與檔案同住一棵樹，這也是下一篇「底稿區／定稿區」設計的前提。（練習期照 <a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a> 的建議放本機就好；要不要上雲、上到什麼範圍，是資安決定，見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>。）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">個人雲端硬碟（＝Vault 根目錄）/</span><br><span class="line">├── CLAUDE.md                  ← 給 AI 的到職須知（見前篇）</span><br><span class="line">├── 00_INBOX/                   ← 一切新材料先丟這裡，等 AI 編纂</span><br><span class="line">├── 10_MATTERS/                 ← 案件軌：進行中（第一層：當事人）</span><br><span class="line">│   ├── 甲公司/</span><br><span class="line">│   │   ├── 00_共通/</span><br><span class="line">│   │   └── 2026-015_工程款_甲v乙/（內部結構見第三節）</span><br><span class="line">│   └── _內部/</span><br><span class="line">│       └── 演講_202609律師公會AI課/</span><br><span class="line">├── 20_AREAS/                   ← 研究軌：爭點筆記＋MOC；經營行政也住這裡</span><br><span class="line">│   ├── 營建工程/</span><br><span class="line">│   │   ├── 營建工程 MOC.md</span><br><span class="line">│   │   └── 工期展延的可歸責事由.md</span><br><span class="line">│   ├── 個資法/</span><br><span class="line">│   ├── 所務經營/               ← 客戶與行銷、財務請款、制度與SOP（見第六節）</span><br><span class="line">│   └── 進修/</span><br><span class="line">├── 30_RESOURCES/               ← 研究軌的原料庫</span><br><span class="line">│   ├── 判決/最高法院110年度台上字第XXXX號.md</span><br><span class="line">│   ├── 法規筆記/</span><br><span class="line">│   └── 文獻/</span><br><span class="line">├── 40_ARCHIVE/                ← 案件軌：已結案（萃取後移入）</span><br><span class="line">└── 90_SYSTEM/</span><br><span class="line">    ├── Templates/             ← 判決筆記、爭點筆記、案件總覽範本</span><br><span class="line">    └── Prompts/               ← 常用提示詞（如上面的結案萃取）</span><br></pre></td></tr></table></figure>
+
+<p>補充兩個支援性設計：</p>
+<ul>
+<li><strong><code>00_INBOX</code> 是降低摩擦的關鍵。</strong> 讀到好文章、拿到新判決、開完庭想記兩句——不要想「該歸哪」，全部先丟 Inbox，分類歸檔是 AI 的工作。記錄門檻越低，系統才活得下去。</li>
+<li><strong>數字前綴</strong> 讓資料夾永遠按固定順序排列，你和 AI 都一眼掌握全局。</li>
+</ul>
+<p>最後把三套方法論的分工整理成一張表：</p>
+<table>
+<thead>
+<tr>
+<th>方法論</th>
+<th>負責的問題</th>
+<th>在本架構中的角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PARA</strong>（律師版：P 改寫為 Matter）</td>
+<td>東西放哪裡？</td>
+<td>頂層四資料夾；案件的生滅流轉（Matters→Archives）</td>
+</tr>
+<tr>
+<td><strong>Johnny.Decimal</strong>（取其精神）</td>
+<td>資料夾怎麼排？</td>
+<td>案件內部的固定編號結構</td>
+</tr>
+<tr>
+<td><strong>Zettelkasten</strong></td>
+<td>知識怎麼組織？</td>
+<td>研究軌：一爭點一筆記、連結重於分類</td>
+</tr>
+<tr>
+<td><strong>MOC</strong></td>
+<td>網狀知識怎麼導覽？</td>
+<td>每個領域的主題地圖</td>
+</tr>
+<tr>
+<td><strong>知識萃取</strong>（本篇提出）</td>
+<td>兩軌怎麼交會？</td>
+<td>個案研究 → 去識別化 → 永久知識</td>
+</tr>
+</tbody></table>
+<h2 id="九、用-AI-一次搭好骨架"><a href="#九、用-AI-一次搭好骨架" class="headerlink" title="九、用 AI 一次搭好骨架"></a>九、用 AI 一次搭好骨架</h2><p>架構不用手動建。啟動 Claude Code，貼上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">請幫我在這個 Vault 建立雙軌知識庫架構：</span><br><span class="line">00_INBOX、10_MATTERS、20_AREAS、30_RESOURCES、40_ARCHIVE、90_SYSTEM。</span><br><span class="line"></span><br><span class="line">我的執業領域是：勞動法、個資法、公司法（請換成你自己的），</span><br><span class="line">在 20_AREAS 為每個領域建資料夾與「◯◯法 MOC.md」主題地圖，</span><br><span class="line">段落：重要法規、核心爭點、實務見解、待研究問題。</span><br><span class="line"></span><br><span class="line">在 90_SYSTEM/Templates 建立三個範本：</span><br><span class="line">1. 判決筆記：字號、法院、裁判日期、案由、事實摘要、爭點、</span><br><span class="line">   法院見解、評析、相關筆記</span><br><span class="line">2. 爭點筆記：爭點、相關法條、實務見解、學說、我的分析、相關案件</span><br><span class="line">3. 案件總覽：基本資料、目前狀態、時間軸、爭點清單、卷證索引</span><br><span class="line"></span><br><span class="line">在 10_MATTERS 建立示範當事人資料夾「示範客戶」，其下建立</span><br><span class="line">案件資料夾「2026-000_示範案件」，內部結構：</span><br><span class="line">00_案件總覽.md、01_請款資料、02_我方書狀、03_對造書狀、</span><br><span class="line">04_法院文書、05_電子筆錄、06_當事人提供資料、</span><br><span class="line">07_會議紀錄、08_開庭報告、09_法律研究。</span><br></pre></td></tr></table></figure>
+
+<p>三十秒，骨架完成。</p>
+<h2 id="十、三個長期心法"><a href="#十、三個長期心法" class="headerlink" title="十、三個長期心法"></a>十、三個長期心法</h2><ol>
+<li><strong>先求有，再求好。</strong> 架構是用出來的，不是設計出來的。三個月後要調整，也是一句話交給 AI 的事：「請把 Resources 的判決筆記按法領域分子資料夾，並更新所有連結。」</li>
+<li><strong>資料夾管樹狀，wikilink 管網狀。</strong> 「這則筆記既是勞動法又是個資法，放哪？」——放哪都行，用連結讓兩個 MOC 都指到它。讓資料夾保持粗略，把精細留給連結。</li>
+<li><strong>方法論是僕人，不是主人。</strong> PARA、Zettelkasten 都只是工具，判準永遠是：下次要用時找不找得到、五年後知識有沒有變厚。合用就留，不合用就改。</li>
+</ol>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>律師的專業資訊分兩塊：案件（有始有終）與研究領域（永續累積），必須雙軌管理。</li>
+<li>案件軌：PARA 管生滅（P 改寫為 Matter，貼合律師用語）＋當事人為第一層、案件為第二層＋Johnny.Decimal 式固定內部結構＋案件總覽儀表板。</li>
+<li>研究軌：Zettelkasten「一爭點一筆記」＋wikilink＋MOC 主題地圖。</li>
+<li>事務所經營行政與研究領域同住 Areas；會議、通話、LINE 溝通紀錄進案件的 <code>07_會議紀錄/</code>，判斷不了先丟 Inbox。</li>
+<li>兩軌交會於「知識萃取」：個案研究去識別化後回流知識庫——書狀定稿順手萃、結案總萃收尾。</li>
+<li>這套架構同時寫給你和 AI 看——下一篇先把檔案的地面整平：底稿區與定稿區。</li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a><br>➡️ 下一篇：<a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI%E8%AA%B2%E7%A8%8B/" rel="tag"># AI課程</a>
+              <a href="/tags/Obsidian/" rel="tag"># Obsidian</a>
+              <a href="/tags/PARA/" rel="tag"># PARA</a>
+              <a href="/tags/Zettelkasten/" rel="tag"># Zettelkasten</a>
+              <a href="/tags/%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/" rel="tag"># 知識管理</a>
+              <a href="/tags/%E6%A1%88%E4%BB%B6%E7%AE%A1%E7%90%86/" rel="tag"># 案件管理</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/matter-file-practice/" rel="prev" title="09 案件檔案實務｜底稿區與定稿區">
+                  <i class="fa fa-angle-left"></i> 09 案件檔案實務｜底稿區與定稿區
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/claude-md-onboarding/" rel="next" title="07 CLAUDE.md｜寫給 AI 助理的到職須知">
+                  07 CLAUDE.md｜寫給 AI 助理的到職須知 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Ting-Han Lin</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div><div class="cc-license">
+  <a class="cc-opacity" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow" title="Creative Commons BY-NC-SA 4.0">
+    <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-nc"></i><i class="fab fa-creative-commons-sa"></i>
+  </a>
+  本網站所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow">BY-NC-SA 許可協議</a>。轉載請註明出處
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+</body>
+</html>
