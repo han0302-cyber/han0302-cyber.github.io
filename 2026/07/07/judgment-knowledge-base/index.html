@@ -422,7 +422,13 @@
     </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
-  </div>
+  </div><div class="cc-license">
+  <a class="cc-opacity" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow" title="Creative Commons BY-NC-SA 4.0">
+    <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-nc"></i><i class="fab fa-creative-commons-sa"></i>
+  </a>
+  本網站所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener external nofollow">BY-NC-SA 許可協議</a>。轉載請註明出處
+</div>
+
 
     </div>
   </footer>
@@ -442,28 +448,7 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-<script>
-(function () {
-  var emojiClass = {
-    'ℹ️': 'callout-info',
-    '💡': 'callout-tip',
-    '📝': 'callout-note',
-    '⚠️': 'callout-warning',
-    '❓': 'callout-question'
-  };
-  document.querySelectorAll('.post-body blockquote').forEach(function (bq) {
-    var strong = bq.querySelector('p:first-child > strong:first-child, strong:first-child');
-    if (!strong) return;
-    var text = strong.textContent || '';
-    for (var emoji in emojiClass) {
-      if (text.indexOf(emoji) === 0) {
-        bq.classList.add(emojiClass[emoji]);
-        break;
-      }
-    }
-  });
-})();
-</script>
+
 
 </body>
 </html>
