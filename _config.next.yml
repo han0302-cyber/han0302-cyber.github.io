@@ -5,6 +5,8 @@ motion:
 
 custom_file_path:
   variable: source/_data/variables.styl
+  style: source/_data/styles.styl
+  bodyEnd: source/_data/body-end.njk
 
 avatar:
   url: /images/profile/avatar.png
@@ -12,10 +14,9 @@ avatar:
   rotated: false
 
 social:
-  GitHub: https://github.com/han0302-cyber || fab fa-github
   有澤法律事務所: https://stellexlaw.com/ || fa fa-building
-  Email: mailto:tinghan.lin@stellexlaw.com || fa fa-envelope
   Threads: https://www.threads.com/@han0302 || fa fa-at
+  GitHub: https://github.com/han0302-cyber || fab fa-github
   司法院裁判書閱讀助手: https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn || fab fa-chrome
 
 social_icons:
@@ -27,14 +28,20 @@ menu:
   home: / || fa fa-home
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
-  archives: /archives/ || fa fa-archive
+  文章: /archives/ || fa fa-archive
+
+local_search:
+  enable: true
+  top_n_per_article: 1
+  unescape: false
+  preload: false
 
 menu_settings:
   icons: true
   badges: false
 
 footer:
-  copyright: Tinghan Lin
+  copyright: Ting-Han Lin
 
 busuanzi_count:
   enable: true

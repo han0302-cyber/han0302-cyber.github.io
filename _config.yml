@@ -7,7 +7,7 @@ title: 律師的AI筆記
 subtitle: '法律 x AI x 自動化的實踐筆記'
 description: '有澤法律事務所林廷翰律師。對利用科技提升工作效率有高度興趣，近期專注於 AI、Vibe Coding、n8n 等自動化工具的實務應用。'
 keywords:
-author: Tinghan Lin
+author: Ting-Han Lin
 language: zh-TW
 timezone: Asia/Taipei
 
@@ -101,6 +101,12 @@ theme: next
 
 sitemap:
   path: sitemap.xml
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

@@ -1,0 +1,22 @@
+<script>
+(function () {
+  var emojiClass = {
+    'ℹ️': 'callout-info',
+    '💡': 'callout-tip',
+    '📝': 'callout-note',
+    '⚠️': 'callout-warning',
+    '❓': 'callout-question'
+  };
+  document.querySelectorAll('.post-body blockquote').forEach(function (bq) {
+    var strong = bq.querySelector('p:first-child > strong:first-child, strong:first-child');
+    if (!strong) return;
+    var text = strong.textContent || '';
+    for (var emoji in emojiClass) {
+      if (text.indexOf(emoji) === 0) {
+        bq.classList.add(emojiClass[emoji]);
+        break;
+      }
+    }
+  });
+})();
+</script>
