@@ -3,6 +3,9 @@ scheme: Gemini
 motion:
   enable: false
 
+custom_file_path:
+  variable: source/_data/variables.styl
+
 avatar:
   url: /images/profile/avatar.png
   rounded: true
