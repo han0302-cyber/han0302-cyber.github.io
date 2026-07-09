@@ -1,4 +1,7 @@
-scheme: Pisces
+scheme: Gemini
+
+motion:
+  enable: false
 
 avatar:
   url: /images/profile/avatar.png
