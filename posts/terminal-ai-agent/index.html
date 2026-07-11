@@ -27,7 +27,7 @@
 <meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-07T02:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T10:01:06.135Z">
+<meta property="article:modified_time" content="2026-07-11T06:56:59.699Z">
 <meta property="article:author" content="Ting-Han Lin">
 <meta property="article:tag" content="AI-Agent">
 <meta property="article:tag" content="AI課程">
@@ -162,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%9E%E3%80%8C%E6%9C%83%E8%81%8A%E5%A4%A9%E3%80%8D%E5%88%B0%E3%80%8C%E6%9C%83%E5%81%9A%E4%BA%8B%E3%80%8D"><span class="nav-number">1.</span> <span class="nav-text">一、從「會聊天」到「會做事」</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%82%BA%E4%BB%80%E9%BA%BC%E6%98%AF%E3%80%8C%E7%B5%82%E7%AB%AF%E6%A9%9F%E3%80%8D%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、為什麼是「終端機」？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%A9%E5%A4%A7%E5%B7%A5%E5%85%B7%E9%80%9F%E8%A6%BD"><span class="nav-number">3.</span> <span class="nav-text">三、兩大工具速覽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Claude-Code%EF%BC%88Anthropic%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">Claude Code（Anthropic）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codex%EF%BC%88OpenAI%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">Codex（OpenAI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%89%88%E8%88%87%E6%A1%8C%E9%9D%A2%E7%89%88%EF%BC%9A%E5%90%8C%E4%B8%80%E9%A1%86%E5%BC%95%E6%93%8E%E3%80%81%E5%85%A9%E7%A8%AE%E4%BB%8B%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">終端機版與桌面版：同一顆引擎、兩種介面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E5%A0%B4%E5%8A%A0%E6%98%A0%EF%BC%9AClaude-Cowork%E2%80%94%E2%80%94%E4%B8%8D%E6%83%B3%E7%A2%B0%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9A%84%E9%81%B8%E9%A0%85"><span class="nav-number">3.4.</span> <span class="nav-text">同場加映：Claude Cowork——不想碰終端機的選項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%95%B6-Agent-%E9%81%87%E4%B8%8A-Obsidian%EF%BC%9A%E4%B8%80%E5%8A%A0%E4%B8%80%E5%A4%A7%E6%96%BC%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">四、當 Agent 遇上 Obsidian：一加一大於二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8D%E9%9C%80%E8%A6%81%E6%9C%83%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9A%E4%BE%86%E8%87%AA%E5%AF%A6%E9%9A%9B%E6%95%B8%E6%93%9A%E7%9A%84%E8%A7%80%E5%AF%9F"><span class="nav-number">5.</span> <span class="nav-text">五、不需要會寫程式：來自實際數據的觀察</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%94%BE%E7%9C%BC%E7%94%9F%E6%85%8B%E7%B3%BB%EF%BC%9AOpenClaw%E3%80%81Hermes-%E8%88%87%E6%9C%AC%E7%B3%BB%E5%88%97%E8%B7%AF%E7%B7%9A%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="nav-number">6.</span> <span class="nav-text">六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B0%8F%E7%B5%90"><span class="nav-number">7.</span> <span class="nav-text">七、小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%9E%E3%80%8C%E6%9C%83%E8%81%8A%E5%A4%A9%E3%80%8D%E5%88%B0%E3%80%8C%E6%9C%83%E5%81%9A%E4%BA%8B%E3%80%8D"><span class="nav-number">1.</span> <span class="nav-text">一、從「會聊天」到「會做事」</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%BD%9C%E7%82%BA-Agent-%E7%9A%84%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">二、終端機作為 Agent 的執行環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%A9%E5%A4%A7%E5%B7%A5%E5%85%B7%E9%80%9F%E8%A6%BD"><span class="nav-number">3.</span> <span class="nav-text">三、兩大工具速覽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Claude-Code%EF%BC%88Anthropic%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">Claude Code（Anthropic）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codex%EF%BC%88OpenAI%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">Codex（OpenAI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%89%88%E8%88%87%E6%A1%8C%E9%9D%A2%E7%89%88%EF%BC%9A%E5%90%8C%E4%B8%80%E9%A1%86%E5%BC%95%E6%93%8E%E3%80%81%E5%85%A9%E7%A8%AE%E4%BB%8B%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">終端機版與桌面版：同一顆引擎、兩種介面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E5%A0%B4%E5%8A%A0%E6%98%A0%EF%BC%9AClaude-Cowork%E2%80%94%E2%80%94%E4%B8%8D%E6%83%B3%E7%A2%B0%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9A%84%E9%81%B8%E9%A0%85"><span class="nav-number">3.4.</span> <span class="nav-text">同場加映：Claude Cowork——不想碰終端機的選項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Agent-%E8%88%87-Obsidian-%E7%9A%84%E7%B5%84%E5%90%88%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">四、Agent 與 Obsidian 的組合方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8D%E9%9C%80%E8%A6%81%E6%9C%83%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9A%E4%BE%86%E8%87%AA%E5%AF%A6%E9%9A%9B%E6%95%B8%E6%93%9A%E7%9A%84%E8%A7%80%E5%AF%9F"><span class="nav-number">5.</span> <span class="nav-text">五、不需要會寫程式：來自實際數據的觀察</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%94%BE%E7%9C%BC%E7%94%9F%E6%85%8B%E7%B3%BB%EF%BC%9AOpenClaw%E3%80%81Hermes-%E8%88%87%E6%9C%AC%E7%B3%BB%E5%88%97%E8%B7%AF%E7%B7%9A%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="nav-number">6.</span> <span class="nav-text">六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B0%8F%E7%B5%90"><span class="nav-number">7.</span> <span class="nav-text">七、小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+      <time title="修改時間：2026-07-11 14:56:59" itemprop="dateModified" datetime="2026-07-11T14:56:59+08:00">2026-07-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,7 +300,7 @@
 <span id="more"></span>
 <h2 id="一、從「會聊天」到「會做事」"><a href="#一、從「會聊天」到「會做事」" class="headerlink" title="一、從「會聊天」到「會做事」"></a>一、從「會聊天」到「會做事」</h2><p>假設你要把二十份判決做成一張爭點比較表。在 ChatGPT 這類聊天框裡，這件事意味著：複製貼上二十次、每貼一份等它讀完，最後再把結果一段一段搬回 Word。因為這種模式有幾個天生的限制——它看不到你電腦裡的檔案；它一次只能處理你貼給它的東西；它給你答案之後，存檔、整理、歸檔還是你自己來。</p>
 <p>一個貼切的比喻：<strong>Chatbot 像一位學識淵博、但手腳被綁住的顧問</strong>。什麼都懂，但什麼都不能幫你動手做。</p>
-<p>近年 AI 已進入 <strong>Agent（代理）時代</strong>。Agent 與 Chatbot 的差別，不在「更聰明」，而在「能行動」：</p>
+<p>近年 AI 已進入 <strong>Agent（代理）時代</strong>。Agent 與 Chatbot 的差別在於能否直接執行操作：</p>
 <table>
 <thead>
 <tr>
@@ -335,7 +335,7 @@
 <td>「把資料夾裡 20 份判決做成爭點比較表，存成新筆記」</td>
 </tr>
 </tbody></table>
-<h2 id="二、為什麼是「終端機」？"><a href="#二、為什麼是「終端機」？" class="headerlink" title="二、為什麼是「終端機」？"></a>二、為什麼是「終端機」？</h2><p>Claude Code（Anthropic）與 Codex（OpenAI）這類工具，最初都以 <strong>CLI（Command Line Interface，指令列介面）</strong> 的形式問世，在<strong>終端機（Terminal）</strong> 裡運作——就是那個黑底白字、要打指令的畫面（兩者如今也都推出桌面版，見第三節的介面比較）。黑底白字的畫面確實容易讓人卻步，先說清楚三件事：</p>
+<h2 id="二、終端機作為-Agent-的執行環境"><a href="#二、終端機作為-Agent-的執行環境" class="headerlink" title="二、終端機作為 Agent 的執行環境"></a>二、終端機作為 Agent 的執行環境</h2><p>Claude Code（Anthropic）與 Codex（OpenAI）這類工具，最初都以 <strong>CLI（Command Line Interface，指令列介面）</strong> 的形式問世，在<strong>終端機（Terminal）</strong> 裡運作——就是那個黑底白字、要打指令的畫面（兩者如今也都推出桌面版，見第三節的介面比較）。黑底白字的畫面確實容易讓人卻步，先說清楚三件事：</p>
 <p><strong>第一，你不需要會指令。</strong> 打開之後，你跟它的互動就是「用中文打字交辦工作」，跟用 ChatGPT 沒有兩樣。差別只是它在你的電腦裡，看得到你的檔案。</p>
 <p><strong>第二，終端機反而是 Agent 最自然的家。</strong> Agent 要做事，就需要讀寫檔案、執行工具；終端機正是作業系統開放檔案讀寫與工具執行能力的介面。</p>
 <p><strong>第三，它每一步都會先問你。</strong> Claude Code 預設在修改檔案、執行指令前徵求你的同意，你隨時看得到它想做什麼、也隨時可以喊停。主導權在你手上。</p>
@@ -374,7 +374,7 @@
 <p>兩種版本用的是<strong>同一顆 Agent 引擎、同一個訂閱帳號、同一套規則檔</strong>（CLAUDE.md／AGENTS.md），差別只在操作介面：終端機版功能最完整；桌面版把「看進度、按同意、切換任務」變成視窗點選，適合不想開終端機的人。Claude Code 另有網頁版（claude.ai&#x2F;code）與 IDE 擴充功能，屬於開發者場景，本系列不展開說明。<strong>本系列的操作示範一律以終端機版為基準</strong>；改用桌面版時，提示詞與觀念完全相同。</p>
 <p>一個容易混淆的點：<strong>Claude Code 桌面版與下一段的 Cowork 是兩個不同的產品</strong>。桌面版是完整的 Claude Code，只是操作介面不同，規則檔、Skills、MCP 全部照用；Cowork 則是 Claude 桌面應用程式內建、面向一般工作者的代理功能，設計成「選資料夾、交辦、取件」的簡化流程。</p>
 <h3 id="同場加映：Claude-Cowork——不想碰終端機的選項"><a href="#同場加映：Claude-Cowork——不想碰終端機的選項" class="headerlink" title="同場加映：Claude Cowork——不想碰終端機的選項"></a>同場加映：Claude Cowork——不想碰終端機的選項</h3><p>如果你偏好圖形介面的操作方式，Anthropic 也準備了一個容易上手的選項：2026 年 1 月推出的 <strong>Claude Cowork</strong>，官方定位非常傳神——「<strong>Claude Code without the code</strong>」。同一顆 Agent 引擎（讀寫檔案、多步驟任務、自主規劃執行），包進 Claude 桌面應用程式（macOS &#x2F; Windows）熟悉的聊天視窗，2026 年 7 月起並陸續擴展到網頁版與行動版。用法只有一句話：<strong>選一個資料夾，然後用中文說話</strong>。沒有指令、沒有黑畫面，它就能讀取、整理、產出檔案——請它把「請款」資料夾裡的發票整理成 Excel、把二十份判決做成比較表、把英文契約翻成中日對照版，都是它的守備範圍。訂閱與 Claude Code 共用同一個付費方案（免費帳號不可用）。</p>
-<p>同一顆引擎、兩種包裝，怎麼選？關鍵在工作型態：<strong>Cowork 適合「一次性交付」的檔案任務；Obsidian ＋ Claude Code 適合「持續共筆」的知識工作。</strong> Cowork 的互動本質是「交辦→交付」：每個工作階段指定一個資料夾、存取範圍以該資料夾為限，檔案做好後你要到 Finder／檔案總管找出來、再用其他軟體打開來改。而本系列的主場景——知識庫的日常維護——是「人改一段、AI 改一段」的來回節奏：左邊 Obsidian 開著筆記、右邊終端機下指令，AI 改完，變動立刻呈現眼前，你隨時接手編輯再丟回去加工；中途要用其他資料夾的資料，貼個路徑就能延伸。這是本系列以 Claude Code 為主線的原因。</p>
+<p>同一顆引擎、兩種包裝，怎麼選？關鍵在工作型態：<strong>Cowork 適合「一次性交付」的檔案任務；Obsidian ＋ Claude Code 適合「持續共筆」的知識工作。</strong> Cowork 的互動本質是「交辦→交付」：每個工作階段指定一個資料夾、存取範圍以該資料夾為限，檔案做好後你要到 Finder／檔案總管找出來、再用其他軟體打開來改。而本系列的主場景——知識庫的日常維護——是「人改一段、AI 改一段」的來回節奏：左邊 Obsidian 開著筆記、右邊終端機下指令，AI 改完，變動立刻呈現眼前，你隨時接手編輯再丟回去加工；中途要用其他資料夾的資料，貼個路徑就能延伸。本系列因此以 Claude Code 為主線。</p>
 <p>給律師的建議路線：</p>
 <ul>
 <li><strong>想從圖形介面開始</strong>：從 Cowork 起步——它是體驗「AI 會做事」最容易上手的入口；要向所內同仁推廣 Agent，它也是合適的起點。</li>
@@ -386,8 +386,8 @@
 <p><strong>⚠️ Cowork 的資安預告</strong><br>Cowork 的權限設計比 Claude Code 流暢（較少逐步確認），這是雙面刃：好用，但也代表你<strong>指定資料夾前要先想清楚裡面有什麼</strong>——給它讀的資料夾，內容視同交給雲端模型處理；客戶機密資料必須先確認方案等級（商用方案與個人 Pro 的條款不同）。第一次使用，拿公開資料或去識別化資料練習。詳見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>。</p>
 </blockquote>
 <p><strong>本系列以 Claude Code 為主要示範工具</strong>（生態較完整，且 MCP、Skills 等機制對法律工作流的支援較成熟），但所有觀念——Vault 設計、到職須知、編纂心法——在 Codex 上同樣適用，只要把 <code>CLAUDE.md</code> 換成 <code>AGENTS.md</code> 即可。學觀念，不要綁工具。</p>
-<p>更根本的保障是：把規則（CLAUDE.md）、技能（Skills）、知識（Vault 筆記）通通存成自己資料夾裡的純文字檔——<strong>真正累積下來的資產，是這些檔案，而不是任何一套特定工具</strong>；哪天要更換 Agent，整包資料夾搬走即可。</p>
-<h2 id="四、當-Agent-遇上-Obsidian：一加一大於二"><a href="#四、當-Agent-遇上-Obsidian：一加一大於二" class="headerlink" title="四、當 Agent 遇上 Obsidian：一加一大於二"></a>四、當 Agent 遇上 Obsidian：一加一大於二</h2><p>單獨看，Obsidian 是一個「需要人工整理」的筆記軟體；單獨看，Claude Code 是一個「給工程師寫程式」的工具。但把兩者放在一起：</p>
+<p>更根本的保障是：把規則（CLAUDE.md）、技能（Skills）、知識（Vault 筆記）通通存成自己資料夾裡的純文字檔——<strong>這些檔案不綁定任何特定工具</strong>；哪天要更換 Agent，整包資料夾搬走即可。</p>
+<h2 id="四、Agent-與-Obsidian-的組合方式"><a href="#四、Agent-與-Obsidian-的組合方式" class="headerlink" title="四、Agent 與 Obsidian 的組合方式"></a>四、Agent 與 Obsidian 的組合方式</h2><p>單獨看，Obsidian 是一個「需要人工整理」的筆記軟體；單獨看，Claude Code 是一個「給工程師寫程式」的工具。但把兩者放在一起：</p>
 <blockquote>
 <p><strong>Obsidian Vault 就是一個資料夾，Claude Code 最擅長的就是讀寫資料夾。</strong></p>
 </blockquote>
@@ -439,7 +439,7 @@
 <td>本機執行、逐步授權、每個動作可審查；工作範圍限縮在你指定的資料夾</td>
 </tr>
 </tbody></table>
-<p>有趣的是，OpenClaw 與 Hermes 的「記憶」與「技能」也都用純文字 Markdown 檔儲存——這印證了本系列的核心押注：<strong>純文字檔案是 AI 時代知識的通用貨幣。</strong></p>
+<p>OpenClaw 與 Hermes 的「記憶」與「技能」也都用純文字 Markdown 檔儲存——這也顯示純文字檔案在不同工具間都能沿用。</p>
 <p>本系列不選它們作主線，主要是<strong>工作型態不合</strong>：這類常駐助理以聊天訊息為互動中心，擅長「交辦一件事、回報一個結果」的零散任務，但產出散落在對話串裡，不容易沉澱成有結構的知識庫。而本系列要建立的是「材料進 Vault → AI 編纂 → 成果回流」的循環——判決筆記、爭點 WIKI、書狀底稿，工作與成果都以檔案為中心，Obsidian × Claude Code 直接在這些檔案上工作，每一次產出都留在知識庫裡繼續累積。此外，自架與維運本身是一門功課，常駐機器人接上通訊軟體與信箱後的權限管理，也是需要另行評估的課題。行有餘力，再嘗試這些新興工具也不遲。（以上是就律師工作型態所做的適用性評估，並非對這兩個專案本身的評價。）</p>
 <h2 id="七、小結"><a href="#七、小結" class="headerlink" title="七、小結"></a>七、小結</h2><ul>
 <li>Agent 與 Chatbot 的本質差異：能不能「動手做事」。</li>
