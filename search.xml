@@ -1,109 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>07 CLAUDE.md｜寫給 AI 助理的到職須知</title>
-    <url>/posts/claude-md-onboarding/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 <code>@</code> 語法引入。寫一次，之後每次啟動都自動適用。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、問題：每次都要重新交代一遍"><a href="#一、問題：每次都要重新交代一遍" class="headerlink" title="一、問題：每次都要重新交代一遍"></a>一、問題：每次都要重新交代一遍</h2><p>用過 ChatGPT 的人都有這個經驗：每開一個新對話，都要重講一次「請用繁體中文」「我是律師」「引用法條要附條號」。因為 AI 沒有記憶，每次對話都像換了一位新助理。</p>
-<p>如果事務所每天來一位新助理，沒有人會每天早上重新交代一次書狀格式、引用慣例、保密規矩；通常的做法是寫一份到職須知，新人來了自己看。</p>
-<p>CLAUDE.md 就是這份到職須知。Claude Code 啟動時會<strong>自動讀取</strong>它並在整個工作過程中遵守，不需要任何設定。（Codex 的對應機制是 <code>AGENTS.md</code>，觀念完全相同；想讓兩套工具共用，可以只維護一份 AGENTS.md，CLAUDE.md 裡寫一行「請遵守 AGENTS.md」。）</p>
-<h2 id="二、標準架構：三層分工"><a href="#二、標準架構：三層分工" class="headerlink" title="二、標準架構：三層分工"></a>二、標準架構：三層分工</h2><p>CLAUDE.md 可以放在不同位置，效力範圍不同，<strong>疊加適用</strong>——跟法規的位階與特別法優先，邏輯相通。載入時機有一個細節：全域與知識庫層在啟動時就讀入；子資料夾層則是<strong>用到才載入</strong>——AI 實際讀取該資料夾內的檔案時，那一層的 CLAUDE.md 才會生效（所以案件層的規則，放進案件資料夾即可，不必擔心拖慢其他工作）：</p>
-<table>
-<thead>
-<tr>
-<th>層級</th>
-<th>位置</th>
-<th>該寫什麼</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>全域（你這個人）</strong></td>
-<td><code>~/.claude/CLAUDE.md</code>（家目錄）</td>
-<td>你是誰、語言、文書偏好、通用紅線——<strong>無論在哪個資料夾工作都適用的事</strong></td>
-</tr>
-<tr>
-<td><strong>知識庫（整個 Vault）</strong></td>
-<td>Vault 根目錄的 <code>CLAUDE.md</code></td>
-<td>知識庫結構、筆記格式、編纂規則——<strong>整個知識庫通用的事</strong></td>
-</tr>
-<tr>
-<td><strong>子資料夾（個別案件）</strong></td>
-<td><code>10_MATTERS/某當事人/某案件/CLAUDE.md</code></td>
-<td>該案件的特殊要求</td>
-</tr>
-<tr>
-<td>補充：個人（僅自己生效）</td>
-<td>Vault 根目錄的 <code>CLAUDE.local.md</code></td>
-<td>團隊共用 Vault 時你個人的偏好，同樣自動讀取</td>
-</tr>
-</tbody></table>
-<p>分層的判準一句話：<strong>「換一個 Vault 還成立的，往上放；只跟這個案子有關的，往下放。」</strong></p>
-<h3 id="全域層實例：一位涉日律師的-claude-CLAUDE-md"><a href="#全域層實例：一位涉日律師的-claude-CLAUDE-md" class="headerlink" title="全域層實例：一位涉日律師的 ~/.claude/CLAUDE.md"></a>全域層實例：一位涉日律師的 <code>~/.claude/CLAUDE.md</code></h3><p>以下以筆者實際使用的全域設定為例（節錄），這一層寫的是「無論在哪個資料夾工作都不變」的事：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 關於我</span><br><span class="line">- 角色：台灣執業律師，主要處理涉日跨境法律業務</span><br><span class="line">- 專業領域：再生能源法令、個人資料保護法、AI</span><br><span class="line"></span><br><span class="line"># 語言</span><br><span class="line">- 預設以繁體中文回覆。</span><br><span class="line">- 撰寫日文法律文書時直接使用日文，不需額外翻譯成中文。</span><br><span class="line"></span><br><span class="line"># 回覆風格</span><br><span class="line">- 簡單問題簡答，不需寒暄或鋪陳。</span><br><span class="line">- 法律分析涉及具體法條、判例字號或數據時，</span><br><span class="line">  若無法確認請明說，不要臆測或杜撰。</span><br><span class="line"></span><br><span class="line"># 法律文書偏好</span><br><span class="line">- 日文文書使用「ですます調」，用語精確、句構清晰。</span><br><span class="line">- 引用法條時註明法規全名與條號。</span><br><span class="line">- 日文文書一律使用西元紀年；判決字號中的年號（令和、平成、</span><br><span class="line">  民國）也一律換算為西元表示。</span><br><span class="line"></span><br><span class="line"># 工具</span><br><span class="line">- 處理 docx 追蹤修訂時，檢閱者名稱設為「ST」。</span><br><span class="line">- 輸出任何台灣法條條文或判決要旨前，必須先用法規資料庫</span><br><span class="line">  MCP 工具核對；查無資料時明說「未能於資料庫確認」，</span><br><span class="line">  不得憑記憶引用。</span><br></pre></td></tr></table></figure>
-
-<p>留意幾個寫法：每一條都是<strong>可執行的行為規則</strong>，不是抽象期許；「不得臆測、查無資料要明說」這種職業倫理層級的紅線，直接寫成 AI 的行為限制；連「追蹤修訂檢閱者名稱」這種瑣碎但每次都要交代的細節，寫進去就一勞永逸。</p>
-<h3 id="知識庫層實例：Vault-根目錄的-CLAUDE-md"><a href="#知識庫層實例：Vault-根目錄的-CLAUDE-md" class="headerlink" title="知識庫層實例：Vault 根目錄的 CLAUDE.md"></a>知識庫層實例：Vault 根目錄的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 關於這個知識庫</span><br><span class="line">台灣執業律師的法律知識管理 Vault（Obsidian）。</span><br><span class="line"></span><br><span class="line"># 結構（雙軌，詳見各資料夾）</span><br><span class="line">- 00_INBOX：新材料暫存，等待編纂</span><br><span class="line">- 10_MATTERS：進行中案件，第一層以當事人分類（案件軌）</span><br><span class="line">- 20_AREAS：法領域爭點筆記＋MOC（研究軌）</span><br><span class="line">- 30_RESOURCES：判決、法規筆記、文獻</span><br><span class="line">- 40_ARCHIVE：已結案封存</span><br><span class="line">- 90_SYSTEM：範本與常用提示詞</span><br><span class="line"></span><br><span class="line"># 筆記規則</span><br><span class="line">- 新筆記一律套用 90_SYSTEM/Templates 的對應範本。</span><br><span class="line">- 判決筆記檔名 = 完整判決字號。</span><br><span class="line">- 提到 Vault 中已有筆記的判決、法條、爭點，必須加 [[wikilink]]。</span><br><span class="line">- 整理新材料後，更新對應領域的 MOC 與判決索引。</span><br><span class="line"></span><br><span class="line"># 紅線</span><br><span class="line">- 不改動 40_ARCHIVE 內任何檔案；刪除任何檔案前先徵求同意。</span><br><span class="line">- AI 產出的法條與判決引用一律標註「（待核對）」。</span><br><span class="line">- 對外文書草稿開頭標明「AI 草稿，未經律師審閱」。</span><br></pre></td></tr></table></figure>
-
-<h3 id="案件層實例：個別案件資料夾的-CLAUDE-md"><a href="#案件層實例：個別案件資料夾的-CLAUDE-md" class="headerlink" title="案件層實例：個別案件資料夾的 CLAUDE.md"></a>案件層實例：個別案件資料夾的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）有更新時，寫入 00_案件總覽.md。</span><br></pre></td></tr></table></figure>
-
-<p>寫的都是「只在這個案子成立」的要求：檔名慣例、代稱規則、狀態更新的去處。這種檔案每案大同小異，建議做成<strong>範本</strong>（放 <code>90_SYSTEM/Templates/</code>），開新案建資料夾時帶入再依個案微調，不必每次從零寫起。</p>
-<h2 id="三、進階模式：案件背景檔（background-md）"><a href="#三、進階模式：案件背景檔（background-md）" class="headerlink" title="三、進階模式：案件背景檔（background.md）"></a>三、進階模式：案件背景檔（background.md）</h2><p>案件層 CLAUDE.md 解決了「規則」，但 AI 要在這個案子裡工作，還缺一塊：<strong>理解案件脈絡</strong>——當事人與代理立場、案情梗概、核心爭點。這些內容較長，全部塞進 CLAUDE.md 會讓到職須知變得臃腫。</p>
-<p><strong>建議做法是「引用式」架構</strong>：CLAUDE.md 保持精簡、只寫規則，背景資料獨立成檔，再用 Claude Code 官方支援的 <strong><code>@</code> 引入語法</strong>掛進來——CLAUDE.md 裡寫 <code>@檔名</code>，AI 讀取 CLAUDE.md 時就會把該檔案內容一併載入。（說明：<code>@</code> 引入是官方機制；「background.md」這個檔名則是本系列的自訂慣例，你可以取任何名字，重點是每個案件用同一個。）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10_MATTERS/甲公司/2026-015_工程款_甲v乙/</span><br><span class="line">├── CLAUDE.md          ← 只寫規則，兩三行</span><br><span class="line">├── background.md      ← 案件背景（當事人、案情梗概、爭點框架）</span><br><span class="line">└── ……</span><br></pre></td></tr></table></figure>
-
-<p>於是上一節的案件 CLAUDE.md 變成這樣——開頭新增「案件背景」一節放引入指令（<code>@</code> 引入放在檔案任何位置都有效，另立標題是讓人和 AI 都一眼看出這段載入的是什麼），原本的狀態更新規則也升級成「分流規則」：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 案件背景</span><br><span class="line">@background.md</span><br><span class="line"></span><br><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）更新寫入 00_案件總覽.md；</span><br><span class="line">  案情或策略的實質變動才更新 background.md。</span><br></pre></td></tr></table></figure>
-
-<p>這個設計的好處：</p>
-<ol>
-<li><strong>關注點分離</strong>：規則歸 CLAUDE.md、背景歸 background.md，各自精簡；</li>
-<li><strong>背景檔可以請 AI 代管</strong>：案情有實質變動時（追加聲明、和解方向改變），說一句「請更新 background.md」；</li>
-<li><strong>一份背景多處使用</strong>：background.md 同時也是你自己的案件摘要筆記，人和 AI 讀同一份。</li>
-</ol>
-<blockquote>
-<p><strong>💡 小提示</strong><br>另一種寫法：在<strong>全域</strong> CLAUDE.md 裡寫一條通則——「進入任何案件資料夾工作時，若該資料夾內有 background.md，請先讀取它再開始」，就不必在每個案件資料夾重複寫 <code>@background.md</code>。兩者比較：</p>
-<ul>
-<li><strong><code>@</code> 引入</strong>：官方機制，<strong>保證載入</strong>；要在每個案件資料夾寫一行。</li>
-<li><strong>全域通則</strong>：寫一次、處處適用；但依賴 AI 記得去做，非保證。</li>
-<li>建議：固定結構的案件資料夾用 <code>@</code> 引入為主，全域通則作為補充保險，兩者並用最穩。</li>
-</ul>
-</blockquote>
-<p>規則中反覆出現的 <code>00_案件總覽.md</code>，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 介紹它時再細說；這裡先記一句就夠：<strong>半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。</strong></p>
-<h2 id="四、撰寫與維護心法"><a href="#四、撰寫與維護心法" class="headerlink" title="四、撰寫與維護心法"></a>四、撰寫與維護心法</h2><p><strong>1. 讓 AI 幫你寫第一版。</strong> Claude Code 內建 <code>/init</code> 指令，會分析資料夾內容自動生成初版 CLAUDE.md；或直接說「請觀察這個 Vault 的結構，起草一份 CLAUDE.md，草稿給我看過再存」。</p>
-<p><strong>2. 用「#」隨手補充。</strong> 在 Claude Code 對話中，以 <code>#</code> 開頭輸入一句話（例如 <code># 以後判決筆記都要加裁判日期屬性</code>），它會問你要存進哪一層的 CLAUDE.md——這是「養」到職須知最順手的方式。也可用 <code>/memory</code> 指令直接開啟編輯。</p>
-<p><strong>3. 從短開始，錯了就補。</strong> 第一版十行就夠。每次 AI 做了你不想要的事，回頭加一條規則。三個月後，這份檔案就是你的 AI 管理經驗結晶。</p>
-<p><strong>4. 定期「屋況檢查」。</strong> 規則多了會互相打架或過時，每季問一次：「請檢查我的 CLAUDE.md 有沒有互相矛盾、過時或太模糊的規則，提出精簡建議。」</p>
-<h2 id="五、實際效果對比"><a href="#五、實際效果對比" class="headerlink" title="五、實際效果對比"></a>五、實際效果對比</h2><p><strong>沒有 CLAUDE.md</strong>：「幫我整理這則判決」→ 簡體用語混入、自創格式、沒有連結、引用錯了也不標註。</p>
-<p><strong>有三層 CLAUDE.md</strong>：同一句話 → 套用判決範本、台灣法律用語、自動連結相關爭點、更新 MOC 與索引、引用標「待核對」、還記得你的檢閱者名稱要設「ST」。</p>
-<p><strong>差別不在 AI 變聰明了，而在你把要求講清楚了——而且只需要講一次。</strong></p>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>三層架構：全域寫「你是誰」、知識庫寫「這裡的規矩」、案件寫「本案特殊要求」。</li>
-<li>背景資料獨立成 background.md，用 <code>@background.md</code> 引入；全域通則可當補充保險。</li>
-<li>四個維護工具：<code>/init</code> 起草、<code>#</code> 隨手補充、<code>/memory</code> 編輯、定期屋況檢查。</li>
-<li>紅線（查證、保密、草稿標示）務必入文——這是職業紀律的程式化。</li>
-</ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://code.claude.com/docs/en/memory">Claude Code 官方文件：Memory（CLAUDE.md 與 <code>@</code> 引入語法）</a></li>
-<li><a href="https://developers.openai.com/codex/guides/agents-md">OpenAI Codex 官方文件：AGENTS.md</a></li>
-</ul>
-<hr>
-<p>⬅️ 上一篇：<a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>➡️ 下一篇：<a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>Claude-Code</tag>
-        <tag>CLAUDE-md</tag>
-        <tag>提示詞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>08 檔案整理方法論｜案件與研究領域的雙軌知識系統</title>
     <url>/posts/file-organization-methodology/</url>
     <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
@@ -374,99 +271,98 @@
       </tags>
   </entry>
   <entry>
-    <title>10 從檢索到編纂｜讓知識庫自己長大</title>
-    <url>/posts/from-retrieval-to-compilation/</url>
+    <title>07 CLAUDE.md｜寫給 AI 助理的到職須知</title>
+    <url>/posts/claude-md-onboarding/</url>
     <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
 <blockquote>
-<p><strong>💡 本篇重點</strong><br>你只負責把材料丟進 Inbox，AI 負責讀取、寫成結構化筆記、補上連結、更新主題地圖；整理由 AI 完成，你把時間放在審查與判斷。</p>
+<p><strong>💡 本篇重點</strong><br>CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 <code>@</code> 語法引入。寫一次，之後每次啟動都自動適用。</p>
 </blockquote>
 <span id="more"></span>
-<p>先看一個熟悉的場景：Inbox 裡堆著三週前存的判決、上個月研討會的講義、幾則隨手筆記，而經驗告訴你，它們多半不會再被打開。本篇要處理的就是這件事——把整理交出去。</p>
-<h2 id="一、編纂工作流：只有三步"><a href="#一、編纂工作流：只有三步" class="headerlink" title="一、編纂工作流：只有三步"></a>一、編纂工作流：只有三步</h2><p>前幾篇講過「檢索 vs 編纂」的典範轉移，一句話複習：檢索是資料存起來、要用時自己翻找；編纂是資料丟進去，AI 把它寫進一本有結構、有交叉連結、持續成長的法律百科全書。本篇是編纂的完整操作版，工作流全貌只有三步：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你：丟材料進 00_INBOX（判決、文章、開庭心得、隨手筆記）</span><br><span class="line">        ↓</span><br><span class="line">AI：編纂（讀取 → 結構化 → 連結 → 更新 MOC → 清空 Inbox）</span><br><span class="line">        ↓</span><br><span class="line">你：審查與修訂（法律判斷永遠是你的）</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、核心提示詞：Inbox-編纂"><a href="#二、核心提示詞：Inbox-編纂" class="headerlink" title="二、核心提示詞：Inbox 編纂"></a>二、核心提示詞：Inbox 編纂</h2><p>這是整套系統最常用的一段提示詞，建議存進 <code>90_SYSTEM/Prompts/</code>，每天（或每幾天）對 Claude Code 執行一次：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請執行 Inbox 編纂：</span><br><span class="line"></span><br><span class="line">1. 讀取 00_INBOX 內的所有檔案。</span><br><span class="line">2. 逐一判斷類型並處理：</span><br><span class="line">   - 判決全文 → 套用判決筆記範本改寫成結構化筆記</span><br><span class="line">     （字號、法院、案由、事實摘要、爭點、法院見解、評析留白給我填），</span><br><span class="line">     檔名用完整判決字號，存入 30_RESOURCES/判決/</span><br><span class="line">   - 文章或文獻 → 寫成文獻筆記（書目資訊、核心論點、與現有筆記的關係），</span><br><span class="line">     存入 30_RESOURCES/文獻/</span><br><span class="line">   - 我的隨手筆記 → 判斷所屬主題，整併入 20_AREAS 對應的爭點筆記；</span><br><span class="line">     沒有對應筆記就新建一則</span><br><span class="line">3. 所有新筆記中提到的判決、法條、爭點，若 Vault 已有對應筆記，</span><br><span class="line">   加上 [[wikilink]]；沒有的也先放上連結（未建立內容的連結會以較淡顏色顯示，留待未來補寫）。</span><br><span class="line">4. 更新受影響領域的 MOC 主題地圖。</span><br><span class="line">5. 處理完的原始檔移入 00_INBOX/done/。</span><br><span class="line">6. 最後報告：處理了幾份、新增哪些筆記、更新了哪些 MOC、</span><br><span class="line">   有哪些內容你不確定需要我人工確認；</span><br><span class="line">   並將本次報告附記一則到 90_SYSTEM/編纂日誌.md（日期＋摘要）。</span><br></pre></td></tr></table></figure>
-
-<p>執行一次之後你會看到：Inbox 清空了、判決變成了格式一致的筆記、爭點筆記多了新的實務見解、MOC 加了新的條目、筆記之間的連結網又密了一層。而你做的，只有把東西丟進資料夾。</p>
-<p>第 6 步的<strong>編纂日誌</strong>，讓 AI 每次編纂都在 <code>90_SYSTEM/編纂日誌.md</code> 留下一則帶日期的紀錄，作用有二——<strong>防重複</strong>（AI 開工前可以先翻日誌，確認哪些材料已處理過，避免重複匯入）與<strong>稽核</strong>：跟要求助理留工作紀錄是同一個道理，你隨時可以回頭檢視 AI 哪一天動了哪些筆記，發現問題也追得回去。</p>
-<h2 id="三、編纂的進階應用"><a href="#三、編纂的進階應用" class="headerlink" title="三、編纂的進階應用"></a>三、編纂的進階應用</h2><h3 id="應用一：見解衝突偵測"><a href="#應用一：見解衝突偵測" class="headerlink" title="應用一：見解衝突偵測"></a>應用一：見解衝突偵測</h3><p>法律研究最有價值、也最花時間的工作之一——找出實務見解的分歧：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取 20_AREAS/營建工程/ 底下所有與「工期展延」相關的判決筆記，</span><br><span class="line">比對各判決對「工期展延是否以依契約約定程序申請並經定作人核准為必要」的立場，</span><br><span class="line">如果發現見解分歧，在「工期展延的可歸責事由」筆記中</span><br><span class="line">新增「⚠️ 實務見解分歧」段落，分列兩說、各自引用判決（wikilink），</span><br><span class="line">並註明每則判決的年度，讓我看得出見解的時間演變。</span><br></pre></td></tr></table></figure>
-
-<h3 id="應用二：週期性的知識庫健檢"><a href="#應用二：週期性的知識庫健檢" class="headerlink" title="應用二：週期性的知識庫健檢"></a>應用二：週期性的知識庫健檢</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請對整個 Vault 做健康檢查：</span><br><span class="line">1. 找出所有「孤島筆記」（沒有任何連結進出的筆記），建議它們該連到哪裡；</span><br><span class="line">2. 找出 MOC 中尚未建立內容的連結，列成「待研究清單」；</span><br><span class="line">3. 找出內容重複或高度相似的筆記，建議合併方案（先不要動手，列給我看）；</span><br><span class="line">4. 檢查判決筆記是否都符合範本格式，不符合的列出清單。</span><br></pre></td></tr></table></figure>
-
-<h3 id="應用三：跨筆記的主題綜整"><a href="#應用三：跨筆記的主題綜整" class="headerlink" title="應用三：跨筆記的主題綜整"></a>應用三：跨筆記的主題綜整</h3><p>當你要寫文章、準備演講或研究新案件時：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我下個月要以「工程遲延與違約金酌減的實務發展」為題演講。</span><br><span class="line">請綜整 Vault 中所有相關筆記，產出一份演講大綱筆記：</span><br><span class="line">按爭點分節，每一節列出可引用的判決（wikilink）與我過去寫下的評析，</span><br><span class="line">最後加一節「知識庫目前的缺口」，告訴我哪些子題的材料還不夠。</span><br></pre></td></tr></table></figure>
-
-<p>注意最後一句——讓 AI 告訴你「知識庫還缺什麼」，這是編纂系統獨有的能力：它能盤點全庫筆記，指出材料不足的缺口。</p>
-<h2 id="四、關鍵原則：編纂歸-AI，判斷歸你"><a href="#四、關鍵原則：編纂歸-AI，判斷歸你" class="headerlink" title="四、關鍵原則：編纂歸 AI，判斷歸你"></a>四、關鍵原則：編纂歸 AI，判斷歸你</h2><p>編纂系統有一條不能妥協的分工線：</p>
+<h2 id="一、問題：每次都要重新交代一遍"><a href="#一、問題：每次都要重新交代一遍" class="headerlink" title="一、問題：每次都要重新交代一遍"></a>一、問題：每次都要重新交代一遍</h2><p>用過 ChatGPT 的人都有這個經驗：每開一個新對話，都要重講一次「請用繁體中文」「我是律師」「引用法條要附條號」。因為 AI 沒有記憶，每次對話都像換了一位新助理。</p>
+<p>如果事務所每天來一位新助理，沒有人會每天早上重新交代一次書狀格式、引用慣例、保密規矩；通常的做法是寫一份到職須知，新人來了自己看。</p>
+<p>CLAUDE.md 就是這份到職須知。Claude Code 啟動時會<strong>自動讀取</strong>它並在整個工作過程中遵守，不需要任何設定。（Codex 的對應機制是 <code>AGENTS.md</code>，觀念完全相同；想讓兩套工具共用，只維護一份 AGENTS.md，在 CLAUDE.md 裡寫一行 <code>@AGENTS.md</code> 把它引入即可——Claude Code 只讀 CLAUDE.md，用 <code>@</code> 引入才會確實載入 AGENTS.md 的內容；也可改用 symlink。）</p>
+<h2 id="二、標準架構：三層分工"><a href="#二、標準架構：三層分工" class="headerlink" title="二、標準架構：三層分工"></a>二、標準架構：三層分工</h2><p>CLAUDE.md 可以放在不同位置，效力範圍不同，<strong>疊加適用</strong>——跟法規的位階與特別法優先，邏輯相通。載入時機有一個細節：全域與知識庫層在啟動時就讀入；子資料夾層則是<strong>用到才載入</strong>——AI 實際讀取該資料夾內的檔案時，那一層的 CLAUDE.md 才會生效（所以案件層的規則，放進案件資料夾即可，不必擔心拖慢其他工作）：</p>
 <table>
 <thead>
 <tr>
-<th>AI 做的（形式與整理）</th>
-<th>你做的（實質與判斷）</th>
+<th>層級</th>
+<th>位置</th>
+<th>該寫什麼</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>摘要、結構化、格式統一</td>
-<td>「這則判決重不重要」的評價</td>
+<td><strong>全域（你這個人）</strong></td>
+<td><code>~/.claude/CLAUDE.md</code>（家目錄）</td>
+<td>你是誰、語言、文書偏好、通用紅線——<strong>無論在哪個資料夾工作都適用的事</strong></td>
 </tr>
 <tr>
-<td>建立與維護連結、更新 MOC</td>
-<td>評析欄的法律見解</td>
+<td><strong>知識庫（整個 Vault）</strong></td>
+<td>Vault 根目錄的 <code>CLAUDE.md</code></td>
+<td>知識庫結構、筆記格式、編纂規則——<strong>整個知識庫通用的事</strong></td>
 </tr>
 <tr>
-<td>發現見解分歧、指出知識缺口</td>
-<td>分歧中哪一說有理、缺口值不值得補</td>
+<td><strong>子資料夾（個別案件）</strong></td>
+<td><code>10_MATTERS/某當事人/某案件/CLAUDE.md</code></td>
+<td>該案件的特殊要求</td>
 </tr>
 <tr>
-<td>引用的搬運與標註</td>
-<td><strong>引用的查證</strong>（永遠是人）</td>
+<td>補充：個人（僅自己生效）</td>
+<td>Vault 根目錄的 <code>CLAUDE.local.md</code></td>
+<td>團隊共用 Vault 時你個人的偏好，同樣自動讀取</td>
 </tr>
 </tbody></table>
-<p>這條分工線的背後有一個原則：<strong>編纂系統替你省下的是「整理時間」，省不掉的是「閱讀與理解」。</strong> 正確的用法是讓 AI 的整理幫你決定哪些值得精讀，再把省下來的整理時間投資到精讀本身。完整的論證見 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a>。</p>
-<p>三個落實方法：</p>
-<p><strong>1. 範本裡設「評析留白」。</strong> 判決筆記範本的「評析」欄位讓 AI 留白（或只寫「（待評析）」），強迫自己每則重要判決都親手寫兩行。這兩行是整則筆記最值錢的部分，也是防止「認知外包」的護欄。</p>
-<p><strong>2. 引用一律標註待核。</strong> CLAUDE.md 裡已寫入的規則：AI 產出的法條與判決引用一律標「（待核對）」。你核對過後把標註拿掉——<strong>筆記裡沒有這個標註的引用，就代表經過你親手查證。</strong> 這讓知識庫的可信度有了明確的內部標準。若已設定法規資料庫 MCP（見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>），可讓 AI 先做第一輪核對，但最終責任仍在人。</p>
-<p><strong>3. 交件前，先讓 AI 自校一輪。</strong> 事務所的規矩是「文件送核前先自己校對」，對 AI 也一樣。任何批次任務的結尾加一句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">完成後，請對照我最初的指示逐項自我檢查：</span><br><span class="line">每一份都處理了嗎？格式都符合範本嗎？連結都加了嗎？</span><br><span class="line">把檢查結果列表回報，有遺漏就直接補正。</span><br></pre></td></tr></table></figure>
+<p>分層的判準一句話：<strong>「換一個 Vault 還成立的，往上放；只跟這個案子有關的，往下放。」</strong></p>
+<h3 id="全域層實例：一位涉日律師的-claude-CLAUDE-md"><a href="#全域層實例：一位涉日律師的-claude-CLAUDE-md" class="headerlink" title="全域層實例：一位涉日律師的 ~/.claude/CLAUDE.md"></a>全域層實例：一位涉日律師的 <code>~/.claude/CLAUDE.md</code></h3><p>以下以筆者實際使用的全域設定為例（節錄），這一層寫的是「無論在哪個資料夾工作都不變」的事：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 關於我</span><br><span class="line">- 角色：台灣執業律師，主要處理涉日跨境法律業務</span><br><span class="line">- 專業領域：再生能源法令、個人資料保護法、AI</span><br><span class="line"></span><br><span class="line"># 語言</span><br><span class="line">- 預設以繁體中文回覆。</span><br><span class="line">- 撰寫日文法律文書時直接使用日文，不需額外翻譯成中文。</span><br><span class="line"></span><br><span class="line"># 回覆風格</span><br><span class="line">- 簡單問題簡答，不需寒暄或鋪陳。</span><br><span class="line">- 法律分析涉及具體法條、判例字號或數據時，</span><br><span class="line">  若無法確認請明說，不要臆測或杜撰。</span><br><span class="line"></span><br><span class="line"># 法律文書偏好</span><br><span class="line">- 日文文書使用「ですます調」，用語精確、句構清晰。</span><br><span class="line">- 引用法條時註明法規全名與條號。</span><br><span class="line">- 日文文書一律使用西元紀年；判決字號中的年號（令和、平成、</span><br><span class="line">  民國）也一律換算為西元表示。</span><br><span class="line"></span><br><span class="line"># 工具</span><br><span class="line">- 處理 docx 追蹤修訂時，檢閱者名稱設為「ST」。</span><br><span class="line">- 輸出任何台灣法條條文或判決要旨前，必須先用法規資料庫</span><br><span class="line">  MCP 工具核對；查無資料時明說「未能於資料庫確認」，</span><br><span class="line">  不得憑記憶引用。</span><br></pre></td></tr></table></figure>
 
-<p>一句話的成本，換到明顯更穩的產出品質——AI 跟助理一樣，「知道要被驗收」時做得比較仔細。你的人工審查則從「逐項檢查」升級為「抽查＋看自檢報告」。</p>
-<h2 id="五、長任務的實務眉角：對話容量管理"><a href="#五、長任務的實務眉角：對話容量管理" class="headerlink" title="五、長任務的實務眉角：對話容量管理"></a>五、長任務的實務眉角：對話容量管理</h2><p>AI 的對話有容量上限（context window），一次塞進太多判決，會出現回應變慢、忘記前面指示、任務中斷等狀況。初期最常撞到的牆就是這一面，五個對策：</p>
+<p>留意幾個寫法：每一條都是<strong>可執行的行為規則</strong>，不是抽象期許；「不得臆測、查無資料要明說」這種職業倫理層級的紅線，直接寫成 AI 的行為限制；連「追蹤修訂檢閱者名稱」這種瑣碎但每次都要交代的細節，寫進去就一勞永逸。</p>
+<h3 id="知識庫層實例：Vault-根目錄的-CLAUDE-md"><a href="#知識庫層實例：Vault-根目錄的-CLAUDE-md" class="headerlink" title="知識庫層實例：Vault 根目錄的 CLAUDE.md"></a>知識庫層實例：Vault 根目錄的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 關於這個知識庫</span><br><span class="line">台灣執業律師的法律知識管理 Vault（Obsidian）。</span><br><span class="line"></span><br><span class="line"># 結構（雙軌，詳見各資料夾）</span><br><span class="line">- 00_INBOX：新材料暫存，等待編纂</span><br><span class="line">- 10_MATTERS：進行中案件，第一層以當事人分類（案件軌）</span><br><span class="line">- 20_AREAS：法領域爭點筆記＋MOC（研究軌）</span><br><span class="line">- 30_RESOURCES：判決、法規筆記、文獻</span><br><span class="line">- 40_ARCHIVE：已結案封存</span><br><span class="line">- 90_SYSTEM：範本與常用提示詞</span><br><span class="line"></span><br><span class="line"># 筆記規則</span><br><span class="line">- 新筆記一律套用 90_SYSTEM/Templates 的對應範本。</span><br><span class="line">- 判決筆記檔名 = 完整判決字號。</span><br><span class="line">- 提到 Vault 中已有筆記的判決、法條、爭點，必須加 [[wikilink]]。</span><br><span class="line">- 整理新材料後，更新對應領域的 MOC 與判決索引。</span><br><span class="line"></span><br><span class="line"># 紅線</span><br><span class="line">- 不改動 40_ARCHIVE 內任何檔案；刪除任何檔案前先徵求同意。</span><br><span class="line">- AI 產出的法條與判決引用一律標註「（待核對）」。</span><br><span class="line">- 對外文書草稿開頭標明「AI 草稿，未經律師審閱」。</span><br></pre></td></tr></table></figure>
+
+<h3 id="案件層實例：個別案件資料夾的-CLAUDE-md"><a href="#案件層實例：個別案件資料夾的-CLAUDE-md" class="headerlink" title="案件層實例：個別案件資料夾的 CLAUDE.md"></a>案件層實例：個別案件資料夾的 <code>CLAUDE.md</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）有更新時，寫入 00_案件總覽.md。</span><br></pre></td></tr></table></figure>
+
+<p>寫的都是「只在這個案子成立」的要求：檔名慣例、代稱規則、狀態更新的去處。這種檔案每案大同小異，建議做成<strong>範本</strong>（放 <code>90_SYSTEM/Templates/</code>），開新案建資料夾時帶入再依個案微調，不必每次從零寫起。</p>
+<h2 id="三、進階模式：案件背景檔（background-md）"><a href="#三、進階模式：案件背景檔（background-md）" class="headerlink" title="三、進階模式：案件背景檔（background.md）"></a>三、進階模式：案件背景檔（background.md）</h2><p>案件層 CLAUDE.md 解決了「規則」，但 AI 要在這個案子裡工作，還缺一塊：<strong>理解案件脈絡</strong>——當事人與代理立場、案情梗概、核心爭點。這些內容較長，全部塞進 CLAUDE.md 會讓到職須知變得臃腫。</p>
+<p><strong>建議做法是「引用式」架構</strong>：CLAUDE.md 保持精簡、只寫規則，背景資料獨立成檔，再用 Claude Code 官方支援的 <strong><code>@</code> 引入語法</strong>掛進來——CLAUDE.md 裡寫 <code>@檔名</code>，AI 讀取 CLAUDE.md 時就會把該檔案內容一併載入。（說明：<code>@</code> 引入是官方機制；「background.md」這個檔名則是本系列的自訂慣例，你可以取任何名字，重點是每個案件用同一個。）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10_MATTERS/甲公司/2026-015_工程款_甲v乙/</span><br><span class="line">├── CLAUDE.md          ← 只寫規則，兩三行</span><br><span class="line">├── background.md      ← 案件背景（當事人、案情梗概、爭點框架）</span><br><span class="line">└── ……</span><br></pre></td></tr></table></figure>
+
+<p>於是上一節的案件 CLAUDE.md 變成這樣——開頭新增「案件背景」一節放引入指令（<code>@</code> 引入放在檔案任何位置都有效，另立標題是讓人和 AI 都一眼看出這段載入的是什麼），原本的狀態更新規則也升級成「分流規則」：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 案件背景</span><br><span class="line">@background.md</span><br><span class="line"></span><br><span class="line"># 本案工作規則</span><br><span class="line">- 本案所有書狀草稿存入 02_我方書狀/，檔名附版本號。</span><br><span class="line">- 本案當事人資訊僅供案內使用，產出對外文件時一律以代稱表示。</span><br><span class="line">- 案件狀態（庭期、待辦、時間軸）更新寫入 00_案件總覽.md；</span><br><span class="line">  案情或策略的實質變動才更新 background.md。</span><br></pre></td></tr></table></figure>
+
+<p>這個設計的好處：</p>
 <ol>
-<li><strong>分批</strong>：一次編纂五到十份，勝過一次五十份。批次之間說一句「請繼續處理下一批」即可。</li>
-<li><strong>換場就清空</strong>：一個任務結束、要開新任務時，用 <code>/clear</code> 清空對話重新開始——檔案完全不受影響，成果都已寫進筆記，對話本身不需要留戀。對話太長時，也可用 <code>/compact</code> 把前文濃縮後繼續。</li>
-<li><strong>不要把容量用到見底</strong>：大約用掉七、八成時，就主動 <code>/compact</code> 或收尾另起對話——由自己決定哪些重點該保留下來，而不是等系統自動壓縮時替你取捨。（想隨時掌握容量水位，見 <a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> 的狀態列小提示。）</li>
-<li><strong>先定案、再動工，兩個對話分開跑</strong>：大型任務先用一個對話把做法討論定案，結論寫成計畫筆記存檔；執行時另開新對話，請 AI 依計畫筆記進行。計畫住在檔案裡，執行的對話隨時可以清空重來，也不會被前面的討論佔用容量。</li>
-<li><strong>讓規則住在檔案裡，不要住在對話裡</strong>：重要指示寫進 CLAUDE.md 與範本，而不是在對話中反覆叮嚀——檔案裡的規則每次啟動都在，對話裡的話會隨清空而消失。</li>
+<li><strong>關注點分離</strong>：規則歸 CLAUDE.md、背景歸 background.md，各自精簡；</li>
+<li><strong>背景檔可以請 AI 代管</strong>：案情有實質變動時（追加聲明、和解方向改變），說一句「請更新 background.md」；</li>
+<li><strong>一份背景多處使用</strong>：background.md 同時也是你自己的案件摘要筆記，人和 AI 讀同一份。</li>
 </ol>
-<p>（進階關鍵字：處理超大批量時，Claude Code 可派出「子代理（subagent）」平行分工，每個子代理有自己的獨立對話容量。先知道有這個詞，用得到時直接問 AI 怎麼用。）</p>
-<p><strong>大工程，先要一份計畫書（Plan Mode）。</strong> 會影響大量檔案的任務（重整整個 Vault 的資料夾、批次改寫上百則筆記），不要讓 AI 直接動手。Claude Code 有「計畫模式」（按 <code>Shift+Tab</code> 切換）：AI 會先通盤研究、提出完整的執行計畫給你核可，<strong>核可前不會更動任何檔案</strong>。這跟你帶助理辦大案的習慣一模一樣——先交辦案計畫，主辦律師核過才動卷。計畫哪裡不妥，直接用中文修改它，改到滿意再放行。</p>
-<h2 id="六、養成節奏：每天三十秒，每週十分鐘"><a href="#六、養成節奏：每天三十秒，每週十分鐘" class="headerlink" title="六、養成節奏：每天三十秒，每週十分鐘"></a>六、養成節奏：每天三十秒，每週十分鐘</h2><p>編纂系統的成敗不在技術，在節奏。建議的最低維運成本：</p>
-<ul>
-<li><strong>隨時（3 秒）</strong>：遇到任何有價值的材料，丟進 <code>00_INBOX</code>。不整理、不分類、不猶豫。</li>
-<li><strong>每天或隔天（30 秒）</strong>：對 Claude Code 說「請執行 Inbox 編纂」，看一眼它的報告。</li>
-<li><strong>每週（10 分鐘）</strong>：翻一下本週新增的筆記，補寫評析、核對引用、順手調整。</li>
-<li><strong>每月（10 分鐘）</strong>：跑一次知識庫健檢，看看待研究清單。</li>
-</ul>
 <blockquote>
-<p><strong>💡 網頁文章的 3 秒入庫：Obsidian Web Clipper</strong><br>「隨時丟材料」在瀏覽器裡也有專屬工具：Obsidian 官方的免費瀏覽器擴充功能 <strong>Web Clipper</strong>（Chrome、Edge、Firefox、Safari 都支援），可以把正在閱讀的網頁一鍵擷取成 Markdown 筆記、直接存進 Vault 指定的資料夾（設成 <code>00_INBOX</code> 正好）。主管機關新聞稿、函釋公告、學者專欄、法律新聞——看到就按一下，剩下的交給下一次 Inbox 編纂。裁判書則用 <a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> 介紹過的「司法院裁判書閱讀助手」，兩個擴充功能正好分工。</p>
+<p><strong>💡 小提示</strong><br>另一種寫法：在<strong>全域</strong> CLAUDE.md 裡寫一條通則——「進入任何案件資料夾工作時，若該資料夾內有 background.md，請先讀取它再開始」，就不必在每個案件資料夾重複寫 <code>@background.md</code>。兩者比較：</p>
+<ul>
+<li><strong><code>@</code> 引入</strong>：官方機制，<strong>保證載入</strong>；要在每個案件資料夾寫一行。</li>
+<li><strong>全域通則</strong>：寫一次、處處適用；但依賴 AI 記得去做，非保證。</li>
+<li>建議：固定結構的案件資料夾用 <code>@</code> 引入為主，全域通則作為補充保險，兩者並用最穩。</li>
+</ul>
 </blockquote>
-<p>過去知識管理難以持續的主因是「整理太花時間」；把整理交給 AI 後，維運成本降到這個程度，系統才可能長期持續，逐步累積成你自己的專業資產。</p>
+<p>規則中反覆出現的 <code>00_案件總覽.md</code>，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 介紹它時再細說；這裡先記一句就夠：<strong>半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。</strong></p>
+<h2 id="四、撰寫與維護心法"><a href="#四、撰寫與維護心法" class="headerlink" title="四、撰寫與維護心法"></a>四、撰寫與維護心法</h2><p><strong>1. 讓 AI 幫你寫第一版。</strong> Claude Code 內建 <code>/init</code> 指令，會分析資料夾內容自動生成初版 CLAUDE.md；或直接說「請觀察這個 Vault 的結構，起草一份 CLAUDE.md，草稿給我看過再存」。</p>
+<p><strong>2. 隨口請它記，或用 <code>/memory</code> 開檔編輯。</strong> 對 Claude Code 說一句「幫我記住：判決筆記都要加裁判日期屬性」，它預設會存進自己的自動記憶（auto memory，見第 5 點）；若要寫進特定層的 CLAUDE.md，明講「加進這個資料夾的 CLAUDE.md」，或用 <code>/memory</code> 指令開檔直接編輯——這是「養」到職須知最順手的方式。</p>
+<p><strong>3. 從短開始，錯了就補。</strong> 第一版十行就夠。每次 AI 做了你不想要的事，回頭加一條規則。三個月後，這份檔案就是你的 AI 管理經驗結晶。</p>
+<p><strong>4. 定期「屋況檢查」。</strong> 規則多了會互相打架或過時，每季問一次：「請檢查我的 CLAUDE.md 有沒有互相矛盾、過時或太模糊的規則，提出精簡建議。」</p>
+<p><strong>5. 讓它自己也記一份（auto memory）。</strong> 除了你手寫的 CLAUDE.md，Claude Code 另有一套預設開啟的<strong>自動記憶（auto memory）</strong>：它會把從你的更正與偏好中學到的東西（慣用指令、除錯心得、格式偏好）自己記下來，存進該專案的記憶資料夾，與 CLAUDE.md 互補——一個是你明文交代的規則，一個是它自動累積的學習。想檢視或調整，用 <code>/memory</code> 指令即可開關與查看。</p>
+<h2 id="五、實際效果對比"><a href="#五、實際效果對比" class="headerlink" title="五、實際效果對比"></a>五、實際效果對比</h2><p><strong>沒有 CLAUDE.md</strong>：「幫我整理這則判決」→ 簡體用語混入、自創格式、沒有連結、引用錯了也不標註。</p>
+<p><strong>有三層 CLAUDE.md</strong>：同一句話 → 套用判決範本、台灣法律用語、自動連結相關爭點、更新 MOC 與索引、引用標「待核對」、還記得你的檢閱者名稱要設「ST」。</p>
+<p><strong>差別不在 AI 變聰明了，而在你把要求講清楚了——而且只需要講一次。</strong></p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>編纂工作流：你丟材料 → AI 結構化並連結 → 你審查判斷。</li>
-<li>四大招式：Inbox 編纂、見解衝突偵測、知識庫健檢、主題綜整。</li>
-<li>分工鐵律：形式歸 AI，判斷歸你；評析親手寫，引用親手查，重要材料親自精讀——AI 省下整理時間，省不掉閱讀時間。</li>
-<li>下一篇進入實戰：把這套系統用在最日常的場景——判決研究。</li>
+<li>三層架構：全域寫「你是誰」、知識庫寫「這裡的規矩」、案件寫「本案特殊要求」。</li>
+<li>背景資料獨立成 background.md，用 <code>@background.md</code> 引入；全域通則可當補充保險。</li>
+<li>維護工具：<code>/init</code> 起草、隨口請它記或用 <code>/memory</code> 開檔編輯、定期屋況檢查；另有預設開啟的 auto memory 自動累積 Claude 學到的偏好，與手寫 CLAUDE.md 互補。</li>
+<li>紅線（查證、保密、草稿標示）務必入文——這是職業紀律的程式化。</li>
 </ul>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://obsidian.md/clipper">Obsidian Web Clipper 官方頁面</a></li>
-<li><a href="https://code.claude.com/docs/en/context-window">Claude Code 官方文件：對話容量管理（Context window）</a></li>
-<li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code 官方文件：子代理（Subagents）</a></li>
-<li><a href="https://code.claude.com/docs/en/permission-modes">Claude Code 官方文件：授權模式（含 Plan Mode）</a></li>
+<li><a href="https://code.claude.com/docs/en/memory">Claude Code 官方文件：Memory（CLAUDE.md 與 <code>@</code> 引入語法）</a></li>
+<li><a href="https://developers.openai.com/codex/guides/agents-md">OpenAI Codex 官方文件：AGENTS.md</a></li>
 </ul>
 <hr>
-<p>⬅️ 上一篇：<a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a><br>➡️ 下一篇：<a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+<p>⬅️ 上一篇：<a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>➡️ 下一篇：<a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
 ]]></content>
       <categories>
         <category>AI x Obsidian 系列</category>
@@ -474,8 +370,8 @@
       <tags>
         <tag>AI課程</tag>
         <tag>Claude-Code</tag>
-        <tag>Obsidian</tag>
-        <tag>知識編纂</tag>
+        <tag>CLAUDE-md</tag>
+        <tag>提示詞</tag>
       </tags>
   </entry>
   <entry>
@@ -649,66 +545,99 @@
       </tags>
   </entry>
   <entry>
-    <title>11 實戰｜打造判決知識庫：從裁判書到 WIKI 索引</title>
-    <url>/posts/judgment-knowledge-base/</url>
+    <title>10 從檢索到編纂｜讓知識庫自己長大</title>
+    <url>/posts/from-retrieval-to-compilation/</url>
     <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
 <blockquote>
-<p><strong>💡 本篇重點</strong><br>裁判書存成 .md 丟進 Vault → AI 在每份開頭插入三色摘要區塊 → AI 編出索引頁與爭點 WIKI。之後查判決，先翻自己整理過的索引與 WIKI，再回全文查證。</p>
+<p><strong>💡 本篇重點</strong><br>你只負責把材料丟進 Inbox，AI 負責讀取、寫成結構化筆記、補上連結、更新主題地圖；整理由 AI 完成，你把時間放在審查與判斷。</p>
 </blockquote>
 <span id="more"></span>
-<p>判決研究有兩個日常困境：裁判書動輒數十頁，每份都精讀不現實，只看主文又抓不到論理；而且同一個爭點，隔了半年往往又是一次從零開始的檢索。本篇是整個知識管理主線的核心實戰，完整走一遍「判決知識庫」的建置流程。這條流程訴訟律師感受最直接，但非訟律師與企業法務同樣受用——文末會分別說明兩種視角的用法。</p>
-<h2 id="第一步：把裁判書變成-md-檔"><a href="#第一步：把裁判書變成-md-檔" class="headerlink" title="第一步：把裁判書變成 .md 檔"></a>第一步：把裁判書變成 .md 檔</h2><p>原料來自「司法院裁判書系統」（判決書查詢）。把裁判書變成 Vault 裡的 Markdown 檔，有三種做法：</p>
-<p><strong>做法一：複製貼上（零門檻）。</strong> 在裁判書頁面全選複製，回 Obsidian 新增筆記貼上，檔名取判決字號。適合偶爾為之。</p>
-<p><strong>做法二：瀏覽器擴充功能一鍵下載。</strong> 筆者以 Claude Code 自行開發了 Chrome 擴充功能「<strong>司法院裁判書閱讀助手</strong>」（免費上架於 <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn">Chrome 線上應用程式商店</a>，無任何收費或商業利益；<a href="https://github.com/han0302-cyber/judicial-outline-extension/">GitHub 原始碼</a>公開），可以在裁判書頁面自動解析判決架構、標示參照判決，並<strong>一鍵複製判決全文、或將整份裁判書下載成 .md 檔</strong>。下載下來直接就是 Obsidian 能用的格式，批次研究判決時效率差距可觀，提供讀者參考。</p>
-<p><strong>做法三：交給 AI 轉檔。</strong> 手上是 PDF 或 Word 的裁判書（例如當事人提供的卷內判決），直接丟進 <code>00_INBOX</code>，讓 Claude Code 轉成 md（本機轉檔工具如 markitdown 可全程不外傳資料）。</p>
-<p><strong>做法四：讓 AI 直接檢索（MCP）。</strong> 前三種做法都是「人先找到判決、再入庫」；裝好 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> 介紹的 taiwan-legal-db 之後，還有第四種——連檢索本身也交辦出去：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請用裁判書系統檢索與「工期展延 違約金酌減」相關的近三年判決，</span><br><span class="line">列出：字號｜法院｜一句話爭點，供我挑選；</span><br><span class="line">我勾選後，將全文下載存入 30_RESOURCES/判決/，檔名用判決字號。</span><br></pre></td></tr></table></figure>
+<p>先看一個熟悉的場景：Inbox 裡堆著三週前存的判決、上個月研討會的講義、幾則隨手筆記，而經驗告訴你，它們多半不會再被打開。本篇要處理的就是這件事——把整理交出去。</p>
+<h2 id="一、編纂工作流：只有三步"><a href="#一、編纂工作流：只有三步" class="headerlink" title="一、編纂工作流：只有三步"></a>一、編纂工作流：只有三步</h2><p>前幾篇講過「檢索 vs 編纂」的典範轉移，一句話複習：檢索是資料存起來、要用時自己翻找；編纂是資料丟進去，AI 把它寫進一本有結構、有交叉連結、持續成長的法律百科全書。本篇是編纂的完整操作版，工作流全貌只有三步：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你：丟材料進 00_INBOX（判決、文章、開庭心得、隨手筆記）</span><br><span class="line">        ↓</span><br><span class="line">AI：編纂（讀取 → 結構化 → 連結 → 更新 MOC → 清空 Inbox）</span><br><span class="line">        ↓</span><br><span class="line">你：審查與修訂（法律判斷永遠是你的）</span><br></pre></td></tr></table></figure>
 
-<p>這條路的界線要先劃清：<strong>AI 初篩、律師複選。</strong> 檢索詞抓得全不全、哪幾則值得入庫，是判斷，不隨檢索一起外包——AI 列出的是候選名單，不是研究結論；重要爭點宜再用自己的檢索詞補一輪，確認沒有漏網。</p>
-<p>下載下來的判決，統一放進 <code>30_RESOURCES/判決/</code>，或先丟 <code>00_INBOX</code> 等待編纂。</p>
-<h2 id="第二步：AI-產生三色摘要（Skill-實戰）"><a href="#第二步：AI-產生三色摘要（Skill-實戰）" class="headerlink" title="第二步：AI 產生三色摘要（Skill 實戰）"></a>第二步：AI 產生三色摘要（Skill 實戰）</h2><p>開頭說的第一個困境——精讀不現實、只看主文不夠——解法是讓 AI 在<strong>每份裁判書的最開頭</strong>插入三個 Obsidian callout 色塊：</p>
+<h2 id="二、核心提示詞：Inbox-編纂"><a href="#二、核心提示詞：Inbox-編纂" class="headerlink" title="二、核心提示詞：Inbox 編纂"></a>二、核心提示詞：Inbox 編纂</h2><p>這是整套系統最常用的一段提示詞，建議存進 <code>90_SYSTEM/Prompts/</code>，每天（或每幾天）對 Claude Code 執行一次：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請執行 Inbox 編纂：</span><br><span class="line"></span><br><span class="line">1. 讀取 00_INBOX 內的所有檔案。</span><br><span class="line">2. 逐一判斷類型並處理：</span><br><span class="line">   - 判決全文 → 套用判決筆記範本改寫成結構化筆記</span><br><span class="line">     （字號、法院、案由、事實摘要、爭點、法院見解、評析留白給我填），</span><br><span class="line">     檔名用完整判決字號，存入 30_RESOURCES/判決/</span><br><span class="line">   - 文章或文獻 → 寫成文獻筆記（書目資訊、核心論點、與現有筆記的關係），</span><br><span class="line">     存入 30_RESOURCES/文獻/</span><br><span class="line">   - 我的隨手筆記 → 判斷所屬主題，整併入 20_AREAS 對應的爭點筆記；</span><br><span class="line">     沒有對應筆記就新建一則</span><br><span class="line">3. 所有新筆記中提到的判決、法條、爭點，若 Vault 已有對應筆記，</span><br><span class="line">   加上 [[wikilink]]；沒有的也先放上連結（未建立內容的連結會以較淡顏色顯示，留待未來補寫）。</span><br><span class="line">4. 更新受影響領域的 MOC 主題地圖。</span><br><span class="line">5. 處理完的原始檔移入 00_INBOX/done/。</span><br><span class="line">6. 最後報告：處理了幾份、新增哪些筆記、更新了哪些 MOC、</span><br><span class="line">   有哪些內容你不確定需要我人工確認；</span><br><span class="line">   並將本次報告附記一則到 90_SYSTEM/編纂日誌.md（日期＋摘要）。</span><br></pre></td></tr></table></figure>
+
+<p>執行一次之後你會看到：Inbox 清空了、判決變成了格式一致的筆記、爭點筆記多了新的實務見解、MOC 加了新的條目、筆記之間的連結網又密了一層。而你做的，只有把東西丟進資料夾。</p>
+<p>第 6 步的<strong>編纂日誌</strong>，讓 AI 每次編纂都在 <code>90_SYSTEM/編纂日誌.md</code> 留下一則帶日期的紀錄，作用有二——<strong>防重複</strong>（AI 開工前可以先翻日誌，確認哪些材料已處理過，避免重複匯入）與<strong>稽核</strong>：跟要求助理留工作紀錄是同一個道理，你隨時可以回頭檢視 AI 哪一天動了哪些筆記，發現問題也追得回去。</p>
+<h2 id="三、編纂的進階應用"><a href="#三、編纂的進階應用" class="headerlink" title="三、編纂的進階應用"></a>三、編纂的進階應用</h2><h3 id="應用一：見解衝突偵測"><a href="#應用一：見解衝突偵測" class="headerlink" title="應用一：見解衝突偵測"></a>應用一：見解衝突偵測</h3><p>法律研究最有價值、也最花時間的工作之一——找出實務見解的分歧：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取 20_AREAS/營建工程/ 底下所有與「工期展延」相關的判決筆記，</span><br><span class="line">比對各判決對「工期展延是否以依契約約定程序申請並經定作人核准為必要」的立場，</span><br><span class="line">如果發現見解分歧，在「工期展延的可歸責事由」筆記中</span><br><span class="line">新增「⚠️ 實務見解分歧」段落，分列兩說、各自引用判決（wikilink），</span><br><span class="line">並註明每則判決的年度，讓我看得出見解的時間演變。</span><br></pre></td></tr></table></figure>
+
+<h3 id="應用二：週期性的知識庫健檢"><a href="#應用二：週期性的知識庫健檢" class="headerlink" title="應用二：週期性的知識庫健檢"></a>應用二：週期性的知識庫健檢</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請對整個 Vault 做健康檢查：</span><br><span class="line">1. 找出所有「孤島筆記」（沒有任何連結進出的筆記），建議它們該連到哪裡；</span><br><span class="line">2. 找出 MOC 中尚未建立內容的連結，列成「待研究清單」；</span><br><span class="line">3. 找出內容重複或高度相似的筆記，建議合併方案（先不要動手，列給我看）；</span><br><span class="line">4. 檢查判決筆記是否都符合範本格式，不符合的列出清單。</span><br></pre></td></tr></table></figure>
+
+<h3 id="應用三：跨筆記的主題綜整"><a href="#應用三：跨筆記的主題綜整" class="headerlink" title="應用三：跨筆記的主題綜整"></a>應用三：跨筆記的主題綜整</h3><p>當你要寫文章、準備演講或研究新案件時：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我下個月要以「工程遲延與違約金酌減的實務發展」為題演講。</span><br><span class="line">請綜整 Vault 中所有相關筆記，產出一份演講大綱筆記：</span><br><span class="line">按爭點分節，每一節列出可引用的判決（wikilink）與我過去寫下的評析，</span><br><span class="line">最後加一節「知識庫目前的缺口」，告訴我哪些子題的材料還不夠。</span><br></pre></td></tr></table></figure>
+
+<p>注意最後一句——讓 AI 告訴你「知識庫還缺什麼」，這是編纂系統獨有的能力：它能盤點全庫筆記，指出材料不足的缺口。</p>
+<h2 id="四、關鍵原則：編纂歸-AI，判斷歸你"><a href="#四、關鍵原則：編纂歸-AI，判斷歸你" class="headerlink" title="四、關鍵原則：編纂歸 AI，判斷歸你"></a>四、關鍵原則：編纂歸 AI，判斷歸你</h2><p>編纂系統有一條不能妥協的分工線：</p>
+<table>
+<thead>
+<tr>
+<th>AI 做的（形式與整理）</th>
+<th>你做的（實質與判斷）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>摘要、結構化、格式統一</td>
+<td>「這則判決重不重要」的評價</td>
+</tr>
+<tr>
+<td>建立與維護連結、更新 MOC</td>
+<td>評析欄的法律見解</td>
+</tr>
+<tr>
+<td>發現見解分歧、指出知識缺口</td>
+<td>分歧中哪一說有理、缺口值不值得補</td>
+</tr>
+<tr>
+<td>引用的搬運與標註</td>
+<td><strong>引用的查證</strong>（永遠是人）</td>
+</tr>
+</tbody></table>
+<p>這條分工線的背後有一個原則：<strong>編纂系統替你省下的是「整理時間」，省不掉的是「閱讀與理解」。</strong> 正確的用法是讓 AI 的整理幫你決定哪些值得精讀，再把省下來的整理時間投資到精讀本身。完整的論證見 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a>。</p>
+<p>三個落實方法：</p>
+<p><strong>1. 範本裡設「評析留白」。</strong> 判決筆記範本的「評析」欄位讓 AI 留白（或只寫「（待評析）」），強迫自己每則重要判決都親手寫兩行。這兩行是整則筆記最值錢的部分，也是防止「認知外包」的護欄。</p>
+<p><strong>2. 引用一律標註待核。</strong> CLAUDE.md 裡已寫入的規則：AI 產出的法條與判決引用一律標「（待核對）」。你核對過後把標註拿掉——<strong>筆記裡沒有這個標註的引用，就代表經過你親手查證。</strong> 這讓知識庫的可信度有了明確的內部標準。若已設定法規資料庫 MCP（見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>），可讓 AI 先做第一輪核對，但最終責任仍在人。</p>
+<p><strong>3. 交件前，先讓 AI 自校一輪。</strong> 事務所的規矩是「文件送核前先自己校對」，對 AI 也一樣。任何批次任務的結尾加一句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">完成後，請對照我最初的指示逐項自我檢查：</span><br><span class="line">每一份都處理了嗎？格式都符合範本嗎？連結都加了嗎？</span><br><span class="line">把檢查結果列表回報，有遺漏就直接補正。</span><br></pre></td></tr></table></figure>
+
+<p>一句話的成本，換到明顯更穩的產出品質——AI 跟助理一樣，「知道要被驗收」時做得比較仔細。你的人工審查則從「逐項檢查」升級為「抽查＋看自檢報告」。</p>
+<h2 id="五、長任務的實務眉角：對話容量管理"><a href="#五、長任務的實務眉角：對話容量管理" class="headerlink" title="五、長任務的實務眉角：對話容量管理"></a>五、長任務的實務眉角：對話容量管理</h2><p>AI 的對話有容量上限（context window），一次塞進太多判決，會出現回應變慢、忘記前面指示、任務中斷等狀況。初期最常撞到的牆就是這一面，五個對策：</p>
+<ol>
+<li><strong>分批</strong>：一次編纂五到十份，勝過一次五十份。批次之間說一句「請繼續處理下一批」即可。</li>
+<li><strong>換場就清空</strong>：一個任務結束、要開新任務時，用 <code>/clear</code> 清空對話重新開始——檔案完全不受影響，成果都已寫進筆記，對話本身不需要留戀。對話太長時，也可用 <code>/compact</code> 把前文濃縮後繼續。</li>
+<li><strong>不要把容量用到見底</strong>：大約用掉七、八成時，就主動 <code>/compact</code> 或收尾另起對話——由自己決定哪些重點該保留下來，而不是等系統自動壓縮時替你取捨。（想隨時掌握容量水位，見 <a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> 的狀態列小提示。）</li>
+<li><strong>先定案、再動工，兩個對話分開跑</strong>：大型任務先用一個對話把做法討論定案，結論寫成計畫筆記存檔；執行時另開新對話，請 AI 依計畫筆記進行。計畫住在檔案裡，執行的對話隨時可以清空重來，也不會被前面的討論佔用容量。</li>
+<li><strong>讓規則住在檔案裡，不要住在對話裡</strong>：重要指示寫進 CLAUDE.md 與範本，而不是在對話中反覆叮嚀——檔案裡的規則每次啟動都在，對話裡的話會隨清空而消失。</li>
+</ol>
+<p>（進階關鍵字：處理超大批量時，Claude Code 可派出「子代理（subagent）」平行分工，每個子代理有自己的獨立對話容量。先知道有這個詞，用得到時直接問 AI 怎麼用。）</p>
+<p><strong>大工程，先要一份計畫書（Plan Mode）。</strong> 會影響大量檔案的任務（重整整個 Vault 的資料夾、批次改寫上百則筆記），不要讓 AI 直接動手。Claude Code 有「計畫模式」（按 <code>Shift+Tab</code> 切換）：AI 會先通盤研究、提出完整的執行計畫給你核可，<strong>核可前不會更動任何檔案</strong>。這跟你帶助理辦大案的習慣一模一樣——先交辦案計畫，主辦律師核過才動卷。計畫哪裡不妥，直接用中文修改它，改到滿意再放行。</p>
+<h2 id="六、養成節奏：每天三十秒，每週十分鐘"><a href="#六、養成節奏：每天三十秒，每週十分鐘" class="headerlink" title="六、養成節奏：每天三十秒，每週十分鐘"></a>六、養成節奏：每天三十秒，每週十分鐘</h2><p>編纂系統的成敗不在技術，在節奏。建議的最低維運成本：</p>
 <ul>
-<li>🟩 <code>[!tip]</code> <strong>重點摘要</strong>——把案件講成一個完整的故事：當事人身分、關鍵行為、時間點與金額、最終判決結果，關鍵事實加上螢光標記。讀完能向同事三句話講清楚這個案子。</li>
-<li>🟨 <code>[!question]</code> <strong>爭點整理</strong>——本案法律上真正在吵什麼，每個爭點一句話標題＋具體爭執內容，通常二至五個。</li>
-<li>🟦 <code>[!note]</code> <strong>法院見解</strong>——法院對各爭點的結論與論理，與爭點一一對應；最高法院判決並說明維持或推翻下級審的哪些認定。</li>
+<li><strong>隨時（3 秒）</strong>：遇到任何有價值的材料，丟進 <code>00_INBOX</code>。不整理、不分類、不猶豫。</li>
+<li><strong>每天或隔天（30 秒）</strong>：對 Claude Code 說「請執行 Inbox 編纂」，看一眼它的報告。</li>
+<li><strong>每週（10 分鐘）</strong>：翻一下本週新增的筆記，補寫評析、核對引用、順手調整。</li>
+<li><strong>每月（10 分鐘）</strong>：跑一次知識庫健檢，看看待研究清單。</li>
 </ul>
-<p>三色區塊之後以 <code>---</code> 分隔，<strong>裁判全文原封不動接在後面</strong>——摘要是導覽，不是替代，全文永遠都在。</p>
-<p>三色摘要的任務，是幫你在一批判決中快速分辨「哪幾份值得精讀」，而不是讓你從此不必讀判決。對案件成敗有影響的關鍵判決，一定要親自讀全文——法院論理的轉折、事實認定的細節、可供攻擊的縫隙，這些只有精讀才看得見，而它們正是書狀功力的來源。讓 AI 摘要一百份判決是效率；靠摘要「理解」判決、從此不碰全文，則是把律師最核心的功夫外包出去。AI 可以替你整理，理解永遠要靠你自己的閱讀。</p>
-<p>這套固定格式怎麼讓 AI 每次穩定產出？答案是把它寫成一個 <strong>Skill</strong>（技能）——以實際運作中的 <code>judgment-summary</code> 技能為例，它就是一份教 AI「怎麼整理裁判書」的 SOP 文件，內含格式模板與撰寫原則（不杜撰、數字照抄、不更動全文、台灣法律用語）。裝好之後，操作只剩一句話：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">幫我整理 00_INBOX 裡這三份判決</span><br></pre></td></tr></table></figure>
-
-<p>AI 讀到「整理判決」就自動套用這個技能，三份裁判書開頭各自長出三色摘要。Skill 的原理與自製方法，是 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的主題，該篇會帶你逐步做出自己的版本。</p>
 <blockquote>
-<p><strong>⚠️ 注意</strong><br>一樣的原則：AI 摘要中的判決要旨與引用法條，採用前一律人工核對（或先讓法規資料庫 MCP 做第一輪核對，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）。摘要幫你「快速掌握」，查證責任永遠在人。</p>
+<p><strong>💡 網頁文章的 3 秒入庫：Obsidian Web Clipper</strong><br>「隨時丟材料」在瀏覽器裡也有專屬工具：Obsidian 官方的免費瀏覽器擴充功能 <strong>Web Clipper</strong>（Chrome、Edge、Firefox、Safari 都支援），可以把正在閱讀的網頁一鍵擷取成 Markdown 筆記、直接存進 Vault 指定的資料夾（設成 <code>00_INBOX</code> 正好）。主管機關新聞稿、函釋公告、學者專欄、法律新聞——看到就按一下，剩下的交給下一次 Inbox 編纂。裁判書則用 <a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> 介紹過的「司法院裁判書閱讀助手」，兩個擴充功能正好分工。</p>
 </blockquote>
-<h2 id="第三步：AI-編出-INDEX-與爭點-WIKI"><a href="#第三步：AI-編出-INDEX-與爭點-WIKI" class="headerlink" title="第三步：AI 編出 INDEX 與爭點 WIKI"></a>第三步：AI 編出 INDEX 與爭點 WIKI</h2><p>判決筆記累積到十份以上，就值得讓 AI 建立兩層導覽結構。</p>
-<h3 id="3-1-判決索引頁（INDEX）"><a href="#3-1-判決索引頁（INDEX）" class="headerlink" title="3-1 判決索引頁（INDEX）"></a>3-1 判決索引頁（INDEX）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請掃描 30_RESOURCES/判決/ 內所有判決筆記，建立「判決索引.md」：</span><br><span class="line">1. 以表格呈現：判決字號（wikilink）｜法院｜裁判日期｜案由｜一句話爭點；</span><br><span class="line">2. 按法領域分節（勞動、個資、公司……），同領域內按裁判日期新到舊排序；</span><br><span class="line">3. 之後每次新增判決筆記，都要同步更新這份索引。</span><br><span class="line">   （這條規則請同時寫進 CLAUDE.md）</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-爭點-WIKI-頁"><a href="#3-2-爭點-WIKI-頁" class="headerlink" title="3-2 爭點 WIKI 頁"></a>3-2 爭點 WIKI 頁</h3><p>索引解決「找判決」，WIKI 解決「找答案」。讓 AI 以爭點為單位，把散落各判決的見解編纂成百科條目：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取所有涉及「工期展延」的判決筆記，建立或更新爭點 WIKI 頁</span><br><span class="line">「工期展延的可歸責事由.md」：</span><br><span class="line">1. 段落：爭點說明／實務見解整理／見解分歧（如有，分列各說並附判決）</span><br><span class="line">   ／時間演變／相關法條／待研究問題；</span><br><span class="line">2. 每個論點都必須以 [[判決字號]] 連結到出處筆記；</span><br><span class="line">3. 完成後把這一頁掛上「營建工程 MOC」。</span><br></pre></td></tr></table></figure>
-
-<p>做完之後，你的檢索路徑變成：<strong>MOC（領域地圖）→ 爭點 WIKI（答案在這）→ 判決筆記（三色摘要）→ 裁判全文（終極查證）</strong>，四層每一層都互相連結。等 2026-015 案（甲公司對定作人乙公司的工程款訴訟）打到「變更設計、追加工項應否展延工期」這個爭點時，答案已經寫好在 WIKI 頁，而且每一句都點得回出處。</p>
-<h2 id="第四步：檢索與引用（收穫期）"><a href="#第四步：檢索與引用（收穫期）" class="headerlink" title="第四步：檢索與引用（收穫期）"></a>第四步：檢索與引用（收穫期）</h2><p>日常使用場景：</p>
-<p><strong>寫書狀時調閱</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我正在寫 2026-015 案的上訴理由狀。一審認定甲公司遲延完工、應依約給付違約金，</span><br><span class="line">我方（甲公司）主張乙公司變更設計、追加工項，依約工期應予展延，展延後如期完工、並無遲延。</span><br><span class="line">請從判決知識庫找出所有支持這個立場的判決，</span><br><span class="line">按法院層級排序，各附一段可引用的法院見解原文與出處字號。</span><br></pre></td></tr></table></figure>
-
-<p><strong>開會前十分鐘惡補</strong>：在 Obsidian 打開爭點 WIKI 頁，三分鐘掌握全部實務見解——因為那是你過去半年編纂出來的。</p>
-<p><strong>發現新判決時</strong>：丟進 Inbox，一句「整理並更新索引與相關 WIKI」，知識庫自動長大。</p>
-<h2 id="兩種視角的用法差異"><a href="#兩種視角的用法差異" class="headerlink" title="兩種視角的用法差異"></a>兩種視角的用法差異</h2><p><strong>訴訟律師</strong>：如上主流程。加碼建議——為進行中的案件建立「本案判決庫」子資料夾，把對造引用的判決也丟進去做三色摘要，讓 AI 比對「對造引用的判決與我方立場的判決，事實基礎有何不同」，攻擊防禦的素材就出來了。</p>
-<p><strong>非訟律師／企業法務</strong>：把「判決」換成你的日常原料，整套流程原樣可用——</p>
-<ul>
-<li><strong>契約審閱</strong>：建「條款知識庫」。每次審約遇到的特殊條款與處理方式，存成條款筆記；相關判決（例如違約金酌減、定型化條款效力）掛在條款頁下。下次審到同類條款，WIKI 頁就是你的 checklist。</li>
-<li><strong>法律意見</strong>：建「議題知識庫」。每份意見書研究過的法規、函釋、判決，萃取成議題 WIKI；主管機關函釋也用同一套三色摘要邏輯處理（重點／爭點／機關立場）。</li>
-<li><strong>教育訓練</strong>：知識庫直接變教材產線——「請根據個資法 MOC 及其下所有筆記，產出一份對客戶人資部門的教育訓練大綱，附實務案例」。</li>
-</ul>
+<p>過去知識管理難以持續的主因是「整理太花時間」；把整理交給 AI 後，維運成本降到這個程度，系統才可能長期持續，逐步累積成你自己的專業資產。</p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>四步流程：取得 md（擴充功能一鍵下載，或交給 MCP 檢索）→ 三色摘要（Skill）→ 索引與爭點 WIKI（編纂）→ 檢索引用（收穫）。</li>
-<li>檢索路徑四層：MOC → 爭點 WIKI → 判決摘要 → 全文。</li>
-<li>訴訟用判決、非訟用條款與議題，方法完全同構。</li>
-<li>下一篇把鏡頭拉到日常：訴訟與非訟的每日工作流。</li>
+<li>編纂工作流：你丟材料 → AI 結構化並連結 → 你審查判斷。</li>
+<li>四大招式：Inbox 編纂、見解衝突偵測、知識庫健檢、主題綜整。</li>
+<li>分工鐵律：形式歸 AI，判斷歸你；評析親手寫，引用親手查，重要材料親自精讀——AI 省下整理時間，省不掉閱讀時間。</li>
+<li>下一篇進入實戰：把這套系統用在最日常的場景——判決研究。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://obsidian.md/clipper">Obsidian Web Clipper 官方頁面</a></li>
+<li><a href="https://code.claude.com/docs/en/context-window">Claude Code 官方文件：對話容量管理（Context window）</a></li>
+<li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code 官方文件：子代理（Subagents）</a></li>
+<li><a href="https://code.claude.com/docs/en/permission-modes">Claude Code 官方文件：授權模式（含 Plan Mode）</a></li>
 </ul>
 <hr>
-<p>⬅️ 上一篇：<a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a><br>➡️ 下一篇：<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+<p>⬅️ 上一篇：<a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a><br>➡️ 下一篇：<a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
 ]]></content>
       <categories>
         <category>AI x Obsidian 系列</category>
@@ -716,8 +645,75 @@
       <tags>
         <tag>AI課程</tag>
         <tag>Obsidian</tag>
+        <tag>Claude-Code</tag>
+        <tag>知識編纂</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>12 實戰｜訴訟與非訟的日常工作流</title>
+    <url>/posts/litigation-workflow/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>同一套「Vault＋AI Agent」，訴訟律師拿來管案件與書狀，非訟律師與企業法務拿來管契約、意見書與教育訓練。本篇是六個可以直接照抄的日常工作流。</p>
+</blockquote>
+<span id="more"></span>
+<p>前面各篇把系統建好了，本篇回答最實際的問題：「<strong>星期一早上進辦公室，這套系統到底怎麼用？</strong>」以下六個工作流，訴訟三個、非訟三個，每個都附可直接複製的提示詞。所有範例都假設你已依 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 建好雙軌架構、寫好 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a>。</p>
+<hr>
+<h2 id="訴訟視角（訴訟律師的辦案節奏）"><a href="#訴訟視角（訴訟律師的辦案節奏）" class="headerlink" title="訴訟視角（訴訟律師的辦案節奏）"></a>訴訟視角（訴訟律師的辦案節奏）</h2><h3 id="工作流一：開庭前準備包"><a href="#工作流一：開庭前準備包" class="headerlink" title="工作流一：開庭前準備包"></a>工作流一：開庭前準備包</h3><p>開庭前一天，在案件資料夾啟動 Claude Code：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">明天是 2026-015 案的言詞辯論庭。請準備「開庭準備包」筆記：</span><br><span class="line">1. 讀取 00_案件總覽、08_開庭報告 內歷次開庭紀錄、</span><br><span class="line">   02_我方書狀 與 03_對造書狀 內雙方最新書狀；</span><br><span class="line">2. 整理：目前各爭點的攻防現狀（我方主張／對造抗辯／法院已表態事項）；</span><br><span class="line">3. 列出對造上一份書狀的新主張，以及我方尚未回應的點；</span><br><span class="line">4. 從知識庫（20_AREAS 與 30_RESOURCES/判決）找出與各爭點相關的</span><br><span class="line">   判決筆記，附 wikilink；</span><br><span class="line">5. 最後產出「庭上可能被問的十個問題」與建議回應方向。</span><br></pre></td></tr></table></figure>
+
+<p>十分鐘後你得到一份開庭準備包——過去這往往是助理半天的工作量。你的時間花在<strong>修訂與判斷</strong>：AI 列的問題哪些真的會被問、回應方向對不對，這是你的專業。</p>
+<blockquote>
+<p><strong>💡 加碼：把時間軸變成一張互動圖</strong><br>工期爭議這類案件，攻防常常就發生在時間軸上——原定工期、變更設計、追加工項、展延後完工日，先後順序一目瞭然勝過十段文字。可以在準備包之後追加一句：「請依 00_案件總覽的時間軸與卷證日期，生成一份互動式時間軸的 HTML 檔，存入本案資料夾」——用瀏覽器打開，就是一條可以縮放、點選的案件時間軸，開庭對照、向客戶說明進度都用得上。它與 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 的 Canvas 是「空間性思考」的兩種載體：Canvas 適合自己動手排，HTML 圖表適合讓 AI 依資料生成。</p>
+</blockquote>
+<h3 id="工作流二：開完庭三十秒歸檔"><a href="#工作流二：開完庭三十秒歸檔" class="headerlink" title="工作流二：開完庭三十秒歸檔"></a>工作流二：開完庭三十秒歸檔</h3><p>開完庭在高鐵上，手機打開 Obsidian，把記憶猶新的要點口語化地丟進 <code>00_INBOX</code>（語音輸入也行）：</p>
+<blockquote>
+<p>「今天法官關切工期展延事由的認定，要求兩週內補呈；對造聲請傳喚監造工程師王某；下次庭期 9&#x2F;2 上午 9:30。」</p>
+</blockquote>
+<p>回辦公室一句話：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請把 Inbox 裡今天的開庭紀錄整理成正式開庭筆記存入 08_開庭報告，</span><br><span class="line">並更新 00_案件總覽的時間軸、待辦與下次庭期。</span><br></pre></td></tr></table></figure>
+
+<p>案件儀表板隨時保持在最新狀態，而花的力氣極少。</p>
+<h3 id="工作流三：書狀初稿的「三明治工作法」"><a href="#工作流三：書狀初稿的「三明治工作法」" class="headerlink" title="工作流三：書狀初稿的「三明治工作法」"></a>工作流三：書狀初稿的「三明治工作法」</h3><p>書狀不能讓 AI 從零寫到底，但可以用「人—AI—人」三明治：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">【第一層：你口述論證骨架】</span><br><span class="line">我要寫 2026-015 案的準備書狀，回應被告乙公司主張甲公司遲延完工、</span><br><span class="line">應依約按日計罰違約金並自工程款扣抵的抗辯。我方（甲公司）論點：</span><br><span class="line">一、乙公司變更設計、追加工項，依約工期應予展延，</span><br><span class="line">展延後甲公司如期完工，並無遲延；</span><br><span class="line">二、退步言，縱認有遲延，違約金之約定亦屬過高，</span><br><span class="line">應依民法第 252 條酌減。請先不要寫，</span><br><span class="line">向我確認你對這兩個論點的理解，並指出可能的弱點。</span><br><span class="line"></span><br><span class="line">【第二層：AI 起草】</span><br><span class="line">理解正確。請起草書狀這一段落：依台灣民事書狀慣例行文，</span><br><span class="line">從知識庫調閱相關判決筆記作為引用素材（標註待核對），</span><br><span class="line">存入 02_我方書狀/草稿_準備書狀三_v1.md。</span><br><span class="line"></span><br><span class="line">【第三層：你修訂定稿】</span><br><span class="line">（人工逐段修改、查證每一個引用、注入只有你知道的案件細節）</span><br></pre></td></tr></table></figure>
+
+<p>第一層的「先確認理解、指出弱點」是關鍵——它逼 AI 當你的辯論對手，而不是速記員；也逼你自己先想清楚。<strong>論證是你的，文字勞動是它的。</strong></p>
+<hr>
+<h2 id="非訟視角（非訟律師、企業法務的交易節奏）"><a href="#非訟視角（非訟律師、企業法務的交易節奏）" class="headerlink" title="非訟視角（非訟律師、企業法務的交易節奏）"></a>非訟視角（非訟律師、企業法務的交易節奏）</h2><h3 id="工作流四：契約審閱與條款知識庫"><a href="#工作流四：契約審閱與條款知識庫" class="headerlink" title="工作流四：契約審閱與條款知識庫"></a>工作流四：契約審閱與條款知識庫</h3><p>審約是最能吃到「知識複利」的工作。先建立習慣：每次審約的成果回流知識庫。以下以客戶A委託審閱的經銷契約為例（客戶A是這份經銷契約的委任客戶，立場為供應商）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請審閱 00_INBOX 裡客戶A的這份經銷契約（客戶A為供應商）：</span><br><span class="line">1. 讀取 20_AREAS/契約條款庫/ 的「經銷契約 checklist」筆記，逐項比對；</span><br><span class="line">2. 產出審閱備忘錄：高風險條款（含理由與修改建議，表格呈現：</span><br><span class="line">   條號｜原文重點｜風險｜建議修訂文字）、checklist 上有但本約漏未</span><br><span class="line">   約定的事項；</span><br><span class="line">3. 若發現 checklist 沒涵蓋的新型條款，在備忘錄末段提出，</span><br><span class="line">   我確認後再更新 checklist。</span><br></pre></td></tr></table></figure>
+
+<p>注意最後一項的設計：<strong>checklist 會隨著每一次審約長大</strong>，這就是非訟版的「知識萃取」——而且是隨案進行的版本。這份 checklist 累積的是貼合自身業務的審約經驗。</p>
+<h3 id="工作流五：法律意見書的研究底稿"><a href="#工作流五：法律意見書的研究底稿" class="headerlink" title="工作流五：法律意見書的研究底稿"></a>工作流五：法律意見書的研究底稿</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">客戶詢問：外國公司未經認許，在台灣以網站向消費者銷售軟體訂閱，</span><br><span class="line">有無公司法及消保法上的合規義務？請執行意見書前置研究：</span><br><span class="line">1. 檢索知識庫中相關的爭點筆記與函釋筆記，列出已有的研究基礎；</span><br><span class="line">2. 列出需要另行查證的法規與函釋清單（我會用法規資料庫核對）；</span><br><span class="line">3. 產出意見書架構草稿：問題整理／適用法規／分析／結論與建議，</span><br><span class="line">   分析部分先以條列呈現論證步驟，標明每一步的依據強度</span><br><span class="line">   （明文規定／函釋／實務見解／推論）。</span><br></pre></td></tr></table></figure>
+
+<p>「依據強度標註」是給律師的設計：意見書最怕把「推論」寫得像「明文」，讓 AI 自己標註，你審查時一眼看出哪裡要補查證。法規查證環節接上 taiwan-legal-db 這類 MCP 工具後可以半自動化，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>。</p>
+<h3 id="工作流六：教育訓練教材產線"><a href="#工作流六：教育訓練教材產線" class="headerlink" title="工作流六：教育訓練教材產線"></a>工作流六：教育訓練教材產線</h3><p>企業法務的年度苦差：幫業務部門上個資法課、幫採購部門上契約課。有知識庫之後：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請根據個資法 MOC 及其下所有筆記，為客戶A的人資部門製作</span><br><span class="line">90 分鐘教育訓練教材：</span><br><span class="line">1. 課程大綱（三大段，每段 25 分鐘＋Q&amp;A）；</span><br><span class="line">2. 講義筆記：每個主題附「人資日常情境案例」</span><br><span class="line">  （招募履歷保存、員工監控、離職資料處理）；</span><br><span class="line">3. 十題課後測驗（單選，附解析）；</span><br><span class="line">4. 存入 10_MATTERS/客戶A/2026-021_教育訓練_人資個資課/</span><br><span class="line">   （教育訓練也是一件有完成日的委任，比照案件編號收納）。</span><br></pre></td></tr></table></figure>
+
+<p>教材產出後可以再接一句「請把大綱轉成簡報格式」，交給簡報工具生成投影片初稿。知識庫平時養得越好，教材產出就越快。</p>
+<hr>
+<h2 id="加映：交件的最後一哩——從-Markdown-到-Word"><a href="#加映：交件的最後一哩——從-Markdown-到-Word" class="headerlink" title="加映：交件的最後一哩——從 Markdown 到 Word"></a>加映：交件的最後一哩——從 Markdown 到 Word</h2><p>六個工作流的產出都是 Markdown 筆記，但律師的交件格式是 Word。最後一哩同樣交給 AI：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請把 02_我方書狀/草稿_準備書狀三_v3.md 轉成 docx：</span><br><span class="line">套用台灣書狀慣用格式（A4、標楷體、字級 14，</span><br><span class="line">「壹、一、（一）」的標號層次對應標題層級），</span><br><span class="line">存到同一個資料夾。</span><br></pre></td></tr></table></figure>
+
+<p>Claude Code 會完成轉檔與排版；事務所有固定範本的，把範本 docx 給它「比照這個格式」即可。兩個提醒：<strong>轉出後務必用 Word 開啟做最終檢查</strong>（分頁、註腳、當事人欄位）；需要保留修改軌跡時，明講「以追蹤修訂方式呈現我方修改」。從研究、起草到交件，全程不需要離開這套系統。</p>
+<h2 id="共通心法：工作流的三個設計原則"><a href="#共通心法：工作流的三個設計原則" class="headerlink" title="共通心法：工作流的三個設計原則"></a>共通心法：工作流的三個設計原則</h2><p>回顧六個工作流，會發現同樣的模式：</p>
+<ol>
+<li><strong>AI 永遠從「讀你的知識庫」開始</strong>，而不是憑空生成。這是「先讀知識庫」這個設計的關鍵：產出建立在你累積的判斷之上，而不是模型的通用回答。</li>
+<li><strong>每個工作流都有回流設計</strong>：開庭筆記回流總覽、審約發現回流 checklist、研究成果回流爭點筆記。用一次，系統就變強一點。</li>
+<li><strong>人的位置固定在頭尾</strong>：頭是你定方向與框架，尾是你查證與定稿。中間的文字勞動，交給 AI。</li>
+</ol>
+<p>反覆用到順手的工作流，就值得「制度化」——寫成一個 Skill，讓一句話就能觸發完整流程。這正是下一篇的主題。</p>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a><br>➡️ 下一篇：<a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
         <tag>實戰案例</tag>
-        <tag>判決研究</tag>
+        <tag>訴訟</tag>
+        <tag>非訟</tag>
+        <tag>企業法務</tag>
       </tags>
   </entry>
   <entry>
@@ -984,73 +980,6 @@
       </tags>
   </entry>
   <entry>
-    <title>12 實戰｜訴訟與非訟的日常工作流</title>
-    <url>/posts/litigation-workflow/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>同一套「Vault＋AI Agent」，訴訟律師拿來管案件與書狀，非訟律師與企業法務拿來管契約、意見書與教育訓練。本篇是六個可以直接照抄的日常工作流。</p>
-</blockquote>
-<span id="more"></span>
-<p>前面各篇把系統建好了，本篇回答最實際的問題：「<strong>星期一早上進辦公室，這套系統到底怎麼用？</strong>」以下六個工作流，訴訟三個、非訟三個，每個都附可直接複製的提示詞。所有範例都假設你已依 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 建好雙軌架構、寫好 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a>。</p>
-<hr>
-<h2 id="訴訟視角（訴訟律師的辦案節奏）"><a href="#訴訟視角（訴訟律師的辦案節奏）" class="headerlink" title="訴訟視角（訴訟律師的辦案節奏）"></a>訴訟視角（訴訟律師的辦案節奏）</h2><h3 id="工作流一：開庭前準備包"><a href="#工作流一：開庭前準備包" class="headerlink" title="工作流一：開庭前準備包"></a>工作流一：開庭前準備包</h3><p>開庭前一天，在案件資料夾啟動 Claude Code：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">明天是 2026-015 案的言詞辯論庭。請準備「開庭準備包」筆記：</span><br><span class="line">1. 讀取 00_案件總覽、08_開庭報告 內歷次開庭紀錄、</span><br><span class="line">   02_我方書狀 與 03_對造書狀 內雙方最新書狀；</span><br><span class="line">2. 整理：目前各爭點的攻防現狀（我方主張／對造抗辯／法院已表態事項）；</span><br><span class="line">3. 列出對造上一份書狀的新主張，以及我方尚未回應的點；</span><br><span class="line">4. 從知識庫（20_AREAS 與 30_RESOURCES/判決）找出與各爭點相關的</span><br><span class="line">   判決筆記，附 wikilink；</span><br><span class="line">5. 最後產出「庭上可能被問的十個問題」與建議回應方向。</span><br></pre></td></tr></table></figure>
-
-<p>十分鐘後你得到一份開庭準備包——過去這往往是助理半天的工作量。你的時間花在<strong>修訂與判斷</strong>：AI 列的問題哪些真的會被問、回應方向對不對，這是你的專業。</p>
-<blockquote>
-<p><strong>💡 加碼：把時間軸變成一張互動圖</strong><br>工期爭議這類案件，攻防常常就發生在時間軸上——原定工期、變更設計、追加工項、展延後完工日，先後順序一目瞭然勝過十段文字。可以在準備包之後追加一句：「請依 00_案件總覽的時間軸與卷證日期，生成一份互動式時間軸的 HTML 檔，存入本案資料夾」——用瀏覽器打開，就是一條可以縮放、點選的案件時間軸，開庭對照、向客戶說明進度都用得上。它與 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 的 Canvas 是「空間性思考」的兩種載體：Canvas 適合自己動手排，HTML 圖表適合讓 AI 依資料生成。</p>
-</blockquote>
-<h3 id="工作流二：開完庭三十秒歸檔"><a href="#工作流二：開完庭三十秒歸檔" class="headerlink" title="工作流二：開完庭三十秒歸檔"></a>工作流二：開完庭三十秒歸檔</h3><p>開完庭在高鐵上，手機打開 Obsidian，把記憶猶新的要點口語化地丟進 <code>00_INBOX</code>（語音輸入也行）：</p>
-<blockquote>
-<p>「今天法官關切工期展延事由的認定，要求兩週內補呈；對造聲請傳喚監造工程師王某；下次庭期 9&#x2F;2 上午 9:30。」</p>
-</blockquote>
-<p>回辦公室一句話：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請把 Inbox 裡今天的開庭紀錄整理成正式開庭筆記存入 08_開庭報告，</span><br><span class="line">並更新 00_案件總覽的時間軸、待辦與下次庭期。</span><br></pre></td></tr></table></figure>
-
-<p>案件儀表板隨時保持在最新狀態，而花的力氣極少。</p>
-<h3 id="工作流三：書狀初稿的「三明治工作法」"><a href="#工作流三：書狀初稿的「三明治工作法」" class="headerlink" title="工作流三：書狀初稿的「三明治工作法」"></a>工作流三：書狀初稿的「三明治工作法」</h3><p>書狀不能讓 AI 從零寫到底，但可以用「人—AI—人」三明治：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">【第一層：你口述論證骨架】</span><br><span class="line">我要寫 2026-015 案的準備書狀，回應被告乙公司主張甲公司遲延完工、</span><br><span class="line">應依約按日計罰違約金並自工程款扣抵的抗辯。我方（甲公司）論點：</span><br><span class="line">一、乙公司變更設計、追加工項，依約工期應予展延，</span><br><span class="line">展延後甲公司如期完工，並無遲延；</span><br><span class="line">二、退步言，縱認有遲延，違約金之約定亦屬過高，</span><br><span class="line">應依民法第 252 條酌減。請先不要寫，</span><br><span class="line">向我確認你對這兩個論點的理解，並指出可能的弱點。</span><br><span class="line"></span><br><span class="line">【第二層：AI 起草】</span><br><span class="line">理解正確。請起草書狀這一段落：依台灣民事書狀慣例行文，</span><br><span class="line">從知識庫調閱相關判決筆記作為引用素材（標註待核對），</span><br><span class="line">存入 02_我方書狀/草稿_準備書狀三_v1.md。</span><br><span class="line"></span><br><span class="line">【第三層：你修訂定稿】</span><br><span class="line">（人工逐段修改、查證每一個引用、注入只有你知道的案件細節）</span><br></pre></td></tr></table></figure>
-
-<p>第一層的「先確認理解、指出弱點」是關鍵——它逼 AI 當你的辯論對手，而不是速記員；也逼你自己先想清楚。<strong>論證是你的，文字勞動是它的。</strong></p>
-<hr>
-<h2 id="非訟視角（非訟律師、企業法務的交易節奏）"><a href="#非訟視角（非訟律師、企業法務的交易節奏）" class="headerlink" title="非訟視角（非訟律師、企業法務的交易節奏）"></a>非訟視角（非訟律師、企業法務的交易節奏）</h2><h3 id="工作流四：契約審閱與條款知識庫"><a href="#工作流四：契約審閱與條款知識庫" class="headerlink" title="工作流四：契約審閱與條款知識庫"></a>工作流四：契約審閱與條款知識庫</h3><p>審約是最能吃到「知識複利」的工作。先建立習慣：每次審約的成果回流知識庫。以下以客戶A委託審閱的經銷契約為例（客戶A是這份經銷契約的委任客戶，立場為供應商）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請審閱 00_INBOX 裡客戶A的這份經銷契約（客戶A為供應商）：</span><br><span class="line">1. 讀取 20_AREAS/契約條款庫/ 的「經銷契約 checklist」筆記，逐項比對；</span><br><span class="line">2. 產出審閱備忘錄：高風險條款（含理由與修改建議，表格呈現：</span><br><span class="line">   條號｜原文重點｜風險｜建議修訂文字）、checklist 上有但本約漏未</span><br><span class="line">   約定的事項；</span><br><span class="line">3. 若發現 checklist 沒涵蓋的新型條款，在備忘錄末段提出，</span><br><span class="line">   我確認後再更新 checklist。</span><br></pre></td></tr></table></figure>
-
-<p>注意最後一項的設計：<strong>checklist 會隨著每一次審約長大</strong>，這就是非訟版的「知識萃取」——而且是隨案進行的版本。這份 checklist 累積的是貼合自身業務的審約經驗。</p>
-<h3 id="工作流五：法律意見書的研究底稿"><a href="#工作流五：法律意見書的研究底稿" class="headerlink" title="工作流五：法律意見書的研究底稿"></a>工作流五：法律意見書的研究底稿</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">客戶詢問：外國公司未經認許，在台灣以網站向消費者銷售軟體訂閱，</span><br><span class="line">有無公司法及消保法上的合規義務？請執行意見書前置研究：</span><br><span class="line">1. 檢索知識庫中相關的爭點筆記與函釋筆記，列出已有的研究基礎；</span><br><span class="line">2. 列出需要另行查證的法規與函釋清單（我會用法規資料庫核對）；</span><br><span class="line">3. 產出意見書架構草稿：問題整理／適用法規／分析／結論與建議，</span><br><span class="line">   分析部分先以條列呈現論證步驟，標明每一步的依據強度</span><br><span class="line">   （明文規定／函釋／實務見解／推論）。</span><br></pre></td></tr></table></figure>
-
-<p>「依據強度標註」是給律師的設計：意見書最怕把「推論」寫得像「明文」，讓 AI 自己標註，你審查時一眼看出哪裡要補查證。法規查證環節接上 taiwan-legal-db 這類 MCP 工具後可以半自動化，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>。</p>
-<h3 id="工作流六：教育訓練教材產線"><a href="#工作流六：教育訓練教材產線" class="headerlink" title="工作流六：教育訓練教材產線"></a>工作流六：教育訓練教材產線</h3><p>企業法務的年度苦差：幫業務部門上個資法課、幫採購部門上契約課。有知識庫之後：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請根據個資法 MOC 及其下所有筆記，為客戶A的人資部門製作</span><br><span class="line">90 分鐘教育訓練教材：</span><br><span class="line">1. 課程大綱（三大段，每段 25 分鐘＋Q&amp;A）；</span><br><span class="line">2. 講義筆記：每個主題附「人資日常情境案例」</span><br><span class="line">  （招募履歷保存、員工監控、離職資料處理）；</span><br><span class="line">3. 十題課後測驗（單選，附解析）；</span><br><span class="line">4. 存入 10_MATTERS/客戶A/2026-021_教育訓練_人資個資課/</span><br><span class="line">   （教育訓練也是一件有完成日的委任，比照案件編號收納）。</span><br></pre></td></tr></table></figure>
-
-<p>教材產出後可以再接一句「請把大綱轉成簡報格式」，交給簡報工具生成投影片初稿。知識庫平時養得越好，教材產出就越快。</p>
-<hr>
-<h2 id="加映：交件的最後一哩——從-Markdown-到-Word"><a href="#加映：交件的最後一哩——從-Markdown-到-Word" class="headerlink" title="加映：交件的最後一哩——從 Markdown 到 Word"></a>加映：交件的最後一哩——從 Markdown 到 Word</h2><p>六個工作流的產出都是 Markdown 筆記，但律師的交件格式是 Word。最後一哩同樣交給 AI：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請把 02_我方書狀/草稿_準備書狀三_v3.md 轉成 docx：</span><br><span class="line">套用台灣書狀慣用格式（A4、標楷體、字級 14，</span><br><span class="line">「壹、一、（一）」的標號層次對應標題層級），</span><br><span class="line">存到同一個資料夾。</span><br></pre></td></tr></table></figure>
-
-<p>Claude Code 會完成轉檔與排版；事務所有固定範本的，把範本 docx 給它「比照這個格式」即可。兩個提醒：<strong>轉出後務必用 Word 開啟做最終檢查</strong>（分頁、註腳、當事人欄位）；需要保留修改軌跡時，明講「以追蹤修訂方式呈現我方修改」。從研究、起草到交件，全程不需要離開這套系統。</p>
-<h2 id="共通心法：工作流的三個設計原則"><a href="#共通心法：工作流的三個設計原則" class="headerlink" title="共通心法：工作流的三個設計原則"></a>共通心法：工作流的三個設計原則</h2><p>回顧六個工作流，會發現同樣的模式：</p>
-<ol>
-<li><strong>AI 永遠從「讀你的知識庫」開始</strong>，而不是憑空生成。這是「先讀知識庫」這個設計的關鍵：產出建立在你累積的判斷之上，而不是模型的通用回答。</li>
-<li><strong>每個工作流都有回流設計</strong>：開庭筆記回流總覽、審約發現回流 checklist、研究成果回流爭點筆記。用一次，系統就變強一點。</li>
-<li><strong>人的位置固定在頭尾</strong>：頭是你定方向與框架，尾是你查證與定稿。中間的文字勞動，交給 AI。</li>
-</ol>
-<p>反覆用到順手的工作流，就值得「制度化」——寫成一個 Skill，讓一句話就能觸發完整流程。這正是下一篇的主題。</p>
-<hr>
-<p>⬅️ 上一篇：<a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a><br>➡️ 下一篇：<a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>實戰案例</tag>
-        <tag>訴訟</tag>
-        <tag>非訟</tag>
-        <tag>企業法務</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>14 MCP｜把 AI 接上法規資料庫</title>
     <url>/posts/mcp-legal-database/</url>
     <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
@@ -1192,6 +1121,805 @@
         <tag>MCP</tag>
         <tag>法規資料庫</tag>
         <tag>幻覺</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>04 Obsidian 進階｜外掛與 Canvas 白板</title>
+    <url>/posts/obsidian-plugins-canvas/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>外掛讓 Obsidian 從筆記軟體長成工作平台，Canvas 白板讓你把案件關係圖、爭點攻防圖直接畫在知識庫裡。但原則是「先用得順，再裝外掛」——外掛是調味料，不是主菜。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、外掛系統：兩層架構"><a href="#一、外掛系統：兩層架構" class="headerlink" title="一、外掛系統：兩層架構"></a>一、外掛系統：兩層架構</h2><p>Obsidian 的功能分兩層：</p>
+<ul>
+<li><strong>核心外掛（Core plugins）</strong>：官方內建，在 Settings → Core plugins 開關。日曆、範本、白板（Canvas）、反向連結等都在這裡。</li>
+<li><strong>社群外掛（Community plugins）</strong>：全球使用者開發的擴充功能，數千種，免費安裝。</li>
+</ul>
+<h3 id="安裝社群外掛的步驟"><a href="#安裝社群外掛的步驟" class="headerlink" title="安裝社群外掛的步驟"></a>安裝社群外掛的步驟</h3><ol>
+<li>Settings → <strong>Community plugins</strong>（社群外掛）</li>
+<li>第一次會要求關閉「Restricted mode（受限模式）」——這是安全開關，確認後關閉</li>
+<li>點 <strong>Browse（瀏覽）</strong>，搜尋外掛名稱</li>
+<li><strong>Install（安裝）</strong> → <strong>Enable（啟用）</strong> → 部分外掛需在設定頁調整選項</li>
+</ol>
+<blockquote>
+<p><strong>⚠️ 律師必讀的資安提醒</strong><br>社群外掛是第三方程式碼，理論上可以讀取你的整個 Vault。建議只安裝「下載量大、持續更新、口碑明確」的外掛，並讓總數保持精簡。知識庫放了敏感內容的人，每多裝一個外掛，就多一分供應鏈風險——這跟事務所挑選委外廠商是同一種判斷。</p>
+</blockquote>
+<h2 id="二、律師的精選外掛清單"><a href="#二、律師的精選外掛清單" class="headerlink" title="二、律師的精選外掛清單"></a>二、律師的精選外掛清單</h2><p>不需要一次全裝，建議依階段採用：</p>
+<h3 id="第一階段（第一個月）：其實一個都不用裝"><a href="#第一階段（第一個月）：其實一個都不用裝" class="headerlink" title="第一階段（第一個月）：其實一個都不用裝"></a>第一階段（第一個月）：其實一個都不用裝</h3><p>先把核心功能用順：連結、搜尋、標籤、範本（核心外掛就夠用，見本篇第四節）。<strong>過度配置比功能不足，更容易讓知識庫難以維持。</strong></p>
+<h3 id="第二階段（用順之後）：三個高價值外掛"><a href="#第二階段（用順之後）：三個高價值外掛" class="headerlink" title="第二階段（用順之後）：三個高價值外掛"></a>第二階段（用順之後）：三個高價值外掛</h3><table>
+<thead>
+<tr>
+<th>外掛</th>
+<th>功能</th>
+<th>律師用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Dataview</strong></td>
+<td>把筆記的屬性欄變成可查詢的資料庫</td>
+<td>「列出所有 court 為最高法院、tag 含營建工程的判決筆記，按日期排序」——自動生成的動態判決清單</td>
+</tr>
+<tr>
+<td><strong>Templater</strong></td>
+<td>進階範本（自動帶入日期、依資料夾套用不同範本）</td>
+<td>新增筆記到「判決」資料夾自動套判決範本；開庭筆記自動帶入今天日期</td>
+</tr>
+<tr>
+<td><strong>Excalidraw</strong></td>
+<td>手繪風格圖表</td>
+<td>法律關係圖、時間軸、組織架構圖</td>
+</tr>
+</tbody></table>
+<h3 id="值得知道的其他外掛"><a href="#值得知道的其他外掛" class="headerlink" title="值得知道的其他外掛"></a>值得知道的其他外掛</h3><ul>
+<li><strong>Calendar &#x2F; Periodic Notes</strong>：每日筆記月曆視圖，適合用「每日筆記」記工作日誌的人。</li>
+<li><strong>Kanban</strong>：看板式待辦（類似 Trello），案件進度板。</li>
+<li><strong>Obsidian Git</strong>：自動備份 Vault 到 Git 版本庫（需要一點 Git 基礎，有需要再裝）。</li>
+</ul>
+<blockquote>
+<p><strong>ℹ️ 預告：Claudian——把 Claude Code 嵌進 Obsidian 的外掛</strong><br>本系列主線是「Obsidian 開著、旁邊終端機跑 Claude Code」的雙視窗工作法，而社群外掛 <strong>Claudian</strong> 更進一步：把 Claude Code 整個嵌進 Obsidian 的側邊欄，讓你在筆記軟體裡直接指揮 Agent。它的前提是電腦已裝好 Claude Code，所以建議讀完本系列第 06 篇、Claude Code 跑起來之後，再回頭裝它，屆時再談細節。</p>
+</blockquote>
+<blockquote>
+<p><strong>💡 小提示</strong><br>與 AI 協作的好消息：<strong>Dataview 查詢、Templater 範本這些「外掛設定語法」，全部可以叫 Claude Code 幫你寫。</strong> 「請在判決索引筆記裡加一段 Dataview 查詢，列出本月新增的所有判決筆記」——你不用學查詢語法，會描述需求就好。</p>
+</blockquote>
+<h2 id="三、會議與開庭錄音：錄音機與逐字稿"><a href="#三、會議與開庭錄音：錄音機與逐字稿" class="headerlink" title="三、會議與開庭錄音：錄音機與逐字稿"></a>三、會議與開庭錄音：錄音機與逐字稿</h2><p>律師開會最尷尬的兩難：專心聽就來不及記，專心記就漏聽細節。Obsidian 內建的<strong>核心外掛「錄音機（Audio recorder）」</strong> 正好解這一題：</p>
+<ol>
+<li><strong>設定 → 核心外掛</strong>，啟用「錄音機」；</li>
+<li>開會時打開會議筆記，點左側功能列的麥克風圖示（或指令面板搜尋「錄音」）開始錄音；</li>
+<li><strong>錄音進行中，筆記照打</strong>——你只要記「決議」「待辦」「關鍵數字」這些重點，聽不清或來不及的地方安心放過；</li>
+<li>按停止後，音檔自動存入 Vault，並以 <code>![[Recording 2026-07-08.webm]]</code> 嵌在游標處——<strong>筆記內直接就能播放</strong>，會後針對沒記到的段落聽回放補齊。</li>
+</ol>
+<p>音檔跟筆記住在同一則、同一個資料夾，不會發生「錄音在手機、筆記在電腦、三個月後兩者都找不到」的窘境。手機版 App 也支援這個核心外掛，外出開會拿手機錄，回辦公室同步進 Vault 即可。</p>
+<p><strong>進階：讓錄音變成會議紀錄。</strong> 社群外掛 <strong>Whisper</strong> 可以把錄音自動轉成逐字稿，走的是 OpenAI 的 API。這裡用 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級來判斷：API 適用<strong>商業條款、預設不將資料用於訓練</strong>，屬於商用等級的途徑——一般案件的會議錄音，依所內政策使用沒有問題；但錄音內容終究會上傳雲端處理，<strong>最敏感的第三層會議</strong>（偵查中案件、重大交易）仍建議走本機路線。轉成逐字稿後，再接一句「請依會議紀錄範本，把逐字稿整理成會議紀錄，我打的重點筆記優先」。錄音、逐字稿、會議紀錄三層都留在 Vault 裡，各司其職。</p>
+<blockquote>
+<p><strong>⚠️ 錄音前先想兩件事</strong><br>一是<strong>告知與同意</strong>：會議涉及他人時，錄音前取得出席者同意，既是信賴關係的基本，也避免爭議；法庭與偵查程序的錄音另有法定限制，不在此列。二是<strong>檔案等級</strong>：含機密內容的錄音檔，適用與筆記相同的分級規則——放在哪個資料夾、能不能給雲端 AI 處理，依資安篇的三層分流判斷。</p>
+</blockquote>
+<h2 id="四、範本：讓每一則筆記自動套用統一格式"><a href="#四、範本：讓每一則筆記自動套用統一格式" class="headerlink" title="四、範本：讓每一則筆記自動套用統一格式"></a>四、範本：讓每一則筆記自動套用統一格式</h2><p>判決筆記、開庭筆記、會議紀錄——律師的筆記大多是「同一種格式反覆使用」。範本功能讓你把格式定型一次，之後每則新筆記自動長成同樣的骨架。這件事的價值不只是省打字：<strong>格式統一的筆記，AI 才能穩定地編纂與檢索</strong>（後續 Inbox 編纂請 AI「套用判決筆記範本」，靠的就是這裡建立的範本檔）。</p>
+<p>範本有兩個層次，核心外掛先用、社群外掛後補：</p>
+<h3 id="4-1-核心外掛「範本（Templates）」：內建就夠開始"><a href="#4-1-核心外掛「範本（Templates）」：內建就夠開始" class="headerlink" title="4-1 核心外掛「範本（Templates）」：內建就夠開始"></a>4-1 核心外掛「範本（Templates）」：內建就夠開始</h3><p><strong>啟用與設定</strong>（設定 → 核心外掛 → 範本，啟用後點旁邊的齒輪進入設定）：</p>
+<table>
+<thead>
+<tr>
+<th>設定項</th>
+<th>建議值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>範本資料夾位置</td>
+<td><code>90_SYSTEM/Templates/</code></td>
+<td>所有範本檔集中放這裡，一個範本一個 <code>.md</code> 檔</td>
+</tr>
+<tr>
+<td>日期格式</td>
+<td><code>YYYY-MM-DD</code></td>
+<td><code>&#123;&#123;date&#125;&#125;</code> 代入的格式；用西元、可排序</td>
+</tr>
+<tr>
+<td>時間格式</td>
+<td><code>HH:mm</code></td>
+<td><code>&#123;&#123;time&#125;&#125;</code> 代入的格式</td>
+</tr>
+</tbody></table>
+<p><strong>語法</strong>只有三個變數，插入範本的瞬間自動代入：</p>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>代入內容</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;&#123;title&#125;&#125;</code></td>
+<td>目前筆記的檔名</td>
+<td>檔名取判決字號，內文大標題就自動跟上</td>
+</tr>
+<tr>
+<td><code>&#123;&#123;date&#125;&#125;</code></td>
+<td>今天日期</td>
+<td><code>2026-07-08</code></td>
+</tr>
+<tr>
+<td><code>&#123;&#123;time&#125;&#125;</code></td>
+<td>現在時間</td>
+<td><code>14:30</code></td>
+</tr>
+</tbody></table>
+<p>日期與時間還可以<strong>在範本裡臨時指定格式</strong>，寫法是冒號後接格式代碼：<code>&#123;&#123;date:YYYYMMDD&#125;&#125;</code> → <code>20260708</code>（正好是本 Vault 檔名慣例）、<code>&#123;&#123;date:YYYY年M月D日&#125;&#125;</code> → <code>2026年7月8日</code>（文書日期）。</p>
+<p><strong>建立第一個範本</strong>：在範本資料夾新增「判決筆記範本」：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">court:</span><br><span class="line">case:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># &#123;&#123;title&#125;&#125;</span><br><span class="line"></span><br><span class="line">## 事實摘要</span><br><span class="line"></span><br><span class="line">## 爭點</span><br><span class="line"></span><br><span class="line">## 法院見解</span><br><span class="line"></span><br><span class="line">## 我的評析</span><br><span class="line">（待評析——這一欄留給自己親手寫）</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong>：在任何新筆記按 <code>Cmd/Ctrl + P</code> → 輸入「插入範本」→ 選「判決筆記範本」，整個骨架連同今天的日期一次到位。天天用的話，到「設定 → 快捷鍵」搜尋「插入範本」綁一組快捷鍵（例如 <code>Cmd/Ctrl + T</code>），一鍵完成。</p>
+<p>開庭筆記範本（案號／期日／法官諭知／兩造陳述／待辦）、會議紀錄範本（出席者／討論／決議／追蹤事項）都用同一套做法。<strong>範本本身就是純文字筆記</strong>，要調整格式直接改那個檔案即可。</p>
+<h3 id="4-2-社群外掛「Templater」：範本的自動化升級"><a href="#4-2-社群外掛「Templater」：範本的自動化升級" class="headerlink" title="4-2 社群外掛「Templater」：範本的自動化升級"></a>4-2 社群外掛「Templater」：範本的自動化升級</h3><p>核心外掛要你「手動插入」，變數也只有檔名與日期時間三個；<strong>Templater</strong> 讓範本自己動起來，還能跟你互動。安裝後三個關鍵設定（Settings → Templater）：</p>
+<table>
+<thead>
+<tr>
+<th>設定項</th>
+<th>建議</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Template folder location</td>
+<td>與核心外掛同一個資料夾即可</td>
+<td>範本集中管理</td>
+</tr>
+<tr>
+<td><strong>Trigger Templater on new file creation</strong></td>
+<td>✅ 開啟</td>
+<td>新檔案建立時自動觸發範本（下一項的前提）</td>
+</tr>
+<tr>
+<td><strong>Folder templates</strong></td>
+<td>逐條新增「資料夾 → 範本」對應</td>
+<td>例如 <code>30_RESOURCES/判決/</code> → 判決筆記範本；之後在判決資料夾新增筆記，<strong>範本自動套上，一個按鍵都不用按</strong></td>
+</tr>
+</tbody></table>
+<p>Templater 的語法寫在 <code>&lt;% %&gt;</code> 之間，最值得認識的五個：</p>
+<table>
+<thead>
+<tr>
+<th>語法</th>
+<th>作用</th>
+<th>律師場景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;% tp.file.title %&gt;</code></td>
+<td>代入檔名</td>
+<td>同 <code>&#123;&#123;title&#125;&#125;</code></td>
+</tr>
+<tr>
+<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</code></td>
+<td>今天日期（格式自訂）</td>
+<td>同 <code>&#123;&#123;date&#125;&#125;</code></td>
+</tr>
+<tr>
+<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;</code></td>
+<td><strong>今天＋14 天</strong></td>
+<td>自動算出兩週後的補呈期限、上訴期限提醒</td>
+</tr>
+<tr>
+<td><code>&lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</code></td>
+<td><strong>彈出輸入框問你</strong></td>
+<td>建立開庭筆記時跳出「案號？」「股別？」，輸入後直接寫進筆記</td>
+</tr>
+<tr>
+<td><code>&lt;% tp.file.cursor() %&gt;</code></td>
+<td>範本插入後游標停在這裡</td>
+<td>套完範本，游標直接停在「今日要旨」欄位，馬上開打</td>
+</tr>
+</tbody></table>
+<p>組合起來的「開庭筆記範本」（存進範本資料夾，並在 Folder templates 綁定開庭筆記資料夾）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">date: &lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</span><br><span class="line">case: &lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</span><br><span class="line">court: &lt;% tp.system.prompt(&quot;法院／股別？&quot;) %&gt;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># &lt;% tp.date.now(&quot;YYYYMMDD&quot;) %&gt; 開庭筆記</span><br><span class="line"></span><br><span class="line">## 今日要旨</span><br><span class="line">&lt;% tp.file.cursor() %&gt;</span><br><span class="line"></span><br><span class="line">## 法官諭知</span><br><span class="line"></span><br><span class="line">## 兩造陳述</span><br><span class="line"></span><br><span class="line">## 待辦</span><br><span class="line">- [ ] （期限預設兩週後：&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;）</span><br></pre></td></tr></table></figure>
+
+<p>新增筆記的瞬間：問你案號與股別 → 自動填好日期與期限 → 游標停在「今日要旨」。這些語法<strong>不用背</strong>——Templater 支援完整的 JavaScript，需求再特殊（自動從檔名解析判決字號、依星期幾套不同內容），描述給 Claude Code 讓它幫你寫就好。</p>
+<p>建議的採用順序與外掛清單一致：<strong>先用核心外掛把「你需要哪幾種範本」養清楚，格式穩定了、覺得手動插入麻煩了，再升級 Templater。</strong> 範本資料夾裡的每一個檔案，日後也都是 AI 的規格書——你為自己定的格式，就是 AI 為你編纂的格式。</p>
+<h2 id="五、Canvas-白板：把案件「攤在桌上」"><a href="#五、Canvas-白板：把案件「攤在桌上」" class="headerlink" title="五、Canvas 白板：把案件「攤在桌上」"></a>五、Canvas 白板：把案件「攤在桌上」</h2><p><strong>Canvas（白板）是核心外掛</strong>（若未啟用：Settings → Core plugins → Canvas），它給你一張無限大的桌面，可以把筆記、卡片、圖片、網頁擺上去，拉線標註關係。</p>
+<p>有些思考天生是空間性的，線性的筆記裝不下：</p>
+<h3 id="用法一：案件關係圖（訴訟視角）"><a href="#用法一：案件關係圖（訴訟視角）" class="headerlink" title="用法一：案件關係圖（訴訟視角）"></a>用法一：案件關係圖（訴訟視角）</h3><p>新增 Canvas（左側面板右鍵 → New canvas），把當事人做成卡片：</p>
+<ul>
+<li>卡片：甲公司（承攬人、原告、我方當事人）、乙公司（定作人、被告），需要時再加丙工程顧問（監造單位）與下包商</li>
+<li>拉線標註：甲—乙之間「工程承攬契約＋遲延違約金條款」、丙—乙「監造委任」、下包商—甲「分包契約」</li>
+<li><strong>把現有筆記直接拖上白板</strong>：<code>[[工期展延的可歸責事由]]</code> 爭點筆記、關鍵判決筆記，都能以卡片形式擺在對應位置</li>
+</ul>
+<p>複雜的多數當事人案件（工程案、繼承案、公司經營權爭議），一張關係圖勝過十頁文字。完成後長這樣：</p>
+<p><img src="/images/obsidian-plugins-canvas/case-relationship-diagram.png" alt="案件關係圖範例"></p>
+<h3 id="用法二：爭點攻防圖（訴訟視角）"><a href="#用法二：爭點攻防圖（訴訟視角）" class="headerlink" title="用法二：爭點攻防圖（訴訟視角）"></a>用法二：爭點攻防圖（訴訟視角）</h3><p>白板分左右兩欄：我方主張 vs 對造抗辯。每個爭點一張卡片，下面掛支持的判決筆記與證據清單，中間拉線標「攻擊→」「←防禦」。開庭前看一眼，全案攻防結構盡在眼前：</p>
+<p><img src="/images/obsidian-plugins-canvas/issue-map-diagram.png" alt="爭點攻防圖範例"></p>
+<h3 id="用法三：交易架構圖（非訟／企業法務視角）"><a href="#用法三：交易架構圖（非訟／企業法務視角）" class="headerlink" title="用法三：交易架構圖（非訟／企業法務視角）"></a>用法三：交易架構圖（非訟／企業法務視角）</h3><p>M&amp;A 或投資案的架構圖：主體卡片（買方、目標公司、SPV）、拉線標註股權流向與金流、每條線掛上對應的契約筆記。盡職調查發現的問題，直接以紅色卡片貼在對應主體旁：</p>
+<p><img src="/images/obsidian-plugins-canvas/deal-structure-diagram.png" alt="交易架構圖範例"></p>
+<h3 id="用法四：教育訓練的課程設計（企業法務視角）"><a href="#用法四：教育訓練的課程設計（企業法務視角）" class="headerlink" title="用法四：教育訓練的課程設計（企業法務視角）"></a>用法四：教育訓練的課程設計（企業法務視角）</h3><p>把課程模組做成卡片自由排列組合，每張卡片連到知識庫裡對應的講義筆記。設計課綱本來就是空間性的工作：</p>
+<p><img src="/images/obsidian-plugins-canvas/course-design-diagram.png" alt="課程設計範例"></p>
+<blockquote>
+<p><strong>💡 小提示</strong><br>Canvas 檔案（<code>.canvas</code>）也是純文字格式（JSON），所以 AI 同樣讀得懂、生得出來。可以試試：「請根據 2026-015 案件總覽筆記，生成一個案件關係圖的 canvas 檔案」——AI 畫初稿、你來調整。<strong>本篇四張範例圖正是這樣請 Claude Code 生成的</strong>，<code>.canvas</code> 原始檔（<code>04_範例_案件關係圖.canvas</code> 等四個檔案）連同輸出圖檔一併收在本篇所附的 <code>04_範例/</code> 資料夾，可以直接打開編輯、當成自己的起手模板。另外，在 Obsidian 裡 <code>.canvas</code> 跟 PDF 一樣可以用 <code>![[ ]]</code> 嵌進筆記顯示互動預覽。</p>
+</blockquote>
+<h2 id="六、行動裝置：口袋裡的知識庫"><a href="#六、行動裝置：口袋裡的知識庫" class="headerlink" title="六、行動裝置：口袋裡的知識庫"></a>六、行動裝置：口袋裡的知識庫</h2><p>Obsidian 有免費的 iOS &#x2F; Android App，體驗完整。兩個律師場景：</p>
+<ul>
+<li><strong>開庭與開會</strong>：iPad 開著案件總覽與爭點 WIKI，隨手記要點，回辦公室丟給 AI 編纂。</li>
+<li><strong>零碎時間輸入</strong>：在高鐵上讀到一則新判決，手機存進 <code>00_INBOX</code>，回家一句「執行 Inbox 編纂」。</li>
+</ul>
+<p>跨裝置同步的選項與資安取捨（iCloud &#x2F; OneDrive &#x2F; Obsidian Sync 端到端加密），依 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級原則決定：<strong>知識庫裡有什麼等級的資料，決定它能不能同步、用什麼同步。</strong></p>
+<h2 id="七、本篇小結＋基本功檢查表"><a href="#七、本篇小結＋基本功檢查表" class="headerlink" title="七、本篇小結＋基本功檢查表"></a>七、本篇小結＋基本功檢查表</h2><p>到這裡，Obsidian 基本功全部完成。檢查一下：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 已建立 Vault，並理解它就是一個資料夾（<a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a>）</li>
+<li><input disabled="" type="checkbox"> 能新增筆記、建立 <code>[[連結]]</code>、快速切換、全庫搜尋</li>
+<li><input disabled="" type="checkbox"> 看得懂也寫得出基本 Markdown，認識 callout 與 frontmatter（<a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a>）</li>
+<li><input disabled="" type="checkbox"> 知道外掛怎麼安裝，也知道先不要多裝</li>
+<li><input disabled="" type="checkbox"> 用核心外掛「範本」建立了自己的第一個筆記範本</li>
+<li><input disabled="" type="checkbox"> 開過一張 Canvas，把筆記拖上去排列過</li>
+</ul>
+<p>下一篇開始，讓終端機 AI Agent 進駐這個知識庫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://help.obsidian.md/community-plugins">Obsidian 官方說明：社群外掛（Community plugins）</a></li>
+<li><a href="https://help.obsidian.md/plugins/templates">Obsidian 官方說明：範本（Templates）</a></li>
+<li><a href="https://help.obsidian.md/plugins/canvas">Obsidian 官方說明：Canvas 白板</a></li>
+<li><a href="https://help.obsidian.md/plugins/audio-recorder">Obsidian 官方說明：錄音機（Audio recorder）</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a><br>➡️ 下一篇：<a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>Obsidian</tag>
+        <tag>外掛</tag>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11 實戰｜打造判決知識庫：從裁判書到 WIKI 索引</title>
+    <url>/posts/judgment-knowledge-base/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>裁判書存成 .md 丟進 Vault → AI 在每份開頭插入三色摘要區塊 → AI 編出索引頁與爭點 WIKI。之後查判決，先翻自己整理過的索引與 WIKI，再回全文查證。</p>
+</blockquote>
+<span id="more"></span>
+<p>判決研究有兩個日常困境：裁判書動輒數十頁，每份都精讀不現實，只看主文又抓不到論理；而且同一個爭點，隔了半年往往又是一次從零開始的檢索。本篇是整個知識管理主線的核心實戰，完整走一遍「判決知識庫」的建置流程。這條流程訴訟律師感受最直接，但非訟律師與企業法務同樣受用——文末會分別說明兩種視角的用法。</p>
+<h2 id="第一步：把裁判書變成-md-檔"><a href="#第一步：把裁判書變成-md-檔" class="headerlink" title="第一步：把裁判書變成 .md 檔"></a>第一步：把裁判書變成 .md 檔</h2><p>原料來自「司法院裁判書系統」（判決書查詢）。把裁判書變成 Vault 裡的 Markdown 檔，有三種做法：</p>
+<p><strong>做法一：複製貼上（零門檻）。</strong> 在裁判書頁面全選複製，回 Obsidian 新增筆記貼上，檔名取判決字號。適合偶爾為之。</p>
+<p><strong>做法二：瀏覽器擴充功能一鍵下載。</strong> 筆者以 Claude Code 自行開發了 Chrome 擴充功能「<strong>司法院裁判書閱讀助手</strong>」（免費上架於 <a href="https://chromewebstore.google.com/detail/nigjaldhpljkcgedolepmhmifaplpadn">Chrome 線上應用程式商店</a>，無任何收費或商業利益；<a href="https://github.com/han0302-cyber/judicial-outline-extension/">GitHub 原始碼</a>公開），可以在裁判書頁面自動解析判決架構、標示參照判決，並<strong>一鍵複製判決全文、或將整份裁判書下載成 .md 檔</strong>。下載下來直接就是 Obsidian 能用的格式，批次研究判決時效率差距可觀，提供讀者參考。</p>
+<p><strong>做法三：交給 AI 轉檔。</strong> 手上是 PDF 或 Word 的裁判書（例如當事人提供的卷內判決），直接丟進 <code>00_INBOX</code>，讓 Claude Code 轉成 md（本機轉檔工具如 markitdown 可全程不外傳資料）。</p>
+<p><strong>做法四：讓 AI 直接檢索（MCP）。</strong> 前三種做法都是「人先找到判決、再入庫」；裝好 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> 介紹的 taiwan-legal-db 之後，還有第四種——連檢索本身也交辦出去：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請用裁判書系統檢索與「工期展延 違約金酌減」相關的近三年判決，</span><br><span class="line">列出：字號｜法院｜一句話爭點，供我挑選；</span><br><span class="line">我勾選後，將全文下載存入 30_RESOURCES/判決/，檔名用判決字號。</span><br></pre></td></tr></table></figure>
+
+<p>這條路的界線要先劃清：<strong>AI 初篩、律師複選。</strong> 檢索詞抓得全不全、哪幾則值得入庫，是判斷，不隨檢索一起外包——AI 列出的是候選名單，不是研究結論；重要爭點宜再用自己的檢索詞補一輪，確認沒有漏網。</p>
+<p>下載下來的判決，統一放進 <code>30_RESOURCES/判決/</code>，或先丟 <code>00_INBOX</code> 等待編纂。</p>
+<h2 id="第二步：AI-產生三色摘要（Skill-實戰）"><a href="#第二步：AI-產生三色摘要（Skill-實戰）" class="headerlink" title="第二步：AI 產生三色摘要（Skill 實戰）"></a>第二步：AI 產生三色摘要（Skill 實戰）</h2><p>開頭說的第一個困境——精讀不現實、只看主文不夠——解法是讓 AI 在<strong>每份裁判書的最開頭</strong>插入三個 Obsidian callout 色塊：</p>
+<ul>
+<li>🟩 <code>[!tip]</code> <strong>重點摘要</strong>——把案件講成一個完整的故事：當事人身分、關鍵行為、時間點與金額、最終判決結果，關鍵事實加上螢光標記。讀完能向同事三句話講清楚這個案子。</li>
+<li>🟨 <code>[!question]</code> <strong>爭點整理</strong>——本案法律上真正在吵什麼，每個爭點一句話標題＋具體爭執內容，通常二至五個。</li>
+<li>🟦 <code>[!note]</code> <strong>法院見解</strong>——法院對各爭點的結論與論理，與爭點一一對應；最高法院判決並說明維持或推翻下級審的哪些認定。</li>
+</ul>
+<p>三色區塊之後以 <code>---</code> 分隔，<strong>裁判全文原封不動接在後面</strong>——摘要是導覽，不是替代，全文永遠都在。</p>
+<p>三色摘要的任務，是幫你在一批判決中快速分辨「哪幾份值得精讀」，而不是讓你從此不必讀判決。對案件成敗有影響的關鍵判決，一定要親自讀全文——法院論理的轉折、事實認定的細節、可供攻擊的縫隙，這些只有精讀才看得見，而它們正是書狀功力的來源。讓 AI 摘要一百份判決是效率；靠摘要「理解」判決、從此不碰全文，則是把律師最核心的功夫外包出去。AI 可以替你整理，理解永遠要靠你自己的閱讀。</p>
+<p>這套固定格式怎麼讓 AI 每次穩定產出？答案是把它寫成一個 <strong>Skill</strong>（技能）——以實際運作中的 <code>judgment-summary</code> 技能為例，它就是一份教 AI「怎麼整理裁判書」的 SOP 文件，內含格式模板與撰寫原則（不杜撰、數字照抄、不更動全文、台灣法律用語）。裝好之後，操作只剩一句話：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">幫我整理 00_INBOX 裡這三份判決</span><br></pre></td></tr></table></figure>
+
+<p>AI 讀到「整理判決」就自動套用這個技能，三份裁判書開頭各自長出三色摘要。Skill 的原理與自製方法，是 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的主題，該篇會帶你逐步做出自己的版本。</p>
+<blockquote>
+<p><strong>⚠️ 注意</strong><br>一樣的原則：AI 摘要中的判決要旨與引用法條，採用前一律人工核對（或先讓法規資料庫 MCP 做第一輪核對，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）。摘要幫你「快速掌握」，查證責任永遠在人。</p>
+</blockquote>
+<h2 id="第三步：AI-編出-INDEX-與爭點-WIKI"><a href="#第三步：AI-編出-INDEX-與爭點-WIKI" class="headerlink" title="第三步：AI 編出 INDEX 與爭點 WIKI"></a>第三步：AI 編出 INDEX 與爭點 WIKI</h2><p>判決筆記累積到十份以上，就值得讓 AI 建立兩層導覽結構。</p>
+<h3 id="3-1-判決索引頁（INDEX）"><a href="#3-1-判決索引頁（INDEX）" class="headerlink" title="3-1 判決索引頁（INDEX）"></a>3-1 判決索引頁（INDEX）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請掃描 30_RESOURCES/判決/ 內所有判決筆記，建立「判決索引.md」：</span><br><span class="line">1. 以表格呈現：判決字號（wikilink）｜法院｜裁判日期｜案由｜一句話爭點；</span><br><span class="line">2. 按法領域分節（勞動、個資、公司……），同領域內按裁判日期新到舊排序；</span><br><span class="line">3. 之後每次新增判決筆記，都要同步更新這份索引。</span><br><span class="line">   （這條規則請同時寫進 CLAUDE.md）</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-爭點-WIKI-頁"><a href="#3-2-爭點-WIKI-頁" class="headerlink" title="3-2 爭點 WIKI 頁"></a>3-2 爭點 WIKI 頁</h3><p>索引解決「找判決」，WIKI 解決「找答案」。讓 AI 以爭點為單位，把散落各判決的見解編纂成百科條目：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取所有涉及「工期展延」的判決筆記，建立或更新爭點 WIKI 頁</span><br><span class="line">「工期展延的可歸責事由.md」：</span><br><span class="line">1. 段落：爭點說明／實務見解整理／見解分歧（如有，分列各說並附判決）</span><br><span class="line">   ／時間演變／相關法條／待研究問題；</span><br><span class="line">2. 每個論點都必須以 [[判決字號]] 連結到出處筆記；</span><br><span class="line">3. 完成後把這一頁掛上「營建工程 MOC」。</span><br></pre></td></tr></table></figure>
+
+<p>做完之後，你的檢索路徑變成：<strong>MOC（領域地圖）→ 爭點 WIKI（答案在這）→ 判決筆記（三色摘要）→ 裁判全文（終極查證）</strong>，四層每一層都互相連結。等 2026-015 案（甲公司對定作人乙公司的工程款訴訟）打到「變更設計、追加工項應否展延工期」這個爭點時，答案已經寫好在 WIKI 頁，而且每一句都點得回出處。</p>
+<h2 id="第四步：檢索與引用（收穫期）"><a href="#第四步：檢索與引用（收穫期）" class="headerlink" title="第四步：檢索與引用（收穫期）"></a>第四步：檢索與引用（收穫期）</h2><p>日常使用場景：</p>
+<p><strong>寫書狀時調閱</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我正在寫 2026-015 案的上訴理由狀。一審認定甲公司遲延完工、應依約給付違約金，</span><br><span class="line">我方（甲公司）主張乙公司變更設計、追加工項，依約工期應予展延，展延後如期完工、並無遲延。</span><br><span class="line">請從判決知識庫找出所有支持這個立場的判決，</span><br><span class="line">按法院層級排序，各附一段可引用的法院見解原文與出處字號。</span><br></pre></td></tr></table></figure>
+
+<p><strong>開會前十分鐘惡補</strong>：在 Obsidian 打開爭點 WIKI 頁，三分鐘掌握全部實務見解——因為那是你過去半年編纂出來的。</p>
+<p><strong>發現新判決時</strong>：丟進 Inbox，一句「整理並更新索引與相關 WIKI」，知識庫自動長大。</p>
+<h2 id="兩種視角的用法差異"><a href="#兩種視角的用法差異" class="headerlink" title="兩種視角的用法差異"></a>兩種視角的用法差異</h2><p><strong>訴訟律師</strong>：如上主流程。加碼建議——為進行中的案件建立「本案判決庫」子資料夾，把對造引用的判決也丟進去做三色摘要，讓 AI 比對「對造引用的判決與我方立場的判決，事實基礎有何不同」，攻擊防禦的素材就出來了。</p>
+<p><strong>非訟律師／企業法務</strong>：把「判決」換成你的日常原料，整套流程原樣可用——</p>
+<ul>
+<li><strong>契約審閱</strong>：建「條款知識庫」。每次審約遇到的特殊條款與處理方式，存成條款筆記；相關判決（例如違約金酌減、定型化條款效力）掛在條款頁下。下次審到同類條款，WIKI 頁就是你的 checklist。</li>
+<li><strong>法律意見</strong>：建「議題知識庫」。每份意見書研究過的法規、函釋、判決，萃取成議題 WIKI；主管機關函釋也用同一套三色摘要邏輯處理（重點／爭點／機關立場）。</li>
+<li><strong>教育訓練</strong>：知識庫直接變教材產線——「請根據個資法 MOC 及其下所有筆記，產出一份對客戶人資部門的教育訓練大綱，附實務案例」。</li>
+</ul>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>四步流程：取得 md（擴充功能一鍵下載，或交給 MCP 檢索）→ 三色摘要（Skill）→ 索引與爭點 WIKI（編纂）→ 檢索引用（收穫）。</li>
+<li>檢索路徑四層：MOC → 爭點 WIKI → 判決摘要 → 全文。</li>
+<li>訴訟用判決、非訟用條款與議題，方法完全同構。</li>
+<li>下一篇把鏡頭拉到日常：訴訟與非訟的每日工作流。</li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a><br>➡️ 下一篇：<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>Obsidian</tag>
+        <tag>實戰案例</tag>
+        <tag>判決研究</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>00 總覽｜AI x Obsidian 律師實戰系列</title>
+    <url>/posts/series-overview/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>ℹ️ 本系列是什麼</strong><br>寫給<strong>台灣律師與企業法務</strong>的實戰教材：用終端機 AI Agent（Claude Code &#x2F; Codex）搭配 Obsidian，打造會自己長大的法律知識庫。全系列 15 篇，每篇一個核心概念，獨立成篇、環環相扣。</p>
+<p>本系列延續筆者兩門課程——「<strong>從零開始打造你的 AI 助理</strong>」（台北、台南、台東律師公會等場次）與「<strong>【AI 與法律】律師實務應用：AI 工具實作</strong>」（台北律師公會）——課堂講的是觀念與示範，這裡把它展開成可以一步一步跟著動手做的實作教學。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、核心動機：律師知識難以累積"><a href="#一、核心動機：律師知識難以累積" class="headerlink" title="一、核心動機：律師知識難以累積"></a>一、核心動機：律師知識難以累積</h2><p>這個系列源自一個每位律師都熟悉、卻很少被好好討論的現象：</p>
+<p><strong>律師每天生產高價值的知識，卻很難把它累積下來。</strong> 為一個案件讀了三十則判決、寫了一份縝密的爭點分析——結案之後，這些心血沉入卷宗與硬碟深處；半年後遇到同類爭點，一切重來。執業十年的資深律師，專業判斷確實增長了，但那些「查過的、寫過的、想通的」，絕大部分蒸發了。</p>
+<p>原因不是不認真，而是<strong>整理知識的成本太高</strong>——分類、摘要、建立索引、維護連結，這些工作吃掉的正是律師最稀缺的時間。所以種種知識管理方法，最後往往敗給了下一個開庭期日。</p>
+<p>AI Agent 的成熟，讓這個死結出現了解法：<strong>整理的勞動可以全部交給 AI 承擔</strong>。但前提是，你的知識必須放在 AI 進得去、讀得懂、寫得動的地方。這就是本系列的起點。</p>
+<h2 id="二、核心概念：知識的複利循環"><a href="#二、核心概念：知識的複利循環" class="headerlink" title="二、核心概念：知識的複利循環"></a>二、核心概念：知識的複利循環</h2><p>全系列 15 篇文章，其實都在建造同一部機器。它的分工只有一句話：</p>
+<blockquote>
+<p><strong>你負責判斷，AI 負責勞動，Obsidian 負責記住。</strong></p>
+</blockquote>
+<p>這部機器運轉起來，是一個不斷自我增強的過程——<strong>知識的複利循環</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     ① 輸入（幾乎零成本）</span><br><span class="line">判決、契約、開庭筆記、隨手心得 → 丟進 Inbox</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ② 編纂（AI 的勞動）</span><br><span class="line">摘要、結構化、建立 wikilink、更新索引與主題地圖</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ③ 調閱（收穫時刻）</span><br><span class="line">寫書狀、出意見書、做教育訓練時，答案已在知識庫裡</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ④ 回流（複利的關鍵）</span><br><span class="line">工作成果去識別化後回到知識庫（知識萃取、checklist 長大）</span><br><span class="line">           │</span><br><span class="line">           └────→ 回到 ①，知識庫更厚，下一圈更快</span><br></pre></td></tr></table></figure>
+
+<p>支撐這個循環的，是一個貫穿全系列的轉變：</p>
+<ul>
+<li><strong>從「檢索」到「編纂」</strong>——你不再翻找資料，而是讓 AI 把資料編纂成你專屬的法律百科全書，答案在你提問之前就寫好了。</li>
+</ul>
+<p>而在多人事務所，這個循環還有第三層意義：<strong>傳承</strong>。資深律師的辦案經驗、審約眼光、書狀方法，透過共用知識庫與 Skills 外顯化成檔案，新進同仁報到第一天就能繼承；人員異動時，知識留在所裡，不再跟著人走。<strong>個人累積的是複利，組織累積的是制度</strong>——這條線在 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的「從師徒制到制度化傳承」一節收攏。</p>
+<p>而這一切有一條不可退讓的地基：<strong>思考與理解，永遠是律師自己的工作。</strong> AI 可以承擔整理的勞動——摘要、連結、編索引——但整理好的知識要變成你的專業判斷，只能靠你親自閱讀、親自想過，這段路沒有人能代走。把整理外包給 AI 是效率；把理解也外包出去，就是<strong>大腦外包</strong>——對以判斷力為業的律師，這是動搖根本的事。所以引用要查證、定稿要人審、機密要分級、理解要親自來：AI 接手的是勞動，從來不是你的專業與義務。這條界線會在多篇文章中反覆出現，最後在 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 收束。</p>
+<h2 id="三、貫穿全系列的示範案例"><a href="#三、貫穿全系列的示範案例" class="headerlink" title="三、貫穿全系列的示範案例"></a>三、貫穿全系列的示範案例</h2><p>全系列的範例盡量取材自同一件虛構案件——<strong>2026-015 案</strong>：我方當事人甲公司（承攬人）起訴定作人乙公司請求給付工程款，攻防圍繞「工期應否展延」與「違約金應否酌減」兩個爭點（案情細節見 <a href="/posts/why-obsidian/">為什麼是 Obsidian｜律師的第二大腦</a>）；非訟場景則以客戶A的經銷契約為支線。</p>
+<h2 id="四、系列地圖：四部十五篇如何環環相扣"><a href="#四、系列地圖：四部十五篇如何環環相扣" class="headerlink" title="四、系列地圖：四部十五篇如何環環相扣"></a>四、系列地圖：四部十五篇如何環環相扣</h2><p>每一部回答一個問題，答案交棒給下一部：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一部（01–04）知識要放在哪裡？        → 打好 Obsidian 地基</span><br><span class="line">第二部（05–07）誰來承擔整理勞動？      → 讓 AI Agent 進駐並立好規矩</span><br><span class="line">第三部（08–14）循環怎麼轉起來？        → 雙軌架構＋編纂＋實戰＋制度化</span><br><span class="line">第四部（15）  這一切的邊界在哪裡？    → 資安與倫理的紅線</span><br></pre></td></tr></table></figure>
+
+<h3 id="第一部：打好地基（Obsidian-基本功）"><a href="#第一部：打好地基（Obsidian-基本功）" class="headerlink" title="第一部：打好地基（Obsidian 基本功）"></a>第一部：打好地基（Obsidian 基本功）</h3><p>回答「<strong>知識要放在哪裡，AI 才進得去？</strong>」——答案是地端、純文字、以連結為靈魂的 Obsidian。</p>
+<ol>
+<li><a href="/posts/why-obsidian/">為什麼是 Obsidian｜律師的第二大腦</a> — 全系列的問題意識與解法總綱：知識蒸發的困境、Obsidian 的四個關鍵特性、「從檢索到編纂」的典範轉移。</li>
+<li><a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a> — 安裝、建 Vault、五個必學操作、第一天練習清單。</li>
+<li><a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a> — 十個夠用的語法＋callout 色塊、PDF 嵌入預覽與 frontmatter；Markdown 是 AI 的母語。</li>
+<li><a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> — 外掛精選（Dataview、Templater、錄音機、<strong>Claudian</strong>）、筆記範本的設定與語法、Canvas 畫案件關係圖與交易架構圖。</li>
+</ol>
+<h3 id="第二部：AI-Agent-登場"><a href="#第二部：AI-Agent-登場" class="headerlink" title="第二部：AI Agent 登場"></a>第二部：AI Agent 登場</h3><p>回答「<strong>誰來承擔整理勞動？</strong>」——會動手做事的終端機 AI Agent，以及讓它一次就懂你的設定。</p>
+<ol start="5">
+<li><a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a> — Chatbot 與 Agent 的本質差異；法律專業才是用好 Agent 的關鍵；終端機版（CLI）與桌面版的介面之別；同場加映圖形介面的 <strong>Claude Cowork</strong>（「一次性交付」與「持續共筆」的差異）與 Agent 生態系。</li>
+<li><a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> — 安裝、登入、在 Vault 裡啟動；跨資料夾參照與權限機制。</li>
+<li><a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> — 全域／專案／案件三層設定；background.md 與 <code>@</code> 引入；把職業紀律寫成 AI 的行為規則。</li>
+</ol>
+<h3 id="第三部：知識管理主線（讓循環轉起來）"><a href="#第三部：知識管理主線（讓循環轉起來）" class="headerlink" title="第三部：知識管理主線（讓循環轉起來）"></a>第三部：知識管理主線（讓循環轉起來）</h3><p>回答「<strong>循環怎麼轉起來？</strong>」——先設計架構（⑧⑨），再啟動編纂（⑩），實戰演練（⑪⑫），最後制度化與查證強化（⑬⑭）。</p>
+<ol start="8">
+<li><a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> — 律師版 PARA（P 改寫為 Matter）＋Zettelkasten＋Johnny.Decimal＋MOC；案件軌（當事人→案件雙層）與研究軌；事務所經營行政與客戶溝通紀錄（會議／通話／LINE）的收納；<strong>知識萃取</strong>（複利循環第④步的訴訟版：書狀定稿隨手萃、結案總萃收尾）。</li>
+<li><a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a> — 檔案版的 PARA：五個頂層資料夾、底稿區與定稿區分離、文件庫捷徑（M365／Google Workspace）、命名慣例與結案封存。</li>
+<li><a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a> — Inbox 編纂工作流（複利循環第②步）；見解衝突偵測、知識庫健檢；「形式歸 AI、判斷歸你」。</li>
+<li><a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> — 核心實戰：裁判書 .md → 三色摘要 → 判決索引與爭點 WIKI → 調閱與引用（完整走過循環一圈）。</li>
+<li><a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a> — 六個可照抄的工作流：開庭準備包、書狀三明治、契約審閱、意見書研究、教育訓練產線。</li>
+<li><a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> — 把反覆使用的工作流寫成 SKILL.md：品質穩定、知識資產化，以及<strong>從師徒制到制度化傳承</strong>——資深經驗如何留在所裡、傳給下一代。</li>
+<li><a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> — 讓 AI 引用前先查證：台灣法規資料庫 MCP＋CLAUDE.md 查證規則的黃金組合。</li>
+</ol>
+<h3 id="第四部：底線"><a href="#第四部：底線" class="headerlink" title="第四部：底線"></a>第四部：底線</h3><p>回答「<strong>這一切的邊界在哪裡？</strong>」——每一篇都預埋了資安提醒，這裡總收束。</p>
+<ol start="15">
+<li><a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> — 資料流的真相、付費≠安全、三層分流、去識別化、查證義務與認知負債。<strong>全系列最重要的一篇。</strong></li>
+</ol>
+<hr>
+<h2 id="五、三種讀者的建議路線"><a href="#五、三種讀者的建議路線" class="headerlink" title="五、三種讀者的建議路線"></a>五、三種讀者的建議路線</h2><p><strong>路線 A｜完全新手</strong>（沒用過 Obsidian 也沒用過 AI Agent）：從 01 依序讀到 15。第一週讀完 01–06 並完成練習；第二週進入 08–11，開始建自己的判決知識庫。</p>
+<p><strong>路線 B｜已會 Obsidian，想導入 AI</strong>：直接讀 05 → 06 → 07 → 08 → 09 → 10 → 11（08、09 會重整既有的資料夾邏輯），行有餘力回頭補 04 的 Claudian 與 Canvas。</p>
+<p><strong>路線 C｜先看「這到底能幹嘛」的務實派</strong>：先讀兩篇實戰 11 → 12，有感之後再回 01 從頭建置。</p>
+<p><strong>依執業型態的重點篇章</strong>：</p>
+<ul>
+<li>訴訟律師：11、12（工作流一至三）、13</li>
+<li>非訟律師／企業法務：12（工作流四至六）、13（契約審閱技能）、14</li>
+<li>事務所管理者：07（全所標準化）、09（檔案制度）、13（Skills 共用與經驗傳承）、15（合規框架與 Shadow IT 治理）</li>
+</ul>
+<p>無論走哪條路線，<strong>15 資安與倫理建議完整讀過一次</strong>，最好在把真實工作資料放進系統之前——這一篇關係到執業風險，值得優先。</p>
+<hr>
+<h2 id="六、使用本教材的三個提醒"><a href="#六、使用本教材的三個提醒" class="headerlink" title="六、使用本教材的三個提醒"></a>六、使用本教材的三個提醒</h2><ol>
+<li><strong>邊讀邊做</strong>：每篇都有可直接複製的提示詞，「開始動手」比「聽得完整」重要。</li>
+<li><strong>一律先用公開或去識別化資料練習</strong>：真實卷證的使用界線，以 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 為準。</li>
+<li><strong>AI 的引用永遠要查證</strong>：這是全系列反覆出現、也永遠不會改變的一條原則。</li>
+</ol>
+<blockquote>
+<p>這個循環持續運作，知識庫會逐步累積你的判斷、經驗與方法論。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>總覽</tag>
+        <tag>MOC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>13 Skills｜把你的 SOP 變成 AI 的技能</title>
+    <url>/posts/skills-as-sop/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Skill 就是「一個資料夾＋一份 SKILL.md 說明書」，把你反覆使用的工作 SOP 寫成 AI 看得懂的作業程序——寫一次，之後一句話觸發，而且全所可以共用、品質高度穩定。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、從「好用的提示詞」到「制度化的技能」"><a href="#一、從「好用的提示詞」到「制度化的技能」" class="headerlink" title="一、從「好用的提示詞」到「制度化的技能」"></a>一、從「好用的提示詞」到「制度化的技能」</h2><p>前幾篇你已經累積了不少好用的提示詞：Inbox 編纂、三色摘要、契約審閱……但提示詞有三個先天限制：</p>
+<ol>
+<li><strong>要一直複製貼上</strong>，或存在某個地方每次去翻；</li>
+<li><strong>品質會飄移</strong>——同一件事，這次講得完整、下次漏講一句，產出品質就浮動；</li>
+<li><strong>難以共享</strong>——你磨了三個月的提示詞，同事拿去用還是要學你的用法。</li>
+</ol>
+<blockquote>
+<p><strong>💡 小提示</strong><br>先介紹一個中間解法：Claude Code 支援<strong>自訂斜線指令</strong>——把常用提示詞存成檔案（放在專案的 <code>.claude/commands/</code> 資料夾），之後輸入 <code>/指令名</code> 就能叫出整段提示詞，<code>90_SYSTEM/Prompts/</code> 裡的常用提示詞都值得做成指令。它解決了第一個問題（複製貼上），但「品質飄移」與「自動觸發」還是要靠本篇的主角——你可以把斜線指令理解為 Skill 的簡化版。</p>
+</blockquote>
+<p>Claude Code 的 <strong>Skills（技能）</strong> 機制完整解決這三個問題。一句話定義：</p>
+<blockquote>
+<p><strong>Skill &#x3D; 一個資料夾，裡面放一份 <code>SKILL.md</code>，內容是教 AI 完成某項特定任務的標準作業程序。</strong></p>
+</blockquote>
+<p>裝好之後，AI 會在對話中<strong>自動判斷</strong>何時該用它——你說「幫我整理這份判決」，它就自己套用裁判書摘要技能，不需要你提技能的名字。</p>
+<p>對律師來說，最貼切的理解是：<strong>Skill 就是你寫給新進助理的 SOP 手冊。</strong> 差別在於，這位助理會穩定地按手冊執行，而且手冊可以複製給無限多位助理。本篇後段也會談到，這套機制如何回應師徒制「帶得慢、留不住」的傳承難題。</p>
+<h2 id="二、Skill-的解剖：以「裁判書摘要」為例"><a href="#二、Skill-的解剖：以「裁判書摘要」為例" class="headerlink" title="二、Skill 的解剖：以「裁判書摘要」為例"></a>二、Skill 的解剖：以「裁判書摘要」為例</h2><p>以下解剖筆者實際使用中的 <code>judgment-summary</code>（裁判書摘要）技能——它正是 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 三色摘要的引擎。看懂它，就懂 Skill 的全部結構。</p>
+<h3 id="位置與組成"><a href="#位置與組成" class="headerlink" title="位置與組成"></a>位置與組成</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">~/.claude/skills/              ← 個人技能（你所有專案都能用）</span><br><span class="line">└── judgment-summary/</span><br><span class="line">    └── SKILL.md               ← 就這一份檔案</span><br><span class="line"></span><br><span class="line">（放在專案的 .claude/skills/ 則是專案技能，只在該 Vault 生效，</span><br><span class="line">  可隨 Vault 共享給同事）</span><br></pre></td></tr></table></figure>
+
+<h3 id="SKILL-md-的三個組成部分"><a href="#SKILL-md-的三個組成部分" class="headerlink" title="SKILL.md 的三個組成部分"></a>SKILL.md 的三個組成部分</h3><p><strong>第一部分：frontmatter（讓 AI 知道何時觸發）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">name: judgment-summary</span><br><span class="line">description: 閱讀台灣法院裁判書（.md 檔），在檔案最開頭插入</span><br><span class="line">  「重點摘要」「爭點整理」「法院見解」三個 Obsidian callout 色塊。</span><br><span class="line">  當使用者提到要為裁判書／判決書做摘要、整理爭點……即使使用者</span><br><span class="line">  只說「幫我整理這份判決」，只要對象是裁判書 md 檔，就應觸發。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><code>description</code> 是靈魂：AI 靠它判斷「現在這個任務是不是該用這個技能」。所以要把<strong>各種可能的說法都寫進去</strong>——包括使用者「沒有明講」的情況。</p>
+<p><strong>第二部分：工作流程（步驟化的 SOP）</strong></p>
+<p><code>judgment-summary</code> 的流程段落規定：完整讀完裁判書（不能只看主文）→ 檢查是否已整理過（避免重複插入）→ 撰寫三個 callout 區塊 → 插入在 H1 標題之後 → 用編輯方式插入、不重寫全文。</p>
+<p>注意這些步驟的顆粒度——<strong>跟你教新人的顆粒度一樣細</strong>。「法院見解多半藏在理由欄，不能只看主文」這種只有律師知道的細節，正是 Skill 的價值所在。</p>
+<p><strong>第三部分：格式模板與紅線原則</strong></p>
+<p>模板規定三色 callout 的精確格式（哪個用綠色 <code>[!tip]</code>、關鍵事實加螢光標記……）；原則段落則是紅線：<strong>不杜撰</strong>（摘要必須能在全文找到依據）、<strong>數字照抄</strong>（金額、日期、字號不可四捨五入）、<strong>不更動全文</strong>、<strong>沿用當事人稱謂</strong>、<strong>台灣法律用語</strong>。</p>
+<p>換個角度看，這份 SKILL.md 的本質，是<strong>把一位資深律師「怎麼讀判決、怎麼做摘要」的內隱知識，外顯化成文件</strong>。寫 Skill 的過程本身就是知識管理。</p>
+<h2 id="三、動手做：兩條路徑做出你的第一個-Skill"><a href="#三、動手做：兩條路徑做出你的第一個-Skill" class="headerlink" title="三、動手做：兩條路徑做出你的第一個 Skill"></a>三、動手做：兩條路徑做出你的第一個 Skill</h2><p>做 Skill 有兩條路徑，依你手上有沒有「已經跑順的流程」來選。</p>
+<h3 id="路徑-A：先把流程跑順，再封裝成-Skill（推薦）"><a href="#路徑-A：先把流程跑順，再封裝成-Skill（推薦）" class="headerlink" title="路徑 A：先把流程跑順，再封裝成 Skill（推薦）"></a>路徑 A：先把流程跑順，再封裝成 Skill（推薦）</h3><p>最自然的做法：某個工作流你已經用提示詞帶著 AI 做過幾次、格式與步驟都修到滿意——例如上一篇的契約審閱。此時在剛做完的那個對話裡接一句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">剛剛這個審閱流程很好，請把它做成一個 Skill：</span><br><span class="line">把這次實際執行的步驟、輸出格式與注意事項寫成 SKILL.md，</span><br><span class="line">description 要涵蓋「幫我看這份約」「審一下這份 NDA」等各種說法。</span><br></pre></td></tr></table></figure>
+
+<p>AI 會把「剛剛實際發生的流程」萃取成 SOP。這條路徑的好處是：<strong>Skill 從實戰長出來</strong>，每個步驟都經過你驗收，不是憑空設計；缺點是要等流程先成熟。日常建議以這條為主。</p>
+<h3 id="路徑-B：從零開始，用-skill-creator-引導生成"><a href="#路徑-B：從零開始，用-skill-creator-引導生成" class="headerlink" title="路徑 B：從零開始，用 skill-creator 引導生成"></a>路徑 B：從零開始，用 skill-creator 引導生成</h3><p>流程還沒實際跑過、但 SOP 已經在你腦中（或所內已有書面 checklist 可以直接搬上來）時，用官方的 <code>skill-creator</code> 引導式生成。它以外掛形式提供，先安裝一次（<code>/plugin install skill-creator</code>），之後輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/skill-creator</span><br><span class="line">我要做一個 Skill：契約審閱備忘錄。</span><br><span class="line">當我請你審閱契約時，依以下 SOP 執行：</span><br><span class="line">1. 先確認我方當事人立場（買方／賣方／出租人……），沒講就先問我；</span><br><span class="line">2. 讀取 20_AREAS/契約條款庫/ 對應的 checklist 筆記逐項比對；</span><br><span class="line">3. 產出審閱備忘錄，格式：契約基本資料／高風險條款表格</span><br><span class="line">   （條號｜原文重點｜風險說明｜建議修訂文字）／checklist 缺漏事項</span><br><span class="line">   ／其他觀察；</span><br><span class="line">4. 風險分三級：🔴 不可接受、🟡 應協商、🟢 可接受；</span><br><span class="line">5. 引用法條一律標註「（待核對）」；</span><br><span class="line">6. 語言：繁體中文、台灣法律用語。</span><br></pre></td></tr></table></figure>
+
+<h3 id="兩條路徑共同的收尾：審閱、試用、迭代"><a href="#兩條路徑共同的收尾：審閱、試用、迭代" class="headerlink" title="兩條路徑共同的收尾：審閱、試用、迭代"></a>兩條路徑共同的收尾：審閱、試用、迭代</h3><p>無論哪條路徑，AI 都會生成 SKILL.md 草稿給你確認。審閱看兩個重點：description 是否涵蓋你會講的各種說法；SOP 步驟是否符合你的實際習慣。然後拿一份契約實測（若在消費者方案環境，先「去識別化」；分級判斷見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>），產出不合意的地方直接說「以後審閱備忘錄的風險表格要加一欄『對方可能的抗辯』，請更新技能」——<strong>Skill 跟 CLAUDE.md 一樣是養出來的。</strong></p>
+<h2 id="四、兩種視角的-Skill-清單（點子庫）"><a href="#四、兩種視角的-Skill-清單（點子庫）" class="headerlink" title="四、兩種視角的 Skill 清單（點子庫）"></a>四、兩種視角的 Skill 清單（點子庫）</h2><p><strong>訴訟：</strong></p>
+<ul>
+<li>裁判書摘要（本篇範例）</li>
+<li>判決檢索入庫（一句「幫我找工期展延的新判決」→ 透過法規資料庫 MCP 檢索、列候選清單經我確認 → 下載全文、套三色摘要、更新索引與爭點 WIKI——把 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 做法四到第三步的整條產線一句話觸發；所需工具見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）</li>
+<li>開庭筆記整理（口語紀錄 → 正式筆記＋更新案件總覽）</li>
+<li>開庭準備包（<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a> 工作流一的制度化——2026-015 案每次開庭前的那段準備包提示詞，寫成 Skill 後一句「準備明天的庭」即可觸發）</li>
+<li>卷證索引（新收卷宗 PDF → 命名歸檔＋建立索引筆記）</li>
+<li>書狀格式檢查（引用格式、當事人稱謂一致性、誤字）</li>
+</ul>
+<p><strong>非訟／企業法務：</strong></p>
+<ul>
+<li>契約審閱備忘錄（本篇範例）</li>
+<li>意見書架構草稿（含依據強度標註）</li>
+<li>函釋摘要（主管機關函釋 → 重點／適用情境／機關立場三區塊）</li>
+<li>教育訓練教材產生器（主題 → 大綱＋講義＋測驗）</li>
+<li>中日／中英契約對譯檢查（術語一致性表）</li>
+</ul>
+<p>原則：<strong>一個月內用到三次以上的流程，就值得寫成 Skill。</strong> 寫成 Skill 之後，第一百次執行仍遵循與第一次相同的完整流程（AI 仍可能偶有落差，但遠比口頭提示穩定）。</p>
+<h2 id="五、多人事務所的視角：從師徒制到制度化傳承"><a href="#五、多人事務所的視角：從師徒制到制度化傳承" class="headerlink" title="五、多人事務所的視角：從師徒制到制度化傳承"></a>五、多人事務所的視角：從師徒制到制度化傳承</h2><p>法律專業的傳承，長期依賴師徒制：資深律師帶著年輕律師改書狀、看契約，經驗一對一慢慢滲透。這套方式有效，但有兩個天生限制——<strong>帶得慢</strong>（一次只能帶一兩個人）、<strong>留不住</strong>（資深者退休或離開，經驗跟著走）。知識庫＋Skills 針對這兩個限制，提供了一套可操作的解法：</p>
+<ul>
+<li><strong>經驗外顯化</strong>：資深律師「怎麼讀判決、怎麼審約、書狀的雷區在哪」這些內隱知識，寫成 SKILL.md 與 checklist 筆記——寫一次，全所每一位同仁的每一次任務，都等於在被他帶。</li>
+<li><strong>回饋回流</strong>：年輕同仁使用中發現的新問題（新型條款、新的實務見解），經資深律師確認後更新回 Skill 與知識庫——師徒制從單向變成雙向、持續演化的制度。</li>
+<li><strong>新人訓練改觀</strong>：新人報到第一天，讀 CLAUDE.md 知道所規、用 Skills 繼承方法、查爭點 WIKI 看前人研究——上手期從「半年摸索」縮短為「一週導覽」。</li>
+<li><strong>人員異動的防波堤</strong>：律師離職、輪調、退休，帶走的是他自己；他寫進 Skill 與知識庫的方法，留在所裡繼續帶下一代。</li>
+</ul>
+<p>實務作法：把技能資料夾放進共用 Vault，整個團隊的判決摘要、審約備忘錄從此同一個格式。共用 Vault 可放在所內網路磁碟，或以 Git（工程界通用的版本管理工具，能完整記錄「誰、何時、改了哪一行」，導入需要一點技術支援）同步——多人編輯的版本管理正是它的看家本領；Skills 與範本資料夾隨 Vault 一起發佈，就是全所的標準配備。</p>
+<p>對資深律師而言，把 know-how 寫成 Skill 意味著角色的轉變：從「親手做每一件事的人」，變成「定義品質標準的人」。</p>
+<p>對管理者而言：<strong>這套做法把方法從個人經驗轉為可盤點、可複製的檔案。</strong> 過去方法存在資深律師的腦中，難以盤點、難以複製；現在，它可以是一個看得見、傳得下去的資料夾。</p>
+<blockquote>
+<p><strong>💡 小提示</strong><br>Codex 使用者：Codex 自 2025 年 12 月起也支援同構的 Skills 機制——同樣是資料夾裡放一份 <code>SKILL.md</code>（含 name 與 description），個人技能放 <code>~/.codex/skills/</code>、專案技能放 <code>.codex/skills/</code>，依 description 自動觸發。本篇的方法與範例可以原樣搬過去；AGENTS.md（等同 CLAUDE.md 的常駐規則）與 Skills（隨任務觸發的 SOP）兩者搭配使用。</p>
+</blockquote>
+<h2 id="六、他山之石：Anthropic-官方的法律-Skills——Claude-for-Legal"><a href="#六、他山之石：Anthropic-官方的法律-Skills——Claude-for-Legal" class="headerlink" title="六、他山之石：Anthropic 官方的法律 Skills——Claude for Legal"></a>六、他山之石：Anthropic 官方的法律 Skills——Claude for Legal</h2><p><strong>Anthropic 自己也把法律工作流寫成了 Skills</strong>。2026 年 2 月先推出法律插件（legal plugin）；同年 5 月擴大為 <strong>Claude for Legal</strong>——一整套開源（Apache 2.0，公開於 GitHub）的法律插件套件，內容值得台灣律師認識：</p>
+<h3 id="它包含什麼"><a href="#它包含什麼" class="headerlink" title="它包含什麼"></a>它包含什麼</h3><p>十二個執業領域插件——商務契約（vendor 契約、NDA 分流）、公司法務（併購盡調、交割清單）、勞動、隱私（DPA 審閱、DSAR 回覆）、產品、法遵監管、AI 治理、智財（商標檢索、FTO、DMCA）、訴訟（案件收案、爭點對照表、書證特權清單），甚至還有法律扶助診所與法學生學習兩個公益取向的插件——合計上百個技能，並提供二十多個法律科技系統的 MCP 連接器（DocuSign、Ironclad、Everlaw、Relativity、Thomson Reuters Westlaw 等）。</p>
+<h3 id="它怎麼運作：跟本篇教的完全同構"><a href="#它怎麼運作：跟本篇教的完全同構" class="headerlink" title="它怎麼運作：跟本篇教的完全同構"></a>它怎麼運作：跟本篇教的完全同構</h3><p>拆開它的原始碼，每個技能就是一份 <code>SKILL.md</code>（frontmatter 寫觸發條件、內文寫 SOP），與本篇第二節解剖的結構一模一樣。最值得注意的是它的<strong>啟動訪談（cold-start interview）</strong> 設計：安裝後第一件事是接受 AI 訪談——你的執業領域、審核放行標準、風險容忍度、慣用格式——訪談結果寫成一份「執業檔案」（本質就是 CLAUDE.md），之後所有技能都讀取這份檔案執行。這正是本系列「CLAUDE.md 定規矩、Skills 定方法」架構的官方版。它的紅線原則也與本系列一致：每個引用都附出處、未經查證的來源標記待核、所有產出定位為「供律師審閱的草稿」，法律判斷的責任在律師。</p>
+<h3 id="與台灣法律環境的差異"><a href="#與台灣法律環境的差異" class="headerlink" title="與台灣法律環境的差異"></a>與台灣法律環境的差異</h3><p>直接拿來用之前，要看清楚三個落差：</p>
+<ol>
+<li><strong>法域</strong>：整套內容以<strong>美國法與美式執業</strong>為底——州法差異的提示、privilege log、FTO、DMCA 這些概念與工作流，是普通法系與美國法制的產物；playbook 的預設立場（例如 NDA 的市場行情條款）也是美國市場慣行。臺灣的成文法體系、函釋實務、書狀格式，它一概不知道。</li>
+<li><strong>資料庫</strong>：它的查證連接器接的是 Westlaw、CourtListener 等美國法源；全國法規資料庫與司法院裁判書系統不在其中——這一塊正是本系列 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> 自建的 taiwan-legal-db 在補的洞。</li>
+<li><strong>語言與用語</strong>：技能的模板、術語、產出格式都是英文與美國法律用語，中文化不只是翻譯，而是整套 SOP 的在地重寫。</li>
+</ol>
+<h3 id="給台灣律師的啟示"><a href="#給台灣律師的啟示" class="headerlink" title="給台灣律師的啟示"></a>給台灣律師的啟示</h3><ol>
+<li><strong>方向已經確認</strong>：全球最前沿的 AI 公司把「AI 進入法律業」的解答押在 Skills＋MCP＋執業檔案這套架構上——本篇的 judgment-summary 與契約審閱技能，與官方路線同構，這條路值得繼續投資。</li>
+<li><strong>架構可以借鑑、內容必須自建</strong>：它是開源的，啟動訪談、風險分級、紅線原則這些設計都可以拆開來學；但台灣法的技能，Anthropic 不會幫我們寫，台灣版的 Claude for Legal 只能由懂台灣法的律師自己動手。目前沒有台灣在地的現成套件，所內的 Skill 需要自力撰寫，寫出來的也就完全貼合自身的業務。</li>
+<li><strong>免責立場的印證</strong>：工具再完整，產出永遠是草稿，判斷與責任永遠在律師——與本系列反覆強調的原則一致。</li>
+</ol>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>Skill &#x3D; 一個資料夾＋一份 SKILL.md，把反覆使用的 SOP 寫成 AI 能自動觸發的作業程序。</li>
+<li>兩條製作路徑：從跑順的流程封裝（日常首選），或用 skill-creator 從零生成；完成後都要實測與迭代。</li>
+<li>一個月內用到三次以上的流程，就值得寫成 Skill；多人事務所可藉此把師徒制的經驗外顯化、留在所內。</li>
+<li>下一篇處理「引用的法條判決到底對不對」：讓 AI 直接連上法規資料庫查證。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://code.claude.com/docs/en/skills">Claude Code 官方文件：Skills</a></li>
+<li><a href="https://code.claude.com/docs/en/slash-commands">Claude Code 官方文件：斜線指令（Slash commands）</a></li>
+<li><a href="https://claude.com/plugins/legal">Claude for Legal 官方插件頁</a></li>
+<li><a href="https://github.com/anthropics/claude-for-legal">Claude for Legal 開源套件（GitHub, Apache 2.0）</a></li>
+<li><a href="https://developers.openai.com/codex/skills">OpenAI Codex 官方文件：Agent Skills</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a><br>➡️ 下一篇：<a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>Claude-Code</tag>
+        <tag>Skills</tag>
+        <tag>SOP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>01 為什麼是 Obsidian｜律師的第二大腦</title>
+    <url>/posts/why-obsidian/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Obsidian 是「存在你自己電腦上的純文字知識庫」——地端、開放格式、可以被 AI 直接讀寫，這三點正好命中律師的三大需求：保密、長久、自動化。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、先從三個問題開始"><a href="#一、先從三個問題開始" class="headerlink" title="一、先從三個問題開始"></a>一、先從三個問題開始</h2><p>不妨先想想這三個問題：</p>
+<ol>
+<li>三年前承辦的那件勞資爭議案，當時整理的法律分析筆記，現在<strong>五分鐘內</strong>找得到嗎？</li>
+<li>上個月讀過的那篇個資法論文，核心論點還講得出來嗎？</li>
+<li>你研究過的每一個法律爭點，有沒有累積成「下次遇到同類案件可以直接取用」的東西？</li>
+</ol>
+<p>如果答案多半是「應該在某個地方，但要找很久」「印象有、細節忘了」「每次都重新查一遍」——那麼問題不在你不夠認真，而在<strong>工具沒有幫你把「生產過的知識」變成「累積下來的資產」</strong>。</p>
+<p>律師每天都在生產高價值的知識：判決研究、爭點分析、書狀論證、函釋整理、與客戶或當事人往來所累積的事實脈絡。但這些知識大多散落在 Word 檔、email、卷宗 PDF 與自己的記憶裡，用過一次就沉下去了。</p>
+<p>本系列以一件虛構案件貫穿全程：<strong>2026-015 案</strong>——甲公司（營造工程公司，窗口張總，我方當事人）承攬乙公司的廠房新建工程，完工日晚於契約原定工期。甲公司主張乙公司變更設計、追加工項，依約工期應予展延，展延後如期完工、並無遲延；乙公司則主張甲公司遲延完工，依約按日計罰違約金，並以之拒付工程尾款。甲公司起訴請求給付工程款，主要爭點是工期應否展延（甲公司有無遲延完工），以及縱認有遲延，違約金是否過高、應否酌減。之後各篇出現的筆記、資料夾與書狀範例，多半從這件案子取材。</p>
+<h2 id="二、傳統解法為什麼難以持續"><a href="#二、傳統解法為什麼難以持續" class="headerlink" title="二、傳統解法為什麼難以持續"></a>二、傳統解法為什麼難以持續</h2><p>過去二十年，律師常見的知識管理方案大概是這幾種：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>難以持續的原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>資料夾 + Word 檔</td>
+<td>只能靠檔名與資料夾位置檢索，知識之間沒有連結</td>
+</tr>
+<tr>
+<td>Evernote &#x2F; OneNote</td>
+<td>以廠商自有格式儲存，長期遷移的彈性較低；檢索靠關鍵字，仍需人工整理</td>
+</tr>
+<tr>
+<td>Notion</td>
+<td>以雲端儲存為主，是否適合機密文件須依組織政策評估；離線使用彈性相對有限</td>
+</tr>
+<tr>
+<td>自己的大腦</td>
+<td>容量有限，而且會忘</td>
+</tr>
+</tbody></table>
+<p>共同的原因只有一個：<strong>它們都需要你投入大量時間去「整理、分類、建立連結」，而時間正是律師最缺的東西。</strong> 所以這樣的整理嘗試，往往難以持續。</p>
+<p>這件事如今出現了根本的轉機：<strong>整理知識這件苦工，可以交給 AI 做了。</strong> 但前提是——你的知識庫必須放在「AI 進得去、讀得懂、寫得動」的地方。這就是 Obsidian 登場的理由。</p>
+<h2 id="三、Obsidian-是什麼"><a href="#三、Obsidian-是什麼" class="headerlink" title="三、Obsidian 是什麼"></a>三、Obsidian 是什麼</h2><p>Obsidian 是一套免費的筆記軟體（個人與商業使用皆免費，另有付費同步服務但非必要）。它的本質可以用一句話講完：</p>
+<blockquote>
+<p><strong>一個資料夾，裡面裝滿純文字的 Markdown 檔案，Obsidian 幫你漂亮地顯示它們、並讓它們互相連結。</strong></p>
+</blockquote>
+<p>在 Obsidian 的世界裡，你的整個知識庫叫做一個 <strong>Vault（保險庫）</strong>——說穿了就是你電腦裡的一個普通資料夾。每一則筆記就是一個 <code>.md</code> 純文字檔。筆記之間可以用 <code>[[雙中括號]]</code> 互相連結，這種連結叫 <strong>wikilink</strong>，Obsidian 會自動幫你建立雙向關聯，還能畫出知識圖譜。</p>
+<h3 id="對律師最關鍵的四個特性"><a href="#對律師最關鍵的四個特性" class="headerlink" title="對律師最關鍵的四個特性"></a>對律師最關鍵的四個特性</h3><p><strong>1. 百分之百地端（local-first）</strong></p>
+<p>你的所有筆記都存在自己的電腦裡，不需要註冊帳號、不需要上傳雲端。對受保密義務拘束的律師與企業法務，這是底線級的優點：<strong>知識庫本身不會把資料送出去。</strong></p>
+<p><strong>2. 純文字、開放格式</strong></p>
+<p>Markdown 是公開標準的純文字格式，任何編輯器都打得開。即使 Obsidian 日後停止開發，筆記整包資料夾複製走即可完整保留。法律職涯是三、四十年的長跑，知識庫的「格式壽命」必須比任何一家軟體公司都長。</p>
+<p><strong>3. AI 可以直接讀寫</strong></p>
+<p>這是本系列的核心。因為 Vault 就是一個裝滿純文字檔的資料夾，所以 Claude Code、Codex 這類終端機 AI Agent 可以<strong>直接打開它、讀取每一則筆記、幫你新增與修改筆記、幫你補上 wikilink</strong>。你的知識庫從被動存放，變成由 AI 持續整理、持續更新。這件事怎麼運作，是 <a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a> 的主題。</p>
+<p><strong>4. Wikilink 連結思維，貼近律師的工作方式</strong></p>
+<p>法律知識天生就是網狀的：一個爭點連到好幾則判決、一則判決連到好幾個法條、一個法條的修法又牽動一串實務見解。資料夾是樹狀的，裝不下這種網狀結構；wikilink 才裝得下。</p>
+<h2 id="四、觀念轉換：從「檢索」到「編纂」"><a href="#四、觀念轉換：從「檢索」到「編纂」" class="headerlink" title="四、觀念轉換：從「檢索」到「編纂」"></a>四、觀念轉換：從「檢索」到「編纂」</h2><p>AI 研究者 Andrej Karpathy 在 2025 年提過一個觀察：他越來越常把 AI 用在「組織知識」——把原始資料丟進資料夾，讓 AI 去讀、去建立 wiki、去維護交叉連結，他自己不再親手整理。</p>
+<p>這裡有一個典範轉移，關鍵是這兩個詞：</p>
+<ul>
+<li><strong>舊做法是「檢索」</strong>：資料丟進資料夾，要用的時候自己翻、自己找、自己回憶。</li>
+<li><strong>新做法是「編纂」</strong>：資料丟進去之後，AI 自動把它整理成一份有結構、有交叉連結、會持續長大的知識庫。</li>
+</ul>
+<p>對律師的意義是：你讀過的每一篇論文、研究過的每一則判決、寫過的每一份分析，都自動融入一本<strong>你專屬的法律百科全書</strong>。半年後你問「工期展延的可歸責事由有哪些實務爭議」，那一頁已經寫好了，而且每個論點都連結到出處筆記。</p>
+<p>但這裡要立刻劃出一條界線：<strong>編纂替你省下的，是「整理」的勞動，不是「理解」的勞動。</strong> AI 可以把百科全書編好，但書編好了不等於你讀過了——那一頁寫好的答案，仍然要靠你親自閱讀、親自想過，才會變成你在法庭上、談判桌上拿得出手的專業判斷。</p>
+<p>整理可以外包，理解不能外包；一旦連理解都交給 AI，知識庫越豐富，你的大腦反而越空。</p>
+<p>這個「編纂」的實際操作，會在 <a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a> 完整示範。</p>
+<h2 id="五、常見疑問"><a href="#五、常見疑問" class="headerlink" title="五、常見疑問"></a>五、常見疑問</h2><p><strong>Q：已經有事務所的文件管理系統（DMS）了，還需要 Obsidian 嗎？</strong></p>
+<p>DMS 管理的是「案件文件」（書狀、契約、往來函文），Obsidian 管理的是「你的知識」（爭點分析、判決研究、法規整理、辦案心得）。前者是卷宗，後者是你的大腦。兩者互補，不衝突。</p>
+<p><strong>Q：這套系統對「事務所」（而不只是個人）有什麼意義？</strong></p>
+<p>答案是傳承。事務所最值錢的資產是資深律師的經驗，但它大多以「內隱知識」存在——存在人的腦中，帶不走也教不快，人一離開就跟著走。知識庫＋AI 的組合，第一次讓「把經驗外顯化成可繼承的檔案」變成低成本的日常動作。這條線會在後續篇章逐步展開，並在 Skills 篇完整收攏。</p>
+<p><strong>Q：Markdown 要學很久嗎？</strong></p>
+<p>不用。你只需要三個符號就能開始：<code>#</code> 是標題、<code>-</code> 是條列、<code>[[ ]]</code> 是連結。其他的，之後讓 AI 幫你寫。</p>
+<p><strong>Q：Obsidian 是地端的，那接上 AI 之後還算地端嗎？</strong></p>
+<p>這正是需要說清楚的地方——<strong>筆記的「存放」是地端，但 AI Agent「讀取」筆記內容後會傳送到模型公司的伺服器運算。</strong> 這是本系列最重要的資安觀念之一，會在 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 專篇說明。在那之前可以先掌握一個原則：<strong>界線劃在「你用的是哪種方案」。</strong></p>
+<ul>
+<li><strong>消費者方案</strong>（免費版、個人 Pro／Max）：知識庫只放不涉個案機密的素材（法規、公開判決、去識別化筆記），真實卷證另外處理。</li>
+<li><strong>商用方案</strong>（如 Claude 的 Team／Enterprise、ChatGPT Enterprise，或以 API 使用——預設不將資料用於訓練、有資料處理協議）：含案件資訊的工作資料可以依所內政策放進來處理。</li>
+</ul>
+<p>這個區分很關鍵：若不區分方案、一律禁止碰觸案件資料，這套系統就無法真正進入律師的日常業務。</p>
+<h2 id="六、小結"><a href="#六、小結" class="headerlink" title="六、小結"></a>六、小結</h2><ul>
+<li>律師知識管理的癥結：整理成本太高。</li>
+<li>AI 時代的解法：把整理交給 AI，但知識庫必須放在 AI 進得去的地方。</li>
+<li>Obsidian &#x3D; 地端 + 純文字 + wikilink，是目前最適合「AI 協作」的知識庫容器。</li>
+<li>心法：從「檢索」走向「編纂」。</li>
+</ul>
+<hr>
+<p>➡️ 下一篇：<a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>Obsidian</tag>
+        <tag>知識管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</title>
+    <url>/posts/terminal-ai-agent/</url>
+    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
+<blockquote>
+<p><strong>💡 本篇重點</strong><br>Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、從「會聊天」到「會做事」"><a href="#一、從「會聊天」到「會做事」" class="headerlink" title="一、從「會聊天」到「會做事」"></a>一、從「會聊天」到「會做事」</h2><p>假設你要把二十份判決做成一張爭點比較表。在 ChatGPT 這類聊天框裡，這件事意味著：複製貼上二十次、每貼一份等它讀完，最後再把結果一段一段搬回 Word。因為這種模式有幾個天生的限制——它看不到你電腦裡的檔案；它一次只能處理你貼給它的東西；它給你答案之後，存檔、整理、歸檔還是你自己來。</p>
+<p>一個貼切的比喻：<strong>Chatbot 像一位學識淵博、但手腳被綁住的顧問</strong>。什麼都懂，但什麼都不能幫你動手做。</p>
+<p>近年 AI 已進入 <strong>Agent（代理）時代</strong>。Agent 與 Chatbot 的差別在於能否直接執行操作：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Chatbot（聊天機器人）</th>
+<th>AI Agent（智慧代理）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>互動方式</td>
+<td>你問一句、它答一句</td>
+<td>你交辦一個「任務」</td>
+</tr>
+<tr>
+<td>讀取檔案</td>
+<td>要你複製貼上</td>
+<td>自己打開資料夾、逐份讀取</td>
+</tr>
+<tr>
+<td>產出</td>
+<td>一段文字，要自己複製出來</td>
+<td>直接建立、修改檔案</td>
+</tr>
+<tr>
+<td>多步驟工作</td>
+<td>每一步都要你推</td>
+<td>自己規劃步驟、執行、檢查、交付</td>
+</tr>
+<tr>
+<td>例子</td>
+<td>「這份判決在講什麼？」</td>
+<td>「把資料夾裡 20 份判決做成爭點比較表，存成新筆記」</td>
+</tr>
+</tbody></table>
+<h2 id="二、終端機作為-Agent-的執行環境"><a href="#二、終端機作為-Agent-的執行環境" class="headerlink" title="二、終端機作為 Agent 的執行環境"></a>二、終端機作為 Agent 的執行環境</h2><p>Claude Code（Anthropic）與 Codex（OpenAI）這類工具，最初都以 <strong>CLI（Command Line Interface，指令列介面）</strong> 的形式問世，在<strong>終端機（Terminal）</strong> 裡運作——就是那個黑底白字、要打指令的畫面（兩者如今也都推出桌面版，見第三節的介面比較）。黑底白字的畫面確實容易讓人卻步，先說清楚三件事：</p>
+<p><strong>第一，你不需要會指令。</strong> 打開之後，你跟它的互動就是「用中文打字交辦工作」，跟用 ChatGPT 沒有兩樣。差別只是它在你的電腦裡，看得到你的檔案。</p>
+<p><strong>第二，終端機反而是 Agent 最自然的家。</strong> Agent 要做事，就需要讀寫檔案、執行工具；終端機正是作業系統開放檔案讀寫與工具執行能力的介面。</p>
+<p><strong>第三，它每一步都會先問你。</strong> Claude Code 預設在修改檔案、執行指令前徵求你的同意，你隨時看得到它想做什麼、也隨時可以喊停。主導權在你手上。</p>
+<h2 id="三、兩大工具速覽"><a href="#三、兩大工具速覽" class="headerlink" title="三、兩大工具速覽"></a>三、兩大工具速覽</h2><h3 id="Claude-Code（Anthropic）"><a href="#Claude-Code（Anthropic）" class="headerlink" title="Claude Code（Anthropic）"></a>Claude Code（Anthropic）</h3><ul>
+<li>在終端機輸入 <code>claude</code> 啟動，用自然語言（中文完全沒問題）交辦任務。</li>
+<li>特別會「讀懂一整個資料夾」：把它打開在你的 Obsidian Vault 上，它就能通盤理解你的知識庫結構。</li>
+<li>支援 <strong>CLAUDE.md</strong>（寫給 AI 的到職須知，見 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a>）、<strong>Skills</strong>（可重複使用的 SOP，見 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a>）與 <strong>MCP</strong>（連接外部資料庫，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）。</li>
+<li>需要 Claude 付費方案或 API 金鑰。</li>
+</ul>
+<h3 id="Codex（OpenAI）"><a href="#Codex（OpenAI）" class="headerlink" title="Codex（OpenAI）"></a>Codex（OpenAI）</h3><ul>
+<li>OpenAI 推出的對應工具，在終端機輸入 <code>codex</code> 啟動。</li>
+<li>概念幾乎相同：讀寫檔案、執行任務、自然語言交辦。</li>
+<li>對應 CLAUDE.md 的機制叫 <strong>AGENTS.md</strong>，作用一樣：放一份說明檔在資料夾裡，AI 會自動遵守。</li>
+<li>需要 ChatGPT 付費方案或 API 金鑰。</li>
+</ul>
+<h3 id="終端機版與桌面版：同一顆引擎、兩種介面"><a href="#終端機版與桌面版：同一顆引擎、兩種介面" class="headerlink" title="終端機版與桌面版：同一顆引擎、兩種介面"></a>終端機版與桌面版：同一顆引擎、兩種介面</h3><p>Claude Code 與 Codex 都不只有終端機一種型態，目前各自提供兩種主要介面：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>終端機版（CLI）</th>
+<th>桌面版（Desktop app）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude Code</strong></td>
+<td>在終端機輸入 <code>claude</code> 啟動</td>
+<td>Mac／Windows 應用程式；任務進度與檔案變更用視窗呈現、授權用點選，並可同時管理多個工作階段</td>
+</tr>
+<tr>
+<td><strong>Codex</strong></td>
+<td>在終端機輸入 <code>codex</code> 啟動</td>
+<td>桌面應用程式，同樣改以視窗操作</td>
+</tr>
+</tbody></table>
+<p>兩種版本用的是<strong>同一顆 Agent 引擎、同一個訂閱帳號、同一套規則檔</strong>（CLAUDE.md／AGENTS.md），差別只在操作介面：終端機版功能最完整；桌面版把「看進度、按同意、切換任務」變成視窗點選，適合不想開終端機的人。Claude Code 另有網頁版（claude.ai&#x2F;code）與 IDE 擴充功能，屬於開發者場景，本系列不展開說明。<strong>本系列的操作示範一律以終端機版為基準</strong>；改用桌面版時，提示詞與觀念完全相同。</p>
+<p>一個容易混淆的點：<strong>Claude Code 桌面版與下一段的 Cowork 是兩個不同的產品</strong>。桌面版是完整的 Claude Code，只是操作介面不同，規則檔、Skills、MCP 全部照用；Cowork 則是 Claude 桌面應用程式內建、面向一般工作者的代理功能，設計成「選資料夾、交辦、取件」的簡化流程。</p>
+<h3 id="同場加映：Claude-Cowork——不想碰終端機的選項"><a href="#同場加映：Claude-Cowork——不想碰終端機的選項" class="headerlink" title="同場加映：Claude Cowork——不想碰終端機的選項"></a>同場加映：Claude Cowork——不想碰終端機的選項</h3><p>如果你偏好圖形介面的操作方式，Anthropic 也準備了一個容易上手的選項：2026 年 1 月推出的 <strong>Claude Cowork</strong>，官方定位非常傳神——「<strong>Claude Code without the code</strong>」。同一顆 Agent 引擎（讀寫檔案、多步驟任務、自主規劃執行），包進 Claude 桌面應用程式（macOS &#x2F; Windows）熟悉的聊天視窗，2026 年 7 月起並陸續擴展到網頁版與行動版。用法只有一句話：<strong>選一個資料夾，然後用中文說話</strong>。沒有指令、沒有黑畫面，它就能讀取、整理、產出檔案——請它把「請款」資料夾裡的發票整理成 Excel、把二十份判決做成比較表、把英文契約翻成中日對照版，都是它的守備範圍。訂閱與 Claude Code 共用同一個付費方案（免費帳號不可用）。</p>
+<p>同一顆引擎、兩種包裝，怎麼選？關鍵在工作型態：<strong>Cowork 適合「一次性交付」的檔案任務；Obsidian ＋ Claude Code 適合「持續共筆」的知識工作。</strong> Cowork 的互動本質是「交辦→交付」：每個工作階段指定一個資料夾、存取範圍以該資料夾為限，檔案做好後你要到 Finder／檔案總管找出來、再用其他軟體打開來改。而本系列的主場景——知識庫的日常維護——是「人改一段、AI 改一段」的來回節奏：左邊 Obsidian 開著筆記、右邊終端機下指令，AI 改完，變動立刻呈現眼前，你隨時接手編輯再丟回去加工；中途要用其他資料夾的資料，貼個路徑就能延伸。本系列因此以 Claude Code 為主線。</p>
+<p>給律師的建議路線：</p>
+<ul>
+<li><strong>想從圖形介面開始</strong>：從 Cowork 起步——它是體驗「AI 會做事」最容易上手的入口；要向所內同仁推廣 Agent，它也是合適的起點。</li>
+<li><strong>要走本系列完整路線（CLAUDE.md、Skills、MCP）</strong>：主力用 Claude Code，這些進階機制在終端機環境最完整。</li>
+<li><strong>兩者並用完全沒問題</strong>：同一個訂閱帳號，日常文件雜務丟 Cowork，知識庫編纂與開發工作用 Claude Code。</li>
+<li>另一條「圖形介面用 Agent」的路，是 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 介紹過的社群外掛 <strong>Claudian</strong>：把 Claude Code 直接嵌進 Obsidian 介面，與 Cowork 異曲同工。</li>
+</ul>
+<blockquote>
+<p><strong>⚠️ Cowork 的資安預告</strong><br>Cowork 的權限設計比 Claude Code 流暢（較少逐步確認），這是雙面刃：好用，但也代表你<strong>指定資料夾前要先想清楚裡面有什麼</strong>——給它讀的資料夾，內容視同交給雲端模型處理；客戶機密資料必須先確認方案等級（商用方案與個人 Pro 的條款不同）。第一次使用，拿公開資料或去識別化資料練習。詳見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>。</p>
+</blockquote>
+<p><strong>本系列以 Claude Code 為主要示範工具</strong>（生態較完整，且 MCP、Skills 等機制對法律工作流的支援較成熟），但所有觀念——Vault 設計、到職須知、編纂心法——在 Codex 上同樣適用，只要把 <code>CLAUDE.md</code> 換成 <code>AGENTS.md</code> 即可。學觀念，不要綁工具。</p>
+<p>更根本的保障是：把規則（CLAUDE.md）、技能（Skills）、知識（Vault 筆記）通通存成自己資料夾裡的純文字檔——<strong>這些檔案不綁定任何特定工具</strong>；哪天要更換 Agent，整包資料夾搬走即可。</p>
+<h2 id="四、Agent-與-Obsidian-的組合方式"><a href="#四、Agent-與-Obsidian-的組合方式" class="headerlink" title="四、Agent 與 Obsidian 的組合方式"></a>四、Agent 與 Obsidian 的組合方式</h2><p>單獨看，Obsidian 是一個「需要人工整理」的筆記軟體；單獨看，Claude Code 是一個「給工程師寫程式」的工具。但把兩者放在一起：</p>
+<blockquote>
+<p><strong>Obsidian Vault 就是一個資料夾，Claude Code 最擅長的就是讀寫資料夾。</strong></p>
+</blockquote>
+<p>於是你得到一個這樣的組合：</p>
+<ol>
+<li><strong>你負責丟材料</strong>：判決、法規、論文筆記、研究心得，丟進 Vault。</li>
+<li><strong>AI 負責編纂</strong>：讀取新材料、寫成結構化筆記、補上 wikilink、更新主題頁（MOC）、標出見解衝突。</li>
+<li><strong>Obsidian 負責呈現</strong>：漂亮的閱讀介面、雙向連結、知識圖譜，隨時檢索。</li>
+</ol>
+<p>實際的畫面是這樣的——以主案例 2026-015 的研究主題「工期展延」為例，你在終端機打一句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取「inbox」資料夾裡我今天丟進去的三份判決筆記，</span><br><span class="line">每一份整理出：判決字號、案由、爭點、法院見解，</span><br><span class="line">然後在「工期展延」主題頁底下更新實務見解清單，</span><br><span class="line">相關筆記之間用 [[wikilink]] 連結。</span><br></pre></td></tr></table></figure>
+
+<p>然後你就看著它自己打開資料夾、一份一份讀、動手寫筆記、補連結。你從頭到尾只打了這一段中文。</p>
+<blockquote>
+<p><strong>💡 提示詞的四要素</strong><br>跟任何 AI 溝通（不只 Agent），把四樣東西講清楚，產出品質立刻不同——<strong>角色</strong>（「你是一位專精營建工程爭議的資深律師」）、<strong>任務</strong>（動詞明確：分析、比較、翻譯）、<strong>脈絡</strong>（案件背景、你在意什麼——律師最常省略、卻最關鍵的一塊）、<strong>格式</strong>（要表格、條列，還是限制字數）。上面那段交辦任務的中文，正是四要素的實作。本系列之後所有的提示詞範本，都可以用這四個要素來檢視與修改。</p>
+<p>在 Agent 環境裡，「角色」這一項往往可以省下來：<a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> 會教你把身分、專業領域與行文要求一次寫進 CLAUDE.md，AI 每次啟動都自動帶入，不必每則提示詞重講。之後真正需要逐次交代的，主要是任務、脈絡與格式；只有臨時要換視角（例如「改從對造律師的立場檢視這份契約」）時，才需要在提示詞裡另外指定角色。</p>
+</blockquote>
+<h2 id="五、不需要會寫程式：來自實際數據的觀察"><a href="#五、不需要會寫程式：來自實際數據的觀察" class="headerlink" title="五、不需要會寫程式：來自實際數據的觀察"></a>五、不需要會寫程式：來自實際數據的觀察</h2><p>Anthropic 曾分析約四十萬次 Claude Code 的實際使用，幾個發現對律師特別有參考價值：</p>
+<ol>
+<li><strong>成功率隨「領域專業度」提升</strong>，而不是隨「程式能力」提升。你對法律問題理解得越深，AI 產出的品質越高。</li>
+<li>分工非常固定：<strong>人決定「做什麼」，AI 決定「怎麼做」。</strong> 這與資深律師和助理的分工相同。</li>
+<li>非軟體背景的使用者成長迅速，法律工作者也在其中。</li>
+</ol>
+<p>換句話說：<strong>你的法律專業，才是把這套工具用好的關鍵。</strong> 判斷「哪個爭點重要」「哪則判決有代表性」「這段分析對不對」——這些判斷 AI 做不到。</p>
+<p>這個轉變有個名字，Anthropic 主管稱之為 <strong>Vibe Working</strong>：工作者不再逐字逐句親手操作，而是<strong>描述想要的結果，AI 完成大部分執行細節，人負責品質把關</strong>。</p>
+<p>對律師的意義：大量重複性的文字勞動，未來由 AI 分擔的比重會越來越高；律師的價值將更集中於四件 AI 做不到的事——<strong>判斷力、經驗、客戶關係、策略思維</strong>。角色從「執行者」變成「品質守門人」，這個轉變貫穿本系列每一個工作流的設計（人在頭尾、AI 在中間），到 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 會做最後的收束。</p>
+<h2 id="六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異"><a href="#六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異" class="headerlink" title="六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異"></a>六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</h2><p>2026 年的個人 AI Agent 已經是一個熱鬧的生態系。除了 Claude Code &#x2F; Codex，你大概也聽過兩個廣受矚目的開源專案：<strong>OpenClaw</strong>（Peter Steinberger 開發）與 <strong>Hermes Agent</strong>（Nous Research 開發）——兩者概念相近，都是自架的「常駐通訊助理」：把 AI 模型接上 WhatsApp、Telegram 等通訊軟體，24 小時待命，能在你的電腦或伺服器上執行指令、讀寫檔案、收發郵件。跟「Obsidian × Claude Code」路線相比，差異在三個層面：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>OpenClaw &#x2F; Hermes</strong></th>
+<th><strong>Obsidian × Claude Code（本系列）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>型態</td>
+<td><strong>常駐通訊助理</strong>：架在伺服器上 24 小時待命，用傳訊息的方式差遣</td>
+<td><strong>檔案知識庫協作</strong>：要用時打開，在你的筆記與卷宗上工作</td>
+</tr>
+<tr>
+<td>工作的中心</td>
+<td>「對話與任務」——幫你跑腿、查資料、發訊息</td>
+<td>「檔案與知識」——編纂筆記、整理判決、起草文書，成果沉澱為知識庫</td>
+</tr>
+<tr>
+<td>門檻與風險</td>
+<td>需要自架與維運；<strong>把終端機、瀏覽器、信箱的權限交給一個常駐機器人</strong>，權限範圍大、出事影響也大</td>
+<td>本機執行、逐步授權、每個動作可審查；工作範圍限縮在你指定的資料夾</td>
+</tr>
+</tbody></table>
+<p>OpenClaw 與 Hermes 的「記憶」與「技能」也都用純文字 Markdown 檔儲存——這也顯示純文字檔案在不同工具間都能沿用。</p>
+<p>本系列不選它們作主線，主要是<strong>工作型態不合</strong>：這類常駐助理以聊天訊息為互動中心，擅長「交辦一件事、回報一個結果」的零散任務，但產出散落在對話串裡，不容易沉澱成有結構的知識庫。而本系列要建立的是「材料進 Vault → AI 編纂 → 成果回流」的循環——判決筆記、爭點 WIKI、書狀底稿，工作與成果都以檔案為中心，Obsidian × Claude Code 直接在這些檔案上工作，每一次產出都留在知識庫裡繼續累積。此外，自架與維運本身是一門功課，常駐機器人接上通訊軟體與信箱後的權限管理，也是需要另行評估的課題。行有餘力，再嘗試這些新興工具也不遲。（以上是就律師工作型態所做的適用性評估，並非對這兩個專案本身的評價。）</p>
+<h2 id="七、小結"><a href="#七、小結" class="headerlink" title="七、小結"></a>七、小結</h2><ul>
+<li>Agent 與 Chatbot 的本質差異：能不能「動手做事」。</li>
+<li>終端機不可怕：你用中文交辦，它徵求同意後執行，主導權在你。</li>
+<li>兩套工具都有終端機版（CLI）與桌面版，引擎與帳號相同；本系列示範以終端機版為基準。</li>
+<li>Claude Code &#x2F; Codex + Obsidian &#x3D; AI 管理員 + 地端知識庫。</li>
+<li>偏好圖形介面？Claude Cowork 是「選資料夾＋說中文」的入門起點；但「持續共筆」的知識庫工作，主線仍是 Claude Code。</li>
+<li>下一篇就實際動手，把 Claude Code 裝進知識庫。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://code.claude.com/docs/en/overview">Claude Code 官方文件：Overview</a></li>
+<li><a href="https://claude.com/cowork">Claude Cowork 官方頁面</a></li>
+<li><a href="https://www.anthropic.com/research/claude-code-expertise">Anthropic 官方研究：How experts use Claude Code（約四十萬次使用分析）</a></li>
+<li><a href="https://developers.openai.com/codex/cli">OpenAI Codex CLI 官方文件</a></li>
+</ul>
+<hr>
+<p>⬅️ 上一篇：<a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a><br>➡️ 下一篇：<a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
+]]></content>
+      <categories>
+        <category>AI x Obsidian 系列</category>
+      </categories>
+      <tags>
+        <tag>AI課程</tag>
+        <tag>Claude-Code</tag>
+        <tag>Codex</tag>
+        <tag>AI-Agent</tag>
       </tags>
   </entry>
   <entry>
@@ -1507,733 +2235,6 @@
         <tag>資安</tag>
         <tag>執業倫理</tag>
         <tag>個資法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>00 總覽｜AI x Obsidian 律師實戰系列</title>
-    <url>/posts/series-overview/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>ℹ️ 本系列是什麼</strong><br>寫給<strong>台灣律師與企業法務</strong>的實戰教材：用終端機 AI Agent（Claude Code &#x2F; Codex）搭配 Obsidian，打造會自己長大的法律知識庫。全系列 15 篇，每篇一個核心概念，獨立成篇、環環相扣。</p>
-<p>本系列延續筆者兩門課程——「<strong>從零開始打造你的 AI 助理</strong>」（台北、台南、台東律師公會等場次）與「<strong>【AI 與法律】律師實務應用：AI 工具實作</strong>」（台北律師公會）——課堂講的是觀念與示範，這裡把它展開成可以一步一步跟著動手做的實作教學。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、核心動機：律師知識難以累積"><a href="#一、核心動機：律師知識難以累積" class="headerlink" title="一、核心動機：律師知識難以累積"></a>一、核心動機：律師知識難以累積</h2><p>這個系列源自一個每位律師都熟悉、卻很少被好好討論的現象：</p>
-<p><strong>律師每天生產高價值的知識，卻很難把它累積下來。</strong> 為一個案件讀了三十則判決、寫了一份縝密的爭點分析——結案之後，這些心血沉入卷宗與硬碟深處；半年後遇到同類爭點，一切重來。執業十年的資深律師，專業判斷確實增長了，但那些「查過的、寫過的、想通的」，絕大部分蒸發了。</p>
-<p>原因不是不認真，而是<strong>整理知識的成本太高</strong>——分類、摘要、建立索引、維護連結，這些工作吃掉的正是律師最稀缺的時間。所以種種知識管理方法，最後往往敗給了下一個開庭期日。</p>
-<p>AI Agent 的成熟，讓這個死結出現了解法：<strong>整理的勞動可以全部交給 AI 承擔</strong>。但前提是，你的知識必須放在 AI 進得去、讀得懂、寫得動的地方。這就是本系列的起點。</p>
-<h2 id="二、核心概念：知識的複利循環"><a href="#二、核心概念：知識的複利循環" class="headerlink" title="二、核心概念：知識的複利循環"></a>二、核心概念：知識的複利循環</h2><p>全系列 15 篇文章，其實都在建造同一部機器。它的分工只有一句話：</p>
-<blockquote>
-<p><strong>你負責判斷，AI 負責勞動，Obsidian 負責記住。</strong></p>
-</blockquote>
-<p>這部機器運轉起來，是一個不斷自我增強的過程——<strong>知識的複利循環</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     ① 輸入（幾乎零成本）</span><br><span class="line">判決、契約、開庭筆記、隨手心得 → 丟進 Inbox</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ② 編纂（AI 的勞動）</span><br><span class="line">摘要、結構化、建立 wikilink、更新索引與主題地圖</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ③ 調閱（收穫時刻）</span><br><span class="line">寫書狀、出意見書、做教育訓練時，答案已在知識庫裡</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">     ④ 回流（複利的關鍵）</span><br><span class="line">工作成果去識別化後回到知識庫（知識萃取、checklist 長大）</span><br><span class="line">           │</span><br><span class="line">           └────→ 回到 ①，知識庫更厚，下一圈更快</span><br></pre></td></tr></table></figure>
-
-<p>支撐這個循環的，是一個貫穿全系列的轉變：</p>
-<ul>
-<li><strong>從「檢索」到「編纂」</strong>——你不再翻找資料，而是讓 AI 把資料編纂成你專屬的法律百科全書，答案在你提問之前就寫好了。</li>
-</ul>
-<p>而在多人事務所，這個循環還有第三層意義：<strong>傳承</strong>。資深律師的辦案經驗、審約眼光、書狀方法，透過共用知識庫與 Skills 外顯化成檔案，新進同仁報到第一天就能繼承；人員異動時，知識留在所裡，不再跟著人走。<strong>個人累積的是複利，組織累積的是制度</strong>——這條線在 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> 的「從師徒制到制度化傳承」一節收攏。</p>
-<p>而這一切有一條不可退讓的地基：<strong>思考與理解，永遠是律師自己的工作。</strong> AI 可以承擔整理的勞動——摘要、連結、編索引——但整理好的知識要變成你的專業判斷，只能靠你親自閱讀、親自想過，這段路沒有人能代走。把整理外包給 AI 是效率；把理解也外包出去，就是<strong>大腦外包</strong>——對以判斷力為業的律師，這是動搖根本的事。所以引用要查證、定稿要人審、機密要分級、理解要親自來：AI 接手的是勞動，從來不是你的專業與義務。這條界線會在多篇文章中反覆出現，最後在 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 收束。</p>
-<h2 id="三、貫穿全系列的示範案例"><a href="#三、貫穿全系列的示範案例" class="headerlink" title="三、貫穿全系列的示範案例"></a>三、貫穿全系列的示範案例</h2><p>全系列的範例盡量取材自同一件虛構案件——<strong>2026-015 案</strong>：我方當事人甲公司（承攬人）起訴定作人乙公司請求給付工程款，攻防圍繞「工期應否展延」與「違約金應否酌減」兩個爭點（案情細節見 <a href="/posts/why-obsidian/">為什麼是 Obsidian｜律師的第二大腦</a>）；非訟場景則以客戶A的經銷契約為支線。</p>
-<h2 id="四、系列地圖：四部十五篇如何環環相扣"><a href="#四、系列地圖：四部十五篇如何環環相扣" class="headerlink" title="四、系列地圖：四部十五篇如何環環相扣"></a>四、系列地圖：四部十五篇如何環環相扣</h2><p>每一部回答一個問題，答案交棒給下一部：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一部（01–04）知識要放在哪裡？        → 打好 Obsidian 地基</span><br><span class="line">第二部（05–07）誰來承擔整理勞動？      → 讓 AI Agent 進駐並立好規矩</span><br><span class="line">第三部（08–14）循環怎麼轉起來？        → 雙軌架構＋編纂＋實戰＋制度化</span><br><span class="line">第四部（15）  這一切的邊界在哪裡？    → 資安與倫理的紅線</span><br></pre></td></tr></table></figure>
-
-<h3 id="第一部：打好地基（Obsidian-基本功）"><a href="#第一部：打好地基（Obsidian-基本功）" class="headerlink" title="第一部：打好地基（Obsidian 基本功）"></a>第一部：打好地基（Obsidian 基本功）</h3><p>回答「<strong>知識要放在哪裡，AI 才進得去？</strong>」——答案是地端、純文字、以連結為靈魂的 Obsidian。</p>
-<ol>
-<li><a href="/posts/why-obsidian/">為什麼是 Obsidian｜律師的第二大腦</a> — 全系列的問題意識與解法總綱：知識蒸發的困境、Obsidian 的四個關鍵特性、「從檢索到編纂」的典範轉移。</li>
-<li><a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a> — 安裝、建 Vault、五個必學操作、第一天練習清單。</li>
-<li><a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a> — 十個夠用的語法＋callout 色塊、PDF 嵌入預覽與 frontmatter；Markdown 是 AI 的母語。</li>
-<li><a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> — 外掛精選（Dataview、Templater、錄音機、<strong>Claudian</strong>）、筆記範本的設定與語法、Canvas 畫案件關係圖與交易架構圖。</li>
-</ol>
-<h3 id="第二部：AI-Agent-登場"><a href="#第二部：AI-Agent-登場" class="headerlink" title="第二部：AI Agent 登場"></a>第二部：AI Agent 登場</h3><p>回答「<strong>誰來承擔整理勞動？</strong>」——會動手做事的終端機 AI Agent，以及讓它一次就懂你的設定。</p>
-<ol start="5">
-<li><a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a> — Chatbot 與 Agent 的本質差異；法律專業才是用好 Agent 的關鍵；終端機版（CLI）與桌面版的介面之別；同場加映圖形介面的 <strong>Claude Cowork</strong>（「一次性交付」與「持續共筆」的差異）與 Agent 生態系。</li>
-<li><a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a> — 安裝、登入、在 Vault 裡啟動；跨資料夾參照與權限機制。</li>
-<li><a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> — 全域／專案／案件三層設定；background.md 與 <code>@</code> 引入；把職業紀律寫成 AI 的行為規則。</li>
-</ol>
-<h3 id="第三部：知識管理主線（讓循環轉起來）"><a href="#第三部：知識管理主線（讓循環轉起來）" class="headerlink" title="第三部：知識管理主線（讓循環轉起來）"></a>第三部：知識管理主線（讓循環轉起來）</h3><p>回答「<strong>循環怎麼轉起來？</strong>」——先設計架構（⑧⑨），再啟動編纂（⑩），實戰演練（⑪⑫），最後制度化與查證強化（⑬⑭）。</p>
-<ol start="8">
-<li><a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> — 律師版 PARA（P 改寫為 Matter）＋Zettelkasten＋Johnny.Decimal＋MOC；案件軌（當事人→案件雙層）與研究軌；事務所經營行政與客戶溝通紀錄（會議／通話／LINE）的收納；<strong>知識萃取</strong>（複利循環第④步的訴訟版：書狀定稿隨手萃、結案總萃收尾）。</li>
-<li><a href="/posts/matter-file-practice/">案件檔案實務｜底稿區與定稿區</a> — 檔案版的 PARA：五個頂層資料夾、底稿區與定稿區分離、文件庫捷徑（M365／Google Workspace）、命名慣例與結案封存。</li>
-<li><a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a> — Inbox 編纂工作流（複利循環第②步）；見解衝突偵測、知識庫健檢；「形式歸 AI、判斷歸你」。</li>
-<li><a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> — 核心實戰：裁判書 .md → 三色摘要 → 判決索引與爭點 WIKI → 調閱與引用（完整走過循環一圈）。</li>
-<li><a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a> — 六個可照抄的工作流：開庭準備包、書狀三明治、契約審閱、意見書研究、教育訓練產線。</li>
-<li><a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a> — 把反覆使用的工作流寫成 SKILL.md：品質穩定、知識資產化，以及<strong>從師徒制到制度化傳承</strong>——資深經驗如何留在所裡、傳給下一代。</li>
-<li><a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> — 讓 AI 引用前先查證：台灣法規資料庫 MCP＋CLAUDE.md 查證規則的黃金組合。</li>
-</ol>
-<h3 id="第四部：底線"><a href="#第四部：底線" class="headerlink" title="第四部：底線"></a>第四部：底線</h3><p>回答「<strong>這一切的邊界在哪裡？</strong>」——每一篇都預埋了資安提醒，這裡總收束。</p>
-<ol start="15">
-<li><a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> — 資料流的真相、付費≠安全、三層分流、去識別化、查證義務與認知負債。<strong>全系列最重要的一篇。</strong></li>
-</ol>
-<hr>
-<h2 id="五、三種讀者的建議路線"><a href="#五、三種讀者的建議路線" class="headerlink" title="五、三種讀者的建議路線"></a>五、三種讀者的建議路線</h2><p><strong>路線 A｜完全新手</strong>（沒用過 Obsidian 也沒用過 AI Agent）：從 01 依序讀到 15。第一週讀完 01–06 並完成練習；第二週進入 08–11，開始建自己的判決知識庫。</p>
-<p><strong>路線 B｜已會 Obsidian，想導入 AI</strong>：直接讀 05 → 06 → 07 → 08 → 09 → 10 → 11（08、09 會重整既有的資料夾邏輯），行有餘力回頭補 04 的 Claudian 與 Canvas。</p>
-<p><strong>路線 C｜先看「這到底能幹嘛」的務實派</strong>：先讀兩篇實戰 11 → 12，有感之後再回 01 從頭建置。</p>
-<p><strong>依執業型態的重點篇章</strong>：</p>
-<ul>
-<li>訴訟律師：11、12（工作流一至三）、13</li>
-<li>非訟律師／企業法務：12（工作流四至六）、13（契約審閱技能）、14</li>
-<li>事務所管理者：07（全所標準化）、09（檔案制度）、13（Skills 共用與經驗傳承）、15（合規框架與 Shadow IT 治理）</li>
-</ul>
-<p>無論走哪條路線，<strong>15 資安與倫理建議完整讀過一次</strong>，最好在把真實工作資料放進系統之前——這一篇關係到執業風險，值得優先。</p>
-<hr>
-<h2 id="六、使用本教材的三個提醒"><a href="#六、使用本教材的三個提醒" class="headerlink" title="六、使用本教材的三個提醒"></a>六、使用本教材的三個提醒</h2><ol>
-<li><strong>邊讀邊做</strong>：每篇都有可直接複製的提示詞，「開始動手」比「聽得完整」重要。</li>
-<li><strong>一律先用公開或去識別化資料練習</strong>：真實卷證的使用界線，以 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 為準。</li>
-<li><strong>AI 的引用永遠要查證</strong>：這是全系列反覆出現、也永遠不會改變的一條原則。</li>
-</ol>
-<blockquote>
-<p>這個循環持續運作，知識庫會逐步累積你的判斷、經驗與方法論。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>總覽</tag>
-        <tag>MOC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>04 Obsidian 進階｜外掛與 Canvas 白板</title>
-    <url>/posts/obsidian-plugins-canvas/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>外掛讓 Obsidian 從筆記軟體長成工作平台，Canvas 白板讓你把案件關係圖、爭點攻防圖直接畫在知識庫裡。但原則是「先用得順，再裝外掛」——外掛是調味料，不是主菜。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、外掛系統：兩層架構"><a href="#一、外掛系統：兩層架構" class="headerlink" title="一、外掛系統：兩層架構"></a>一、外掛系統：兩層架構</h2><p>Obsidian 的功能分兩層：</p>
-<ul>
-<li><strong>核心外掛（Core plugins）</strong>：官方內建，在 Settings → Core plugins 開關。日曆、範本、白板（Canvas）、反向連結等都在這裡。</li>
-<li><strong>社群外掛（Community plugins）</strong>：全球使用者開發的擴充功能，數千種，免費安裝。</li>
-</ul>
-<h3 id="安裝社群外掛的步驟"><a href="#安裝社群外掛的步驟" class="headerlink" title="安裝社群外掛的步驟"></a>安裝社群外掛的步驟</h3><ol>
-<li>Settings → <strong>Community plugins</strong>（社群外掛）</li>
-<li>第一次會要求關閉「Restricted mode（受限模式）」——這是安全開關，確認後關閉</li>
-<li>點 <strong>Browse（瀏覽）</strong>，搜尋外掛名稱</li>
-<li><strong>Install（安裝）</strong> → <strong>Enable（啟用）</strong> → 部分外掛需在設定頁調整選項</li>
-</ol>
-<blockquote>
-<p><strong>⚠️ 律師必讀的資安提醒</strong><br>社群外掛是第三方程式碼，理論上可以讀取你的整個 Vault。建議只安裝「下載量大、持續更新、口碑明確」的外掛，並讓總數保持精簡。知識庫放了敏感內容的人，每多裝一個外掛，就多一分供應鏈風險——這跟事務所挑選委外廠商是同一種判斷。</p>
-</blockquote>
-<h2 id="二、律師的精選外掛清單"><a href="#二、律師的精選外掛清單" class="headerlink" title="二、律師的精選外掛清單"></a>二、律師的精選外掛清單</h2><p>不需要一次全裝，建議依階段採用：</p>
-<h3 id="第一階段（第一個月）：其實一個都不用裝"><a href="#第一階段（第一個月）：其實一個都不用裝" class="headerlink" title="第一階段（第一個月）：其實一個都不用裝"></a>第一階段（第一個月）：其實一個都不用裝</h3><p>先把核心功能用順：連結、搜尋、標籤、範本（核心外掛就夠用，見本篇第四節）。<strong>過度配置比功能不足，更容易讓知識庫難以維持。</strong></p>
-<h3 id="第二階段（用順之後）：三個高價值外掛"><a href="#第二階段（用順之後）：三個高價值外掛" class="headerlink" title="第二階段（用順之後）：三個高價值外掛"></a>第二階段（用順之後）：三個高價值外掛</h3><table>
-<thead>
-<tr>
-<th>外掛</th>
-<th>功能</th>
-<th>律師用法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Dataview</strong></td>
-<td>把筆記的屬性欄變成可查詢的資料庫</td>
-<td>「列出所有 court 為最高法院、tag 含營建工程的判決筆記，按日期排序」——自動生成的動態判決清單</td>
-</tr>
-<tr>
-<td><strong>Templater</strong></td>
-<td>進階範本（自動帶入日期、依資料夾套用不同範本）</td>
-<td>新增筆記到「判決」資料夾自動套判決範本；開庭筆記自動帶入今天日期</td>
-</tr>
-<tr>
-<td><strong>Excalidraw</strong></td>
-<td>手繪風格圖表</td>
-<td>法律關係圖、時間軸、組織架構圖</td>
-</tr>
-</tbody></table>
-<h3 id="值得知道的其他外掛"><a href="#值得知道的其他外掛" class="headerlink" title="值得知道的其他外掛"></a>值得知道的其他外掛</h3><ul>
-<li><strong>Calendar &#x2F; Periodic Notes</strong>：每日筆記月曆視圖，適合用「每日筆記」記工作日誌的人。</li>
-<li><strong>Kanban</strong>：看板式待辦（類似 Trello），案件進度板。</li>
-<li><strong>Obsidian Git</strong>：自動備份 Vault 到 Git 版本庫（需要一點 Git 基礎，有需要再裝）。</li>
-</ul>
-<blockquote>
-<p><strong>ℹ️ 預告：Claudian——把 Claude Code 嵌進 Obsidian 的外掛</strong><br>本系列主線是「Obsidian 開著、旁邊終端機跑 Claude Code」的雙視窗工作法，而社群外掛 <strong>Claudian</strong> 更進一步：把 Claude Code 整個嵌進 Obsidian 的側邊欄，讓你在筆記軟體裡直接指揮 Agent。它的前提是電腦已裝好 Claude Code，所以建議讀完本系列第 06 篇、Claude Code 跑起來之後，再回頭裝它，屆時再談細節。</p>
-</blockquote>
-<blockquote>
-<p><strong>💡 小提示</strong><br>與 AI 協作的好消息：<strong>Dataview 查詢、Templater 範本這些「外掛設定語法」，全部可以叫 Claude Code 幫你寫。</strong> 「請在判決索引筆記裡加一段 Dataview 查詢，列出本月新增的所有判決筆記」——你不用學查詢語法，會描述需求就好。</p>
-</blockquote>
-<h2 id="三、會議與開庭錄音：錄音機與逐字稿"><a href="#三、會議與開庭錄音：錄音機與逐字稿" class="headerlink" title="三、會議與開庭錄音：錄音機與逐字稿"></a>三、會議與開庭錄音：錄音機與逐字稿</h2><p>律師開會最尷尬的兩難：專心聽就來不及記，專心記就漏聽細節。Obsidian 內建的<strong>核心外掛「錄音機（Audio recorder）」</strong> 正好解這一題：</p>
-<ol>
-<li><strong>設定 → 核心外掛</strong>，啟用「錄音機」；</li>
-<li>開會時打開會議筆記，點左側功能列的麥克風圖示（或指令面板搜尋「錄音」）開始錄音；</li>
-<li><strong>錄音進行中，筆記照打</strong>——你只要記「決議」「待辦」「關鍵數字」這些重點，聽不清或來不及的地方安心放過；</li>
-<li>按停止後，音檔自動存入 Vault，並以 <code>![[Recording 2026-07-08.webm]]</code> 嵌在游標處——<strong>筆記內直接就能播放</strong>，會後針對沒記到的段落聽回放補齊。</li>
-</ol>
-<p>音檔跟筆記住在同一則、同一個資料夾，不會發生「錄音在手機、筆記在電腦、三個月後兩者都找不到」的窘境。手機版 App 也支援這個核心外掛，外出開會拿手機錄，回辦公室同步進 Vault 即可。</p>
-<p><strong>進階：讓錄音變成會議紀錄。</strong> 社群外掛 <strong>Whisper</strong> 可以把錄音自動轉成逐字稿，走的是 OpenAI 的 API。這裡用 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級來判斷：API 適用<strong>商業條款、預設不將資料用於訓練</strong>，屬於商用等級的途徑——一般案件的會議錄音，依所內政策使用沒有問題；但錄音內容終究會上傳雲端處理，<strong>最敏感的第三層會議</strong>（偵查中案件、重大交易）仍建議走本機路線。轉成逐字稿後，再接一句「請依會議紀錄範本，把逐字稿整理成會議紀錄，我打的重點筆記優先」。錄音、逐字稿、會議紀錄三層都留在 Vault 裡，各司其職。</p>
-<blockquote>
-<p><strong>⚠️ 錄音前先想兩件事</strong><br>一是<strong>告知與同意</strong>：會議涉及他人時，錄音前取得出席者同意，既是信賴關係的基本，也避免爭議；法庭與偵查程序的錄音另有法定限制，不在此列。二是<strong>檔案等級</strong>：含機密內容的錄音檔，適用與筆記相同的分級規則——放在哪個資料夾、能不能給雲端 AI 處理，依資安篇的三層分流判斷。</p>
-</blockquote>
-<h2 id="四、範本：讓每一則筆記自動套用統一格式"><a href="#四、範本：讓每一則筆記自動套用統一格式" class="headerlink" title="四、範本：讓每一則筆記自動套用統一格式"></a>四、範本：讓每一則筆記自動套用統一格式</h2><p>判決筆記、開庭筆記、會議紀錄——律師的筆記大多是「同一種格式反覆使用」。範本功能讓你把格式定型一次，之後每則新筆記自動長成同樣的骨架。這件事的價值不只是省打字：<strong>格式統一的筆記，AI 才能穩定地編纂與檢索</strong>（後續 Inbox 編纂請 AI「套用判決筆記範本」，靠的就是這裡建立的範本檔）。</p>
-<p>範本有兩個層次，核心外掛先用、社群外掛後補：</p>
-<h3 id="4-1-核心外掛「範本（Templates）」：內建就夠開始"><a href="#4-1-核心外掛「範本（Templates）」：內建就夠開始" class="headerlink" title="4-1 核心外掛「範本（Templates）」：內建就夠開始"></a>4-1 核心外掛「範本（Templates）」：內建就夠開始</h3><p><strong>啟用與設定</strong>（設定 → 核心外掛 → 範本，啟用後點旁邊的齒輪進入設定）：</p>
-<table>
-<thead>
-<tr>
-<th>設定項</th>
-<th>建議值</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>範本資料夾位置</td>
-<td><code>90_SYSTEM/Templates/</code></td>
-<td>所有範本檔集中放這裡，一個範本一個 <code>.md</code> 檔</td>
-</tr>
-<tr>
-<td>日期格式</td>
-<td><code>YYYY-MM-DD</code></td>
-<td><code>&#123;&#123;date&#125;&#125;</code> 代入的格式；用西元、可排序</td>
-</tr>
-<tr>
-<td>時間格式</td>
-<td><code>HH:mm</code></td>
-<td><code>&#123;&#123;time&#125;&#125;</code> 代入的格式</td>
-</tr>
-</tbody></table>
-<p><strong>語法</strong>只有三個變數，插入範本的瞬間自動代入：</p>
-<table>
-<thead>
-<tr>
-<th>變數</th>
-<th>代入內容</th>
-<th>範例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&#123;&#123;title&#125;&#125;</code></td>
-<td>目前筆記的檔名</td>
-<td>檔名取判決字號，內文大標題就自動跟上</td>
-</tr>
-<tr>
-<td><code>&#123;&#123;date&#125;&#125;</code></td>
-<td>今天日期</td>
-<td><code>2026-07-08</code></td>
-</tr>
-<tr>
-<td><code>&#123;&#123;time&#125;&#125;</code></td>
-<td>現在時間</td>
-<td><code>14:30</code></td>
-</tr>
-</tbody></table>
-<p>日期與時間還可以<strong>在範本裡臨時指定格式</strong>，寫法是冒號後接格式代碼：<code>&#123;&#123;date:YYYYMMDD&#125;&#125;</code> → <code>20260708</code>（正好是本 Vault 檔名慣例）、<code>&#123;&#123;date:YYYY年M月D日&#125;&#125;</code> → <code>2026年7月8日</code>（文書日期）。</p>
-<p><strong>建立第一個範本</strong>：在範本資料夾新增「判決筆記範本」：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">court:</span><br><span class="line">case:</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># &#123;&#123;title&#125;&#125;</span><br><span class="line"></span><br><span class="line">## 事實摘要</span><br><span class="line"></span><br><span class="line">## 爭點</span><br><span class="line"></span><br><span class="line">## 法院見解</span><br><span class="line"></span><br><span class="line">## 我的評析</span><br><span class="line">（待評析——這一欄留給自己親手寫）</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用</strong>：在任何新筆記按 <code>Cmd/Ctrl + P</code> → 輸入「插入範本」→ 選「判決筆記範本」，整個骨架連同今天的日期一次到位。天天用的話，到「設定 → 快捷鍵」搜尋「插入範本」綁一組快捷鍵（例如 <code>Cmd/Ctrl + T</code>），一鍵完成。</p>
-<p>開庭筆記範本（案號／期日／法官諭知／兩造陳述／待辦）、會議紀錄範本（出席者／討論／決議／追蹤事項）都用同一套做法。<strong>範本本身就是純文字筆記</strong>，要調整格式直接改那個檔案即可。</p>
-<h3 id="4-2-社群外掛「Templater」：範本的自動化升級"><a href="#4-2-社群外掛「Templater」：範本的自動化升級" class="headerlink" title="4-2 社群外掛「Templater」：範本的自動化升級"></a>4-2 社群外掛「Templater」：範本的自動化升級</h3><p>核心外掛要你「手動插入」，變數也只有檔名與日期時間三個；<strong>Templater</strong> 讓範本自己動起來，還能跟你互動。安裝後三個關鍵設定（Settings → Templater）：</p>
-<table>
-<thead>
-<tr>
-<th>設定項</th>
-<th>建議</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Template folder location</td>
-<td>與核心外掛同一個資料夾即可</td>
-<td>範本集中管理</td>
-</tr>
-<tr>
-<td><strong>Trigger Templater on new file creation</strong></td>
-<td>✅ 開啟</td>
-<td>新檔案建立時自動觸發範本（下一項的前提）</td>
-</tr>
-<tr>
-<td><strong>Folder templates</strong></td>
-<td>逐條新增「資料夾 → 範本」對應</td>
-<td>例如 <code>30_RESOURCES/判決/</code> → 判決筆記範本；之後在判決資料夾新增筆記，<strong>範本自動套上，一個按鍵都不用按</strong></td>
-</tr>
-</tbody></table>
-<p>Templater 的語法寫在 <code>&lt;% %&gt;</code> 之間，最值得認識的五個：</p>
-<table>
-<thead>
-<tr>
-<th>語法</th>
-<th>作用</th>
-<th>律師場景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;% tp.file.title %&gt;</code></td>
-<td>代入檔名</td>
-<td>同 <code>&#123;&#123;title&#125;&#125;</code></td>
-</tr>
-<tr>
-<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</code></td>
-<td>今天日期（格式自訂）</td>
-<td>同 <code>&#123;&#123;date&#125;&#125;</code></td>
-</tr>
-<tr>
-<td><code>&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;</code></td>
-<td><strong>今天＋14 天</strong></td>
-<td>自動算出兩週後的補呈期限、上訴期限提醒</td>
-</tr>
-<tr>
-<td><code>&lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</code></td>
-<td><strong>彈出輸入框問你</strong></td>
-<td>建立開庭筆記時跳出「案號？」「股別？」，輸入後直接寫進筆記</td>
-</tr>
-<tr>
-<td><code>&lt;% tp.file.cursor() %&gt;</code></td>
-<td>範本插入後游標停在這裡</td>
-<td>套完範本，游標直接停在「今日要旨」欄位，馬上開打</td>
-</tr>
-</tbody></table>
-<p>組合起來的「開庭筆記範本」（存進範本資料夾，並在 Folder templates 綁定開庭筆記資料夾）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">date: &lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</span><br><span class="line">case: &lt;% tp.system.prompt(&quot;案號？&quot;) %&gt;</span><br><span class="line">court: &lt;% tp.system.prompt(&quot;法院／股別？&quot;) %&gt;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># &lt;% tp.date.now(&quot;YYYYMMDD&quot;) %&gt; 開庭筆記</span><br><span class="line"></span><br><span class="line">## 今日要旨</span><br><span class="line">&lt;% tp.file.cursor() %&gt;</span><br><span class="line"></span><br><span class="line">## 法官諭知</span><br><span class="line"></span><br><span class="line">## 兩造陳述</span><br><span class="line"></span><br><span class="line">## 待辦</span><br><span class="line">- [ ] （期限預設兩週後：&lt;% tp.date.now(&quot;YYYY-MM-DD&quot;, 14) %&gt;）</span><br></pre></td></tr></table></figure>
-
-<p>新增筆記的瞬間：問你案號與股別 → 自動填好日期與期限 → 游標停在「今日要旨」。這些語法<strong>不用背</strong>——Templater 支援完整的 JavaScript，需求再特殊（自動從檔名解析判決字號、依星期幾套不同內容），描述給 Claude Code 讓它幫你寫就好。</p>
-<p>建議的採用順序與外掛清單一致：<strong>先用核心外掛把「你需要哪幾種範本」養清楚，格式穩定了、覺得手動插入麻煩了，再升級 Templater。</strong> 範本資料夾裡的每一個檔案，日後也都是 AI 的規格書——你為自己定的格式，就是 AI 為你編纂的格式。</p>
-<h2 id="五、Canvas-白板：把案件「攤在桌上」"><a href="#五、Canvas-白板：把案件「攤在桌上」" class="headerlink" title="五、Canvas 白板：把案件「攤在桌上」"></a>五、Canvas 白板：把案件「攤在桌上」</h2><p><strong>Canvas（白板）是核心外掛</strong>（若未啟用：Settings → Core plugins → Canvas），它給你一張無限大的桌面，可以把筆記、卡片、圖片、網頁擺上去，拉線標註關係。</p>
-<p>有些思考天生是空間性的，線性的筆記裝不下：</p>
-<h3 id="用法一：案件關係圖（訴訟視角）"><a href="#用法一：案件關係圖（訴訟視角）" class="headerlink" title="用法一：案件關係圖（訴訟視角）"></a>用法一：案件關係圖（訴訟視角）</h3><p>新增 Canvas（左側面板右鍵 → New canvas），把當事人做成卡片：</p>
-<ul>
-<li>卡片：甲公司（承攬人、原告、我方當事人）、乙公司（定作人、被告），需要時再加丙工程顧問（監造單位）與下包商</li>
-<li>拉線標註：甲—乙之間「工程承攬契約＋遲延違約金條款」、丙—乙「監造委任」、下包商—甲「分包契約」</li>
-<li><strong>把現有筆記直接拖上白板</strong>：<code>[[工期展延的可歸責事由]]</code> 爭點筆記、關鍵判決筆記，都能以卡片形式擺在對應位置</li>
-</ul>
-<p>複雜的多數當事人案件（工程案、繼承案、公司經營權爭議），一張關係圖勝過十頁文字。完成後長這樣：</p>
-<p><img src="/images/obsidian-plugins-canvas/case-relationship-diagram.png" alt="案件關係圖範例"></p>
-<h3 id="用法二：爭點攻防圖（訴訟視角）"><a href="#用法二：爭點攻防圖（訴訟視角）" class="headerlink" title="用法二：爭點攻防圖（訴訟視角）"></a>用法二：爭點攻防圖（訴訟視角）</h3><p>白板分左右兩欄：我方主張 vs 對造抗辯。每個爭點一張卡片，下面掛支持的判決筆記與證據清單，中間拉線標「攻擊→」「←防禦」。開庭前看一眼，全案攻防結構盡在眼前：</p>
-<p><img src="/images/obsidian-plugins-canvas/issue-map-diagram.png" alt="爭點攻防圖範例"></p>
-<h3 id="用法三：交易架構圖（非訟／企業法務視角）"><a href="#用法三：交易架構圖（非訟／企業法務視角）" class="headerlink" title="用法三：交易架構圖（非訟／企業法務視角）"></a>用法三：交易架構圖（非訟／企業法務視角）</h3><p>M&amp;A 或投資案的架構圖：主體卡片（買方、目標公司、SPV）、拉線標註股權流向與金流、每條線掛上對應的契約筆記。盡職調查發現的問題，直接以紅色卡片貼在對應主體旁：</p>
-<p><img src="/images/obsidian-plugins-canvas/deal-structure-diagram.png" alt="交易架構圖範例"></p>
-<h3 id="用法四：教育訓練的課程設計（企業法務視角）"><a href="#用法四：教育訓練的課程設計（企業法務視角）" class="headerlink" title="用法四：教育訓練的課程設計（企業法務視角）"></a>用法四：教育訓練的課程設計（企業法務視角）</h3><p>把課程模組做成卡片自由排列組合，每張卡片連到知識庫裡對應的講義筆記。設計課綱本來就是空間性的工作：</p>
-<p><img src="/images/obsidian-plugins-canvas/course-design-diagram.png" alt="課程設計範例"></p>
-<blockquote>
-<p><strong>💡 小提示</strong><br>Canvas 檔案（<code>.canvas</code>）也是純文字格式（JSON），所以 AI 同樣讀得懂、生得出來。可以試試：「請根據 2026-015 案件總覽筆記，生成一個案件關係圖的 canvas 檔案」——AI 畫初稿、你來調整。<strong>本篇四張範例圖正是這樣請 Claude Code 生成的</strong>，<code>.canvas</code> 原始檔（<code>04_範例_案件關係圖.canvas</code> 等四個檔案）連同輸出圖檔一併收在本篇所附的 <code>04_範例/</code> 資料夾，可以直接打開編輯、當成自己的起手模板。另外，在 Obsidian 裡 <code>.canvas</code> 跟 PDF 一樣可以用 <code>![[ ]]</code> 嵌進筆記顯示互動預覽。</p>
-</blockquote>
-<h2 id="六、行動裝置：口袋裡的知識庫"><a href="#六、行動裝置：口袋裡的知識庫" class="headerlink" title="六、行動裝置：口袋裡的知識庫"></a>六、行動裝置：口袋裡的知識庫</h2><p>Obsidian 有免費的 iOS &#x2F; Android App，體驗完整。兩個律師場景：</p>
-<ul>
-<li><strong>開庭與開會</strong>：iPad 開著案件總覽與爭點 WIKI，隨手記要點，回辦公室丟給 AI 編纂。</li>
-<li><strong>零碎時間輸入</strong>：在高鐵上讀到一則新判決，手機存進 <code>00_INBOX</code>，回家一句「執行 Inbox 編纂」。</li>
-</ul>
-<p>跨裝置同步的選項與資安取捨（iCloud &#x2F; OneDrive &#x2F; Obsidian Sync 端到端加密），依 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 的分級原則決定：<strong>知識庫裡有什麼等級的資料，決定它能不能同步、用什麼同步。</strong></p>
-<h2 id="七、本篇小結＋基本功檢查表"><a href="#七、本篇小結＋基本功檢查表" class="headerlink" title="七、本篇小結＋基本功檢查表"></a>七、本篇小結＋基本功檢查表</h2><p>到這裡，Obsidian 基本功全部完成。檢查一下：</p>
-<ul>
-<li><input disabled="" type="checkbox"> 已建立 Vault，並理解它就是一個資料夾（<a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a>）</li>
-<li><input disabled="" type="checkbox"> 能新增筆記、建立 <code>[[連結]]</code>、快速切換、全庫搜尋</li>
-<li><input disabled="" type="checkbox"> 看得懂也寫得出基本 Markdown，認識 callout 與 frontmatter（<a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a>）</li>
-<li><input disabled="" type="checkbox"> 知道外掛怎麼安裝，也知道先不要多裝</li>
-<li><input disabled="" type="checkbox"> 用核心外掛「範本」建立了自己的第一個筆記範本</li>
-<li><input disabled="" type="checkbox"> 開過一張 Canvas，把筆記拖上去排列過</li>
-</ul>
-<p>下一篇開始，讓終端機 AI Agent 進駐這個知識庫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://help.obsidian.md/community-plugins">Obsidian 官方說明：社群外掛（Community plugins）</a></li>
-<li><a href="https://help.obsidian.md/plugins/templates">Obsidian 官方說明：範本（Templates）</a></li>
-<li><a href="https://help.obsidian.md/plugins/canvas">Obsidian 官方說明：Canvas 白板</a></li>
-<li><a href="https://help.obsidian.md/plugins/audio-recorder">Obsidian 官方說明：錄音機（Audio recorder）</a></li>
-</ul>
-<hr>
-<p>⬅️ 上一篇：<a href="/posts/markdown-basics/">Markdown 入門｜律師夠用的排版語法</a><br>➡️ 下一篇：<a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>Obsidian</tag>
-        <tag>外掛</tag>
-        <tag>Canvas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>13 Skills｜把你的 SOP 變成 AI 的技能</title>
-    <url>/posts/skills-as-sop/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>Skill 就是「一個資料夾＋一份 SKILL.md 說明書」，把你反覆使用的工作 SOP 寫成 AI 看得懂的作業程序——寫一次，之後一句話觸發，而且全所可以共用、品質高度穩定。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、從「好用的提示詞」到「制度化的技能」"><a href="#一、從「好用的提示詞」到「制度化的技能」" class="headerlink" title="一、從「好用的提示詞」到「制度化的技能」"></a>一、從「好用的提示詞」到「制度化的技能」</h2><p>前幾篇你已經累積了不少好用的提示詞：Inbox 編纂、三色摘要、契約審閱……但提示詞有三個先天限制：</p>
-<ol>
-<li><strong>要一直複製貼上</strong>，或存在某個地方每次去翻；</li>
-<li><strong>品質會飄移</strong>——同一件事，這次講得完整、下次漏講一句，產出品質就浮動；</li>
-<li><strong>難以共享</strong>——你磨了三個月的提示詞，同事拿去用還是要學你的用法。</li>
-</ol>
-<blockquote>
-<p><strong>💡 小提示</strong><br>先介紹一個中間解法：Claude Code 支援<strong>自訂斜線指令</strong>——把常用提示詞存成檔案（放在專案的 <code>.claude/commands/</code> 資料夾），之後輸入 <code>/指令名</code> 就能叫出整段提示詞，<code>90_SYSTEM/Prompts/</code> 裡的常用提示詞都值得做成指令。它解決了第一個問題（複製貼上），但「品質飄移」與「自動觸發」還是要靠本篇的主角——你可以把斜線指令理解為 Skill 的簡化版。</p>
-</blockquote>
-<p>Claude Code 的 <strong>Skills（技能）</strong> 機制完整解決這三個問題。一句話定義：</p>
-<blockquote>
-<p><strong>Skill &#x3D; 一個資料夾，裡面放一份 <code>SKILL.md</code>，內容是教 AI 完成某項特定任務的標準作業程序。</strong></p>
-</blockquote>
-<p>裝好之後，AI 會在對話中<strong>自動判斷</strong>何時該用它——你說「幫我整理這份判決」，它就自己套用裁判書摘要技能，不需要你提技能的名字。</p>
-<p>對律師來說，最貼切的理解是：<strong>Skill 就是你寫給新進助理的 SOP 手冊。</strong> 差別在於，這位助理會穩定地按手冊執行，而且手冊可以複製給無限多位助理。本篇後段也會談到，這套機制如何回應師徒制「帶得慢、留不住」的傳承難題。</p>
-<h2 id="二、Skill-的解剖：以「裁判書摘要」為例"><a href="#二、Skill-的解剖：以「裁判書摘要」為例" class="headerlink" title="二、Skill 的解剖：以「裁判書摘要」為例"></a>二、Skill 的解剖：以「裁判書摘要」為例</h2><p>以下解剖筆者實際使用中的 <code>judgment-summary</code>（裁判書摘要）技能——它正是 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 三色摘要的引擎。看懂它，就懂 Skill 的全部結構。</p>
-<h3 id="位置與組成"><a href="#位置與組成" class="headerlink" title="位置與組成"></a>位置與組成</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">~/.claude/skills/              ← 個人技能（你所有專案都能用）</span><br><span class="line">└── judgment-summary/</span><br><span class="line">    └── SKILL.md               ← 就這一份檔案</span><br><span class="line"></span><br><span class="line">（放在專案的 .claude/skills/ 則是專案技能，只在該 Vault 生效，</span><br><span class="line">  可隨 Vault 共享給同事）</span><br></pre></td></tr></table></figure>
-
-<h3 id="SKILL-md-的三個組成部分"><a href="#SKILL-md-的三個組成部分" class="headerlink" title="SKILL.md 的三個組成部分"></a>SKILL.md 的三個組成部分</h3><p><strong>第一部分：frontmatter（讓 AI 知道何時觸發）</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">name: judgment-summary</span><br><span class="line">description: 閱讀台灣法院裁判書（.md 檔），在檔案最開頭插入</span><br><span class="line">  「重點摘要」「爭點整理」「法院見解」三個 Obsidian callout 色塊。</span><br><span class="line">  當使用者提到要為裁判書／判決書做摘要、整理爭點……即使使用者</span><br><span class="line">  只說「幫我整理這份判決」，只要對象是裁判書 md 檔，就應觸發。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p><code>description</code> 是靈魂：AI 靠它判斷「現在這個任務是不是該用這個技能」。所以要把<strong>各種可能的說法都寫進去</strong>——包括使用者「沒有明講」的情況。</p>
-<p><strong>第二部分：工作流程（步驟化的 SOP）</strong></p>
-<p><code>judgment-summary</code> 的流程段落規定：完整讀完裁判書（不能只看主文）→ 檢查是否已整理過（避免重複插入）→ 撰寫三個 callout 區塊 → 插入在 H1 標題之後 → 用編輯方式插入、不重寫全文。</p>
-<p>注意這些步驟的顆粒度——<strong>跟你教新人的顆粒度一樣細</strong>。「法院見解多半藏在理由欄，不能只看主文」這種只有律師知道的細節，正是 Skill 的價值所在。</p>
-<p><strong>第三部分：格式模板與紅線原則</strong></p>
-<p>模板規定三色 callout 的精確格式（哪個用綠色 <code>[!tip]</code>、關鍵事實加螢光標記……）；原則段落則是紅線：<strong>不杜撰</strong>（摘要必須能在全文找到依據）、<strong>數字照抄</strong>（金額、日期、字號不可四捨五入）、<strong>不更動全文</strong>、<strong>沿用當事人稱謂</strong>、<strong>台灣法律用語</strong>。</p>
-<p>換個角度看，這份 SKILL.md 的本質，是<strong>把一位資深律師「怎麼讀判決、怎麼做摘要」的內隱知識，外顯化成文件</strong>。寫 Skill 的過程本身就是知識管理。</p>
-<h2 id="三、動手做：兩條路徑做出你的第一個-Skill"><a href="#三、動手做：兩條路徑做出你的第一個-Skill" class="headerlink" title="三、動手做：兩條路徑做出你的第一個 Skill"></a>三、動手做：兩條路徑做出你的第一個 Skill</h2><p>做 Skill 有兩條路徑，依你手上有沒有「已經跑順的流程」來選。</p>
-<h3 id="路徑-A：先把流程跑順，再封裝成-Skill（推薦）"><a href="#路徑-A：先把流程跑順，再封裝成-Skill（推薦）" class="headerlink" title="路徑 A：先把流程跑順，再封裝成 Skill（推薦）"></a>路徑 A：先把流程跑順，再封裝成 Skill（推薦）</h3><p>最自然的做法：某個工作流你已經用提示詞帶著 AI 做過幾次、格式與步驟都修到滿意——例如上一篇的契約審閱。此時在剛做完的那個對話裡接一句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">剛剛這個審閱流程很好，請把它做成一個 Skill：</span><br><span class="line">把這次實際執行的步驟、輸出格式與注意事項寫成 SKILL.md，</span><br><span class="line">description 要涵蓋「幫我看這份約」「審一下這份 NDA」等各種說法。</span><br></pre></td></tr></table></figure>
-
-<p>AI 會把「剛剛實際發生的流程」萃取成 SOP。這條路徑的好處是：<strong>Skill 從實戰長出來</strong>，每個步驟都經過你驗收，不是憑空設計；缺點是要等流程先成熟。日常建議以這條為主。</p>
-<h3 id="路徑-B：從零開始，用-skill-creator-引導生成"><a href="#路徑-B：從零開始，用-skill-creator-引導生成" class="headerlink" title="路徑 B：從零開始，用 skill-creator 引導生成"></a>路徑 B：從零開始，用 skill-creator 引導生成</h3><p>流程還沒實際跑過、但 SOP 已經在你腦中（或所內已有書面 checklist 可以直接搬上來）時，用官方的 <code>skill-creator</code> 引導式生成。它以外掛形式提供，先安裝一次（<code>/plugin install skill-creator</code>），之後輸入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/skill-creator</span><br><span class="line">我要做一個 Skill：契約審閱備忘錄。</span><br><span class="line">當我請你審閱契約時，依以下 SOP 執行：</span><br><span class="line">1. 先確認我方當事人立場（買方／賣方／出租人……），沒講就先問我；</span><br><span class="line">2. 讀取 20_AREAS/契約條款庫/ 對應的 checklist 筆記逐項比對；</span><br><span class="line">3. 產出審閱備忘錄，格式：契約基本資料／高風險條款表格</span><br><span class="line">   （條號｜原文重點｜風險說明｜建議修訂文字）／checklist 缺漏事項</span><br><span class="line">   ／其他觀察；</span><br><span class="line">4. 風險分三級：🔴 不可接受、🟡 應協商、🟢 可接受；</span><br><span class="line">5. 引用法條一律標註「（待核對）」；</span><br><span class="line">6. 語言：繁體中文、台灣法律用語。</span><br></pre></td></tr></table></figure>
-
-<h3 id="兩條路徑共同的收尾：審閱、試用、迭代"><a href="#兩條路徑共同的收尾：審閱、試用、迭代" class="headerlink" title="兩條路徑共同的收尾：審閱、試用、迭代"></a>兩條路徑共同的收尾：審閱、試用、迭代</h3><p>無論哪條路徑，AI 都會生成 SKILL.md 草稿給你確認。審閱看兩個重點：description 是否涵蓋你會講的各種說法；SOP 步驟是否符合你的實際習慣。然後拿一份契約實測（若在消費者方案環境，先「去識別化」；分級判斷見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>），產出不合意的地方直接說「以後審閱備忘錄的風險表格要加一欄『對方可能的抗辯』，請更新技能」——<strong>Skill 跟 CLAUDE.md 一樣是養出來的。</strong></p>
-<h2 id="四、兩種視角的-Skill-清單（點子庫）"><a href="#四、兩種視角的-Skill-清單（點子庫）" class="headerlink" title="四、兩種視角的 Skill 清單（點子庫）"></a>四、兩種視角的 Skill 清單（點子庫）</h2><p><strong>訴訟：</strong></p>
-<ul>
-<li>裁判書摘要（本篇範例）</li>
-<li>判決檢索入庫（一句「幫我找工期展延的新判決」→ 透過法規資料庫 MCP 檢索、列候選清單經我確認 → 下載全文、套三色摘要、更新索引與爭點 WIKI——把 <a href="/posts/judgment-knowledge-base/">實戰｜打造判決知識庫：從裁判書到 WIKI 索引</a> 做法四到第三步的整條產線一句話觸發；所需工具見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）</li>
-<li>開庭筆記整理（口語紀錄 → 正式筆記＋更新案件總覽）</li>
-<li>開庭準備包（<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a> 工作流一的制度化——2026-015 案每次開庭前的那段準備包提示詞，寫成 Skill 後一句「準備明天的庭」即可觸發）</li>
-<li>卷證索引（新收卷宗 PDF → 命名歸檔＋建立索引筆記）</li>
-<li>書狀格式檢查（引用格式、當事人稱謂一致性、誤字）</li>
-</ul>
-<p><strong>非訟／企業法務：</strong></p>
-<ul>
-<li>契約審閱備忘錄（本篇範例）</li>
-<li>意見書架構草稿（含依據強度標註）</li>
-<li>函釋摘要（主管機關函釋 → 重點／適用情境／機關立場三區塊）</li>
-<li>教育訓練教材產生器（主題 → 大綱＋講義＋測驗）</li>
-<li>中日／中英契約對譯檢查（術語一致性表）</li>
-</ul>
-<p>原則：<strong>一個月內用到三次以上的流程，就值得寫成 Skill。</strong> 寫成 Skill 之後，第一百次執行仍遵循與第一次相同的完整流程（AI 仍可能偶有落差，但遠比口頭提示穩定）。</p>
-<h2 id="五、多人事務所的視角：從師徒制到制度化傳承"><a href="#五、多人事務所的視角：從師徒制到制度化傳承" class="headerlink" title="五、多人事務所的視角：從師徒制到制度化傳承"></a>五、多人事務所的視角：從師徒制到制度化傳承</h2><p>法律專業的傳承，長期依賴師徒制：資深律師帶著年輕律師改書狀、看契約，經驗一對一慢慢滲透。這套方式有效，但有兩個天生限制——<strong>帶得慢</strong>（一次只能帶一兩個人）、<strong>留不住</strong>（資深者退休或離開，經驗跟著走）。知識庫＋Skills 針對這兩個限制，提供了一套可操作的解法：</p>
-<ul>
-<li><strong>經驗外顯化</strong>：資深律師「怎麼讀判決、怎麼審約、書狀的雷區在哪」這些內隱知識，寫成 SKILL.md 與 checklist 筆記——寫一次，全所每一位同仁的每一次任務，都等於在被他帶。</li>
-<li><strong>回饋回流</strong>：年輕同仁使用中發現的新問題（新型條款、新的實務見解），經資深律師確認後更新回 Skill 與知識庫——師徒制從單向變成雙向、持續演化的制度。</li>
-<li><strong>新人訓練改觀</strong>：新人報到第一天，讀 CLAUDE.md 知道所規、用 Skills 繼承方法、查爭點 WIKI 看前人研究——上手期從「半年摸索」縮短為「一週導覽」。</li>
-<li><strong>人員異動的防波堤</strong>：律師離職、輪調、退休，帶走的是他自己；他寫進 Skill 與知識庫的方法，留在所裡繼續帶下一代。</li>
-</ul>
-<p>實務作法：把技能資料夾放進共用 Vault，整個團隊的判決摘要、審約備忘錄從此同一個格式。共用 Vault 可放在所內網路磁碟，或以 Git（工程界通用的版本管理工具，能完整記錄「誰、何時、改了哪一行」，導入需要一點技術支援）同步——多人編輯的版本管理正是它的看家本領；Skills 與範本資料夾隨 Vault 一起發佈，就是全所的標準配備。</p>
-<p>對資深律師而言，把 know-how 寫成 Skill 意味著角色的轉變：從「親手做每一件事的人」，變成「定義品質標準的人」。</p>
-<p>對管理者而言：<strong>這套做法把方法從個人經驗轉為可盤點、可複製的檔案。</strong> 過去方法存在資深律師的腦中，難以盤點、難以複製；現在，它可以是一個看得見、傳得下去的資料夾。</p>
-<blockquote>
-<p><strong>💡 小提示</strong><br>Codex 使用者：Codex 自 2025 年 12 月起也支援同構的 Skills 機制——同樣是資料夾裡放一份 <code>SKILL.md</code>（含 name 與 description），個人技能放 <code>~/.codex/skills/</code>、專案技能放 <code>.codex/skills/</code>，依 description 自動觸發。本篇的方法與範例可以原樣搬過去；AGENTS.md（等同 CLAUDE.md 的常駐規則）與 Skills（隨任務觸發的 SOP）兩者搭配使用。</p>
-</blockquote>
-<h2 id="六、他山之石：Anthropic-官方的法律-Skills——Claude-for-Legal"><a href="#六、他山之石：Anthropic-官方的法律-Skills——Claude-for-Legal" class="headerlink" title="六、他山之石：Anthropic 官方的法律 Skills——Claude for Legal"></a>六、他山之石：Anthropic 官方的法律 Skills——Claude for Legal</h2><p><strong>Anthropic 自己也把法律工作流寫成了 Skills</strong>。2026 年 2 月先推出法律插件（legal plugin）；同年 5 月擴大為 <strong>Claude for Legal</strong>——一整套開源（Apache 2.0，公開於 GitHub）的法律插件套件，內容值得台灣律師認識：</p>
-<h3 id="它包含什麼"><a href="#它包含什麼" class="headerlink" title="它包含什麼"></a>它包含什麼</h3><p>十二個執業領域插件——商務契約（vendor 契約、NDA 分流）、公司法務（併購盡調、交割清單）、勞動、隱私（DPA 審閱、DSAR 回覆）、產品、法遵監管、AI 治理、智財（商標檢索、FTO、DMCA）、訴訟（案件收案、爭點對照表、書證特權清單），甚至還有法律扶助診所與法學生學習兩個公益取向的插件——合計上百個技能，並提供二十多個法律科技系統的 MCP 連接器（DocuSign、Ironclad、Everlaw、Relativity、Thomson Reuters Westlaw 等）。</p>
-<h3 id="它怎麼運作：跟本篇教的完全同構"><a href="#它怎麼運作：跟本篇教的完全同構" class="headerlink" title="它怎麼運作：跟本篇教的完全同構"></a>它怎麼運作：跟本篇教的完全同構</h3><p>拆開它的原始碼，每個技能就是一份 <code>SKILL.md</code>（frontmatter 寫觸發條件、內文寫 SOP），與本篇第二節解剖的結構一模一樣。最值得注意的是它的<strong>啟動訪談（cold-start interview）</strong> 設計：安裝後第一件事是接受 AI 訪談——你的執業領域、審核放行標準、風險容忍度、慣用格式——訪談結果寫成一份「執業檔案」（本質就是 CLAUDE.md），之後所有技能都讀取這份檔案執行。這正是本系列「CLAUDE.md 定規矩、Skills 定方法」架構的官方版。它的紅線原則也與本系列一致：每個引用都附出處、未經查證的來源標記待核、所有產出定位為「供律師審閱的草稿」，法律判斷的責任在律師。</p>
-<h3 id="與台灣法律環境的差異"><a href="#與台灣法律環境的差異" class="headerlink" title="與台灣法律環境的差異"></a>與台灣法律環境的差異</h3><p>直接拿來用之前，要看清楚三個落差：</p>
-<ol>
-<li><strong>法域</strong>：整套內容以<strong>美國法與美式執業</strong>為底——州法差異的提示、privilege log、FTO、DMCA 這些概念與工作流，是普通法系與美國法制的產物；playbook 的預設立場（例如 NDA 的市場行情條款）也是美國市場慣行。臺灣的成文法體系、函釋實務、書狀格式，它一概不知道。</li>
-<li><strong>資料庫</strong>：它的查證連接器接的是 Westlaw、CourtListener 等美國法源；全國法規資料庫與司法院裁判書系統不在其中——這一塊正是本系列 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a> 自建的 taiwan-legal-db 在補的洞。</li>
-<li><strong>語言與用語</strong>：技能的模板、術語、產出格式都是英文與美國法律用語，中文化不只是翻譯，而是整套 SOP 的在地重寫。</li>
-</ol>
-<h3 id="給台灣律師的啟示"><a href="#給台灣律師的啟示" class="headerlink" title="給台灣律師的啟示"></a>給台灣律師的啟示</h3><ol>
-<li><strong>方向已經確認</strong>：全球最前沿的 AI 公司把「AI 進入法律業」的解答押在 Skills＋MCP＋執業檔案這套架構上——本篇的 judgment-summary 與契約審閱技能，與官方路線同構，這條路值得繼續投資。</li>
-<li><strong>架構可以借鑑、內容必須自建</strong>：它是開源的，啟動訪談、風險分級、紅線原則這些設計都可以拆開來學；但台灣法的技能，Anthropic 不會幫我們寫，台灣版的 Claude for Legal 只能由懂台灣法的律師自己動手。目前沒有台灣在地的現成套件，所內的 Skill 需要自力撰寫，寫出來的也就完全貼合自身的業務。</li>
-<li><strong>免責立場的印證</strong>：工具再完整，產出永遠是草稿，判斷與責任永遠在律師——與本系列反覆強調的原則一致。</li>
-</ol>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>Skill &#x3D; 一個資料夾＋一份 SKILL.md，把反覆使用的 SOP 寫成 AI 能自動觸發的作業程序。</li>
-<li>兩條製作路徑：從跑順的流程封裝（日常首選），或用 skill-creator 從零生成；完成後都要實測與迭代。</li>
-<li>一個月內用到三次以上的流程，就值得寫成 Skill；多人事務所可藉此把師徒制的經驗外顯化、留在所內。</li>
-<li>下一篇處理「引用的法條判決到底對不對」：讓 AI 直接連上法規資料庫查證。</li>
-</ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://code.claude.com/docs/en/skills">Claude Code 官方文件：Skills</a></li>
-<li><a href="https://code.claude.com/docs/en/slash-commands">Claude Code 官方文件：斜線指令（Slash commands）</a></li>
-<li><a href="https://claude.com/plugins/legal">Claude for Legal 官方插件頁</a></li>
-<li><a href="https://github.com/anthropics/claude-for-legal">Claude for Legal 開源套件（GitHub, Apache 2.0）</a></li>
-<li><a href="https://developers.openai.com/codex/skills">OpenAI Codex 官方文件：Agent Skills</a></li>
-</ul>
-<hr>
-<p>⬅️ 上一篇：<a href="/posts/litigation-workflow/">實戰｜訴訟與非訟的日常工作流</a><br>➡️ 下一篇：<a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>Claude-Code</tag>
-        <tag>Skills</tag>
-        <tag>SOP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>05 什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</title>
-    <url>/posts/terminal-ai-agent/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>Chatbot 只能回答問題，不能動你的檔案；終端機 AI Agent 是「坐在你電腦前、能直接開檔案做事的數位助理」。它原本是給工程師寫程式用的，但律師拿來管理知識庫，正好。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、從「會聊天」到「會做事」"><a href="#一、從「會聊天」到「會做事」" class="headerlink" title="一、從「會聊天」到「會做事」"></a>一、從「會聊天」到「會做事」</h2><p>假設你要把二十份判決做成一張爭點比較表。在 ChatGPT 這類聊天框裡，這件事意味著：複製貼上二十次、每貼一份等它讀完，最後再把結果一段一段搬回 Word。因為這種模式有幾個天生的限制——它看不到你電腦裡的檔案；它一次只能處理你貼給它的東西；它給你答案之後，存檔、整理、歸檔還是你自己來。</p>
-<p>一個貼切的比喻：<strong>Chatbot 像一位學識淵博、但手腳被綁住的顧問</strong>。什麼都懂，但什麼都不能幫你動手做。</p>
-<p>近年 AI 已進入 <strong>Agent（代理）時代</strong>。Agent 與 Chatbot 的差別在於能否直接執行操作：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Chatbot（聊天機器人）</th>
-<th>AI Agent（智慧代理）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>互動方式</td>
-<td>你問一句、它答一句</td>
-<td>你交辦一個「任務」</td>
-</tr>
-<tr>
-<td>讀取檔案</td>
-<td>要你複製貼上</td>
-<td>自己打開資料夾、逐份讀取</td>
-</tr>
-<tr>
-<td>產出</td>
-<td>一段文字，要自己複製出來</td>
-<td>直接建立、修改檔案</td>
-</tr>
-<tr>
-<td>多步驟工作</td>
-<td>每一步都要你推</td>
-<td>自己規劃步驟、執行、檢查、交付</td>
-</tr>
-<tr>
-<td>例子</td>
-<td>「這份判決在講什麼？」</td>
-<td>「把資料夾裡 20 份判決做成爭點比較表，存成新筆記」</td>
-</tr>
-</tbody></table>
-<h2 id="二、終端機作為-Agent-的執行環境"><a href="#二、終端機作為-Agent-的執行環境" class="headerlink" title="二、終端機作為 Agent 的執行環境"></a>二、終端機作為 Agent 的執行環境</h2><p>Claude Code（Anthropic）與 Codex（OpenAI）這類工具，最初都以 <strong>CLI（Command Line Interface，指令列介面）</strong> 的形式問世，在<strong>終端機（Terminal）</strong> 裡運作——就是那個黑底白字、要打指令的畫面（兩者如今也都推出桌面版，見第三節的介面比較）。黑底白字的畫面確實容易讓人卻步，先說清楚三件事：</p>
-<p><strong>第一，你不需要會指令。</strong> 打開之後，你跟它的互動就是「用中文打字交辦工作」，跟用 ChatGPT 沒有兩樣。差別只是它在你的電腦裡，看得到你的檔案。</p>
-<p><strong>第二，終端機反而是 Agent 最自然的家。</strong> Agent 要做事，就需要讀寫檔案、執行工具；終端機正是作業系統開放檔案讀寫與工具執行能力的介面。</p>
-<p><strong>第三，它每一步都會先問你。</strong> Claude Code 預設在修改檔案、執行指令前徵求你的同意，你隨時看得到它想做什麼、也隨時可以喊停。主導權在你手上。</p>
-<h2 id="三、兩大工具速覽"><a href="#三、兩大工具速覽" class="headerlink" title="三、兩大工具速覽"></a>三、兩大工具速覽</h2><h3 id="Claude-Code（Anthropic）"><a href="#Claude-Code（Anthropic）" class="headerlink" title="Claude Code（Anthropic）"></a>Claude Code（Anthropic）</h3><ul>
-<li>在終端機輸入 <code>claude</code> 啟動，用自然語言（中文完全沒問題）交辦任務。</li>
-<li>特別會「讀懂一整個資料夾」：把它打開在你的 Obsidian Vault 上，它就能通盤理解你的知識庫結構。</li>
-<li>支援 <strong>CLAUDE.md</strong>（寫給 AI 的到職須知，見 <a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a>）、<strong>Skills</strong>（可重複使用的 SOP，見 <a href="/posts/skills-as-sop/">Skills｜把你的 SOP 變成 AI 的技能</a>）與 <strong>MCP</strong>（連接外部資料庫，見 <a href="/posts/mcp-legal-database/">MCP｜把 AI 接上法規資料庫</a>）。</li>
-<li>需要 Claude 付費方案或 API 金鑰。</li>
-</ul>
-<h3 id="Codex（OpenAI）"><a href="#Codex（OpenAI）" class="headerlink" title="Codex（OpenAI）"></a>Codex（OpenAI）</h3><ul>
-<li>OpenAI 推出的對應工具，在終端機輸入 <code>codex</code> 啟動。</li>
-<li>概念幾乎相同：讀寫檔案、執行任務、自然語言交辦。</li>
-<li>對應 CLAUDE.md 的機制叫 <strong>AGENTS.md</strong>，作用一樣：放一份說明檔在資料夾裡，AI 會自動遵守。</li>
-<li>需要 ChatGPT 付費方案或 API 金鑰。</li>
-</ul>
-<h3 id="終端機版與桌面版：同一顆引擎、兩種介面"><a href="#終端機版與桌面版：同一顆引擎、兩種介面" class="headerlink" title="終端機版與桌面版：同一顆引擎、兩種介面"></a>終端機版與桌面版：同一顆引擎、兩種介面</h3><p>Claude Code 與 Codex 都不只有終端機一種型態，目前各自提供兩種主要介面：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>終端機版（CLI）</th>
-<th>桌面版（Desktop app）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Claude Code</strong></td>
-<td>在終端機輸入 <code>claude</code> 啟動</td>
-<td>Mac／Windows 應用程式；任務進度與檔案變更用視窗呈現、授權用點選，並可同時管理多個工作階段</td>
-</tr>
-<tr>
-<td><strong>Codex</strong></td>
-<td>在終端機輸入 <code>codex</code> 啟動</td>
-<td>桌面應用程式，同樣改以視窗操作</td>
-</tr>
-</tbody></table>
-<p>兩種版本用的是<strong>同一顆 Agent 引擎、同一個訂閱帳號、同一套規則檔</strong>（CLAUDE.md／AGENTS.md），差別只在操作介面：終端機版功能最完整；桌面版把「看進度、按同意、切換任務」變成視窗點選，適合不想開終端機的人。Claude Code 另有網頁版（claude.ai&#x2F;code）與 IDE 擴充功能，屬於開發者場景，本系列不展開說明。<strong>本系列的操作示範一律以終端機版為基準</strong>；改用桌面版時，提示詞與觀念完全相同。</p>
-<p>一個容易混淆的點：<strong>Claude Code 桌面版與下一段的 Cowork 是兩個不同的產品</strong>。桌面版是完整的 Claude Code，只是操作介面不同，規則檔、Skills、MCP 全部照用；Cowork 則是 Claude 桌面應用程式內建、面向一般工作者的代理功能，設計成「選資料夾、交辦、取件」的簡化流程。</p>
-<h3 id="同場加映：Claude-Cowork——不想碰終端機的選項"><a href="#同場加映：Claude-Cowork——不想碰終端機的選項" class="headerlink" title="同場加映：Claude Cowork——不想碰終端機的選項"></a>同場加映：Claude Cowork——不想碰終端機的選項</h3><p>如果你偏好圖形介面的操作方式，Anthropic 也準備了一個容易上手的選項：2026 年 1 月推出的 <strong>Claude Cowork</strong>，官方定位非常傳神——「<strong>Claude Code without the code</strong>」。同一顆 Agent 引擎（讀寫檔案、多步驟任務、自主規劃執行），包進 Claude 桌面應用程式（macOS &#x2F; Windows）熟悉的聊天視窗，2026 年 7 月起並陸續擴展到網頁版與行動版。用法只有一句話：<strong>選一個資料夾，然後用中文說話</strong>。沒有指令、沒有黑畫面，它就能讀取、整理、產出檔案——請它把「請款」資料夾裡的發票整理成 Excel、把二十份判決做成比較表、把英文契約翻成中日對照版，都是它的守備範圍。訂閱與 Claude Code 共用同一個付費方案（免費帳號不可用）。</p>
-<p>同一顆引擎、兩種包裝，怎麼選？關鍵在工作型態：<strong>Cowork 適合「一次性交付」的檔案任務；Obsidian ＋ Claude Code 適合「持續共筆」的知識工作。</strong> Cowork 的互動本質是「交辦→交付」：每個工作階段指定一個資料夾、存取範圍以該資料夾為限，檔案做好後你要到 Finder／檔案總管找出來、再用其他軟體打開來改。而本系列的主場景——知識庫的日常維護——是「人改一段、AI 改一段」的來回節奏：左邊 Obsidian 開著筆記、右邊終端機下指令，AI 改完，變動立刻呈現眼前，你隨時接手編輯再丟回去加工；中途要用其他資料夾的資料，貼個路徑就能延伸。本系列因此以 Claude Code 為主線。</p>
-<p>給律師的建議路線：</p>
-<ul>
-<li><strong>想從圖形介面開始</strong>：從 Cowork 起步——它是體驗「AI 會做事」最容易上手的入口；要向所內同仁推廣 Agent，它也是合適的起點。</li>
-<li><strong>要走本系列完整路線（CLAUDE.md、Skills、MCP）</strong>：主力用 Claude Code，這些進階機制在終端機環境最完整。</li>
-<li><strong>兩者並用完全沒問題</strong>：同一個訂閱帳號，日常文件雜務丟 Cowork，知識庫編纂與開發工作用 Claude Code。</li>
-<li>另一條「圖形介面用 Agent」的路，是 <a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a> 介紹過的社群外掛 <strong>Claudian</strong>：把 Claude Code 直接嵌進 Obsidian 介面，與 Cowork 異曲同工。</li>
-</ul>
-<blockquote>
-<p><strong>⚠️ Cowork 的資安預告</strong><br>Cowork 的權限設計比 Claude Code 流暢（較少逐步確認），這是雙面刃：好用，但也代表你<strong>指定資料夾前要先想清楚裡面有什麼</strong>——給它讀的資料夾，內容視同交給雲端模型處理；客戶機密資料必須先確認方案等級（商用方案與個人 Pro 的條款不同）。第一次使用，拿公開資料或去識別化資料練習。詳見 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a>。</p>
-</blockquote>
-<p><strong>本系列以 Claude Code 為主要示範工具</strong>（生態較完整，且 MCP、Skills 等機制對法律工作流的支援較成熟），但所有觀念——Vault 設計、到職須知、編纂心法——在 Codex 上同樣適用，只要把 <code>CLAUDE.md</code> 換成 <code>AGENTS.md</code> 即可。學觀念，不要綁工具。</p>
-<p>更根本的保障是：把規則（CLAUDE.md）、技能（Skills）、知識（Vault 筆記）通通存成自己資料夾裡的純文字檔——<strong>這些檔案不綁定任何特定工具</strong>；哪天要更換 Agent，整包資料夾搬走即可。</p>
-<h2 id="四、Agent-與-Obsidian-的組合方式"><a href="#四、Agent-與-Obsidian-的組合方式" class="headerlink" title="四、Agent 與 Obsidian 的組合方式"></a>四、Agent 與 Obsidian 的組合方式</h2><p>單獨看，Obsidian 是一個「需要人工整理」的筆記軟體；單獨看，Claude Code 是一個「給工程師寫程式」的工具。但把兩者放在一起：</p>
-<blockquote>
-<p><strong>Obsidian Vault 就是一個資料夾，Claude Code 最擅長的就是讀寫資料夾。</strong></p>
-</blockquote>
-<p>於是你得到一個這樣的組合：</p>
-<ol>
-<li><strong>你負責丟材料</strong>：判決、法規、論文筆記、研究心得，丟進 Vault。</li>
-<li><strong>AI 負責編纂</strong>：讀取新材料、寫成結構化筆記、補上 wikilink、更新主題頁（MOC）、標出見解衝突。</li>
-<li><strong>Obsidian 負責呈現</strong>：漂亮的閱讀介面、雙向連結、知識圖譜，隨時檢索。</li>
-</ol>
-<p>實際的畫面是這樣的——以主案例 2026-015 的研究主題「工期展延」為例，你在終端機打一句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">請讀取「inbox」資料夾裡我今天丟進去的三份判決筆記，</span><br><span class="line">每一份整理出：判決字號、案由、爭點、法院見解，</span><br><span class="line">然後在「工期展延」主題頁底下更新實務見解清單，</span><br><span class="line">相關筆記之間用 [[wikilink]] 連結。</span><br></pre></td></tr></table></figure>
-
-<p>然後你就看著它自己打開資料夾、一份一份讀、動手寫筆記、補連結。你從頭到尾只打了這一段中文。</p>
-<blockquote>
-<p><strong>💡 提示詞的四要素</strong><br>跟任何 AI 溝通（不只 Agent），把四樣東西講清楚，產出品質立刻不同——<strong>角色</strong>（「你是一位專精營建工程爭議的資深律師」）、<strong>任務</strong>（動詞明確：分析、比較、翻譯）、<strong>脈絡</strong>（案件背景、你在意什麼——律師最常省略、卻最關鍵的一塊）、<strong>格式</strong>（要表格、條列，還是限制字數）。上面那段交辦任務的中文，正是四要素的實作。本系列之後所有的提示詞範本，都可以用這四個要素來檢視與修改。</p>
-<p>在 Agent 環境裡，「角色」這一項往往可以省下來：<a href="/posts/claude-md-onboarding/">CLAUDE.md｜寫給 AI 助理的到職須知</a> 會教你把身分、專業領域與行文要求一次寫進 CLAUDE.md，AI 每次啟動都自動帶入，不必每則提示詞重講。之後真正需要逐次交代的，主要是任務、脈絡與格式；只有臨時要換視角（例如「改從對造律師的立場檢視這份契約」）時，才需要在提示詞裡另外指定角色。</p>
-</blockquote>
-<h2 id="五、不需要會寫程式：來自實際數據的觀察"><a href="#五、不需要會寫程式：來自實際數據的觀察" class="headerlink" title="五、不需要會寫程式：來自實際數據的觀察"></a>五、不需要會寫程式：來自實際數據的觀察</h2><p>Anthropic 曾分析約四十萬次 Claude Code 的實際使用，幾個發現對律師特別有參考價值：</p>
-<ol>
-<li><strong>成功率隨「領域專業度」提升</strong>，而不是隨「程式能力」提升。你對法律問題理解得越深，AI 產出的品質越高。</li>
-<li>分工非常固定：<strong>人決定「做什麼」，AI 決定「怎麼做」。</strong> 這與資深律師和助理的分工相同。</li>
-<li>非軟體背景的使用者成長迅速，法律工作者也在其中。</li>
-</ol>
-<p>換句話說：<strong>你的法律專業，才是把這套工具用好的關鍵。</strong> 判斷「哪個爭點重要」「哪則判決有代表性」「這段分析對不對」——這些判斷 AI 做不到。</p>
-<p>這個轉變有個名字，Anthropic 主管稱之為 <strong>Vibe Working</strong>：工作者不再逐字逐句親手操作，而是<strong>描述想要的結果，AI 完成大部分執行細節，人負責品質把關</strong>。</p>
-<p>對律師的意義：大量重複性的文字勞動，未來由 AI 分擔的比重會越來越高；律師的價值將更集中於四件 AI 做不到的事——<strong>判斷力、經驗、客戶關係、策略思維</strong>。角色從「執行者」變成「品質守門人」，這個轉變貫穿本系列每一個工作流的設計（人在頭尾、AI 在中間），到 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 會做最後的收束。</p>
-<h2 id="六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異"><a href="#六、放眼生態系：OpenClaw、Hermes-與本系列路線的差異" class="headerlink" title="六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異"></a>六、放眼生態系：OpenClaw、Hermes 與本系列路線的差異</h2><p>2026 年的個人 AI Agent 已經是一個熱鬧的生態系。除了 Claude Code &#x2F; Codex，你大概也聽過兩個廣受矚目的開源專案：<strong>OpenClaw</strong>（Peter Steinberger 開發）與 <strong>Hermes Agent</strong>（Nous Research 開發）——兩者概念相近，都是自架的「常駐通訊助理」：把 AI 模型接上 WhatsApp、Telegram 等通訊軟體，24 小時待命，能在你的電腦或伺服器上執行指令、讀寫檔案、收發郵件。跟「Obsidian × Claude Code」路線相比，差異在三個層面：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>OpenClaw &#x2F; Hermes</strong></th>
-<th><strong>Obsidian × Claude Code（本系列）</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>型態</td>
-<td><strong>常駐通訊助理</strong>：架在伺服器上 24 小時待命，用傳訊息的方式差遣</td>
-<td><strong>檔案知識庫協作</strong>：要用時打開，在你的筆記與卷宗上工作</td>
-</tr>
-<tr>
-<td>工作的中心</td>
-<td>「對話與任務」——幫你跑腿、查資料、發訊息</td>
-<td>「檔案與知識」——編纂筆記、整理判決、起草文書，成果沉澱為知識庫</td>
-</tr>
-<tr>
-<td>門檻與風險</td>
-<td>需要自架與維運；<strong>把終端機、瀏覽器、信箱的權限交給一個常駐機器人</strong>，權限範圍大、出事影響也大</td>
-<td>本機執行、逐步授權、每個動作可審查；工作範圍限縮在你指定的資料夾</td>
-</tr>
-</tbody></table>
-<p>OpenClaw 與 Hermes 的「記憶」與「技能」也都用純文字 Markdown 檔儲存——這也顯示純文字檔案在不同工具間都能沿用。</p>
-<p>本系列不選它們作主線，主要是<strong>工作型態不合</strong>：這類常駐助理以聊天訊息為互動中心，擅長「交辦一件事、回報一個結果」的零散任務，但產出散落在對話串裡，不容易沉澱成有結構的知識庫。而本系列要建立的是「材料進 Vault → AI 編纂 → 成果回流」的循環——判決筆記、爭點 WIKI、書狀底稿，工作與成果都以檔案為中心，Obsidian × Claude Code 直接在這些檔案上工作，每一次產出都留在知識庫裡繼續累積。此外，自架與維運本身是一門功課，常駐機器人接上通訊軟體與信箱後的權限管理，也是需要另行評估的課題。行有餘力，再嘗試這些新興工具也不遲。（以上是就律師工作型態所做的適用性評估，並非對這兩個專案本身的評價。）</p>
-<h2 id="七、小結"><a href="#七、小結" class="headerlink" title="七、小結"></a>七、小結</h2><ul>
-<li>Agent 與 Chatbot 的本質差異：能不能「動手做事」。</li>
-<li>終端機不可怕：你用中文交辦，它徵求同意後執行，主導權在你。</li>
-<li>兩套工具都有終端機版（CLI）與桌面版，引擎與帳號相同；本系列示範以終端機版為基準。</li>
-<li>Claude Code &#x2F; Codex + Obsidian &#x3D; AI 管理員 + 地端知識庫。</li>
-<li>偏好圖形介面？Claude Cowork 是「選資料夾＋說中文」的入門起點；但「持續共筆」的知識庫工作，主線仍是 Claude Code。</li>
-<li>下一篇就實際動手，把 Claude Code 裝進知識庫。</li>
-</ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://code.claude.com/docs/en/overview">Claude Code 官方文件：Overview</a></li>
-<li><a href="https://claude.com/cowork">Claude Cowork 官方頁面</a></li>
-<li><a href="https://www.anthropic.com/research/claude-code-expertise">Anthropic 官方研究：How experts use Claude Code（約四十萬次使用分析）</a></li>
-<li><a href="https://developers.openai.com/codex/cli">OpenAI Codex CLI 官方文件</a></li>
-</ul>
-<hr>
-<p>⬅️ 上一篇：<a href="/posts/obsidian-plugins-canvas/">Obsidian 進階｜外掛與 Canvas 白板</a><br>➡️ 下一篇：<a href="/posts/install-claude-code/">安裝 Claude Code｜讓 AI 進入你的知識庫</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>Claude-Code</tag>
-        <tag>Codex</tag>
-        <tag>AI-Agent</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>01 為什麼是 Obsidian｜律師的第二大腦</title>
-    <url>/posts/why-obsidian/</url>
-    <content><![CDATA[<p>作者｜有澤法律事務所 林廷翰律師</p>
-<blockquote>
-<p><strong>💡 本篇重點</strong><br>Obsidian 是「存在你自己電腦上的純文字知識庫」——地端、開放格式、可以被 AI 直接讀寫，這三點正好命中律師的三大需求：保密、長久、自動化。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、先從三個問題開始"><a href="#一、先從三個問題開始" class="headerlink" title="一、先從三個問題開始"></a>一、先從三個問題開始</h2><p>不妨先想想這三個問題：</p>
-<ol>
-<li>三年前承辦的那件勞資爭議案，當時整理的法律分析筆記，現在<strong>五分鐘內</strong>找得到嗎？</li>
-<li>上個月讀過的那篇個資法論文，核心論點還講得出來嗎？</li>
-<li>你研究過的每一個法律爭點，有沒有累積成「下次遇到同類案件可以直接取用」的東西？</li>
-</ol>
-<p>如果答案多半是「應該在某個地方，但要找很久」「印象有、細節忘了」「每次都重新查一遍」——那麼問題不在你不夠認真，而在<strong>工具沒有幫你把「生產過的知識」變成「累積下來的資產」</strong>。</p>
-<p>律師每天都在生產高價值的知識：判決研究、爭點分析、書狀論證、函釋整理、與客戶或當事人往來所累積的事實脈絡。但這些知識大多散落在 Word 檔、email、卷宗 PDF 與自己的記憶裡，用過一次就沉下去了。</p>
-<p>本系列以一件虛構案件貫穿全程：<strong>2026-015 案</strong>——甲公司（營造工程公司，窗口張總，我方當事人）承攬乙公司的廠房新建工程，完工日晚於契約原定工期。甲公司主張乙公司變更設計、追加工項，依約工期應予展延，展延後如期完工、並無遲延；乙公司則主張甲公司遲延完工，依約按日計罰違約金，並以之拒付工程尾款。甲公司起訴請求給付工程款，主要爭點是工期應否展延（甲公司有無遲延完工），以及縱認有遲延，違約金是否過高、應否酌減。之後各篇出現的筆記、資料夾與書狀範例，多半從這件案子取材。</p>
-<h2 id="二、傳統解法為什麼難以持續"><a href="#二、傳統解法為什麼難以持續" class="headerlink" title="二、傳統解法為什麼難以持續"></a>二、傳統解法為什麼難以持續</h2><p>過去二十年，律師常見的知識管理方案大概是這幾種：</p>
-<table>
-<thead>
-<tr>
-<th>方案</th>
-<th>難以持續的原因</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>資料夾 + Word 檔</td>
-<td>只能靠檔名與資料夾位置檢索，知識之間沒有連結</td>
-</tr>
-<tr>
-<td>Evernote &#x2F; OneNote</td>
-<td>以廠商自有格式儲存，長期遷移的彈性較低；檢索靠關鍵字，仍需人工整理</td>
-</tr>
-<tr>
-<td>Notion</td>
-<td>以雲端儲存為主，是否適合機密文件須依組織政策評估；離線使用彈性相對有限</td>
-</tr>
-<tr>
-<td>自己的大腦</td>
-<td>容量有限，而且會忘</td>
-</tr>
-</tbody></table>
-<p>共同的原因只有一個：<strong>它們都需要你投入大量時間去「整理、分類、建立連結」，而時間正是律師最缺的東西。</strong> 所以這樣的整理嘗試，往往難以持續。</p>
-<p>這件事如今出現了根本的轉機：<strong>整理知識這件苦工，可以交給 AI 做了。</strong> 但前提是——你的知識庫必須放在「AI 進得去、讀得懂、寫得動」的地方。這就是 Obsidian 登場的理由。</p>
-<h2 id="三、Obsidian-是什麼"><a href="#三、Obsidian-是什麼" class="headerlink" title="三、Obsidian 是什麼"></a>三、Obsidian 是什麼</h2><p>Obsidian 是一套免費的筆記軟體（個人與商業使用皆免費，另有付費同步服務但非必要）。它的本質可以用一句話講完：</p>
-<blockquote>
-<p><strong>一個資料夾，裡面裝滿純文字的 Markdown 檔案，Obsidian 幫你漂亮地顯示它們、並讓它們互相連結。</strong></p>
-</blockquote>
-<p>在 Obsidian 的世界裡，你的整個知識庫叫做一個 <strong>Vault（保險庫）</strong>——說穿了就是你電腦裡的一個普通資料夾。每一則筆記就是一個 <code>.md</code> 純文字檔。筆記之間可以用 <code>[[雙中括號]]</code> 互相連結，這種連結叫 <strong>wikilink</strong>，Obsidian 會自動幫你建立雙向關聯，還能畫出知識圖譜。</p>
-<h3 id="對律師最關鍵的四個特性"><a href="#對律師最關鍵的四個特性" class="headerlink" title="對律師最關鍵的四個特性"></a>對律師最關鍵的四個特性</h3><p><strong>1. 百分之百地端（local-first）</strong></p>
-<p>你的所有筆記都存在自己的電腦裡，不需要註冊帳號、不需要上傳雲端。對受保密義務拘束的律師與企業法務，這是底線級的優點：<strong>知識庫本身不會把資料送出去。</strong></p>
-<p><strong>2. 純文字、開放格式</strong></p>
-<p>Markdown 是公開標準的純文字格式，任何編輯器都打得開。即使 Obsidian 日後停止開發，筆記整包資料夾複製走即可完整保留。法律職涯是三、四十年的長跑，知識庫的「格式壽命」必須比任何一家軟體公司都長。</p>
-<p><strong>3. AI 可以直接讀寫</strong></p>
-<p>這是本系列的核心。因為 Vault 就是一個裝滿純文字檔的資料夾，所以 Claude Code、Codex 這類終端機 AI Agent 可以<strong>直接打開它、讀取每一則筆記、幫你新增與修改筆記、幫你補上 wikilink</strong>。你的知識庫從被動存放，變成由 AI 持續整理、持續更新。這件事怎麼運作，是 <a href="/posts/terminal-ai-agent/">什麼是終端機 AI Agent｜認識 Claude Code 與 Codex</a> 的主題。</p>
-<p><strong>4. Wikilink 連結思維，貼近律師的工作方式</strong></p>
-<p>法律知識天生就是網狀的：一個爭點連到好幾則判決、一則判決連到好幾個法條、一個法條的修法又牽動一串實務見解。資料夾是樹狀的，裝不下這種網狀結構；wikilink 才裝得下。</p>
-<h2 id="四、觀念轉換：從「檢索」到「編纂」"><a href="#四、觀念轉換：從「檢索」到「編纂」" class="headerlink" title="四、觀念轉換：從「檢索」到「編纂」"></a>四、觀念轉換：從「檢索」到「編纂」</h2><p>AI 研究者 Andrej Karpathy 在 2025 年提過一個觀察：他越來越常把 AI 用在「組織知識」——把原始資料丟進資料夾，讓 AI 去讀、去建立 wiki、去維護交叉連結，他自己不再親手整理。</p>
-<p>這裡有一個典範轉移，關鍵是這兩個詞：</p>
-<ul>
-<li><strong>舊做法是「檢索」</strong>：資料丟進資料夾，要用的時候自己翻、自己找、自己回憶。</li>
-<li><strong>新做法是「編纂」</strong>：資料丟進去之後，AI 自動把它整理成一份有結構、有交叉連結、會持續長大的知識庫。</li>
-</ul>
-<p>對律師的意義是：你讀過的每一篇論文、研究過的每一則判決、寫過的每一份分析，都自動融入一本<strong>你專屬的法律百科全書</strong>。半年後你問「工期展延的可歸責事由有哪些實務爭議」，那一頁已經寫好了，而且每個論點都連結到出處筆記。</p>
-<p>但這裡要立刻劃出一條界線：<strong>編纂替你省下的，是「整理」的勞動，不是「理解」的勞動。</strong> AI 可以把百科全書編好，但書編好了不等於你讀過了——那一頁寫好的答案，仍然要靠你親自閱讀、親自想過，才會變成你在法庭上、談判桌上拿得出手的專業判斷。</p>
-<p>整理可以外包，理解不能外包；一旦連理解都交給 AI，知識庫越豐富，你的大腦反而越空。</p>
-<p>這個「編纂」的實際操作，會在 <a href="/posts/from-retrieval-to-compilation/">從檢索到編纂｜讓知識庫自己長大</a> 完整示範。</p>
-<h2 id="五、常見疑問"><a href="#五、常見疑問" class="headerlink" title="五、常見疑問"></a>五、常見疑問</h2><p><strong>Q：已經有事務所的文件管理系統（DMS）了，還需要 Obsidian 嗎？</strong></p>
-<p>DMS 管理的是「案件文件」（書狀、契約、往來函文），Obsidian 管理的是「你的知識」（爭點分析、判決研究、法規整理、辦案心得）。前者是卷宗，後者是你的大腦。兩者互補，不衝突。</p>
-<p><strong>Q：這套系統對「事務所」（而不只是個人）有什麼意義？</strong></p>
-<p>答案是傳承。事務所最值錢的資產是資深律師的經驗，但它大多以「內隱知識」存在——存在人的腦中，帶不走也教不快，人一離開就跟著走。知識庫＋AI 的組合，第一次讓「把經驗外顯化成可繼承的檔案」變成低成本的日常動作。這條線會在後續篇章逐步展開，並在 Skills 篇完整收攏。</p>
-<p><strong>Q：Markdown 要學很久嗎？</strong></p>
-<p>不用。你只需要三個符號就能開始：<code>#</code> 是標題、<code>-</code> 是條列、<code>[[ ]]</code> 是連結。其他的，之後讓 AI 幫你寫。</p>
-<p><strong>Q：Obsidian 是地端的，那接上 AI 之後還算地端嗎？</strong></p>
-<p>這正是需要說清楚的地方——<strong>筆記的「存放」是地端，但 AI Agent「讀取」筆記內容後會傳送到模型公司的伺服器運算。</strong> 這是本系列最重要的資安觀念之一，會在 <a href="/posts/security-ethics-red-lines/">資安與倫理｜律師使用 AI Agent 的紅線</a> 專篇說明。在那之前可以先掌握一個原則：<strong>界線劃在「你用的是哪種方案」。</strong></p>
-<ul>
-<li><strong>消費者方案</strong>（免費版、個人 Pro／Max）：知識庫只放不涉個案機密的素材（法規、公開判決、去識別化筆記），真實卷證另外處理。</li>
-<li><strong>商用方案</strong>（如 Claude 的 Team／Enterprise、ChatGPT Enterprise，或以 API 使用——預設不將資料用於訓練、有資料處理協議）：含案件資訊的工作資料可以依所內政策放進來處理。</li>
-</ul>
-<p>這個區分很關鍵：若不區分方案、一律禁止碰觸案件資料，這套系統就無法真正進入律師的日常業務。</p>
-<h2 id="六、小結"><a href="#六、小結" class="headerlink" title="六、小結"></a>六、小結</h2><ul>
-<li>律師知識管理的癥結：整理成本太高。</li>
-<li>AI 時代的解法：把整理交給 AI，但知識庫必須放在 AI 進得去的地方。</li>
-<li>Obsidian &#x3D; 地端 + 純文字 + wikilink，是目前最適合「AI 協作」的知識庫容器。</li>
-<li>心法：從「檢索」走向「編纂」。</li>
-</ul>
-<hr>
-<p>➡️ 下一篇：<a href="/posts/obsidian-basics/">Obsidian 入門｜安裝、Vault 與基本操作</a><br>🏠 回到 <a href="/posts/series-overview/">總覽｜AI x Obsidian 律師實戰系列</a></p>
-]]></content>
-      <categories>
-        <category>AI x Obsidian 系列</category>
-      </categories>
-      <tags>
-        <tag>AI課程</tag>
-        <tag>Obsidian</tag>
-        <tag>知識管理</tag>
       </tags>
   </entry>
 </search>

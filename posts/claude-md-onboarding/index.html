@@ -27,7 +27,7 @@
 <meta property="og:description" content="作者｜有澤法律事務所 林廷翰律師  💡 本篇重點CLAUDE.md 是 AI 每次啟動都自動讀取的「到職須知」。標準做法是三層分工——全域寫「你是誰、通用規矩」，知識庫（Vault 根目錄）寫「這個知識庫的規則」，個別案件寫「本案的特殊要求」；案件背景另立 background.md 用 @ 語法引入。寫一次，之後每次啟動都自動適用。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-07T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T10:01:06.130Z">
+<meta property="article:modified_time" content="2026-07-11T16:46:47.517Z">
 <meta property="article:author" content="Ting-Han Lin">
 <meta property="article:tag" content="AI課程">
 <meta property="article:tag" content="CLAUDE-md">
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2026-07-09 18:01:06" itemprop="dateModified" datetime="2026-07-09T18:01:06+08:00">2026-07-09</time>
+      <time title="修改時間：2026-07-12 00:46:47" itemprop="dateModified" datetime="2026-07-12T00:46:47+08:00">2026-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,7 +300,7 @@
 <span id="more"></span>
 <h2 id="一、問題：每次都要重新交代一遍"><a href="#一、問題：每次都要重新交代一遍" class="headerlink" title="一、問題：每次都要重新交代一遍"></a>一、問題：每次都要重新交代一遍</h2><p>用過 ChatGPT 的人都有這個經驗：每開一個新對話，都要重講一次「請用繁體中文」「我是律師」「引用法條要附條號」。因為 AI 沒有記憶，每次對話都像換了一位新助理。</p>
 <p>如果事務所每天來一位新助理，沒有人會每天早上重新交代一次書狀格式、引用慣例、保密規矩；通常的做法是寫一份到職須知，新人來了自己看。</p>
-<p>CLAUDE.md 就是這份到職須知。Claude Code 啟動時會<strong>自動讀取</strong>它並在整個工作過程中遵守，不需要任何設定。（Codex 的對應機制是 <code>AGENTS.md</code>，觀念完全相同；想讓兩套工具共用，可以只維護一份 AGENTS.md，CLAUDE.md 裡寫一行「請遵守 AGENTS.md」。）</p>
+<p>CLAUDE.md 就是這份到職須知。Claude Code 啟動時會<strong>自動讀取</strong>它並在整個工作過程中遵守，不需要任何設定。（Codex 的對應機制是 <code>AGENTS.md</code>，觀念完全相同；想讓兩套工具共用，只維護一份 AGENTS.md，在 CLAUDE.md 裡寫一行 <code>@AGENTS.md</code> 把它引入即可——Claude Code 只讀 CLAUDE.md，用 <code>@</code> 引入才會確實載入 AGENTS.md 的內容；也可改用 symlink。）</p>
 <h2 id="二、標準架構：三層分工"><a href="#二、標準架構：三層分工" class="headerlink" title="二、標準架構：三層分工"></a>二、標準架構：三層分工</h2><p>CLAUDE.md 可以放在不同位置，效力範圍不同，<strong>疊加適用</strong>——跟法規的位階與特別法優先，邏輯相通。載入時機有一個細節：全域與知識庫層在啟動時就讀入；子資料夾層則是<strong>用到才載入</strong>——AI 實際讀取該資料夾內的檔案時，那一層的 CLAUDE.md 才會生效（所以案件層的規則，放進案件資料夾即可，不必擔心拖慢其他工作）：</p>
 <table>
 <thead>
@@ -364,16 +364,17 @@
 </blockquote>
 <p>規則中反覆出現的 <code>00_案件總覽.md</code>，是案件資料夾的另一份核心檔案——案件的「儀表板」，記庭期、待辦、時間軸這些每週在變的狀態。它與 background.md 怎麼分工，留到下一篇 <a href="/posts/file-organization-methodology/">檔案整理方法論｜案件與研究領域的雙軌知識系統</a> 介紹它時再細說；這裡先記一句就夠：<strong>半年不會變的寫 background.md，每週在變的寫 00_案件總覽.md。</strong></p>
 <h2 id="四、撰寫與維護心法"><a href="#四、撰寫與維護心法" class="headerlink" title="四、撰寫與維護心法"></a>四、撰寫與維護心法</h2><p><strong>1. 讓 AI 幫你寫第一版。</strong> Claude Code 內建 <code>/init</code> 指令，會分析資料夾內容自動生成初版 CLAUDE.md；或直接說「請觀察這個 Vault 的結構，起草一份 CLAUDE.md，草稿給我看過再存」。</p>
-<p><strong>2. 用「#」隨手補充。</strong> 在 Claude Code 對話中，以 <code>#</code> 開頭輸入一句話（例如 <code># 以後判決筆記都要加裁判日期屬性</code>），它會問你要存進哪一層的 CLAUDE.md——這是「養」到職須知最順手的方式。也可用 <code>/memory</code> 指令直接開啟編輯。</p>
+<p><strong>2. 隨口請它記，或用 <code>/memory</code> 開檔編輯。</strong> 對 Claude Code 說一句「幫我記住：判決筆記都要加裁判日期屬性」，它預設會存進自己的自動記憶（auto memory，見第 5 點）；若要寫進特定層的 CLAUDE.md，明講「加進這個資料夾的 CLAUDE.md」，或用 <code>/memory</code> 指令開檔直接編輯——這是「養」到職須知最順手的方式。</p>
 <p><strong>3. 從短開始，錯了就補。</strong> 第一版十行就夠。每次 AI 做了你不想要的事，回頭加一條規則。三個月後，這份檔案就是你的 AI 管理經驗結晶。</p>
 <p><strong>4. 定期「屋況檢查」。</strong> 規則多了會互相打架或過時，每季問一次：「請檢查我的 CLAUDE.md 有沒有互相矛盾、過時或太模糊的規則，提出精簡建議。」</p>
+<p><strong>5. 讓它自己也記一份（auto memory）。</strong> 除了你手寫的 CLAUDE.md，Claude Code 另有一套預設開啟的<strong>自動記憶（auto memory）</strong>：它會把從你的更正與偏好中學到的東西（慣用指令、除錯心得、格式偏好）自己記下來，存進該專案的記憶資料夾，與 CLAUDE.md 互補——一個是你明文交代的規則，一個是它自動累積的學習。想檢視或調整，用 <code>/memory</code> 指令即可開關與查看。</p>
 <h2 id="五、實際效果對比"><a href="#五、實際效果對比" class="headerlink" title="五、實際效果對比"></a>五、實際效果對比</h2><p><strong>沒有 CLAUDE.md</strong>：「幫我整理這則判決」→ 簡體用語混入、自創格式、沒有連結、引用錯了也不標註。</p>
 <p><strong>有三層 CLAUDE.md</strong>：同一句話 → 套用判決範本、台灣法律用語、自動連結相關爭點、更新 MOC 與索引、引用標「待核對」、還記得你的檢閱者名稱要設「ST」。</p>
 <p><strong>差別不在 AI 變聰明了，而在你把要求講清楚了——而且只需要講一次。</strong></p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
 <li>三層架構：全域寫「你是誰」、知識庫寫「這裡的規矩」、案件寫「本案特殊要求」。</li>
 <li>背景資料獨立成 background.md，用 <code>@background.md</code> 引入；全域通則可當補充保險。</li>
-<li>四個維護工具：<code>/init</code> 起草、<code>#</code> 隨手補充、<code>/memory</code> 編輯、定期屋況檢查。</li>
+<li>維護工具：<code>/init</code> 起草、隨口請它記或用 <code>/memory</code> 開檔編輯、定期屋況檢查；另有預設開啟的 auto memory 自動累積 Claude 學到的偏好，與手寫 CLAUDE.md 互補。</li>
 <li>紅線（查證、保密、草稿標示）務必入文——這是職業紀律的程式化。</li>
 </ul>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
